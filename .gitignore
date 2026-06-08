@@ -1,0 +1,16 @@
+# Environment variables — never commit secrets
+.env
+.env.local
+.env*.local
+
+# Generated assets (large binaries — commit only if intentional)
+# assets/images/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.suo
+*.user
