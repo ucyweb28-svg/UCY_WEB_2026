@@ -10,6 +10,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
 
+  <!-- Phosphor Icons — regular + bold + duotone -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css" />
+
   <style>
   /* ══════════════════════════════════════════════════════════
      DESIGN TOKENS — Exclusive Coolors palette, zero deviation
@@ -45,6 +50,50 @@
     --nav-h: 64px;
     --gap:   14px;
   }
+
+  /* ══════════════════════════════════════════════════════════
+     PHOSPHOR ICONS — palette-matched duotone
+  ══════════════════════════════════════════════════════════ */
+  /* Duotone secondary layer = palette accent at 30% */
+  [class*="ph-duotone"] { --ph-duotone-color: currentColor; }
+
+  /* sp-icon sizing */
+  .sp-icon [class*="ph-"] { font-size: 14px; line-height: 1; }
+
+  /* sp-icon palette duotones */
+  .sp-icon-royal   [class*="ph-duotone"] { color: var(--royal);   --ph-duotone-color: rgba(54,38,167,.35); }
+  .sp-icon-fuchsia [class*="ph-duotone"] { color: var(--fuchsia); --ph-duotone-color: rgba(223,87,188,.35); }
+  .sp-icon-paprika [class*="ph-duotone"] { color: var(--paprika); --ph-duotone-color: rgba(222,84,30,.35); }
+  .sp-icon-green   [class*="ph-duotone"] { color: #22c55e;        --ph-duotone-color: rgba(34,197,94,.3); }
+  .sp-icon-amber   [class*="ph-duotone"] { color: #f59e0b;        --ph-duotone-color: rgba(245,158,11,.3); }
+  .sp-icon         [class*="ph-duotone"] { color: rgba(255,255,255,.7); --ph-duotone-color: rgba(255,255,255,.2); }
+
+  /* tool-card logo icons */
+  .tool-card-logo [class*="ph-"] { font-size: 22px; line-height: 1; color: #fff; }
+
+  /* nav + CTA arrow icons */
+  .nav-cta [class*="ph-"],
+  .btn-fill [class*="ph-"],
+  .btn-text [class*="ph-"],
+  .mob-link [class*="ph-"],
+  .split-img-cta [class*="ph-"],
+  .collab-btn-fill [class*="ph-"],
+  .collab-btn-text [class*="ph-"] { font-size: 13px; line-height: 1; }
+
+  /* tools carousel arrows */
+  .tools-arrow [class*="ph-"] { font-size: 16px; line-height: 1; }
+
+  /* cr-send icon */
+  .cr-send [class*="ph-"] { font-size: 14px; color: #fff; line-height: 1; }
+
+  /* hero frame placeholder */
+  .hf-placeholder [class*="ph-"] { font-size: 28px; color: var(--muted); opacity: .5; }
+
+  /* collab badge sparkle */
+  .collab-badge-icon [class*="ph-"] { font-size: 13px; color: rgba(204,120,92,.9); }
+
+  /* chat AI avatar */
+  .cr-avatar.ai [class*="ph-"] { font-size: 14px; color: rgba(204,120,92,.9); }
 
   /* ══════════════════════════════════════════════════════════
      RESET
@@ -2334,10 +2383,7 @@
       <a href="#contact" class="nav-cta">
         <span data-lang="fr">Démarrer un projet</span>
         <span data-lang="en">Start a project</span>
-        <svg viewBox="0 0 11 11" fill="none" aria-hidden="true">
-          <path d="M1.5 9.5L9.5 1.5M9.5 1.5H5M9.5 1.5v4.5"
-                stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
       </a>
       <button id="burger" aria-label="Menu" aria-expanded="false" onclick="toggleMenu()">
         <span></span><span></span><span></span>
@@ -2351,19 +2397,19 @@
 <div id="mobile-nav" aria-hidden="true" role="dialog">
   <a href="#services"  class="mob-link" onclick="closeMenu()">
     <span data-lang="fr">Expertises</span><span data-lang="en">Expertise</span>
-    <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H8M13 3v5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
   </a>
   <a href="#portfolio" class="mob-link" onclick="closeMenu()">
     <span data-lang="fr">Projets</span><span data-lang="en">Projects</span>
-    <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H8M13 3v5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
   </a>
   <a href="#studio"    class="mob-link" onclick="closeMenu()">
     Studio
-    <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H8M13 3v5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
   </a>
   <a href="#contact"   class="mob-link" onclick="closeMenu()">
     Contact
-    <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H8M13 3v5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
   </a>
   <div class="mob-footer">
     <a href="#contact" class="mob-cta" onclick="closeMenu()">
@@ -2414,13 +2460,13 @@
     <div class="hero-frames">
       <div class="hero-frame hero-frame--lg" aria-label="Visual 1">
         <div class="hf-placeholder" aria-hidden="true">
-          <svg viewBox="0 0 28 28" fill="none"><rect x="1" y="4" width="26" height="20" rx="3" stroke="currentColor" stroke-width="1.2"/><circle cx="9" cy="12" r="2.8" stroke="currentColor" stroke-width="1.2"/><path d="M1 19l7-5 5 3.5 5-3 10 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          <i class="ph-duotone ph-image"></i>
           <span>Image à venir</span>
         </div>
       </div>
       <div class="hero-frame hero-frame--sm" aria-label="Visual 2">
         <div class="hf-placeholder" aria-hidden="true">
-          <svg viewBox="0 0 28 28" fill="none"><rect x="1" y="4" width="26" height="20" rx="3" stroke="currentColor" stroke-width="1.2"/><circle cx="9" cy="12" r="2.8" stroke="currentColor" stroke-width="1.2"/><path d="M1 19l7-5 5 3.5 5-3 10 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          <i class="ph-duotone ph-image"></i>
           <span>Image à venir</span>
         </div>
       </div>
@@ -2690,9 +2736,7 @@
           <a href="#contact" class="split-img-cta">
             <span data-lang="fr">Démarrer un projet</span>
             <span data-lang="en">Start a project</span>
-            <svg viewBox="0 0 11 11" fill="none" aria-hidden="true">
-              <path d="M1.5 9.5L9.5 1.5M9.5 1.5H5M9.5 1.5v4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
           </a>
         </div>
       </div>
@@ -2721,10 +2765,7 @@
           </div>
         </div>
         <div class="sp-search">
-          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <circle cx="6.5" cy="6.5" r="4.5" stroke="currentColor" stroke-width="1.3"/>
-            <path d="M10 10l3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-          </svg>
+          <i class="ph ph-magnifying-glass" aria-hidden="true" style="color:rgba(255,255,255,.3);font-size:13px"></i>
           <input class="sp-search-input" id="sp-search" type="text"
             placeholder="Rechercher une expertise…" autocomplete="off" spellcheck="false"/>
         </div>
@@ -2733,8 +2774,8 @@
           <!-- TAB: active -->
           <div class="sp-card" data-tab="active" data-keywords="web design ui ux interface figma">
             <div class="sp-card-icons">
-              <div class="sp-icon sp-icon-royal">🎨</div>
-              <div class="sp-icon">✦</div>
+              <div class="sp-icon sp-icon-royal"><i class="ph-duotone ph-paint-brush"></i></div>
+              <div class="sp-icon"><i class="ph-duotone ph-sparkle"></i></div>
             </div>
             <div class="sp-card-title">Web Design &amp; UI/UX</div>
             <div class="sp-card-desc">
@@ -2751,8 +2792,8 @@
 
           <div class="sp-card" data-tab="active" data-keywords="ingenierie web dev frontend wordpress headless">
             <div class="sp-card-icons">
-              <div class="sp-icon sp-icon-fuchsia">⚡</div>
-              <div class="sp-icon">🔗</div>
+              <div class="sp-icon sp-icon-fuchsia"><i class="ph-duotone ph-lightning"></i></div>
+              <div class="sp-icon"><i class="ph-duotone ph-code"></i></div>
             </div>
             <div class="sp-card-title">
               <span data-lang="fr">Ingénierie Web</span><span data-lang="en">Web Engineering</span>
@@ -2771,8 +2812,8 @@
 
           <div class="sp-card" data-tab="active" data-keywords="branding identite logo charte graphique print">
             <div class="sp-card-icons">
-              <div class="sp-icon sp-icon-paprika">🏷</div>
-              <div class="sp-icon">◎</div>
+              <div class="sp-icon sp-icon-paprika"><i class="ph-duotone ph-tag"></i></div>
+              <div class="sp-icon"><i class="ph-duotone ph-circles-three"></i></div>
             </div>
             <div class="sp-card-title">
               <span data-lang="fr">Branding &amp; Identité</span><span data-lang="en">Branding &amp; Identity</span>
@@ -2791,8 +2832,8 @@
 
           <div class="sp-card" data-tab="active" data-keywords="strategie digitale seo social media analytics growth">
             <div class="sp-card-icons">
-              <div class="sp-icon sp-icon-green">📈</div>
-              <div class="sp-icon sp-icon-royal">🌐</div>
+              <div class="sp-icon sp-icon-green"><i class="ph-duotone ph-trend-up"></i></div>
+              <div class="sp-icon sp-icon-royal"><i class="ph-duotone ph-globe"></i></div>
             </div>
             <div class="sp-card-title">
               <span data-lang="fr">Stratégie Digitale</span><span data-lang="en">Digital Strategy</span>
@@ -2812,8 +2853,8 @@
           <!-- TAB: progress -->
           <div class="sp-card hidden" data-tab="progress" data-keywords="ecommerce boutique woocommerce shop">
             <div class="sp-card-icons">
-              <div class="sp-icon sp-icon-amber">🛒</div>
-              <div class="sp-icon">💳</div>
+              <div class="sp-icon sp-icon-amber"><i class="ph-duotone ph-shopping-cart"></i></div>
+              <div class="sp-icon"><i class="ph-duotone ph-credit-card"></i></div>
             </div>
             <div class="sp-card-title">
               <span data-lang="fr">E-commerce</span><span data-lang="en">E-commerce</span>
@@ -2832,8 +2873,8 @@
 
           <div class="sp-card hidden" data-tab="progress" data-keywords="motion video animation after effects">
             <div class="sp-card-icons">
-              <div class="sp-icon sp-icon-royal">🎬</div>
-              <div class="sp-icon">✨</div>
+              <div class="sp-icon sp-icon-royal"><i class="ph-duotone ph-film-slate"></i></div>
+              <div class="sp-icon"><i class="ph-duotone ph-sparkle"></i></div>
             </div>
             <div class="sp-card-title">
               <span data-lang="fr">Motion Design</span><span data-lang="en">Motion Design</span>
@@ -2852,8 +2893,8 @@
 
           <div class="sp-card hidden" data-tab="progress" data-keywords="ia generative midjourney contenu creation">
             <div class="sp-card-icons">
-              <div class="sp-icon sp-icon-fuchsia">🤖</div>
-              <div class="sp-icon">⚡</div>
+              <div class="sp-icon sp-icon-fuchsia"><i class="ph-duotone ph-robot"></i></div>
+              <div class="sp-icon"><i class="ph-duotone ph-lightning"></i></div>
             </div>
             <div class="sp-card-title">
               <span data-lang="fr">Création IA</span><span data-lang="en">AI Creation</span>
@@ -2873,8 +2914,8 @@
           <!-- TAB: done -->
           <div class="sp-card hidden" data-tab="done" data-keywords="eclat immobilier site web landing">
             <div class="sp-card-icons">
-              <div class="sp-icon" style="background:rgba(232,87,42,.2)">🏠</div>
-              <div class="sp-icon">✓</div>
+              <div class="sp-icon" style="background:rgba(232,87,42,.2)"><i class="ph-duotone ph-house" style="color:#E8572A;--ph-duotone-color:rgba(232,87,42,.3)"></i></div>
+              <div class="sp-icon"><i class="ph-duotone ph-check-circle" style="color:#22c55e;--ph-duotone-color:rgba(34,197,94,.25)"></i></div>
             </div>
             <div class="sp-card-title">Éclat Immobilier</div>
             <div class="sp-card-desc">
@@ -2891,8 +2932,8 @@
 
           <div class="sp-card hidden" data-tab="done" data-keywords="nordik finance dashboard web app">
             <div class="sp-card-icons">
-              <div class="sp-icon" style="background:rgba(15,76,129,.3)">💼</div>
-              <div class="sp-icon">✓</div>
+              <div class="sp-icon" style="background:rgba(15,76,129,.3)"><i class="ph-duotone ph-briefcase" style="color:#0F4C81;--ph-duotone-color:rgba(15,76,129,.3)"></i></div>
+              <div class="sp-icon"><i class="ph-duotone ph-check-circle" style="color:#22c55e;--ph-duotone-color:rgba(34,197,94,.25)"></i></div>
             </div>
             <div class="sp-card-title">Nordik Finance</div>
             <div class="sp-card-desc">
@@ -2909,8 +2950,8 @@
 
           <div class="sp-card hidden" data-tab="done" data-keywords="velour fashion mode boutique">
             <div class="sp-card-icons">
-              <div class="sp-icon" style="background:rgba(201,168,76,.2)">👗</div>
-              <div class="sp-icon">✓</div>
+              <div class="sp-icon" style="background:rgba(201,168,76,.2)"><i class="ph-duotone ph-handbag" style="color:#C9A84C;--ph-duotone-color:rgba(201,168,76,.3)"></i></div>
+              <div class="sp-icon"><i class="ph-duotone ph-check-circle" style="color:#22c55e;--ph-duotone-color:rgba(34,197,94,.25)"></i></div>
             </div>
             <div class="sp-card-title">Velour Fashion</div>
             <div class="sp-card-desc">
@@ -2927,9 +2968,7 @@
 
           <!-- Empty state -->
           <div class="sp-empty" id="sp-empty">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
-              <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-            </svg>
+            <i class="ph ph-magnifying-glass" style="font-size:28px;opacity:.3"></i>
             <span data-lang="fr">Aucun résultat trouvé.</span>
             <span data-lang="en">No results found.</span>
           </div>
@@ -2957,10 +2996,10 @@
     </div>
     <div class="tools-arrows">
       <button class="tools-arrow" id="tools-prev" aria-label="Précédent" disabled>
-        <svg viewBox="0 0 14 14"><path d="M9 2L4 7l5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <i class="ph-bold ph-caret-left" aria-hidden="true"></i>
       </button>
       <button class="tools-arrow" id="tools-next" aria-label="Suivant">
-        <svg viewBox="0 0 14 14"><path d="M5 2l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <i class="ph-bold ph-caret-right" aria-hidden="true"></i>
       </button>
     </div>
   </div>
@@ -3049,7 +3088,7 @@
         <div class="tool-card-bg" style="background:linear-gradient(135deg,#111111 0%,#2A2A2A 50%,#050505 100%)"></div>
         <div class="tool-card-overlay"></div>
         <div class="tool-card-content">
-          <div class="tool-card-logo" style="font-size:22px;">🎨</div>
+          <div class="tool-card-logo"><i class="ph-duotone ph-magic-wand"></i></div>
           <div class="tool-card-bottom">
             <div class="tool-card-cat">IA Générative</div>
             <div class="tool-card-name">Midjourney</div>
@@ -3081,7 +3120,7 @@
         <div class="tool-card-bg" style="background:linear-gradient(135deg,#18003A 0%,#4D00A8 50%,#09001C 100%)"></div>
         <div class="tool-card-overlay"></div>
         <div class="tool-card-content">
-          <div class="tool-card-logo" style="font-size:22px;">🎬</div>
+          <div class="tool-card-logo"><i class="ph-duotone ph-film-slate"></i></div>
           <div class="tool-card-bottom">
             <div class="tool-card-cat">IA Vidéo</div>
             <div class="tool-card-name">Runway</div>
@@ -3111,7 +3150,7 @@
         <div class="tool-card-bg" style="background:linear-gradient(135deg,#CC785C 0%,#8B4A2A 50%,#3D1A08 100%)"></div>
         <div class="tool-card-overlay"></div>
         <div class="tool-card-content">
-          <div class="tool-card-logo" style="font-size:22px;">✦</div>
+          <div class="tool-card-logo"><i class="ph-duotone ph-sparkle"></i></div>
           <div class="tool-card-bottom">
             <div class="tool-card-cat">IA / Agents</div>
             <div class="tool-card-name">Claude AI</div>
@@ -3154,7 +3193,7 @@
         </div>
 
         <div class="collab-badge">
-          <div class="collab-badge-icon">✦</div>
+          <div class="collab-badge-icon"><i class="ph-duotone ph-sparkle"></i></div>
           <span>UCY × Claude AI</span>
         </div>
 
@@ -3176,9 +3215,7 @@
           <a href="#portfolio" class="collab-btn-text">
             <span data-lang="fr">Voir nos réalisations</span>
             <span data-lang="en">View our work</span>
-            <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
-              <path d="M1.5 10.5L10.5 1.5M10.5 1.5H5.5M10.5 1.5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
           </a>
         </div>
 
@@ -3224,7 +3261,7 @@
 
           <!-- AI message 1 -->
           <div class="cr-msg ai">
-            <div class="cr-avatar ai">✦</div>
+            <div class="cr-avatar ai"><i class="ph-duotone ph-sparkle"></i></div>
             <div class="cr-bubble">
               <span data-lang="fr">Bien sûr. Voici une hero section avec animation de mots, gradient animé sur le titre principal et blobs SVG flottants :</span>
               <span data-lang="en">Sure. Here's a hero section with word animation, animated gradient on the headline and floating SVG blobs:</span>
@@ -3260,7 +3297,7 @@
 
           <!-- AI typing indicator -->
           <div class="cr-msg ai cr-typing">
-            <div class="cr-avatar ai">✦</div>
+            <div class="cr-avatar ai"><i class="ph-duotone ph-sparkle"></i></div>
             <div class="cr-typing-dots">
               <span></span><span></span><span></span>
             </div>
@@ -3275,7 +3312,7 @@
             <span data-lang="en">Describe your next change…</span>
           </div>
           <div class="cr-send" aria-hidden="true">
-            <svg viewBox="0 0 13 13"><path d="M1 12L12 6.5 1 1v4.5l7.5 2L1 7.5V12z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <i class="ph-bold ph-paper-plane-tilt"></i>
           </div>
         </div>
 
@@ -3342,7 +3379,7 @@
         <a href="#contact" class="card-link">
           <span data-lang="fr">En savoir plus</span>
           <span data-lang="en">Learn more</span>
-          <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5.5M10 2v4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
         </a>
       </article>
 
@@ -3376,7 +3413,7 @@
         <a href="#contact" class="card-link">
           <span data-lang="fr">En savoir plus</span>
           <span data-lang="en">Learn more</span>
-          <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5.5M10 2v4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
         </a>
       </article>
 
@@ -3410,7 +3447,7 @@
         <a href="#contact" class="card-link">
           <span data-lang="fr">En savoir plus</span>
           <span data-lang="en">Learn more</span>
-          <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5.5M10 2v4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
         </a>
       </article>
 
@@ -3447,7 +3484,7 @@
         <a href="#contact" class="card-link">
           <span data-lang="fr">En savoir plus</span>
           <span data-lang="en">Learn more</span>
-          <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5.5M10 2v4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
         </a>
       </article>
 
