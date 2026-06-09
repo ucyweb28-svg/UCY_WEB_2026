@@ -150,11 +150,18 @@
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid rgba(0,8,7,.04);
-    transition: background .3s ease, box-shadow .3s ease;
+    transition: background .3s ease, box-shadow .3s ease,
+                transform .42s cubic-bezier(0.16,1,0.3,1),
+                opacity .36s ease;
   }
   #nav.scrolled {
-    background: rgba(251, 249, 255, 0.95);
+    background: rgba(251, 249, 255, 0.96);
     box-shadow: 0 1px 0 rgba(0,8,7,.06), 0 8px 32px rgba(0,8,7,.04);
+  }
+  #nav.nav-hidden {
+    transform: translateY(-110%);
+    opacity: 0;
+    pointer-events: none;
   }
   .nav-grid {
     height: 100%;
@@ -3724,10 +3731,30 @@
     if (localStorage.getItem('ucy-lang') === 'en') setLang('en');
   } catch(e) {}
 
-  /* ── Nav scroll ──────────────────────────────────── */
+  /* ── Nav scroll: hide on down, reveal on up ─────── */
   const nav = document.getElementById('nav');
+  let lastY  = 0;
+  let ticking = false;
   window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 20);
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const y     = window.scrollY;
+        const delta = y - lastY;
+        // Always show when near top
+        if (y < 80) {
+          nav.classList.remove('nav-hidden', 'scrolled');
+        } else {
+          nav.classList.add('scrolled');
+          // Scrolling down > 6px → hide
+          if (delta > 6)  nav.classList.add('nav-hidden');
+          // Scrolling up   → show
+          if (delta < -4) nav.classList.remove('nav-hidden');
+        }
+        lastY    = y;
+        ticking  = false;
+      });
+      ticking = true;
+    }
   }, { passive: true });
 
   /* ── Mobile menu ─────────────────────────────────── */
