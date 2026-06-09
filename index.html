@@ -1103,6 +1103,376 @@
   }
 
   /* ══════════════════════════════════════════════════════════
+     CLAUDE COLLAB SECTION
+  ══════════════════════════════════════════════════════════ */
+  .s-collab {
+    padding: 80px 0;
+  }
+  .collab-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    min-height: 640px;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 4px rgba(0,8,7,.02), 0 16px 56px rgba(0,8,7,.08);
+  }
+
+  /* ── Left dark panel ── */
+  .collab-left {
+    position: relative;
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 48px 44px;
+    overflow: hidden;
+  }
+  /* Noise + gradient texture */
+  .collab-left::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 120% 80% at 80% 10%, rgba(54,38,167,.55) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 60% at 10% 90%, rgba(223,87,188,.3) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .collab-left::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: .45;
+  }
+  .collab-badge {
+    position: relative; z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 13px 5px 8px;
+    border-radius: 99px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.14);
+    margin-bottom: 24px;
+    width: fit-content;
+  }
+  .collab-badge-icon {
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    background: rgba(204,120,92,.9);
+    display: grid; place-items: center;
+    font-size: 11px;
+  }
+  .collab-badge span {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: .3px;
+    color: rgba(255,255,255,.7);
+  }
+  .collab-title {
+    position: relative; z-index: 1;
+    font-family: var(--f-display);
+    font-size: clamp(30px, 3.5vw, 48px);
+    font-weight: 800;
+    letter-spacing: -.04em;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 18px;
+  }
+  .collab-title em {
+    font-style: normal;
+    background: linear-gradient(118deg, #a78bfa 0%, #f472b6 50%, #fb923c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .collab-sub {
+    position: relative; z-index: 1;
+    font-size: 14.5px;
+    line-height: 1.72;
+    color: rgba(255,255,255,.5);
+    max-width: 340px;
+    margin-bottom: 36px;
+  }
+  .collab-ctas {
+    position: relative; z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .collab-btn-fill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 12px 24px;
+    border-radius: 99px;
+    background: #fff;
+    color: var(--ink);
+    font-size: 13.5px;
+    font-weight: 600;
+    transition: opacity .15s ease, transform .2s var(--ease);
+  }
+  .collab-btn-fill:hover { opacity: .88; transform: scale(.97); }
+  .collab-btn-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: rgba(255,255,255,.55);
+    transition: color .15s ease;
+  }
+  .collab-btn-text:hover { color: rgba(255,255,255,.9); }
+  .collab-btn-text svg { width: 11px; height: 11px; }
+  /* Floating stat chips */
+  .collab-stats {
+    position: absolute; z-index: 1;
+    top: 40px; right: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .collab-stat {
+    padding: 8px 14px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.1);
+    backdrop-filter: blur(12px);
+  }
+  .collab-stat-num {
+    font-family: var(--f-display);
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -.03em;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .collab-stat-label {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.35);
+  }
+
+  /* ── Right light panel (chat UI) ── */
+  .collab-right {
+    background: #f8f8fa;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  /* Top bar */
+  .cr-topbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+    flex-shrink: 0;
+  }
+  .cr-dots { display: flex; gap: 5px; }
+  .cr-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+  .cr-dot:nth-child(1) { background: #ff5f57; }
+  .cr-dot:nth-child(2) { background: #febc2e; }
+  .cr-dot:nth-child(3) { background: #28c840; }
+  .cr-topbar-title {
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(0,0,0,.4);
+    letter-spacing: .2px;
+  }
+  /* Tabs */
+  .cr-tabs {
+    display: flex;
+    gap: 0;
+    padding: 0 16px;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+    flex-shrink: 0;
+  }
+  .cr-tab {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(0,0,0,.35);
+    padding: 10px 14px;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    cursor: default;
+    white-space: nowrap;
+  }
+  .cr-tab.on {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+    font-weight: 600;
+  }
+  /* Chat area */
+  .cr-chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .cr-msg {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .cr-msg.user { flex-direction: row-reverse; }
+  .cr-avatar {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    display: grid; place-items: center;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .cr-avatar.ucy {
+    background: var(--ink);
+    color: #fff;
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: .5px;
+  }
+  .cr-avatar.ai {
+    background: rgba(204,120,92,.15);
+    color: rgba(204,120,92,.9);
+    font-size: 14px;
+  }
+  .cr-bubble {
+    max-width: calc(100% - 50px);
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+  .cr-msg.user .cr-bubble {
+    background: var(--ink);
+    color: rgba(255,255,255,.9);
+    border-bottom-right-radius: 4px;
+  }
+  .cr-msg.ai .cr-bubble {
+    background: #fff;
+    color: rgba(0,0,0,.75);
+    border: 1px solid rgba(0,0,0,.06);
+    border-bottom-left-radius: 4px;
+  }
+  /* Code block inside bubble */
+  .cr-code {
+    margin-top: 8px;
+    background: #0d1117;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .cr-code-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 12px;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+  .cr-code-lang {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: .8px; text-transform: uppercase;
+    color: rgba(255,255,255,.3);
+  }
+  .cr-code-copy {
+    font-size: 9.5px; font-weight: 500;
+    color: rgba(255,255,255,.25);
+    letter-spacing: .5px;
+    text-transform: uppercase;
+  }
+  .cr-code pre {
+    padding: 12px;
+    font-size: 11px;
+    line-height: 1.65;
+    color: #e6edf3;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    white-space: pre;
+    overflow-x: auto;
+    margin: 0;
+  }
+  .cc-k { color: #ff7b72; }  /* keyword */
+  .cc-s { color: #a5d6ff; }  /* string */
+  .cc-c { color: #8b949e; }  /* comment */
+  .cc-f { color: #d2a8ff; }  /* function */
+  .cc-v { color: #ffa657; }  /* value */
+  .cc-p { color: #e6edf3; }  /* plain */
+  /* Typing indicator */
+  .cr-typing {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cr-typing-dots {
+    display: flex; gap: 4px; padding: 10px 14px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 14px; border-bottom-left-radius: 4px;
+  }
+  .cr-typing-dots span {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: rgba(0,0,0,.2);
+    animation: typingBounce 1.2s ease-in-out infinite;
+  }
+  .cr-typing-dots span:nth-child(2) { animation-delay: .2s; }
+  .cr-typing-dots span:nth-child(3) { animation-delay: .4s; }
+  @keyframes typingBounce {
+    0%,60%,100% { transform: translateY(0); opacity: .4; }
+    30%          { transform: translateY(-4px); opacity: 1; }
+  }
+  /* Bottom input bar */
+  .cr-input-bar {
+    padding: 12px 16px;
+    background: #fff;
+    border-top: 1px solid rgba(0,0,0,.06);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .cr-input {
+    flex: 1;
+    background: rgba(0,0,0,.04);
+    border: 1px solid rgba(0,0,0,.07);
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: rgba(0,0,0,.4);
+    font-family: var(--f-body);
+  }
+  .cr-send {
+    width: 32px; height: 32px;
+    border-radius: 9px;
+    background: var(--ink);
+    display: grid; place-items: center;
+    cursor: none;
+    flex-shrink: 0;
+  }
+  .cr-send svg { width: 13px; height: 13px; stroke: #fff; fill: none; stroke-width: 1.6; }
+
+  @media (max-width: 1024px) {
+    .collab-inner { grid-template-columns: 1fr 1fr; min-height: 560px; }
+    .collab-stats { display: none; }
+  }
+  @media (max-width: 768px) {
+    .collab-inner { grid-template-columns: 1fr; }
+    .collab-left  { padding: 36px 28px; min-height: 360px; }
+    .collab-right { min-height: 440px; }
+    .s-collab { padding: 60px 0; }
+  }
+
+  /* ══════════════════════════════════════════════════════════
      SHARED SECTION ATOMS
   ══════════════════════════════════════════════════════════ */
   .s-label {
@@ -2328,6 +2698,166 @@
   </div>
 
   <div class="tools-progress" id="tools-progress" aria-hidden="true"></div>
+</section>
+
+
+<!-- ══ CLAUDE COLLAB ══════════════════════════════════════════ -->
+<section class="s-collab sr">
+  <div class="wrap">
+    <div class="collab-inner">
+
+      <!-- LEFT: dark hero panel -->
+      <div class="collab-left">
+
+        <!-- Floating stat chips top-right -->
+        <div class="collab-stats" aria-hidden="true">
+          <div class="collab-stat">
+            <div class="collab-stat-num">3×</div>
+            <div class="collab-stat-label">
+              <span data-lang="fr">Plus rapide</span>
+              <span data-lang="en">Faster</span>
+            </div>
+          </div>
+          <div class="collab-stat">
+            <div class="collab-stat-num">100%</div>
+            <div class="collab-stat-label">Custom</div>
+          </div>
+          <div class="collab-stat">
+            <div class="collab-stat-num">∞</div>
+            <div class="collab-stat-label">Itérations</div>
+          </div>
+        </div>
+
+        <div class="collab-badge">
+          <div class="collab-badge-icon">✦</div>
+          <span>UCY × Claude AI</span>
+        </div>
+
+        <h2 class="collab-title">
+          <span data-lang="fr">On construit<br>votre site avec<br><em>l'IA.</em></span>
+          <span data-lang="en">We build<br>your site with<br><em>AI.</em></span>
+        </h2>
+
+        <p class="collab-sub">
+          <span data-lang="fr">Design, code, contenu — Claude génère, UCY Studio orchestre. Le résultat : des sites premium livrés en un temps record, sans compromis sur la qualité.</span>
+          <span data-lang="en">Design, code, content — Claude generates, UCY Studio orchestrates. The result: premium sites delivered in record time, zero compromise on quality.</span>
+        </p>
+
+        <div class="collab-ctas">
+          <a href="#contact" class="collab-btn-fill">
+            <span data-lang="fr">Voir comment ça marche</span>
+            <span data-lang="en">See how it works</span>
+          </a>
+          <a href="#portfolio" class="collab-btn-text">
+            <span data-lang="fr">Voir nos réalisations</span>
+            <span data-lang="en">View our work</span>
+            <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M1.5 10.5L10.5 1.5M10.5 1.5H5.5M10.5 1.5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: chat UI mockup -->
+      <div class="collab-right">
+
+        <!-- macOS top bar -->
+        <div class="cr-topbar">
+          <div class="cr-dots">
+            <div class="cr-dot"></div>
+            <div class="cr-dot"></div>
+            <div class="cr-dot"></div>
+          </div>
+          <div class="cr-topbar-title">UCY Studio — AI Builder</div>
+          <div style="width:52px"></div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="cr-tabs">
+          <div class="cr-tab on">Chat</div>
+          <div class="cr-tab">
+            <span data-lang="fr">Aperçu</span><span data-lang="en">Preview</span>
+          </div>
+          <div class="cr-tab">Code</div>
+          <div class="cr-tab">
+            <span data-lang="fr">Fichiers</span><span data-lang="en">Files</span>
+          </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="cr-chat">
+
+          <!-- User message 1 -->
+          <div class="cr-msg user">
+            <div class="cr-avatar ucy">UCY</div>
+            <div class="cr-bubble">
+              <span data-lang="fr">Crée une hero section premium pour une agence digitale montréalaise. Titre impactant, sous-titre court, 2 CTAs, fond animé avec blobs.</span>
+              <span data-lang="en">Create a premium hero section for a Montreal digital agency. Impactful title, short subtitle, 2 CTAs, animated background with blobs.</span>
+            </div>
+          </div>
+
+          <!-- AI message 1 -->
+          <div class="cr-msg ai">
+            <div class="cr-avatar ai">✦</div>
+            <div class="cr-bubble">
+              <span data-lang="fr">Bien sûr. Voici une hero section avec animation de mots, gradient animé sur le titre principal et blobs SVG flottants :</span>
+              <span data-lang="en">Sure. Here's a hero section with word animation, animated gradient on the headline and floating SVG blobs:</span>
+              <div class="cr-code">
+                <div class="cr-code-head">
+                  <span class="cr-code-lang">HTML / CSS</span>
+                  <span class="cr-code-copy">Copy</span>
+                </div>
+                <pre><code><span class="cc-k">&lt;section</span> <span class="cc-s">class</span><span class="cc-p">=</span><span class="cc-s">"hero"</span><span class="cc-k">&gt;</span>
+  <span class="cc-k">&lt;div</span> <span class="cc-s">class</span><span class="cc-p">=</span><span class="cc-s">"blob blob-1"</span><span class="cc-k">&gt;&lt;/div&gt;</span>
+  <span class="cc-k">&lt;h1&gt;</span>
+    <span class="cc-p">Maîtrisez votre</span>
+    <span class="cc-k">&lt;span</span> <span class="cc-s">class</span><span class="cc-p">=</span><span class="cc-s">"grad"</span><span class="cc-k">&gt;</span>
+      <span class="cc-p">digital.</span>
+    <span class="cc-k">&lt;/span&gt;</span>
+  <span class="cc-k">&lt;/h1&gt;</span>
+  <span class="cc-k">&lt;a</span> <span class="cc-s">class</span><span class="cc-p">=</span><span class="cc-s">"btn-fill"</span><span class="cc-k">&gt;</span>
+    <span class="cc-p">Démarrer un projet</span>
+  <span class="cc-k">&lt;/a&gt;</span>
+<span class="cc-k">&lt;/section&gt;</span></code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- User message 2 -->
+          <div class="cr-msg user">
+            <div class="cr-avatar ucy">UCY</div>
+            <div class="cr-bubble">
+              <span data-lang="fr">Parfait. Maintenant ajoute le scroll reveal avec IntersectionObserver et le fallback 2.5s.</span>
+              <span data-lang="en">Perfect. Now add scroll reveal with IntersectionObserver and the 2.5s fallback.</span>
+            </div>
+          </div>
+
+          <!-- AI typing indicator -->
+          <div class="cr-msg ai cr-typing">
+            <div class="cr-avatar ai">✦</div>
+            <div class="cr-typing-dots">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Input bar -->
+        <div class="cr-input-bar">
+          <div class="cr-input">
+            <span data-lang="fr">Décrivez votre prochaine modification…</span>
+            <span data-lang="en">Describe your next change…</span>
+          </div>
+          <div class="cr-send" aria-hidden="true">
+            <svg viewBox="0 0 13 13"><path d="M1 12L12 6.5 1 1v4.5l7.5 2L1 7.5V12z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
 </section>
 
 
