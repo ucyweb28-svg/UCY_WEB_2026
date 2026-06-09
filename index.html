@@ -664,6 +664,246 @@
   }
 
   /* ══════════════════════════════════════════════════════════
+     SPLIT FEATURE SECTION
+  ══════════════════════════════════════════════════════════ */
+  .s-split {
+    padding: 80px 0 0;
+  }
+  .split-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 580px;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 4px rgba(0,8,7,.02), 0 16px 48px rgba(0,8,7,.07);
+  }
+
+  /* ── Left: image + text overlay ── */
+  .split-img {
+    position: relative;
+    overflow: hidden;
+    background: #0d0d0d;
+  }
+  .split-img img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: .82;
+    transition: opacity .5s ease, transform .7s var(--ease);
+  }
+  .split-img:hover img { opacity: .72; transform: scale(1.03); }
+  .split-img::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 30%,
+      rgba(0,0,0,.35) 60%,
+      rgba(0,0,0,.72) 100%
+    );
+    pointer-events: none;
+  }
+  .split-img-placeholder {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  }
+  .split-img-text {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    z-index: 2;
+    padding: 36px 40px;
+  }
+  .split-img-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 4px 12px 4px 8px;
+    border-radius: 99px;
+    background: rgba(255,255,255,.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,.18);
+    margin-bottom: 16px;
+  }
+  .split-img-label-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: hsPulse 2.4s ease-in-out infinite;
+  }
+  .split-img-label span {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 1.2px; text-transform: uppercase;
+    color: rgba(255,255,255,.85);
+  }
+  .split-img-title {
+    font-family: var(--f-display);
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 800;
+    letter-spacing: -.03em;
+    line-height: 1.08;
+    color: #fff;
+    margin-bottom: 14px;
+  }
+  .split-img-sub {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(255,255,255,.62);
+    max-width: 320px;
+    margin-bottom: 28px;
+  }
+  .split-img-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 22px;
+    border-radius: 99px;
+    background: rgba(255,255,255,.95);
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 600;
+    transition: background .15s ease, transform .2s var(--ease);
+  }
+  .split-img-cta:hover { background: #fff; transform: scale(.97); }
+  .split-img-cta svg { width: 10px; height: 10px; }
+
+  /* ── Right: dark UI panel ── */
+  .split-panel {
+    background: #0b0c0e;
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    gap: 20px;
+    overflow: hidden;
+  }
+  .sp-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .sp-title {
+    font-family: var(--f-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba(255,255,255,.9);
+    letter-spacing: -.02em;
+  }
+  .sp-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 10px;
+    border-radius: 99px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    font-size: 10px; font-weight: 600;
+    letter-spacing: .8px; text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+  }
+  .sp-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    flex-shrink: 0;
+  }
+  .sp-tab {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: rgba(255,255,255,.35);
+    padding: 8px 16px;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    cursor: default;
+    transition: color .15s ease;
+  }
+  .sp-tab.active {
+    color: rgba(255,255,255,.9);
+    border-bottom-color: var(--royal);
+  }
+  .sp-search {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 14px;
+    border-radius: 10px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    flex-shrink: 0;
+  }
+  .sp-search svg { width: 13px; height: 13px; color: rgba(255,255,255,.3); flex-shrink:0; }
+  .sp-search span {
+    font-size: 12.5px;
+    color: rgba(255,255,255,.25);
+  }
+  .sp-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    flex: 1;
+    overflow: hidden;
+  }
+  .sp-card {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 14px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: background .2s ease, border-color .2s ease;
+  }
+  .sp-card:hover {
+    background: rgba(255,255,255,.07);
+    border-color: rgba(255,255,255,.12);
+  }
+  .sp-card-icons {
+    display: flex;
+    gap: 6px;
+  }
+  .sp-icon {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    background: rgba(255,255,255,.08);
+    display: grid; place-items: center;
+    font-size: 12px;
+  }
+  .sp-icon-royal { background: rgba(54,38,167,.35); }
+  .sp-icon-fuchsia { background: rgba(223,87,188,.25); }
+  .sp-icon-paprika { background: rgba(222,84,30,.25); }
+  .sp-card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,.82);
+    letter-spacing: -.01em;
+    line-height: 1.3;
+  }
+  .sp-card-desc {
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: rgba(255,255,255,.35);
+    flex: 1;
+  }
+  .sp-card-foot {
+    font-size: 10.5px;
+    color: rgba(255,255,255,.22);
+    font-weight: 500;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,.06);
+  }
+
+  @media (max-width: 860px) {
+    .split-inner { grid-template-columns: 1fr; }
+    .split-img   { min-height: 400px; }
+    .split-panel { padding: 24px; }
+    .sp-cards    { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .sp-cards { grid-template-columns: 1fr; }
+    .split-img-text { padding: 24px; }
+    .s-split { padding: 60px 0 0; }
+  }
+
+  /* ══════════════════════════════════════════════════════════
      SHARED SECTION ATOMS
   ══════════════════════════════════════════════════════════ */
   .s-label {
@@ -1559,6 +1799,153 @@
     <span>Social Media</span><span class="sep">·</span>
   </div>
 </div>
+
+
+<!-- ══ SPLIT FEATURE ══════════════════════════════════════════ -->
+<section class="s-split sr">
+  <div class="wrap">
+    <div class="split-inner">
+
+      <!-- Left: image + text overlay -->
+      <div class="split-img">
+        <!-- Swap src for a real photo when ready -->
+        <div class="split-img-placeholder"></div>
+        <div class="split-img-text">
+          <div class="split-img-label">
+            <div class="split-img-label-dot"></div>
+            <span data-lang="fr">Approche sur-mesure</span>
+            <span data-lang="en">Bespoke approach</span>
+          </div>
+          <h2 class="split-img-title">
+            <span data-lang="fr">Votre vision,<br>notre ingénierie.</span>
+            <span data-lang="en">Your vision,<br>our engineering.</span>
+          </h2>
+          <p class="split-img-sub">
+            <span data-lang="fr">Chaque projet est unique. Nous construisons des solutions digitales qui durent.</span>
+            <span data-lang="en">Every project is unique. We build digital solutions that last.</span>
+          </p>
+          <a href="#contact" class="split-img-cta">
+            <span data-lang="fr">Démarrer un projet</span>
+            <span data-lang="en">Start a project</span>
+            <svg viewBox="0 0 11 11" fill="none" aria-hidden="true">
+              <path d="M1.5 9.5L9.5 1.5M9.5 1.5H5M9.5 1.5v4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: dark UI panel -->
+      <div class="split-panel">
+        <div class="sp-topbar">
+          <span class="sp-title">
+            <span data-lang="fr">Nos services</span>
+            <span data-lang="en">Our services</span>
+          </span>
+          <span class="sp-badge">
+            <span data-lang="fr">5 expertises</span>
+            <span data-lang="en">5 expertises</span>
+          </span>
+        </div>
+        <div class="sp-tabs">
+          <div class="sp-tab active">
+            <span data-lang="fr">Actifs</span><span data-lang="en">Active</span>
+          </div>
+          <div class="sp-tab">
+            <span data-lang="fr">En cours</span><span data-lang="en">In progress</span>
+          </div>
+          <div class="sp-tab">
+            <span data-lang="fr">Livrés</span><span data-lang="en">Delivered</span>
+          </div>
+        </div>
+        <div class="sp-search">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="6.5" cy="6.5" r="4.5" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M10 10l3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+          <span>
+            <span data-lang="fr">Rechercher une expertise…</span>
+            <span data-lang="en">Search expertise…</span>
+          </span>
+        </div>
+        <div class="sp-cards">
+          <div class="sp-card">
+            <div class="sp-card-icons">
+              <div class="sp-icon sp-icon-royal">🎨</div>
+              <div class="sp-icon">✦</div>
+            </div>
+            <div class="sp-card-title">
+              <span data-lang="fr">Web Design &amp; UI/UX</span>
+              <span data-lang="en">Web Design &amp; UI/UX</span>
+            </div>
+            <div class="sp-card-desc">
+              <span data-lang="fr">Interfaces élaborées, systèmes de design complets.</span>
+              <span data-lang="en">Crafted interfaces, complete design systems.</span>
+            </div>
+            <div class="sp-card-foot">
+              <span data-lang="fr">Par UCY Studio</span>
+              <span data-lang="en">By UCY Studio</span>
+            </div>
+          </div>
+          <div class="sp-card">
+            <div class="sp-card-icons">
+              <div class="sp-icon sp-icon-fuchsia">⚡</div>
+              <div class="sp-icon">🔗</div>
+            </div>
+            <div class="sp-card-title">
+              <span data-lang="fr">Ingénierie Web</span>
+              <span data-lang="en">Web Engineering</span>
+            </div>
+            <div class="sp-card-desc">
+              <span data-lang="fr">Dev front-end haute performance, WordPress, headless.</span>
+              <span data-lang="en">High-performance front-end, WordPress, headless.</span>
+            </div>
+            <div class="sp-card-foot">
+              <span data-lang="fr">Par UCY Studio</span>
+              <span data-lang="en">By UCY Studio</span>
+            </div>
+          </div>
+          <div class="sp-card">
+            <div class="sp-card-icons">
+              <div class="sp-icon sp-icon-paprika">🏷</div>
+              <div class="sp-icon">◎</div>
+            </div>
+            <div class="sp-card-title">
+              <span data-lang="fr">Branding &amp; Identité</span>
+              <span data-lang="en">Branding &amp; Identity</span>
+            </div>
+            <div class="sp-card-desc">
+              <span data-lang="fr">Logo, charte graphique, supports print et digital.</span>
+              <span data-lang="en">Logo, brand guidelines, print and digital assets.</span>
+            </div>
+            <div class="sp-card-foot">
+              <span data-lang="fr">Par UCY Studio</span>
+              <span data-lang="en">By UCY Studio</span>
+            </div>
+          </div>
+          <div class="sp-card">
+            <div class="sp-card-icons">
+              <div class="sp-icon">📈</div>
+              <div class="sp-icon sp-icon-royal">🌐</div>
+            </div>
+            <div class="sp-card-title">
+              <span data-lang="fr">Stratégie Digitale</span>
+              <span data-lang="en">Digital Strategy</span>
+            </div>
+            <div class="sp-card-desc">
+              <span data-lang="fr">SEO, social media, analytics et growth marketing.</span>
+              <span data-lang="en">SEO, social media, analytics and growth marketing.</span>
+            </div>
+            <div class="sp-card-foot">
+              <span data-lang="fr">Par UCY Studio</span>
+              <span data-lang="en">By UCY Studio</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 
 <!-- ══ SERVICES ══════════════════════════════════════════════ -->
