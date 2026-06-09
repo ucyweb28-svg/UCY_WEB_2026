@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
@@ -37,10 +37,17 @@ function ChevronRight() {
 }
 
 function VideoCarousel() {
-  const [current, setCurrent] = useState(0);
+  const [activeVideo, setActiveVideo] = useState(0);
 
-  const prev = () => setCurrent((c) => (c - 1 + VIDEOS.length) % VIDEOS.length);
-  const next = () => setCurrent((c) => (c + 1) % VIDEOS.length);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveVideo((v) => (v + 1) % VIDEOS.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const prev = () => setActiveVideo((v) => (v - 1 + VIDEOS.length) % VIDEOS.length);
+  const next = () => setActiveVideo((v) => (v + 1) % VIDEOS.length);
 
   return (
     <div
@@ -48,19 +55,19 @@ function VideoCarousel() {
       style={{ backgroundColor: '#000807' }}
     >
       {/* Crossfade videos */}
-      <AnimatePresence>
+      <AnimatePresence mode="sync">
         <motion.video
-          key={current}
-          src={VIDEOS[current]}
+          key={activeVideo}
+          src={VIDEOS[activeVideo]}
           autoPlay
-          loop
           muted
           playsInline
+          loop
           className="absolute inset-0 w-full h-full object-cover"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          transition={{ duration: 1.2, ease: 'easeInOut' }}
         />
       </AnimatePresence>
 
@@ -87,13 +94,11 @@ function VideoCarousel() {
         {VIDEOS.map((_, i) => (
           <button
             key={i}
-            onClick={() => setCurrent(i)}
+            onClick={() => setActiveVideo(i)}
             aria-label={`Vidéo ${i + 1}`}
-            className="w-2 h-2 rounded-full cursor-pointer"
-            style={{
-              backgroundColor: i === current ? 'white' : 'rgba(255,255,255,0.4)',
-              transition: 'background-color 200ms ease',
-            }}
+            className={`h-1.5 rounded-full cursor-pointer transition-all ${
+              i === activeVideo ? 'w-4 bg-white' : 'w-1.5 bg-white/40'
+            }`}
           />
         ))}
       </div>
