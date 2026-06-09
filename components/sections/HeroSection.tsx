@@ -1,10 +1,17 @@
 'use client';
 
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { formatWhatsAppLink } from '@/lib/utils/formatWhatsAppLink';
+
+const VIDEOS = [
+  '/videos/hero-video-1.mp4',
+  '/videos/hero-video-2.mp4',
+  '/videos/hero-video-3.mp4',
+];
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 28 },
@@ -12,23 +19,86 @@ const fadeUp = (delay: number) => ({
   transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const, delay },
 });
 
-const THUMBNAILS = [
-  {
-    label: 'E-commerce',
-    title: 'Maison Éclat',
-    gradient: 'linear-gradient(135deg, #3626A7 0%, #DF57BC 100%)',
-  },
-  {
-    label: 'Branding',
-    title: 'Nexus Capital',
-    gradient: 'linear-gradient(135deg, #1a0f6e 0%, #3626A7 100%)',
-  },
-  {
-    label: 'Design System',
-    title: 'Aurora Media',
-    gradient: 'linear-gradient(135deg, #DF57BC 0%, #DE541E 100%)',
-  },
-];
+function ChevronLeft() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M10 12L6 8L10 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function ChevronRight() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M6 4L10 8L6 12" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function VideoCarousel() {
+  const [current, setCurrent] = useState(0);
+
+  const prev = () => setCurrent((c) => (c - 1 + VIDEOS.length) % VIDEOS.length);
+  const next = () => setCurrent((c) => (c + 1) % VIDEOS.length);
+
+  return (
+    <div
+      className="relative w-full rounded-2xl overflow-hidden min-h-[440px] md:min-h-[520px]"
+      style={{ backgroundColor: '#000807' }}
+    >
+      {/* Crossfade videos */}
+      <AnimatePresence>
+        <motion.video
+          key={current}
+          src={VIDEOS[current]}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+        />
+      </AnimatePresence>
+
+      {/* Arrow — previous */}
+      <button
+        onClick={prev}
+        aria-label="Vidéo précédente"
+        className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center backdrop-blur-sm bg-white/20 hover:bg-white/40 transition-colors duration-200 cursor-pointer z-10"
+      >
+        <ChevronLeft />
+      </button>
+
+      {/* Arrow — next */}
+      <button
+        onClick={next}
+        aria-label="Vidéo suivante"
+        className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center backdrop-blur-sm bg-white/20 hover:bg-white/40 transition-colors duration-200 cursor-pointer z-10"
+      >
+        <ChevronRight />
+      </button>
+
+      {/* Dot indicators */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+        {VIDEOS.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            aria-label={`Vidéo ${i + 1}`}
+            className="w-2 h-2 rounded-full cursor-pointer"
+            style={{
+              backgroundColor: i === current ? 'white' : 'rgba(255,255,255,0.4)',
+              transition: 'background-color 200ms ease',
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function HeroSection() {
   const t = useTranslations('hero');
@@ -52,7 +122,6 @@ export function HeroSection() {
 
             <Badge>{t('badge')}</Badge>
 
-            {/* Headline — both lines text-5xl desktop, same weight */}
             <motion.h1
               {...fadeUp(0.1)}
               className="font-heading font-extrabold text-4xl md:text-5xl leading-[1.1] tracking-tight"
@@ -82,64 +151,14 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* ── Right: decorative portfolio card ── */}
+          {/* ── Right: video carousel ── */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
             className="w-full md:flex-1"
           >
-            <div
-              className="rounded-2xl p-6 md:p-8 flex flex-col gap-3 min-h-[440px] md:min-h-[520px]"
-              style={{ backgroundColor: '#000807' }}
-            >
-              {/* Card header */}
-              <div
-                className="flex items-center justify-between pb-4"
-                style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}
-              >
-                <span
-                  className="font-heading font-bold text-xs tracking-widest uppercase"
-                  style={{ color: 'white' }}
-                >
-                  UCY Studio
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <span
-                    className="w-1.5 h-1.5 rounded-full"
-                    style={{ backgroundColor: '#25D366' }}
-                  />
-                  <span
-                    className="font-sans text-xs"
-                    style={{ color: 'rgba(255,255,255,0.4)' }}
-                  >
-                    En ligne
-                  </span>
-                </span>
-              </div>
-
-              {/* Project thumbnails */}
-              {THUMBNAILS.map(({ label, title, gradient }) => (
-                <div
-                  key={title}
-                  className="flex-1 rounded-xl flex flex-col justify-end p-4"
-                  style={{ background: gradient, minHeight: '120px' }}
-                >
-                  <span
-                    className="font-sans text-xs mb-0.5"
-                    style={{ color: 'rgba(255,255,255,0.65)' }}
-                  >
-                    {label}
-                  </span>
-                  <span
-                    className="font-heading font-bold text-sm"
-                    style={{ color: 'white' }}
-                  >
-                    {title}
-                  </span>
-                </div>
-              ))}
-            </div>
+            <VideoCarousel />
           </motion.div>
 
         </div>

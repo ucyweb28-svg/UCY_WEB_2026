@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -39,10 +39,21 @@ function HamburgerIcon({ open }: { open: boolean }) {
 export function Nav() {
   const t = useTranslations('nav');
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const prevScrollY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      setScrolled(currentY > 10);
+      if (currentY > prevScrollY.current && currentY > 10) {
+        setHidden(true);
+      } else {
+        setHidden(false);
+      }
+      prevScrollY.current = currentY;
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -55,11 +66,15 @@ export function Nav() {
   return (
     <header
       className={[
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        'fixed top-0 left-0 right-0 z-50',
         scrolled
-          ? 'bg-bg/90 backdrop-blur-md border-b border-black/10'
-          : 'bg-bg border-b border-transparent',
+          ? 'bg-white/90 backdrop-blur-md border-b border-black/10'
+          : 'bg-transparent border-b border-transparent',
       ].join(' ')}
+      style={{
+        transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
+        transition: 'transform 300ms ease, background-color 300ms ease, border-color 300ms ease, backdrop-filter 300ms ease',
+      }}
     >
       {/* Main bar */}
       <div className="max-w-[1280px] mx-auto px-6 md:px-8 h-16 md:h-20 flex items-center justify-between">
@@ -119,7 +134,7 @@ export function Nav() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden overflow-hidden border-t border-black/10 bg-bg"
+            className="md:hidden overflow-hidden border-t border-black/10 bg-white/95 backdrop-blur-md"
           >
             <div className="px-6 pt-6 pb-8 flex flex-col gap-6">
               {NAV_LINKS.map(({ key, href }) => (
