@@ -195,25 +195,14 @@
   }
   .nav-links a {
     position: relative;
-    font-size: 13.5px;
+    font-size: 14px;
     font-weight: 500;
     color: var(--muted);
-    padding: 8px 15px;
+    padding: 7px 16px;
     border-radius: 99px;
-    transition: color .15s ease, background .15s ease;
+    transition: color .18s ease;
   }
-  .nav-links a::after {
-    content: "";
-    position: absolute;
-    bottom: 5px; left: 50%;
-    transform: translateX(-50%) scaleX(0);
-    width: 14px; height: 1.5px;
-    background: var(--ink);
-    border-radius: 2px;
-    transition: transform .2s var(--ease);
-  }
-  .nav-links a:hover { color: var(--ink); background: rgba(0,8,7,.04); }
-  .nav-links a:hover::after { transform: translateX(-50%) scaleX(1); }
+  .nav-links a:hover { color: var(--ink); }
 
   .nav-right {
     justify-self: end;
@@ -355,7 +344,7 @@
     min-height: 100svh;
     display: flex;
     flex-direction: column;
-    padding-top: calc(var(--nav-h) + 84px);
+    padding-top: calc(var(--nav-h) + 96px);
     overflow: hidden;
   }
 
@@ -445,12 +434,12 @@
 
   .hero-h1 {
     font-family: var(--f-display);
-    font-size: clamp(50px, 9vw, 118px);
+    font-size: clamp(48px, 8.5vw, 112px);
     font-weight: 800;
     letter-spacing: -.04em;
-    line-height: 1.0;
+    line-height: 1.03;
     color: var(--ink);
-    margin-bottom: 28px;
+    margin-bottom: 32px;
   }
   .hero-h1 .line { display: block; overflow: hidden; }
   .hero-h1 .line span {
@@ -471,12 +460,12 @@
   }
 
   .hero-sub {
-    max-width: 480px;
-    font-size: clamp(15px, 1.6vw, 17px);
+    max-width: 420px;
+    font-size: clamp(15px, 1.5vw, 16.5px);
     font-weight: 400;
-    line-height: 1.74;
+    line-height: 1.65;
     color: var(--muted);
-    margin-bottom: 44px;
+    margin-bottom: 40px;
     animation: fadeIn .8s .4s var(--ease) both;
   }
   @keyframes fadeIn {
@@ -523,6 +512,20 @@
     transition: background .15s ease, border-color .15s ease;
   }
   .btn-ghost:hover { background: rgba(0,8,7,.04); border-color: rgba(0,8,7,.14); }
+  .btn-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: clamp(14px, 1.2vw, 15px);
+    font-weight: 500;
+    padding: 12px 4px;
+    border-bottom: 1.5px solid var(--ink);
+    transition: opacity .15s ease;
+    border-radius: 0;
+  }
+  .btn-text:hover { opacity: .6; }
 
   /* ══════════════════════════════════════════════════════════
      VISUAL MOUNT
@@ -1502,41 +1505,30 @@
   <div class="blob blob-2" aria-hidden="true"></div>
 
   <div class="hero-body wrap">
-    <div class="badge" role="presentation">
-      <div class="badge-dot" aria-hidden="true"></div>
-      <span class="badge-text">
-        <span data-lang="fr">Agence Digitale Premium — Montréal</span>
-        <span data-lang="en">Premium Digital Agency — Montreal</span>
-      </span>
-    </div>
-
     <h1 class="hero-h1" id="hero-h">
       <span data-lang="fr">
-        <span class="line"><span>Du concept au code.</span></span>
-        <span class="line"><span class="grad">De l'écran à l'expérience.</span></span>
+        <span class="line"><span>Maîtrisez votre</span></span>
+        <span class="line"><span class="grad">digital.</span></span>
       </span>
       <span data-lang="en">
-        <span class="line"><span>From concept to code.</span></span>
-        <span class="line"><span class="grad">From screen to experience.</span></span>
+        <span class="line"><span>Master your</span></span>
+        <span class="line"><span class="grad">digital.</span></span>
       </span>
     </h1>
 
     <p class="hero-sub">
-      <span data-lang="fr">UCY Studio conçoit des écosystèmes digitaux sur-mesure où la haute performance technique rencontre un design d'élite. Aucune concession, aucun compromis.</span>
-      <span data-lang="en">UCY Studio crafts bespoke digital ecosystems where elite design meets high-performance engineering. No concessions, no compromise.</span>
+      <span data-lang="fr">Votre vision. Notre ingénierie. UCY Studio la concrétise.</span>
+      <span data-lang="en">Your vision. Our engineering. UCY Studio makes it real.</span>
     </p>
 
     <div class="hero-ctas">
-      <a href="#services" class="btn-fill">
-        <span data-lang="fr">Découvrir nos expertises</span>
-        <span data-lang="en">Discover our expertise</span>
-        <svg viewBox="0 0 13 13" fill="none" aria-hidden="true">
-          <path d="M2 11L11 2M11 2H6M11 2v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+      <a href="#contact" class="btn-fill">
+        <span data-lang="fr">Démarrer un projet</span>
+        <span data-lang="en">Start a project</span>
       </a>
-      <a href="#portfolio" class="btn-ghost">
-        <span data-lang="fr">Voir nos projets</span>
-        <span data-lang="en">View our work</span>
+      <a href="#portfolio" class="btn-text">
+        <span data-lang="fr">Explorer nos projets</span>
+        <span data-lang="en">Explore our work</span>
       </a>
     </div>
   </div>
