@@ -397,12 +397,21 @@
   ══════════════════════════════════════════════════════════ */
   .hero {
     position: relative;
-    height: 100svh;
-    min-height: 600px;
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
-    padding-top: calc(var(--nav-h) + 38px);
-    overflow: hidden;
+    padding-top: calc(var(--nav-h) + 52px);
+    padding-bottom: 0;
+  }
+  /* Fondu bas du hero → transition douce vers le ticker */
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 90px;
+    background: linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
+    z-index: 5;
+    pointer-events: none;
   }
 
   .hero-grid {
@@ -597,12 +606,11 @@
      HERO FRAMES — 2 cadres images sous les CTA
   ══════════════════════════════════════════════════════════ */
   .hero-frames-wrap {
-    position: absolute;
-    bottom: -130px;
-    left: 0; right: 0;
+    position: relative;
     z-index: 1;
+    width: 100%;
     max-width: var(--max);
-    margin: 0 auto;
+    margin: 36px auto 0;
     padding: 0 32px;
     animation: fadeIn 1s .65s var(--ease) both;
   }
@@ -724,10 +732,10 @@
     .hero-frames { height: 220px; }
   }
   @media (max-width: 768px) {
-    .hero { height: auto; min-height: 100svh; }
-    .hero-body { padding-bottom: 320px; } /* leave space for absolute frames */
+    .hero { padding-top: calc(var(--nav-h) + 28px); }
+    .hero-body { padding-top: 24px; }
     .hero-h1 { white-space: normal; font-size: clamp(32px, 9vw, 52px); }
-    .hero-frames-wrap { position: relative; bottom: auto; margin-top: -280px; padding: 0 18px; }
+    .hero-frames-wrap { margin-top: 28px; padding: 0 18px; }
     .hero-frames { grid-template-columns: 1fr; height: auto; }
     .hero-frame--lg { height: 200px; }
     .hero-frame--sm { height: 160px; }
@@ -777,7 +785,7 @@
      TICKER
   ══════════════════════════════════════════════════════════ */
   .ticker {
-    margin-top: 64px;
+    margin-top: 0;
     border-top: 1px solid var(--border-2);
     border-bottom: 1px solid var(--border-2);
     padding: 18px 0;
