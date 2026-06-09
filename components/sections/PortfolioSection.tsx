@@ -79,12 +79,13 @@ export function PortfolioSection() {
                     {t(titleKey)}
                   </h3>
                 </div>
-                <span
+                <a
+                  href="#contact"
                   className="font-sans text-sm font-semibold flex-shrink-0 ml-4"
                   style={{ color: '#3626A7' }}
                 >
                   {t('cta')} →
-                </span>
+                </a>
               </div>
             </motion.div>
           ))}

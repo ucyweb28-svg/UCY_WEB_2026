@@ -73,12 +73,13 @@ export function ServicesSection() {
                 <p className="font-sans text-sm leading-relaxed flex-1" style={{ color: 'rgba(0,8,7,0.6)' }}>
                   {t(descKey)}
                 </p>
-                <span
+                <a
+                  href="#contact"
                   className="font-sans text-sm font-semibold mt-1 inline-flex items-center gap-1"
                   style={{ color: '#3626A7' }}
                 >
                   {t('cta')} →
-                </span>
+                </a>
               </div>
             </motion.div>
           ))}
