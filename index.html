@@ -1865,6 +1865,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    min-height: 480px;
     transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .25s ease;
     cursor: none;
   }
@@ -1879,11 +1880,11 @@
 
   .port-visual {
     position: relative;
-    aspect-ratio: 3/2;
+    flex: 1;
+    min-height: 240px;
     background: rgba(0,8,7,.025);
     overflow: hidden;
     border-bottom: 1px solid var(--border);
-    flex-shrink: 0;
   }
   .port-visual img {
     position: absolute; inset: 0;
