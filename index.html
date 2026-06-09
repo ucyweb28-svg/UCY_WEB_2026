@@ -133,9 +133,9 @@
   body:has(button:hover) #cursor  { width: 13px; height: 13px; background: var(--royal); }
   body:has(a:hover) #cursor-ring,
   body:has(button:hover) #cursor-ring { width: 52px; height: 52px; opacity: .5; }
-  @media (hover: none) {
-    #cursor, #cursor-ring { display: none; }
-    body, button { cursor: auto; }
+  @media (hover: none), (pointer: coarse) {
+    #cursor, #cursor-ring { display: none !important; }
+    body, button, a { cursor: auto !important; }
   }
 
   /* ══════════════════════════════════════════════════════════
@@ -3704,20 +3704,22 @@
 (function () {
   'use strict';
 
-  /* ── Custom cursor ───────────────────────────────── */
-  const cur  = document.getElementById('cursor');
-  const ring = document.getElementById('cursor-ring');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  (function raf() {
-    rx += (mx - rx) * 0.11;
-    ry += (my - ry) * 0.11;
-    cur.style.left  = mx + 'px';
-    cur.style.top   = my + 'px';
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
-    requestAnimationFrame(raf);
-  })();
+  /* ── Custom cursor (desktop/mouse only) ─────────── */
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const cur  = document.getElementById('cursor');
+    const ring = document.getElementById('cursor-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function raf() {
+      rx += (mx - rx) * 0.11;
+      ry += (my - ry) * 0.11;
+      cur.style.left  = mx + 'px';
+      cur.style.top   = my + 'px';
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(raf);
+    })();
+  }
 
   /* ── Language ────────────────────────────────────── */
   window.setLang = function(lang) {
