@@ -635,29 +635,45 @@
     margin-top: 64px;
     border-top: 1px solid var(--border-2);
     border-bottom: 1px solid var(--border-2);
-    padding: 13px 0;
+    padding: 18px 0;
     overflow: hidden;
     background: var(--card);
     -webkit-mask-image: linear-gradient(to right,
-      transparent 0%, black 7%, black 93%, transparent 100%);
+      transparent 0%, black 8%, black 92%, transparent 100%);
     mask-image: linear-gradient(to right,
-      transparent 0%, black 7%, black 93%, transparent 100%);
+      transparent 0%, black 8%, black 92%, transparent 100%);
   }
   .ticker-inner {
     display: flex;
+    align-items: center;
     width: max-content;
-    animation: tickerScroll 30s linear infinite;
+    gap: 0;
+    animation: tickerScroll 40s linear infinite;
   }
-  .ticker-inner span {
+  .ticker-inner:hover { animation-play-state: paused; }
+  .ticker-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 36px;
+    opacity: .55;
+    transition: opacity .2s ease;
     white-space: nowrap;
-    font-size: 10.5px;
-    font-weight: 600;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    color: rgba(82,88,88,.35);
-    padding: 0 18px;
+    flex-shrink: 0;
   }
-  .ticker-inner .sep { color: rgba(82,88,88,.15); padding: 0; }
+  .ticker-logo:hover { opacity: 1; }
+  .ticker-logo svg  { flex-shrink: 0; }
+  .ticker-logo-name {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    white-space: nowrap;
+  }
+  .ticker-div {
+    width: 1px; height: 22px;
+    background: rgba(0,8,7,.08);
+    flex-shrink: 0;
+  }
   @keyframes tickerScroll {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
@@ -2350,22 +2366,234 @@
 <!-- ══ TICKER ════════════════════════════════════════════════ -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-inner">
-    <span>Web Engineering</span><span class="sep">·</span>
-    <span>UI/UX Design</span><span class="sep">·</span>
-    <span>Brand Identity</span><span class="sep">·</span>
-    <span>Print Design</span><span class="sep">·</span>
-    <span>Digital Strategy</span><span class="sep">·</span>
-    <span>WordPress</span><span class="sep">·</span>
-    <span>Figma Systems</span><span class="sep">·</span>
-    <span>Social Media</span><span class="sep">·</span>
-    <span>Web Engineering</span><span class="sep">·</span>
-    <span>UI/UX Design</span><span class="sep">·</span>
-    <span>Brand Identity</span><span class="sep">·</span>
-    <span>Print Design</span><span class="sep">·</span>
-    <span>Digital Strategy</span><span class="sep">·</span>
-    <span>WordPress</span><span class="sep">·</span>
-    <span>Figma Systems</span><span class="sep">·</span>
-    <span>Social Media</span><span class="sep">·</span>
+
+    <!-- SET 1 -->
+    <!-- Éclat Immobilier -->
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#E8572A"/>
+        <path d="M11 4L4 9.5V18h5v-4.5h4V18h5V9.5L11 4z" fill="white"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#E8572A">Éclat</span>
+    </div>
+    <div class="ticker-div"></div>
+
+    <!-- Nordik Finance -->
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#0F4C81"/>
+        <path d="M6 16V6l4 5 4-5v10" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#0F4C81">Nordik</span>
+    </div>
+    <div class="ticker-div"></div>
+
+    <!-- Velour Fashion -->
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="11" fill="#C9A84C"/>
+        <path d="M7 7h8M11 7v8M7 15l4-4 4 4" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#C9A84C">Velour</span>
+    </div>
+    <div class="ticker-div"></div>
+
+    <!-- Pulse Santé -->
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#00A878"/>
+        <path d="M3 11h3l2-5 3 9 2-7 2 4 2-1h2" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#00A878">Pulse</span>
+    </div>
+    <div class="ticker-div"></div>
+
+    <!-- Orbit Tech -->
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#6C3FC5"/>
+        <circle cx="11" cy="11" r="3" fill="white"/>
+        <ellipse cx="11" cy="11" rx="8" ry="4" stroke="white" stroke-width="1.4" fill="none"/>
+        <ellipse cx="11" cy="11" rx="8" ry="4" stroke="white" stroke-width="1.4" fill="none" transform="rotate(60 11 11)"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#6C3FC5">Orbit</span>
+    </div>
+    <div class="ticker-div"></div>
+
+    <!-- Maison Lumière -->
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#1A1A2E"/>
+        <circle cx="11" cy="9" r="3.5" fill="none" stroke="#F7C948" stroke-width="1.6"/>
+        <path d="M11 12.5v5M8 18h6" stroke="#F7C948" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M8.5 7.5L7 6M13.5 7.5L15 6M11 6V4.5" stroke="#F7C948" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#F7C948">Lumière</span>
+    </div>
+    <div class="ticker-div"></div>
+
+    <!-- Strata Agency -->
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#FF3366"/>
+        <rect x="5" y="6" width="12" height="2.5" rx="1.2" fill="white"/>
+        <rect x="5" y="10" width="8" height="2.5" rx="1.2" fill="white" opacity=".7"/>
+        <rect x="5" y="14" width="10" height="2.5" rx="1.2" fill="white" opacity=".5"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#FF3366">Strata</span>
+    </div>
+    <div class="ticker-div"></div>
+
+    <!-- Cova Restaurant -->
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="11" fill="#3D7A4F"/>
+        <path d="M11 5C8.5 5 6.5 7 6.5 9.5c0 2 1.3 3.6 3 4.3V17h3v-3.2c1.7-.7 3-2.3 3-4.3C15.5 7 13.5 5 11 5z" fill="white"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#3D7A4F">Cova</span>
+    </div>
+    <div class="ticker-div"></div>
+
+    <!-- Nexus Conseil -->
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#0077CC"/>
+        <circle cx="7" cy="11" r="1.8" fill="white"/>
+        <circle cx="15" cy="7" r="1.8" fill="white"/>
+        <circle cx="15" cy="15" r="1.8" fill="white"/>
+        <line x1="8.7" y1="10.1" x2="13.4" y2="7.8" stroke="white" stroke-width="1.3"/>
+        <line x1="8.7" y1="11.9" x2="13.4" y2="14.2" stroke="white" stroke-width="1.3"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#0077CC">Nexus</span>
+    </div>
+    <div class="ticker-div"></div>
+
+    <!-- Aurora Media -->
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#0D0D0D"/>
+        <path d="M6 15.5L11 6l5 9.5" stroke="url(#ag)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <defs><linearGradient id="ag" x1="6" y1="6" x2="16" y2="15.5" gradientUnits="userSpaceOnUse"><stop stop-color="#A78BFA"/><stop offset="1" stop-color="#F472B6"/></linearGradient></defs>
+        <line x1="7.8" y1="12.8" x2="14.2" y2="12.8" stroke="url(#ag2)" stroke-width="1.5" stroke-linecap="round"/>
+        <defs><linearGradient id="ag2" x1="7" y1="12" x2="15" y2="13" gradientUnits="userSpaceOnUse"><stop stop-color="#A78BFA"/><stop offset="1" stop-color="#F472B6"/></linearGradient></defs>
+      </svg>
+      <span class="ticker-logo-name" style="background:linear-gradient(90deg,#A78BFA,#F472B6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Aurora</span>
+    </div>
+    <div class="ticker-div"></div>
+
+    <!-- Daniela Studio -->
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#B5404A"/>
+        <path d="M7 6h4c2.8 0 5 2.2 5 5s-2.2 5-5 5H7V6z" stroke="white" stroke-width="1.7" fill="none" stroke-linejoin="round"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#B5404A">Daniela</span>
+    </div>
+    <div class="ticker-div"></div>
+
+    <!-- SET 2 (duplicate for seamless loop) -->
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#E8572A"/>
+        <path d="M11 4L4 9.5V18h5v-4.5h4V18h5V9.5L11 4z" fill="white"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#E8572A">Éclat</span>
+    </div>
+    <div class="ticker-div"></div>
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#0F4C81"/>
+        <path d="M6 16V6l4 5 4-5v10" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#0F4C81">Nordik</span>
+    </div>
+    <div class="ticker-div"></div>
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="11" fill="#C9A84C"/>
+        <path d="M7 7h8M11 7v8M7 15l4-4 4 4" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#C9A84C">Velour</span>
+    </div>
+    <div class="ticker-div"></div>
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#00A878"/>
+        <path d="M3 11h3l2-5 3 9 2-7 2 4 2-1h2" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#00A878">Pulse</span>
+    </div>
+    <div class="ticker-div"></div>
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#6C3FC5"/>
+        <circle cx="11" cy="11" r="3" fill="white"/>
+        <ellipse cx="11" cy="11" rx="8" ry="4" stroke="white" stroke-width="1.4" fill="none"/>
+        <ellipse cx="11" cy="11" rx="8" ry="4" stroke="white" stroke-width="1.4" fill="none" transform="rotate(60 11 11)"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#6C3FC5">Orbit</span>
+    </div>
+    <div class="ticker-div"></div>
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#1A1A2E"/>
+        <circle cx="11" cy="9" r="3.5" fill="none" stroke="#F7C948" stroke-width="1.6"/>
+        <path d="M11 12.5v5M8 18h6" stroke="#F7C948" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M8.5 7.5L7 6M13.5 7.5L15 6M11 6V4.5" stroke="#F7C948" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#F7C948">Lumière</span>
+    </div>
+    <div class="ticker-div"></div>
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#FF3366"/>
+        <rect x="5" y="6" width="12" height="2.5" rx="1.2" fill="white"/>
+        <rect x="5" y="10" width="8" height="2.5" rx="1.2" fill="white" opacity=".7"/>
+        <rect x="5" y="14" width="10" height="2.5" rx="1.2" fill="white" opacity=".5"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#FF3366">Strata</span>
+    </div>
+    <div class="ticker-div"></div>
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="11" fill="#3D7A4F"/>
+        <path d="M11 5C8.5 5 6.5 7 6.5 9.5c0 2 1.3 3.6 3 4.3V17h3v-3.2c1.7-.7 3-2.3 3-4.3C15.5 7 13.5 5 11 5z" fill="white"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#3D7A4F">Cova</span>
+    </div>
+    <div class="ticker-div"></div>
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#0077CC"/>
+        <circle cx="7" cy="11" r="1.8" fill="white"/>
+        <circle cx="15" cy="7" r="1.8" fill="white"/>
+        <circle cx="15" cy="15" r="1.8" fill="white"/>
+        <line x1="8.7" y1="10.1" x2="13.4" y2="7.8" stroke="white" stroke-width="1.3"/>
+        <line x1="8.7" y1="11.9" x2="13.4" y2="14.2" stroke="white" stroke-width="1.3"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#0077CC">Nexus</span>
+    </div>
+    <div class="ticker-div"></div>
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#0D0D0D"/>
+        <path d="M6 15.5L11 6l5 9.5" stroke="url(#ag3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <defs><linearGradient id="ag3" x1="6" y1="6" x2="16" y2="15.5" gradientUnits="userSpaceOnUse"><stop stop-color="#A78BFA"/><stop offset="1" stop-color="#F472B6"/></linearGradient></defs>
+        <line x1="7.8" y1="12.8" x2="14.2" y2="12.8" stroke="url(#ag4)" stroke-width="1.5" stroke-linecap="round"/>
+        <defs><linearGradient id="ag4" x1="7" y1="12" x2="15" y2="13" gradientUnits="userSpaceOnUse"><stop stop-color="#A78BFA"/><stop offset="1" stop-color="#F472B6"/></linearGradient></defs>
+      </svg>
+      <span class="ticker-logo-name" style="background:linear-gradient(90deg,#A78BFA,#F472B6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Aurora</span>
+    </div>
+    <div class="ticker-div"></div>
+    <div class="ticker-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" rx="6" fill="#B5404A"/>
+        <path d="M7 6h4c2.8 0 5 2.2 5 5s-2.2 5-5 5H7V6z" stroke="white" stroke-width="1.7" fill="none" stroke-linejoin="round"/>
+      </svg>
+      <span class="ticker-logo-name" style="color:#B5404A">Daniela</span>
+    </div>
+    <div class="ticker-div"></div>
+
   </div>
 </div>
 
