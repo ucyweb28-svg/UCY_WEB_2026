@@ -1647,6 +1647,33 @@
     line-height: 1.78;
     color: var(--muted);
   }
+  .s-head-stats {
+    display: flex;
+    gap: 32px;
+    align-items: flex-end;
+  }
+  .s-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    text-align: right;
+  }
+  .s-stat-num {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 2.4vw, 32px);
+    font-weight: 800;
+    letter-spacing: -.04em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .s-stat-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(82,88,88,.45);
+    white-space: nowrap;
+  }
   @media (max-width: 860px) {
     .s-head { flex-direction: column; align-items: flex-start; }
     .s-head-desc { max-width: 100%; }
@@ -3341,10 +3368,20 @@
           <span data-lang="en">What we<br>master.</span>
         </h2>
       </div>
-      <p class="s-head-desc">
-        <span data-lang="fr">Quatre disciplines. Une seule équipe. Un niveau d'exécution réservé aux marques qui ne transigent pas sur la qualité.</span>
-        <span data-lang="en">Four disciplines. One team. A standard of execution reserved for brands that don't negotiate on quality.</span>
-      </p>
+      <div class="s-head-stats">
+        <div class="s-stat">
+          <span class="s-stat-num">4</span>
+          <span class="s-stat-label"><span data-lang="fr">Disciplines</span><span data-lang="en">Disciplines</span></span>
+        </div>
+        <div class="s-stat">
+          <span class="s-stat-num">+50</span>
+          <span class="s-stat-label"><span data-lang="fr">Projets livrés</span><span data-lang="en">Projects done</span></span>
+        </div>
+        <div class="s-stat">
+          <span class="s-stat-num">100%</span>
+          <span class="s-stat-label"><span data-lang="fr">Sur-mesure</span><span data-lang="en">Custom-built</span></span>
+        </div>
+      </div>
     </div>
 
     <div class="bento">
