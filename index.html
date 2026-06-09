@@ -862,9 +862,13 @@
   }
   .split-img-text {
     position: absolute;
-    bottom: 0; left: 0; right: 0;
+    inset: 0;
     z-index: 2;
-    padding: 36px 40px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
   }
   .split-img-label {
     display: inline-flex;
