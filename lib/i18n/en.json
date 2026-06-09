@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "logo": "UCY",
+    "logo_suffix": "Studio",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Start a project"
+  },
+  "hero": {
+    "badge": "Jerusalem × Paris",
+    "headline": "Design that converts.\nCode that lasts.",
+    "subheadline": "Jerusalem × Paris — Premium digital design & development studio.",
+    "cta_primary": "Start a project",
+    "cta_secondary": "See our work"
+  },
+  "trust": {
+    "label": "Trusted by"
+  },
+  "stats": {
+    "projects_value": "50+",
+    "projects_label": "Projects delivered",
+    "clients_value": "30+",
+    "clients_label": "Happy clients",
+    "satisfaction_value": "98%",
+    "satisfaction_label": "Satisfaction rate",
+    "years_value": "5+",
+    "years_label": "Years of experience"
+  },
+  "services": {
+    "label": "Services",
+    "headline": "What we do",
+    "web_title": "Web Design & Dev",
+    "web_desc": "Custom, high-performance SEO-optimised websites. Next.js, WordPress, Framer.",
+    "ui_title": "UI/UX Design",
+    "ui_desc": "Interfaces designed for user experience and conversion.",
+    "branding_title": "Branding & Identity",
+    "branding_desc": "Logo, visual guidelines, design system — a coherent and memorable identity.",
+    "strategy_title": "Digital Strategy",
+    "strategy_desc": "Social media, content, positioning — a presence that drives results.",
+    "cta": "Learn more"
+  },
+  "tools": {
+    "label": "Tools",
+    "headline": "Our creative toolkit"
+  },
+  "ai": {
+    "label": "AI & Production",
+    "headline": "AI powering your project",
+    "body": "We integrate the best AI tools into our production process — faster delivery, no compromise on quality.",
+    "cta": "Discover our approach"
+  },
+  "portfolio": {
+    "label": "Portfolio",
+    "headline": "Our work",
+    "cta": "View project",
+    "project1_title": "Maison Éclat",
+    "project1_cat": "E-commerce · Branding",
+    "project2_title": "Daniella Studio",
+    "project2_cat": "UI/UX · Web Design",
+    "project3_title": "Nexus Capital",
+    "project3_cat": "Branding · Strategy",
+    "project4_title": "Aurora Media",
+    "project4_cat": "Design System · Web"
+  },
+  "about": {
+    "label": "About",
+    "headline": "UCY Studio",
+    "body": "UCY Studio is a digital creative studio founded by Yonathan Chetrit. We craft visual identities and digital experiences that set our clients apart in their market.",
+    "team_headline": "The team",
+    "member1_name": "Yonathan Chetrit",
+    "member1_role": "Founder & Creative Director",
+    "member2_name": "Hadassa Berdah",
+    "member2_role": "UI/UX Designer",
+    "member3_name": "M.C",
+    "member3_role": "Front-end Developer"
+  },
+  "footer_cta": {
+    "headline": "Let's build something together",
+    "sub": "A project, an idea, a question — we're here.",
+    "whatsapp_fr": "WhatsApp Paris",
+    "whatsapp_il": "WhatsApp Jerusalem"
+  },
+  "footer": {
+    "address_paris": "Paris, France",
+    "address_jlm": "Jerusalem, Israel",
+    "copyright": "© 2026 UCY Studio. All rights reserved.",
+    "legal": "Legal notice"
+  }
+}

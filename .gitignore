@@ -1,10 +1,17 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
 # Environment variables — never commit secrets
 .env
 .env.local
 .env*.local
 
-# Generated assets (large binaries — commit only if intentional)
-# assets/images/
+# Claude Code local settings
+.claude/settings.local.json
 
 # OS
 .DS_Store
@@ -14,3 +21,8 @@ Thumbs.db
 .vscode/
 *.suo
 *.user
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

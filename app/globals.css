@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-black: #000807;
+  --color-bg: #FBF9FF;
+  --color-accent: #3626A7;
+  --color-pop: #DF57BC;
+  --color-energy: #DE541E;
+  --color-whatsapp: #25D366;
+
+  /* Typography — variables injected by next/font */
+  --font-heading: var(--font-syne), system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FBF9FF;
+  color: #000807;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
