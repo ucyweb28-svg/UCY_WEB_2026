@@ -836,9 +836,11 @@
     padding: 8px 16px;
     border-bottom: 2px solid transparent;
     margin-bottom: -1px;
-    cursor: default;
+    cursor: pointer;
     transition: color .15s ease;
+    user-select: none;
   }
+  .sp-tab:hover { color: rgba(255,255,255,.65); }
   .sp-tab.active {
     color: rgba(255,255,255,.9);
     border-bottom-color: var(--royal);
@@ -852,19 +854,33 @@
     background: rgba(255,255,255,.05);
     border: 1px solid rgba(255,255,255,.08);
     flex-shrink: 0;
+    transition: border-color .2s ease, background .2s ease;
+  }
+  .sp-search:focus-within {
+    border-color: rgba(255,255,255,.2);
+    background: rgba(255,255,255,.08);
   }
   .sp-search svg { width: 13px; height: 13px; color: rgba(255,255,255,.3); flex-shrink:0; }
-  .sp-search span {
+  .sp-search-input {
+    background: none;
+    border: none;
+    outline: none;
+    font-family: var(--f-body);
     font-size: 12.5px;
-    color: rgba(255,255,255,.25);
+    color: rgba(255,255,255,.8);
+    width: 100%;
+    caret-color: var(--royal);
   }
+  .sp-search-input::placeholder { color: rgba(255,255,255,.25); }
   .sp-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     flex: 1;
-    overflow: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
   }
+  .sp-cards::-webkit-scrollbar { display: none; }
   .sp-card {
     background: rgba(255,255,255,.04);
     border: 1px solid rgba(255,255,255,.07);
@@ -873,16 +889,25 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    transition: background .2s ease, border-color .2s ease;
+    cursor: pointer;
+    transition: background .2s ease, border-color .2s ease, transform .25s var(--ease);
+    animation: spCardIn .3s var(--ease) both;
+  }
+  @keyframes spCardIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
   .sp-card:hover {
     background: rgba(255,255,255,.07);
-    border-color: rgba(255,255,255,.12);
+    border-color: rgba(255,255,255,.14);
+    transform: translateY(-2px);
   }
-  .sp-card-icons {
-    display: flex;
-    gap: 6px;
+  .sp-card.selected {
+    background: rgba(54,38,167,.22);
+    border-color: rgba(54,38,167,.6);
   }
+  .sp-card.hidden { display: none; }
+  .sp-card-icons { display: flex; gap: 6px; }
   .sp-icon {
     width: 28px; height: 28px;
     border-radius: 8px;
@@ -890,9 +915,11 @@
     display: grid; place-items: center;
     font-size: 12px;
   }
-  .sp-icon-royal { background: rgba(54,38,167,.35); }
+  .sp-icon-royal   { background: rgba(54,38,167,.35); }
   .sp-icon-fuchsia { background: rgba(223,87,188,.25); }
   .sp-icon-paprika { background: rgba(222,84,30,.25); }
+  .sp-icon-green   { background: rgba(34,197,94,.2); }
+  .sp-icon-amber   { background: rgba(251,191,36,.2); }
   .sp-card-title {
     font-size: 13px;
     font-weight: 600;
@@ -912,7 +939,43 @@
     font-weight: 500;
     padding-top: 8px;
     border-top: 1px solid rgba(255,255,255,.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
+  .sp-card-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+  }
+  .sp-card-status::before {
+    content: "";
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .sp-card-status.status-active   { color: #22c55e; }
+  .sp-card-status.status-progress { color: #f59e0b; }
+  .sp-card-status.status-done     { color: rgba(255,255,255,.3); }
+  /* Empty state */
+  .sp-empty {
+    grid-column: 1 / -1;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 40px 20px;
+    color: rgba(255,255,255,.2);
+    font-size: 12px;
+    text-align: center;
+  }
+  .sp-empty svg { width: 28px; height: 28px; opacity: .3; }
+  .sp-empty.visible { display: flex; }
 
   @media (max-width: 860px) {
     .split-inner { grid-template-columns: 1fr; }
@@ -2646,14 +2709,14 @@
             <span data-lang="en">5 expertises</span>
           </span>
         </div>
-        <div class="sp-tabs">
-          <div class="sp-tab active">
+        <div class="sp-tabs" id="sp-tabs">
+          <div class="sp-tab active" data-tab="active">
             <span data-lang="fr">Actifs</span><span data-lang="en">Active</span>
           </div>
-          <div class="sp-tab">
+          <div class="sp-tab" data-tab="progress">
             <span data-lang="fr">En cours</span><span data-lang="en">In progress</span>
           </div>
-          <div class="sp-tab">
+          <div class="sp-tab" data-tab="done">
             <span data-lang="fr">Livrés</span><span data-lang="en">Delivered</span>
           </div>
         </div>
@@ -2662,84 +2725,215 @@
             <circle cx="6.5" cy="6.5" r="4.5" stroke="currentColor" stroke-width="1.3"/>
             <path d="M10 10l3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
           </svg>
-          <span>
-            <span data-lang="fr">Rechercher une expertise…</span>
-            <span data-lang="en">Search expertise…</span>
-          </span>
+          <input class="sp-search-input" id="sp-search" type="text"
+            placeholder="Rechercher une expertise…" autocomplete="off" spellcheck="false"/>
         </div>
-        <div class="sp-cards">
-          <div class="sp-card">
+        <div class="sp-cards" id="sp-cards">
+
+          <!-- TAB: active -->
+          <div class="sp-card" data-tab="active" data-keywords="web design ui ux interface figma">
             <div class="sp-card-icons">
               <div class="sp-icon sp-icon-royal">🎨</div>
               <div class="sp-icon">✦</div>
             </div>
-            <div class="sp-card-title">
-              <span data-lang="fr">Web Design &amp; UI/UX</span>
-              <span data-lang="en">Web Design &amp; UI/UX</span>
-            </div>
+            <div class="sp-card-title">Web Design &amp; UI/UX</div>
             <div class="sp-card-desc">
               <span data-lang="fr">Interfaces élaborées, systèmes de design complets.</span>
               <span data-lang="en">Crafted interfaces, complete design systems.</span>
             </div>
             <div class="sp-card-foot">
-              <span data-lang="fr">Par UCY Studio</span>
-              <span data-lang="en">By UCY Studio</span>
+              <span data-lang="fr">Par UCY Studio</span><span data-lang="en">By UCY Studio</span>
+              <span class="sp-card-status status-active">
+                <span data-lang="fr">Actif</span><span data-lang="en">Active</span>
+              </span>
             </div>
           </div>
-          <div class="sp-card">
+
+          <div class="sp-card" data-tab="active" data-keywords="ingenierie web dev frontend wordpress headless">
             <div class="sp-card-icons">
               <div class="sp-icon sp-icon-fuchsia">⚡</div>
               <div class="sp-icon">🔗</div>
             </div>
             <div class="sp-card-title">
-              <span data-lang="fr">Ingénierie Web</span>
-              <span data-lang="en">Web Engineering</span>
+              <span data-lang="fr">Ingénierie Web</span><span data-lang="en">Web Engineering</span>
             </div>
             <div class="sp-card-desc">
               <span data-lang="fr">Dev front-end haute performance, WordPress, headless.</span>
               <span data-lang="en">High-performance front-end, WordPress, headless.</span>
             </div>
             <div class="sp-card-foot">
-              <span data-lang="fr">Par UCY Studio</span>
-              <span data-lang="en">By UCY Studio</span>
+              <span data-lang="fr">Par UCY Studio</span><span data-lang="en">By UCY Studio</span>
+              <span class="sp-card-status status-active">
+                <span data-lang="fr">Actif</span><span data-lang="en">Active</span>
+              </span>
             </div>
           </div>
-          <div class="sp-card">
+
+          <div class="sp-card" data-tab="active" data-keywords="branding identite logo charte graphique print">
             <div class="sp-card-icons">
               <div class="sp-icon sp-icon-paprika">🏷</div>
               <div class="sp-icon">◎</div>
             </div>
             <div class="sp-card-title">
-              <span data-lang="fr">Branding &amp; Identité</span>
-              <span data-lang="en">Branding &amp; Identity</span>
+              <span data-lang="fr">Branding &amp; Identité</span><span data-lang="en">Branding &amp; Identity</span>
             </div>
             <div class="sp-card-desc">
               <span data-lang="fr">Logo, charte graphique, supports print et digital.</span>
               <span data-lang="en">Logo, brand guidelines, print and digital assets.</span>
             </div>
             <div class="sp-card-foot">
-              <span data-lang="fr">Par UCY Studio</span>
-              <span data-lang="en">By UCY Studio</span>
+              <span data-lang="fr">Par UCY Studio</span><span data-lang="en">By UCY Studio</span>
+              <span class="sp-card-status status-active">
+                <span data-lang="fr">Actif</span><span data-lang="en">Active</span>
+              </span>
             </div>
           </div>
-          <div class="sp-card">
+
+          <div class="sp-card" data-tab="active" data-keywords="strategie digitale seo social media analytics growth">
             <div class="sp-card-icons">
-              <div class="sp-icon">📈</div>
+              <div class="sp-icon sp-icon-green">📈</div>
               <div class="sp-icon sp-icon-royal">🌐</div>
             </div>
             <div class="sp-card-title">
-              <span data-lang="fr">Stratégie Digitale</span>
-              <span data-lang="en">Digital Strategy</span>
+              <span data-lang="fr">Stratégie Digitale</span><span data-lang="en">Digital Strategy</span>
             </div>
             <div class="sp-card-desc">
               <span data-lang="fr">SEO, social media, analytics et growth marketing.</span>
               <span data-lang="en">SEO, social media, analytics and growth marketing.</span>
             </div>
             <div class="sp-card-foot">
-              <span data-lang="fr">Par UCY Studio</span>
-              <span data-lang="en">By UCY Studio</span>
+              <span data-lang="fr">Par UCY Studio</span><span data-lang="en">By UCY Studio</span>
+              <span class="sp-card-status status-active">
+                <span data-lang="fr">Actif</span><span data-lang="en">Active</span>
+              </span>
             </div>
           </div>
+
+          <!-- TAB: progress -->
+          <div class="sp-card hidden" data-tab="progress" data-keywords="ecommerce boutique woocommerce shop">
+            <div class="sp-card-icons">
+              <div class="sp-icon sp-icon-amber">🛒</div>
+              <div class="sp-icon">💳</div>
+            </div>
+            <div class="sp-card-title">
+              <span data-lang="fr">E-commerce</span><span data-lang="en">E-commerce</span>
+            </div>
+            <div class="sp-card-desc">
+              <span data-lang="fr">Boutiques WooCommerce & Shopify sur-mesure.</span>
+              <span data-lang="en">Custom WooCommerce & Shopify stores.</span>
+            </div>
+            <div class="sp-card-foot">
+              <span data-lang="fr">Par UCY Studio</span><span data-lang="en">By UCY Studio</span>
+              <span class="sp-card-status status-progress">
+                <span data-lang="fr">En cours</span><span data-lang="en">In progress</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="sp-card hidden" data-tab="progress" data-keywords="motion video animation after effects">
+            <div class="sp-card-icons">
+              <div class="sp-icon sp-icon-royal">🎬</div>
+              <div class="sp-icon">✨</div>
+            </div>
+            <div class="sp-card-title">
+              <span data-lang="fr">Motion Design</span><span data-lang="en">Motion Design</span>
+            </div>
+            <div class="sp-card-desc">
+              <span data-lang="fr">Animations, vidéos de marque et supports motion.</span>
+              <span data-lang="en">Brand animations, video and motion assets.</span>
+            </div>
+            <div class="sp-card-foot">
+              <span data-lang="fr">Par UCY Studio</span><span data-lang="en">By UCY Studio</span>
+              <span class="sp-card-status status-progress">
+                <span data-lang="fr">En cours</span><span data-lang="en">In progress</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="sp-card hidden" data-tab="progress" data-keywords="ia generative midjourney contenu creation">
+            <div class="sp-card-icons">
+              <div class="sp-icon sp-icon-fuchsia">🤖</div>
+              <div class="sp-icon">⚡</div>
+            </div>
+            <div class="sp-card-title">
+              <span data-lang="fr">Création IA</span><span data-lang="en">AI Creation</span>
+            </div>
+            <div class="sp-card-desc">
+              <span data-lang="fr">Visuels, copy et sites générés par IA + supervision UCY.</span>
+              <span data-lang="en">AI-generated visuals, copy and sites + UCY oversight.</span>
+            </div>
+            <div class="sp-card-foot">
+              <span data-lang="fr">Par UCY Studio</span><span data-lang="en">By UCY Studio</span>
+              <span class="sp-card-status status-progress">
+                <span data-lang="fr">En cours</span><span data-lang="en">In progress</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- TAB: done -->
+          <div class="sp-card hidden" data-tab="done" data-keywords="eclat immobilier site web landing">
+            <div class="sp-card-icons">
+              <div class="sp-icon" style="background:rgba(232,87,42,.2)">🏠</div>
+              <div class="sp-icon">✓</div>
+            </div>
+            <div class="sp-card-title">Éclat Immobilier</div>
+            <div class="sp-card-desc">
+              <span data-lang="fr">Site vitrine + branding complet. Livré en 3 semaines.</span>
+              <span data-lang="en">Showcase site + full branding. Delivered in 3 weeks.</span>
+            </div>
+            <div class="sp-card-foot">
+              <span data-lang="fr">Client satisfait</span><span data-lang="en">Happy client</span>
+              <span class="sp-card-status status-done">
+                <span data-lang="fr">Livré</span><span data-lang="en">Done</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="sp-card hidden" data-tab="done" data-keywords="nordik finance dashboard web app">
+            <div class="sp-card-icons">
+              <div class="sp-icon" style="background:rgba(15,76,129,.3)">💼</div>
+              <div class="sp-icon">✓</div>
+            </div>
+            <div class="sp-card-title">Nordik Finance</div>
+            <div class="sp-card-desc">
+              <span data-lang="fr">Dashboard client + app web sur-mesure. Figma → code.</span>
+              <span data-lang="en">Client dashboard + custom web app. Figma → code.</span>
+            </div>
+            <div class="sp-card-foot">
+              <span data-lang="fr">Client satisfait</span><span data-lang="en">Happy client</span>
+              <span class="sp-card-status status-done">
+                <span data-lang="fr">Livré</span><span data-lang="en">Done</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="sp-card hidden" data-tab="done" data-keywords="velour fashion mode boutique">
+            <div class="sp-card-icons">
+              <div class="sp-icon" style="background:rgba(201,168,76,.2)">👗</div>
+              <div class="sp-icon">✓</div>
+            </div>
+            <div class="sp-card-title">Velour Fashion</div>
+            <div class="sp-card-desc">
+              <span data-lang="fr">E-commerce + identité de marque complète.</span>
+              <span data-lang="en">E-commerce + complete brand identity.</span>
+            </div>
+            <div class="sp-card-foot">
+              <span data-lang="fr">Client satisfait</span><span data-lang="en">Happy client</span>
+              <span class="sp-card-status status-done">
+                <span data-lang="fr">Livré</span><span data-lang="en">Done</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Empty state -->
+          <div class="sp-empty" id="sp-empty">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+              <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+            </svg>
+            <span data-lang="fr">Aucun résultat trouvé.</span>
+            <span data-lang="en">No results found.</span>
+          </div>
+
         </div>
       </div>
 
@@ -3789,6 +3983,64 @@
   srEls.forEach(el => io.observe(el));
   /* Fallback: if observer never fires (old browser / iframe), reveal all after 2.5s */
   setTimeout(() => srEls.forEach(el => el.classList.add('on')), 2500);
+
+  /* ── Split panel — tabs + search ────────────────── */
+  (function() {
+    const tabs    = document.querySelectorAll('#sp-tabs .sp-tab');
+    const cards   = document.querySelectorAll('#sp-cards .sp-card');
+    const search  = document.getElementById('sp-search');
+    const empty   = document.getElementById('sp-empty');
+    if (!tabs.length) return;
+
+    let activeTab = 'active';
+    let query     = '';
+
+    function render() {
+      let visible = 0;
+      cards.forEach((c, i) => {
+        const tabMatch = c.dataset.tab === activeTab;
+        const kw       = (c.dataset.keywords || '') + ' ' + c.textContent.toLowerCase();
+        const qMatch   = query === '' || kw.includes(query.toLowerCase());
+        const show     = tabMatch && qMatch;
+        c.classList.toggle('hidden', !show);
+        if (show) {
+          c.style.animationDelay = (visible * 0.05) + 's';
+          // re-trigger animation
+          c.style.animation = 'none';
+          c.offsetHeight; // reflow
+          c.style.animation = '';
+          visible++;
+        }
+      });
+      empty && empty.classList.toggle('visible', visible === 0);
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        activeTab = tab.dataset.tab;
+        query = '';
+        if (search) search.value = '';
+        render();
+      });
+    });
+
+    if (search) {
+      search.addEventListener('input', () => {
+        query = search.value.trim();
+        render();
+      });
+    }
+
+    cards.forEach(c => {
+      c.addEventListener('click', () => {
+        c.classList.toggle('selected');
+      });
+    });
+
+    render();
+  })();
 
   /* ── Tools carousel ─────────────────────────────── */
   (function() {
