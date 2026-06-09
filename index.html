@@ -447,14 +447,13 @@
 
   .hero-body {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-bottom: 16px;
   }
 
   .badge {
@@ -599,14 +598,13 @@
      HERO FRAMES — 2 cadres images sous les CTA
   ══════════════════════════════════════════════════════════ */
   .hero-frames-wrap {
-    position: relative;
+    position: absolute;
+    bottom: -130px;
+    left: 0; right: 0;
     z-index: 1;
-    width: 100%;
     max-width: var(--max);
     margin: 0 auto;
     padding: 0 32px;
-    flex-shrink: 0;
-    margin-bottom: -160px; /* frames peek ~140px, rest cuts below viewport */
     animation: fadeIn 1s .65s var(--ease) both;
   }
   .hero-frames {
@@ -728,13 +726,12 @@
   }
   @media (max-width: 768px) {
     .hero { height: auto; min-height: 100svh; }
-    .hero-body { flex: none; justify-content: flex-start; padding-top: 24px; padding-bottom: 32px; }
+    .hero-body { padding-bottom: 320px; } /* leave space for absolute frames */
     .hero-h1 { white-space: normal; font-size: clamp(32px, 9vw, 52px); }
-    .hero-frames-wrap { margin-bottom: 0; }
+    .hero-frames-wrap { position: relative; bottom: auto; margin-top: -280px; padding: 0 18px; }
     .hero-frames { grid-template-columns: 1fr; height: auto; }
     .hero-frame--lg { height: 200px; }
     .hero-frame--sm { height: 160px; }
-    .hero-frames-wrap { padding: 0 18px; }
   }
 
   /* ── Hero availability chip (overlay on visual) ─────── */
