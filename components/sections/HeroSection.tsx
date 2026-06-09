@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { formatWhatsAppLink } from '@/lib/utils/formatWhatsAppLink';
+import { gradientText } from '@/lib/utils/gradientText';
 
 const VIDEOS = [
   '/videos/hero-video-1.mp4',
@@ -103,6 +104,10 @@ function VideoCarousel() {
 export function HeroSection() {
   const t = useTranslations('hero');
   const [line1, line2] = t('headline').split('\n');
+  const highlight = t('headline_highlight');
+  const splitIdx = line1.indexOf(highlight);
+  const before = splitIdx >= 0 ? line1.slice(0, splitIdx) : line1;
+  const after  = splitIdx >= 0 ? line1.slice(splitIdx + highlight.length) : '';
 
   const whatsappHref = formatWhatsAppLink(
     'fr',
@@ -126,7 +131,11 @@ export function HeroSection() {
               {...fadeUp(0.1)}
               className="font-heading font-extrabold text-4xl md:text-5xl leading-[1.1] tracking-tight"
             >
-              <span className="block" style={{ color: '#000807' }}>{line1}</span>
+              <span className="block" style={{ color: '#000807' }}>
+                {before}
+                <span className={gradientText}>{highlight}</span>
+                {after}
+              </span>
               <span className="block" style={{ color: '#3626A7' }}>{line2}</span>
             </motion.h1>
 

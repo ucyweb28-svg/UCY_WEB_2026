@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { formatWhatsAppLink } from '@/lib/utils/formatWhatsAppLink';
+import { gradientText } from '@/lib/utils/gradientText';
 
 const NAV_LINKS = [
   { key: 'services' as const, href: '#services' },
@@ -81,7 +82,7 @@ export function Nav() {
 
         {/* Logo */}
         <Link href="/" className="flex items-baseline gap-1.5 select-none">
-          <span className="font-heading text-xl font-extrabold text-black tracking-tight leading-none">
+          <span className={`font-heading text-xl font-extrabold tracking-tight leading-none ${gradientText}`}>
             {t('logo')}
           </span>
           <span className="font-sans text-sm font-normal text-black/60 leading-none">
