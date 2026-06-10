@@ -80,6 +80,7 @@ export function AboutSection() {
                     fill
                     className="object-cover"
                     sizes="(max-width: 640px) 100vw, 33vw"
+                    style={image === '/images/team-yonathan.png' ? { objectPosition: 'center 20%' } : undefined}
                   />
                 </div>
                 <div className="flex flex-col gap-1">
