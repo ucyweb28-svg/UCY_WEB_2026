@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import Script from 'next/script';
 import { Syne, DM_Sans } from 'next/font/google';
 import { Nav } from '@/components/layout/Nav';
 import { Footer } from '@/components/layout/Footer';
@@ -37,6 +38,9 @@ export const metadata: Metadata = {
     siteName: 'UCY Studio',
     locale: 'fr_FR',
   },
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default async function LocaleLayout({
@@ -60,6 +64,12 @@ export default async function LocaleLayout({
       className={`${syne.variable} ${dmSans.variable}`}
     >
       <body>
+        <Script
+          defer
+          data-domain="ucyweb.fr"
+          src="https://plausible.io/js/script.js"
+          strategy="afterInteractive"
+        />
         <NextIntlClientProvider messages={messages}>
           <Nav />
           {children}

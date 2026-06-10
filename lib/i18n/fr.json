@@ -105,5 +105,27 @@
     "whatsapp_il": "WhatsApp Jérusalem",
     "address_paris": "Paris, France",
     "address_jerusalem": "Jérusalem, Israël"
+  },
+  "legal": {
+    "title": "Mentions légales",
+    "updated": "Dernière mise à jour : 10 juin 2026",
+    "editor_title": "Éditeur du site",
+    "editor_company": "UCY Studio",
+    "editor_status": "Statut juridique : [à compléter]",
+    "editor_siret": "SIRET : [à compléter]",
+    "editor_director": "Directeur de la publication : Yonathan Chetrit",
+    "editor_address": "Adresse : [adresse complète à compléter], Paris, France",
+    "editor_email": "Email : contact@ucyweb.fr",
+    "editor_site": "Site web : ucyweb.fr",
+    "host_title": "Hébergement",
+    "host_body": "Ce site est hébergé par Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis. Plus d'informations : vercel.com",
+    "ip_title": "Propriété intellectuelle",
+    "ip_body": "L'ensemble des éléments présents sur ce site (textes, visuels, logos, identité graphique, design) est la propriété exclusive d'UCY Studio, sauf mention contraire. Toute reproduction, représentation, modification ou exploitation, totale ou partielle, sans autorisation écrite préalable est interdite.",
+    "data_title": "Données personnelles",
+    "data_body": "Les informations transmises via le formulaire de contact sont utilisées exclusivement pour traiter votre demande et ne sont ni cédées ni revendues à des tiers. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour l'exercer, contactez-nous à contact@ucyweb.fr.",
+    "analytics_title": "Statistiques de visite",
+    "analytics_body": "Ce site utilise Plausible Analytics, un outil de mesure d'audience respectueux de la vie privée qui ne dépose aucun cookie et ne collecte aucune donnée personnelle identifiable.",
+    "credits_title": "Crédits",
+    "credits_body": "Conception et développement : UCY Studio — ucyweb.fr"
   }
 }

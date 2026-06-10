@@ -94,9 +94,8 @@ export function Footer() {
           <p className="font-sans text-xs" style={{ color: 'rgba(255,255,255,0.2)' }}>
             {tFooter('copyright')}
           </p>
-          {/* TODO: créer /[locale]/mentions-legales */}
           <a
-            href="#"
+            href="/mentions-legales"
             className="font-sans text-xs text-white/20 hover:text-white/50 transition-colors duration-200"
           >
             {tFooter('legal')}

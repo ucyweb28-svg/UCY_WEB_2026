@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="6" fill="#000807"/>
+  <defs>
+    <linearGradient id="ucy-gradient" x1="4" y1="6" x2="28" y2="26" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3626A7"/>
+      <stop offset="0.5" stop-color="#DF57BC"/>
+      <stop offset="1" stop-color="#DE541E"/>
+    </linearGradient>
+  </defs>
+  <text x="16" y="23" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="20" fill="url(#ucy-gradient)">U</text>
+</svg>

@@ -105,5 +105,27 @@
     "whatsapp_il": "WhatsApp Jerusalem",
     "address_paris": "Paris, France",
     "address_jerusalem": "Jerusalem, Israel"
+  },
+  "legal": {
+    "title": "Legal Notice",
+    "updated": "Last updated: June 10, 2026",
+    "editor_title": "Site publisher",
+    "editor_company": "UCY Studio",
+    "editor_status": "Legal status: [to be completed]",
+    "editor_siret": "SIRET: [to be completed]",
+    "editor_director": "Publication director: Yonathan Chetrit",
+    "editor_address": "Address: [full address to be completed], Paris, France",
+    "editor_email": "Email: contact@ucyweb.fr",
+    "editor_site": "Website: ucyweb.fr",
+    "host_title": "Hosting",
+    "host_body": "This site is hosted by Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA. More information: vercel.com",
+    "ip_title": "Intellectual property",
+    "ip_body": "All content on this site (text, visuals, logos, graphic identity, design) is the exclusive property of UCY Studio unless stated otherwise. Any reproduction, representation, modification or use, in whole or in part, without prior written consent is prohibited.",
+    "data_title": "Personal data",
+    "data_body": "Information submitted through the contact form is used solely to process your request and is never sold or shared with third parties. In accordance with GDPR, you have the right to access, rectify and delete your data. To exercise this right, contact us at contact@ucyweb.fr.",
+    "analytics_title": "Visitor statistics",
+    "analytics_body": "This site uses Plausible Analytics, a privacy-friendly analytics tool that does not use cookies and does not collect any personally identifiable data.",
+    "credits_title": "Credits",
+    "credits_body": "Design and development: UCY Studio — ucyweb.fr"
   }
 }
