@@ -17,7 +17,8 @@
   },
   "hero": {
     "badge": "Jérusalem × Paris",
-    "headline": "Propulsez votre digital.",
+    "headline_start": "Propulsez votre ",
+    "headline_highlight": "digital.",
     "subheadline": "Sites Next.js sur-mesure, designs d'exception et performances absolues pour marques exigeantes.",
     "cta_primary": "Démarrer un projet",
     "cta_secondary": "Voir les services"

@@ -17,7 +17,8 @@
   },
   "hero": {
     "badge": "Jerusalem × Paris",
-    "headline": "Power your digital.",
+    "headline_start": "Power your ",
+    "headline_highlight": "digital.",
     "subheadline": "Custom-built Next.js websites, exceptional design, and uncompromising performance for ambitious brands.",
     "cta_primary": "Start a project",
     "cta_secondary": "See our services"

@@ -132,7 +132,10 @@ export function HeroSection() {
             className="font-heading font-extrabold text-[1.75rem] md:text-6xl tracking-tight leading-[1.05] whitespace-nowrap"
             style={{ color: '#000807' }}
           >
-            {t('headline')}
+            {t('headline_start')}
+            <span className="bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent animate-gradient">
+              {t('headline_highlight')}
+            </span>
           </h1>
 
           <p
@@ -182,7 +185,7 @@ export function HeroSection() {
           <div className="relative w-full h-[240px] sm:h-[320px] md:h-[400px] lg:h-[480px] rounded-3xl overflow-hidden lg:col-span-7">
             <Image
               src="/images/hero-woman.jpg"
-              alt={t('headline')}
+              alt={`${t('headline_start')}${t('headline_highlight')}`}
               fill
               className="object-cover object-center w-full h-full"
               sizes="(max-width: 768px) 100vw, 50vw"
