@@ -10,10 +10,14 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 
 const SERVICES = [
-  { image: '/images/icon-engineering.jpg', titleKey: 'web_title',      descKey: 'web_desc' },
-  { image: '/images/icon-design.jpg',      titleKey: 'ui_title',       descKey: 'ui_desc' },
-  { image: '/images/icon-print.jpg',       titleKey: 'branding_title', descKey: 'branding_desc' },
-  { image: '/images/icon-social.jpg',      titleKey: 'strategy_title', descKey: 'strategy_desc' },
+  { image: '/images/icon-engineering.jpg',     titleKey: 'web_title',         descKey: 'web_desc',         hasImage: true },
+  { image: '/images/icon-design.jpg',          titleKey: 'ui_title',          descKey: 'ui_desc',          hasImage: true },
+  { image: '/images/icon-print.jpg',           titleKey: 'branding_title',    descKey: 'branding_desc',    hasImage: true },
+  { image: '/images/icon-social.jpg',          titleKey: 'strategy_title',    descKey: 'strategy_desc',    hasImage: true },
+  { image: '/images/service-ecommerce.png',    titleKey: 'ecommerce_title',   descKey: 'ecommerce_desc',   hasImage: false },
+  { image: '/images/service-seo.png',          titleKey: 'seo_title',         descKey: 'seo_desc',         hasImage: false },
+  { image: '/images/service-mobile.png',       titleKey: 'mobile_title',      descKey: 'mobile_desc',      hasImage: false },
+  { image: '/images/service-maintenance.png',  titleKey: 'maintenance_title', descKey: 'maintenance_desc', hasImage: false },
 ] as const;
 
 const SCROLL_AMOUNT = 340;
@@ -103,20 +107,24 @@ export function ServicesSection() {
             onScroll={handleScroll}
             className="flex gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar"
           >
-            {SERVICES.map(({ image, titleKey, descKey }) => (
+            {SERVICES.map(({ image, titleKey, descKey, hasImage }) => (
               <div
                 key={titleKey}
                 className="group flex-shrink-0 snap-start w-[280px] md:w-[320px] h-[380px] rounded-xl overflow-hidden flex flex-col border border-white/10 hover:border-white/30 transition-all duration-300"
                 style={{ backgroundColor: '#0A0A0F' }}
               >
                 <div className="relative w-full h-[180px] overflow-hidden rounded-t-xl">
-                  <Image
-                    src={image}
-                    alt={t(titleKey)}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 280px, 320px"
-                  />
+                  {hasImage ? (
+                    <Image
+                      src={image}
+                      alt={t(titleKey)}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 280px, 320px"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-white/5" />
+                  )}
                 </div>
                 <div className="p-5 flex flex-col gap-2 flex-1">
                   <h3 className="font-sans font-semibold text-lg text-white">
