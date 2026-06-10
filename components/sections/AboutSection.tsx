@@ -13,12 +13,6 @@ const TEAM = [
   { image: '/images/team-lucas.png',    nameKey: 'member3_name', roleKey: 'member3_role', objectPosition: 'center 10%', linkedin: null },
 ] as const;
 
-const STATS = [
-  { valueKey: 'stat1_value', labelKey: 'stat1_label' },
-  { valueKey: 'stat2_value', labelKey: 'stat2_label' },
-  { valueKey: 'stat3_value', labelKey: 'stat3_label' },
-] as const;
-
 const LINKEDIN_PATH =
   'M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z';
 
@@ -26,7 +20,7 @@ export function AboutSection() {
   const t = useTranslations('about');
 
   return (
-    <section id="about" className="py-16 md:py-32" style={{ backgroundColor: '#000807' }}>
+    <section id="about" className="py-16 md:py-24" style={{ backgroundColor: '#000807' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Manifesto */}
@@ -35,7 +29,7 @@ export function AboutSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20"
+          className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20"
         >
           {/* Left: badge, heading, body, stats */}
           <div className="flex flex-col items-start gap-6">
@@ -65,27 +59,19 @@ export function AboutSection() {
             >
               {t('body')}
             </motion.p>
-
-            {/* Mini stats */}
-            <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-8">
-              {STATS.map(({ valueKey, labelKey }) => (
-                <div key={valueKey} className="flex flex-col gap-1">
-                  <span className="font-heading font-bold" style={{ color: '#DF57BC', fontSize: 24 }}>
-                    {t(valueKey)}
-                  </span>
-                  <span className="font-sans" style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12 }}>
-                    {t(labelKey)}
-                  </span>
-                </div>
-              ))}
-            </motion.div>
           </div>
 
           {/* Right: brand manifesto quote */}
           <motion.div variants={fadeUp} className="flex items-center">
             <p
-              className="font-heading italic"
-              style={{ fontSize: 28, lineHeight: 1.4, color: 'rgba(255,255,255,0.15)' }}
+              className="font-heading italic font-light"
+              style={{
+                fontSize: 'clamp(22px, 2.5vw, 32px)',
+                lineHeight: 1.4,
+                color: 'rgba(255,255,255,0.85)',
+                borderLeft: '3px solid #DF57BC',
+                paddingLeft: 20,
+              }}
             >
               {t('manifesto_quote')}
             </p>
