@@ -38,8 +38,8 @@ export function PortfolioSection() {
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="font-heading font-extrabold text-4xl md:text-5xl leading-tight whitespace-nowrap"
-            style={{ color: '#000807' }}
+            className="font-heading font-extrabold leading-tight break-words hyphens-auto"
+            style={{ color: '#000807', fontSize: 'clamp(1.5rem, 8vw, 3rem)' }}
           >
             {t('headline_start')}
             <span
