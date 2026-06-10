@@ -39,7 +39,8 @@
   },
   "services": {
     "label": "Services",
-    "headline": "Ce que nous faisons",
+    "headline_start": "Ce que nous ",
+    "headline_highlight": "faisons",
     "web_title": "Web Design & Dev",
     "web_desc": "Sites sur-mesure, performants et optimisés SEO. Next.js, WordPress, Framer.",
     "ui_title": "UI/UX Design",

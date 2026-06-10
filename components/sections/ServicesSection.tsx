@@ -67,7 +67,10 @@ export function ServicesSection() {
           <motion.div variants={fadeUp} className="flex flex-col items-start gap-4">
             <Badge>{t('label')}</Badge>
             <h2 className="font-heading font-extrabold text-4xl md:text-5xl leading-tight" style={{ color: '#000807' }}>
-              {t('headline')}
+              {t('headline_start')}
+              <span className="bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent animate-gradient">
+                {t('headline_highlight')}
+              </span>
             </h2>
           </motion.div>
 
@@ -103,8 +106,8 @@ export function ServicesSection() {
             {SERVICES.map(({ image, titleKey, descKey }) => (
               <div
                 key={titleKey}
-                className="group flex-shrink-0 snap-start w-[280px] md:w-[320px] h-[380px] rounded-xl overflow-hidden flex flex-col"
-                style={{ backgroundColor: '#000807' }}
+                className="group flex-shrink-0 snap-start w-[280px] md:w-[320px] h-[380px] rounded-xl overflow-hidden flex flex-col border border-white/10 hover:border-white/30 transition-all duration-300"
+                style={{ backgroundColor: '#0A0A0F' }}
               >
                 <div className="relative w-full h-[180px] overflow-hidden rounded-t-xl">
                   <Image
@@ -116,16 +119,15 @@ export function ServicesSection() {
                   />
                 </div>
                 <div className="p-5 flex flex-col gap-2 flex-1">
-                  <h3 className="font-sans font-semibold text-lg" style={{ color: 'white' }}>
+                  <h3 className="font-sans font-semibold text-lg text-white">
                     {t(titleKey)}
                   </h3>
-                  <p className="font-sans text-sm leading-relaxed line-clamp-2" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                  <p className="font-sans text-sm leading-relaxed line-clamp-2 text-white/50">
                     {t(descKey)}
                   </p>
                   <a
                     href="#contact"
-                    className="font-sans text-sm font-semibold mt-auto inline-flex items-center gap-1"
-                    style={{ color: '#3626A7' }}
+                    className="font-sans text-sm font-semibold mt-auto inline-flex items-center gap-1 text-white/40 hover:text-white transition-colors"
                   >
                     {t('cta')} →
                   </a>
