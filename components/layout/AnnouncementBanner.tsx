@@ -19,7 +19,7 @@ export function AnnouncementBanner() {
       style={{ backgroundColor: '#000807' }}
     >
       <p className="font-sans text-[11px] md:text-[13px] text-white text-center truncate pr-8">
-        <span className="font-bold" style={{ color: '#3626A7' }}>
+        <span className="bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent font-semibold">
           {highlight}
         </span>
         {rest}
