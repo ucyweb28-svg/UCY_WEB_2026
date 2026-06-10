@@ -13,7 +13,7 @@ const NAV_LINKS = [
   { key: 'services' as const, href: '#services' },
   { key: 'portfolio' as const, href: '#portfolio' },
   { key: 'about' as const, href: '#about' },
-  { key: 'contact' as const, href: '#contact' },
+  { key: 'contact' as const, href: '/contact' },
 ];
 
 function HamburgerIcon({ open }: { open: boolean }) {
