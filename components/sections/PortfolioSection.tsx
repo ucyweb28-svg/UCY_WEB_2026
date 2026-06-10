@@ -38,10 +38,20 @@ export function PortfolioSection() {
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="font-heading font-extrabold text-4xl md:text-5xl max-w-xl leading-tight"
+            className="font-heading font-extrabold text-4xl md:text-5xl leading-tight whitespace-nowrap"
             style={{ color: '#000807' }}
           >
-            {t('headline')}
+            {t('headline_start')}
+            <span
+              style={{
+                background: 'linear-gradient(90deg, #3626A7, #DF57BC, #DE541E)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              {t('headline_highlight')}
+            </span>
           </motion.h2>
         </motion.div>
 

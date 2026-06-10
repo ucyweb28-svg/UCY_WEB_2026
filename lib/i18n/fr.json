@@ -84,7 +84,8 @@
   },
   "portfolio": {
     "label": "Portfolio",
-    "headline": "Nos réalisations",
+    "headline_start": "Nos ",
+    "headline_highlight": "réalisations",
     "cta": "Voir le projet",
     "project1_title": "Maison Éclat",
     "project1_cat": "E-commerce · Branding",
