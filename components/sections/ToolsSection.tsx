@@ -112,7 +112,7 @@ export function ToolsSection() {
                       className="w-[22px] h-[22px] rounded-[6px] shrink-0 flex items-center justify-center"
                       style={{ backgroundColor: 'rgba(255,255,255,0.06)' }}
                     >
-                      {icon && <Image src={icon} alt={name} width={20} height={20} />}
+                      {icon && <Image src={icon} alt="" width={20} height={20} />}
                     </span>
                     <span
                       className="font-sans text-[13px] truncate"
