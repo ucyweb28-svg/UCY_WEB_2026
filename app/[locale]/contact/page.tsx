@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function ContactPage() {
   return (
-    <main>
+    <main className="pt-[104px]">
       <ContactSection />
     </main>
   );

@@ -31,7 +31,7 @@ export default async function MentionsLegalesPage() {
   ];
 
   return (
-    <main className="pt-28 pb-16 md:pt-36 md:pb-32" style={{ backgroundColor: '#FBF9FF' }}>
+    <main className="pt-28 pb-16 md:pt-36 md:pb-32 pt-[104px]" style={{ backgroundColor: '#FBF9FF' }}>
       <div className="max-w-3xl mx-auto px-6">
         <h1
           className="font-heading font-extrabold text-4xl md:text-5xl leading-tight mb-3"

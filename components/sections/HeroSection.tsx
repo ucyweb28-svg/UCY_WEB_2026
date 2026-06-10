@@ -124,7 +124,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="min-h-screen flex items-center pt-24 md:pt-32 pb-16 md:pb-24"
+      className="min-h-screen flex items-center pt-24 md:pt-32 pb-16 md:pb-24 mt-[104px]"
       style={{ backgroundColor: '#FBF9FF' }}
     >
       <div className="max-w-[1280px] mx-auto px-6 md:px-8 w-full">
