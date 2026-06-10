@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 
-const BRANDS = ['Maison Éclat', 'Daniella Studio', 'Nexus Capital', 'Aurora Media'];
+const BRANDS = ['Bloomair', 'TopNos', 'Finovo', 'Aurora Media', 'Maison Éclat', 'Daniella Studio', 'Nexus Capital'];
 
 export function TrustStrip() {
   const t = useTranslations('trust');
@@ -21,7 +21,7 @@ export function TrustStrip() {
     >
       {/* Label */}
       <p
-        className="text-center font-sans text-xs font-medium uppercase tracking-widest mb-8"
+        className="text-center font-sans text-[10px] font-medium uppercase tracking-[0.2em] mb-8"
         style={{ color: 'rgba(0,8,7,0.35)' }}
       >
         {t('label')}
@@ -46,13 +46,13 @@ export function TrustStrip() {
           {items.map((brand, i) => (
             <span key={i} className="flex items-center flex-shrink-0">
               <span
-                className="font-heading font-extrabold text-2xl md:text-3xl whitespace-nowrap px-8"
+                className="font-heading font-medium text-lg whitespace-nowrap px-8"
                 style={{ color: '#000807' }}
               >
                 {brand}
               </span>
               <span className="text-lg flex-shrink-0" style={{ color: '#3626A7' }}>
-                ✦
+                ·
               </span>
             </span>
           ))}
