@@ -23,7 +23,7 @@ export function StatsBar() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/20"
+          className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/20 [&>*:nth-child(3)]:border-l-0 md:[&>*:nth-child(3)]:border-l"
         >
           {STATS.map(({ value, label }, index) => (
             <ScrollReveal key={label} delay={index * 0.1}>
