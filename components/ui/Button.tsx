@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 
-type Variant = 'primary' | 'secondary' | 'whatsapp' | 'ghost';
+type Variant = 'primary' | 'secondary' | 'whatsapp' | 'whatsapp-outline' | 'ghost';
 type Size = 'md' | 'lg';
 
 interface ButtonProps {
@@ -23,6 +23,8 @@ const VARIANT_CLASSES: Record<Variant, string> = {
     'border-2 border-[#000807] text-[#000807] bg-transparent font-heading font-semibold hover:bg-[#000807] hover:text-white active:scale-[0.98]',
   whatsapp:
     'bg-[#25D366] text-white font-heading font-semibold hover:opacity-90 active:scale-[0.98]',
+  'whatsapp-outline':
+    'bg-transparent border border-gray-300 text-[#000807] font-heading font-semibold hover:border-[#000807] active:scale-[0.98]',
   ghost:
     'border border-white/25 text-white bg-transparent font-heading font-semibold hover:bg-white/10 active:scale-[0.98]',
 };
