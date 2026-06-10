@@ -45,7 +45,7 @@ export function StatsBar() {
           ))}
         </motion.div>
 
-        <p className="text-center text-white/30 text-sm mt-8 tracking-widest uppercase">
+        <p className="text-center text-white/60 text-sm mt-8 tracking-widest uppercase">
           {t('tagline')}
         </p>
       </div>
