@@ -1,4 +1,28 @@
-import * as SimpleIcons from 'simple-icons';
+import {
+  siCursor,
+  siFigma,
+  siFramer,
+  siNextdotjs,
+  siNotion,
+  siReact,
+  siTailwindcss,
+  siTypescript,
+  siWebflow,
+  siWordpress,
+} from 'simple-icons';
+
+const ICONS: Record<string, { svg: string; hex: string }> = {
+  figma: siFigma,
+  framer: siFramer,
+  nextdotjs: siNextdotjs,
+  react: siReact,
+  typescript: siTypescript,
+  tailwindcss: siTailwindcss,
+  wordpress: siWordpress,
+  webflow: siWebflow,
+  notion: siNotion,
+  cursor: siCursor,
+};
 
 interface Props {
   slug: string;
@@ -7,8 +31,7 @@ interface Props {
 }
 
 export function SimpleIcon({ slug, size = 20, color }: Props) {
-  const key = 'si' + slug.charAt(0).toUpperCase() + slug.slice(1);
-  const icon = (SimpleIcons as Record<string, { svg: string; hex: string }>)[key];
+  const icon = ICONS[slug];
   if (!icon) return null;
   const fill = color ?? `#${icon.hex}`;
   return (
