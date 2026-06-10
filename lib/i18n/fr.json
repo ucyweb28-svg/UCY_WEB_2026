@@ -11,7 +11,9 @@
     "portfolio": "Portfolio",
     "about": "À propos",
     "contact": "Contact",
-    "cta": "Démarrer un projet"
+    "cta": "Démarrer un projet",
+    "menu_open": "Ouvrir le menu",
+    "menu_close": "Fermer le menu"
   },
   "hero": {
     "badge": "Jérusalem × Paris",

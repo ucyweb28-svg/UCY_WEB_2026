@@ -49,3 +49,20 @@ body {
   background-clip: text;
   animation: gradient-shift 4s ease infinite;
 }
+
+.nav-fullscreen-link {
+  background-image: linear-gradient(90deg, #3626A7, #DF57BC);
+  background-size: 200% auto;
+  background-position: 0% center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: white;
+  color: white;
+  transition: -webkit-text-fill-color 0.3s ease, color 0.3s ease, background-position 0.3s ease;
+}
+
+.nav-fullscreen-link:hover {
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  background-position: 100% center;
+}

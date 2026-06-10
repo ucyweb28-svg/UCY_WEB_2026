@@ -8,12 +8,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { formatWhatsAppLink } from '@/lib/utils/formatWhatsAppLink';
 import { gradientText } from '@/lib/utils/gradientText';
+import { stagger, fadeUp } from '@/lib/utils/animations';
 
 const NAV_LINKS = [
   { key: 'services' as const, href: '#services' },
   { key: 'portfolio' as const, href: '#portfolio' },
   { key: 'about' as const, href: '#about' },
   { key: 'contact' as const, href: '/contact' },
+];
+
+const SOCIAL_LINKS = [
+  { label: 'Instagram', href: 'https://www.instagram.com/ucy_studio/', icon: '/icons/icon-instagram.svg' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/115831904/', icon: '/icons/icon-linkedin.svg' },
+  { label: 'Behance', href: 'https://www.behance.net/yonathanchetrit3', icon: '/icons/icon-behance.svg' },
 ];
 
 function HamburgerIcon({ open }: { open: boolean }) {
@@ -40,6 +47,8 @@ function HamburgerIcon({ open }: { open: boolean }) {
 
 export function Nav() {
   const t = useTranslations('nav');
+  const tHero = useTranslations('hero');
+  const tFooterCta = useTranslations('footer_cta');
   const pathname = usePathname();
   const isContactPage = pathname?.endsWith('/contact') ?? false;
   const [scrolled, setScrolled] = useState(false);
@@ -64,6 +73,10 @@ export function Nav() {
 
   const whatsappHref = formatWhatsAppLink(
     'fr',
+    'Bonjour%20UCY%20Studio%2C%20je%20voudrais%20d%C3%A9marrer%20un%20projet'
+  );
+  const whatsappHrefIL = formatWhatsAppLink(
+    'il',
     'Bonjour%20UCY%20Studio%2C%20je%20voudrais%20d%C3%A9marrer%20un%20projet'
   );
 
@@ -116,15 +129,15 @@ export function Nav() {
             href={whatsappHref}
             size="md"
             external
-            className="hidden md:flex shrink-0 whitespace-nowrap [-webkit-appearance:none]"
+            className="hidden lg:flex shrink-0 whitespace-nowrap [-webkit-appearance:none]"
           >
             {t('cta')}
           </Button>
 
           <button
             onClick={() => setMenuOpen((v) => !v)}
-            className="md:hidden p-2 -mr-2 text-black cursor-pointer"
-            aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            className="lg:hidden p-2 -mr-2 text-black cursor-pointer"
+            aria-label={menuOpen ? t('menu_close') : t('menu_open')}
             aria-expanded={menuOpen}
           >
             <HamburgerIcon open={menuOpen} />
@@ -132,36 +145,92 @@ export function Nav() {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <AnimatePresence initial={false}>
+      {/* Fullscreen mobile/tablet menu */}
+      <AnimatePresence>
         {menuOpen && (
           <motion.div
-            key="mobile-menu"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden overflow-hidden border-t border-black/10 bg-white/95 backdrop-blur-md"
+            key="fullscreen-menu"
+            initial={{ y: '-100%' }}
+            animate={{ y: 0 }}
+            exit={{ y: '-100%' }}
+            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            className="lg:hidden fixed inset-0 z-[100] flex flex-col overflow-y-auto"
+            style={{ backgroundColor: '#000807' }}
           >
-            <div className="px-6 pt-6 pb-8 flex flex-col gap-6">
-              {NAV_LINKS.map(({ key, href }) => {
-                const isActive = key === 'contact' && isContactPage;
-                return (
+            {/* Top bar: logo + close */}
+            <div className="shrink-0 flex items-center justify-between px-6 md:px-8 h-16 md:h-20">
+              <Link
+                href="/"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-baseline gap-1.5 select-none"
+              >
+                <span className={`font-heading text-xl font-extrabold tracking-tight leading-none ${gradientText}`}>
+                  {t('logo')}
+                </span>
+                <span className="font-sans text-sm font-normal text-white/60 leading-none">
+                  {t('logo_suffix')}
+                </span>
+              </Link>
+              <button
+                onClick={() => setMenuOpen(false)}
+                aria-label={t('menu_close')}
+                className="text-3xl leading-none p-2 -mr-2 text-white/60 hover:text-white transition-colors duration-200 cursor-pointer"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Centered nav links */}
+            <motion.nav
+              variants={stagger}
+              initial="hidden"
+              animate="visible"
+              className="flex-1 flex flex-col items-center justify-center gap-6 md:gap-8 py-12"
+              aria-label="Navigation principale"
+            >
+              {NAV_LINKS.map(({ key, href }) => (
+                <motion.a
+                  key={key}
+                  variants={fadeUp}
+                  href={href}
+                  onClick={() => setMenuOpen(false)}
+                  className="nav-fullscreen-link font-heading font-bold text-4xl md:text-6xl text-white"
+                >
+                  {t(key)}
+                </motion.a>
+              ))}
+            </motion.nav>
+
+            {/* Bottom row: locale, WhatsApp CTAs, social links */}
+            <div className="shrink-0 px-6 md:px-8 pb-8 md:pb-10 flex flex-col md:flex-row items-center md:items-end justify-between gap-6">
+              <p className="order-3 md:order-1 font-sans text-xs md:text-sm text-white/40">
+                {tHero('badge')}
+              </p>
+
+              <div className="order-1 md:order-2 flex flex-wrap items-center justify-center gap-3">
+                <Button variant="whatsapp" href={whatsappHref} size="md" external>
+                  {tFooterCta('whatsapp_fr')}
+                </Button>
+                <Button variant="ghost" href={whatsappHrefIL} size="md" external>
+                  {tFooterCta('whatsapp_il')}
+                </Button>
+              </div>
+
+              <div className="order-2 md:order-3 flex items-center gap-3">
+                {SOCIAL_LINKS.map(({ label, href, icon }) => (
                   <a
-                    key={key}
+                    key={label}
                     href={href}
-                    onClick={() => setMenuOpen(false)}
-                    className={[
-                      'font-sans text-base transition-colors duration-200',
-                      isActive
-                        ? 'font-semibold text-accent'
-                        : 'font-medium text-black hover:text-accent',
-                    ].join(' ')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="block w-9 h-9 rounded-lg overflow-hidden"
                   >
-                    {t(key)}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={icon} alt="" className="w-full h-full object-cover" />
                   </a>
-                );
-              })}
+                ))}
+              </div>
             </div>
           </motion.div>
         )}
