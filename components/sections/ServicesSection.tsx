@@ -18,7 +18,7 @@ export function ServicesSection() {
 
   return (
     <section id="services" className="py-16 md:py-32" style={{ backgroundColor: '#FBF9FF' }}>
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-[1400px] mx-auto px-6">
 
         {/* Header */}
         <motion.div

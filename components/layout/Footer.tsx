@@ -22,7 +22,7 @@ export function Footer() {
 
   return (
     <footer style={{ backgroundColor: '#000807', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-      <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
+      <div className="max-w-[1400px] mx-auto px-6 py-16 md:py-20">
 
         {/* Top: logo + links + social */}
         <div

@@ -14,7 +14,7 @@ export function FooterCTA() {
 
   return (
     <section id="contact" className="py-24 md:py-40" style={{ backgroundColor: '#000807' }}>
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-[1400px] mx-auto px-6">
         <motion.div
           variants={stagger}
           initial="hidden"

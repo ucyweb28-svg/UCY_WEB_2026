@@ -19,7 +19,7 @@ export function AISection() {
 
   return (
     <section className="py-16 md:py-32" style={{ backgroundColor: '#FBF9FF' }}>
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-[1400px] mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
 
           {/* Left: text */}
