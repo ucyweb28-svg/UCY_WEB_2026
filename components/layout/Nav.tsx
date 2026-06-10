@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type MouseEvent } from 'react';
 import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -12,9 +12,9 @@ import { gradientText } from '@/lib/utils/gradientText';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 
 const NAV_LINKS = [
-  { key: 'services' as const, href: '#services' },
-  { key: 'portfolio' as const, href: '#portfolio' },
-  { key: 'about' as const, href: '#about' },
+  { key: 'services' as const, href: '/#services' },
+  { key: 'portfolio' as const, href: '/#portfolio' },
+  { key: 'about' as const, href: '/#about' },
   { key: 'contact' as const, href: '/contact' },
 ];
 
@@ -52,6 +52,7 @@ export function Nav() {
   const tFooterCta = useTranslations('footer_cta');
   const pathname = usePathname();
   const isContactPage = pathname?.endsWith('/contact') ?? false;
+  const isHomePage = pathname === '/' || pathname === '/en';
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -71,6 +72,14 @@ export function Nav() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  const handleAnchorClick = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (isHomePage && href.startsWith('/#')) {
+      e.preventDefault();
+      const id = href.slice(2);
+      document.querySelector(`#${id}`)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const whatsappHref = formatWhatsAppLink(
     'fr',
@@ -110,6 +119,7 @@ export function Nav() {
               <a
                 key={key}
                 href={href}
+                onClick={(e) => handleAnchorClick(e, href)}
                 className={[
                   'font-sans text-sm transition-colors duration-200',
                   isActive
@@ -197,7 +207,10 @@ export function Nav() {
                     key={key}
                     variants={fadeUp}
                     href={href}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={(e) => {
+                      handleAnchorClick(e, href);
+                      setMenuOpen(false);
+                    }}
                     className="nav-fullscreen-link font-heading font-bold text-4xl md:text-6xl text-white"
                   >
                     {t(key)}
