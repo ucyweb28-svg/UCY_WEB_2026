@@ -53,15 +53,27 @@ export function AISection() {
           alt=""
           fill
           className="object-cover object-center"
-          style={{ opacity: 0.25 }}
+          style={{ opacity: 0.4 }}
           priority
         />
       </div>
 
-      {/* Gradient overlay */}
+      {/* Gradient overlay — directional left-to-right fade */}
       <div
-        className="absolute inset-0 z-10"
-        style={{ background: 'linear-gradient(to right, rgba(10,10,15,0.95) 40%, rgba(10,10,15,0.6) 100%)' }}
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(to right, rgba(10,10,15,0.92) 0%, rgba(10,10,15,0.85) 45%, rgba(10,10,15,0.5) 100%)',
+        }}
+      />
+
+      {/* Gradient overlay — top/bottom fade */}
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(to bottom, rgba(10,10,15,0.8) 0%, transparent 15%, transparent 85%, rgba(10,10,15,0.8) 100%)',
+        }}
       />
 
       {/* Content */}
@@ -73,7 +85,7 @@ export function AISection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col items-start"
+          className="relative z-20 flex flex-col items-start"
         >
           <div
             className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5"
@@ -124,7 +136,7 @@ export function AISection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="flex items-center justify-center mt-8 md:mt-0"
+          className="relative z-20 flex items-center justify-center mt-8 md:mt-0"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
