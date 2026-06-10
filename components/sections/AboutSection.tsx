@@ -8,9 +8,9 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 
 const TEAM = [
-  { image: '/images/team-yonathan.png', nameKey: 'member1_name', roleKey: 'member1_role' },
-  { image: '/images/team-sarah.png',    nameKey: 'member2_name', roleKey: 'member2_role' },
-  { image: '/images/team-lucas.png',    nameKey: 'member3_name', roleKey: 'member3_role' },
+  { image: '/images/team-yonathan.png', nameKey: 'member1_name', roleKey: 'member1_role', objectPosition: 'center 20%' },
+  { image: '/images/team-sarah.png',    nameKey: 'member2_name', roleKey: 'member2_role', objectPosition: 'center 15%' },
+  { image: '/images/team-lucas.png',    nameKey: 'member3_name', roleKey: 'member3_role', objectPosition: 'center 10%' },
 ] as const;
 
 export function AboutSection() {
@@ -67,12 +67,12 @@ export function AboutSection() {
           viewport={{ once: true }}
           className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8"
         >
-          {TEAM.map(({ image, nameKey, roleKey }, index) => (
+          {TEAM.map(({ image, nameKey, roleKey, objectPosition }, index) => (
             <ScrollReveal key={nameKey} delay={index * 0.1}>
               <motion.div variants={fadeUp} className="flex flex-col gap-4">
                 <div
-                  className="relative w-full aspect-square rounded-2xl overflow-hidden"
-                  style={{ backgroundColor: '#111' }}
+                  className="w-full"
+                  style={{ height: 380, position: 'relative', overflow: 'hidden', borderRadius: 12, backgroundColor: '#111' }}
                 >
                   <Image
                     src={image}
@@ -80,7 +80,7 @@ export function AboutSection() {
                     fill
                     className="object-cover"
                     sizes="(max-width: 640px) 100vw, 33vw"
-                    style={image === '/images/team-yonathan.png' ? { objectPosition: 'top' } : undefined}
+                    style={{ objectPosition }}
                   />
                 </div>
                 <div className="flex flex-col gap-1">
