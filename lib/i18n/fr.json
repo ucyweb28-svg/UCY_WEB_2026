@@ -17,11 +17,10 @@
   },
   "hero": {
     "badge": "Jérusalem × Paris",
-    "headline": "Maîtrisez votre digital.\nOn le construit pour vous.",
-    "headline_highlight": "digital.",
-    "subheadline": "Jérusalem × Paris — Studio de design & développement digital haut de gamme.",
+    "headline": "Propulsez votre digital.",
+    "subheadline": "Sites Next.js sur-mesure, designs d'exception et performances absolues pour marques exigeantes.",
     "cta_primary": "Démarrer un projet",
-    "cta_secondary": "Voir nos réalisations"
+    "cta_secondary": "Voir les services"
   },
   "trust": {
     "label": "Ils nous font confiance"

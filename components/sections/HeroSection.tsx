@@ -3,22 +3,15 @@
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '@/components/ui/Button';
-import { Badge } from '@/components/ui/Badge';
+import Image from 'next/image';
+import Link from 'next/link';
 import { formatWhatsAppLink } from '@/lib/utils/formatWhatsAppLink';
-import { gradientText } from '@/lib/utils/gradientText';
 
 const VIDEOS = [
   '/videos/hero-video-1.mp4',
   '/videos/hero-video-2.mp4',
   '/videos/hero-video-3.mp4',
 ];
-
-const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 28 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const, delay },
-});
 
 function ChevronLeft() {
   return (
@@ -50,10 +43,7 @@ function VideoCarousel() {
   const next = () => setActiveVideo((v) => (v + 1) % VIDEOS.length);
 
   return (
-    <div
-      className="relative w-full rounded-2xl overflow-hidden min-h-[440px] md:min-h-[520px]"
-      style={{ backgroundColor: '#000807' }}
-    >
+    <div className="relative w-full h-full" style={{ backgroundColor: '#000807' }}>
       {/* Crossfade videos */}
       <AnimatePresence mode="sync">
         <motion.video
@@ -119,12 +109,6 @@ export function HeroSection() {
     return () => window.removeEventListener('banner-closed', onBannerClosed);
   }, []);
 
-  const [line1, line2] = t('headline').split('\n');
-  const highlight = t('headline_highlight');
-  const splitIdx = line1.indexOf(highlight);
-  const before = splitIdx >= 0 ? line1.slice(0, splitIdx) : line1;
-  const after  = splitIdx >= 0 ? line1.slice(splitIdx + highlight.length) : '';
-
   const whatsappHref = formatWhatsAppLink(
     'fr',
     'Bonjour%20UCY%20Studio%2C%20je%20voudrais%20d%C3%A9marrer%20un%20projet'
@@ -132,61 +116,78 @@ export function HeroSection() {
 
   return (
     <section
-      className="min-h-screen flex items-center pt-24 md:pt-32 pb-16 md:pb-24"
+      className="min-h-screen flex flex-col pt-24 md:pt-32 pb-6 md:pb-8"
       style={{ backgroundColor: '#FBF9FF', marginTop: `${marginTop}px` }}
     >
-      <div className="max-w-[1280px] mx-auto px-6 md:px-8 w-full">
-        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+      <div className="max-w-7xl mx-auto px-6 w-full flex flex-col flex-1">
 
-          {/* ── Left: text ── */}
-          <div className="relative z-[2] w-full md:flex-1 flex flex-col items-start gap-7 md:gap-8">
+        {/* ── Centered headline + subtitle + CTAs ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col items-center text-center gap-6 md:gap-8 max-w-3xl mx-auto"
+        >
+          <h1
+            className="font-heading font-extrabold text-4xl md:text-6xl tracking-tight leading-[1.05]"
+            style={{ color: '#000807' }}
+          >
+            {t('headline')}
+          </h1>
 
-            <Badge>{t('badge')}</Badge>
+          <p
+            className="font-sans text-base md:text-lg leading-relaxed max-w-xl"
+            style={{ color: 'rgba(0,8,7,0.65)' }}
+          >
+            {t('subheadline')}
+          </p>
 
-            <motion.h1
-              {...fadeUp(0.1)}
-              className="font-heading font-extrabold text-4xl md:text-5xl leading-[1.1] tracking-tight"
+          <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
+            {/* Primary CTA — dark with gradient glow */}
+            <Link
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative inline-flex items-center justify-center rounded-full bg-[#000807] text-white font-heading font-semibold text-base px-8 py-[14px] transition-transform duration-200 active:scale-[0.98] before:absolute before:-bottom-1.5 before:-left-1.5 before:w-full before:h-full before:rounded-full before:bg-gradient-to-tr before:from-[#3626A7] before:via-[#DF57BC] before:to-[#DE541E] before:blur-lg before:opacity-75 before:-z-10"
             >
-              <span className="block" style={{ color: '#000807' }}>
-                {before}
-                <span className={gradientText}>{highlight}</span>
-                {after}
-              </span>
-              <span className="block" style={{ color: '#3626A7' }}>{line2}</span>
-            </motion.h1>
+              {t('cta_primary')}
+            </Link>
 
-            <motion.p
-              {...fadeUp(0.3)}
-              className="font-sans text-base md:text-lg leading-relaxed max-w-[420px]"
-              style={{ color: 'rgba(0,8,7,0.65)' }}
+            {/* Secondary CTA — minimalist underline link */}
+            <a
+              href="#services"
+              className="group relative inline-flex items-center font-heading font-semibold text-base px-2 py-[14px]"
+              style={{ color: '#000807' }}
             >
-              {t('subheadline')}
-            </motion.p>
+              {t('cta_secondary')}
+              <span className="absolute left-2 right-2 -bottom-0.5 h-[1.5px] bg-current scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
+            </a>
+          </div>
+        </motion.div>
 
-            <motion.div
-              {...fadeUp(0.5)}
-              className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto pt-1"
-            >
-              <Button variant="primary" href={whatsappHref} size="lg" external>
-                {t('cta_primary')}
-              </Button>
-              <Button variant="secondary" href="#portfolio" size="lg">
-                {t('cta_secondary')}
-              </Button>
-            </motion.div>
+        {/* ── Two-column scroll-hook containers ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-auto pt-12 md:pt-16"
+        >
+          <div className="relative w-full h-[240px] sm:h-[320px] md:h-[400px] rounded-3xl overflow-hidden">
+            <Image
+              src="/images/hero-woman.jpg"
+              alt={t('headline')}
+              fill
+              className="object-cover object-center w-full h-full"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+            />
           </div>
 
-          {/* ── Right: video carousel ── */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-            className="w-full md:flex-1"
-          >
+          <div className="relative w-full h-[240px] sm:h-[320px] md:h-[400px] rounded-3xl overflow-hidden">
             <VideoCarousel />
-          </motion.div>
+          </div>
+        </motion.div>
 
-        </div>
       </div>
     </section>
   );

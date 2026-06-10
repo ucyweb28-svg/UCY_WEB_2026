@@ -17,11 +17,10 @@
   },
   "hero": {
     "badge": "Jerusalem × Paris",
-    "headline": "Design that converts.\nCode that lasts.",
-    "headline_highlight": "converts.",
-    "subheadline": "Jerusalem × Paris — Premium digital design & development studio.",
+    "headline": "Power your digital.",
+    "subheadline": "Custom-built Next.js websites, exceptional design, and uncompromising performance for ambitious brands.",
     "cta_primary": "Start a project",
-    "cta_secondary": "See our work"
+    "cta_secondary": "See our services"
   },
   "trust": {
     "label": "Trusted by"
