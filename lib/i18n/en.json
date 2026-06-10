@@ -1,4 +1,9 @@
 {
+  "banner": {
+    "highlight": "New:",
+    "text": "New: Premium Next.js websites delivered in 3 weeks — Jerusalem × Paris",
+    "close": "Close banner"
+  },
   "nav": {
     "logo": "UCY",
     "logo_suffix": "Studio",

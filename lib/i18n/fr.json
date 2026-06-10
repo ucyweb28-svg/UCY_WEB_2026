@@ -1,4 +1,9 @@
 {
+  "banner": {
+    "highlight": "Nouveau :",
+    "text": "Nouveau : Sites Next.js haut de gamme livrés en 3 semaines — Jérusalem × Paris",
+    "close": "Fermer la bannière"
+  },
   "nav": {
     "logo": "UCY",
     "logo_suffix": "Studio",

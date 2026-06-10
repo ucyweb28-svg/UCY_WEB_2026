@@ -7,6 +7,7 @@ import Script from 'next/script';
 import { Syne, DM_Sans } from 'next/font/google';
 import { Nav } from '@/components/layout/Nav';
 import { Footer } from '@/components/layout/Footer';
+import { AnnouncementBanner } from '@/components/layout/AnnouncementBanner';
 import '../globals.css';
 
 const locales = ['fr', 'en'] as const;
@@ -71,6 +72,7 @@ export default async function LocaleLayout({
           strategy="afterInteractive"
         />
         <NextIntlClientProvider messages={messages}>
+          <AnnouncementBanner />
           <Nav />
           {children}
           <Footer />
