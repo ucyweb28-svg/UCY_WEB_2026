@@ -162,15 +162,6 @@ export function Nav() {
                   </a>
                 );
               })}
-              <Button
-                variant="primary"
-                href={whatsappHref}
-                size="lg"
-                external
-                className="w-full justify-center mt-2"
-              >
-                {t('cta')}
-              </Button>
             </div>
           </motion.div>
         )}
