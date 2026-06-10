@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/Badge';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 
 const PROJECTS = [
@@ -52,45 +53,46 @@ export function PortfolioSection() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          {PROJECTS.map(({ image, titleKey, catKey }) => (
-            <motion.div
-              key={titleKey}
-              variants={fadeUp}
-              className="group rounded-2xl overflow-hidden"
-              style={{ backgroundColor: 'white', border: '1px solid rgba(0,8,7,0.08)' }}
-            >
-              {/* Project image */}
-              <div
-                className="relative w-full h-[220px] md:h-[280px] overflow-hidden"
-                style={{ backgroundColor: '#F5F5F0' }}
+          {PROJECTS.map(({ image, titleKey, catKey }, index) => (
+            <ScrollReveal key={titleKey} delay={index * 0.1}>
+              <motion.div
+                variants={fadeUp}
+                className="group rounded-2xl overflow-hidden"
+                style={{ backgroundColor: 'white', border: '1px solid rgba(0,8,7,0.08)' }}
               >
-                <Image
-                  src={image}
-                  alt={t(titleKey)}
-                  fill
-                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-              {/* Card footer */}
-              <div className="px-5 py-4 flex items-center justify-between">
-                <div className="flex flex-col gap-0.5">
-                  <span className="font-sans text-xs" style={{ color: 'rgba(0,8,7,0.4)' }}>
-                    {t(catKey)}
-                  </span>
-                  <h3 className="font-heading font-bold text-lg" style={{ color: '#000807' }}>
-                    {t(titleKey)}
-                  </h3>
-                </div>
-                <a
-                  href="#contact"
-                  className="font-sans text-sm font-semibold flex-shrink-0 ml-4"
-                  style={{ color: '#3626A7' }}
+                {/* Project image */}
+                <div
+                  className="relative w-full h-[220px] md:h-[280px] overflow-hidden"
+                  style={{ backgroundColor: '#F5F5F0' }}
                 >
-                  {t('cta')} →
-                </a>
-              </div>
-            </motion.div>
+                  <Image
+                    src={image}
+                    alt={t(titleKey)}
+                    fill
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                {/* Card footer */}
+                <div className="px-5 py-4 flex items-center justify-between">
+                  <div className="flex flex-col gap-0.5">
+                    <span className="font-sans text-xs" style={{ color: 'rgba(0,8,7,0.4)' }}>
+                      {t(catKey)}
+                    </span>
+                    <h3 className="font-heading font-bold text-lg" style={{ color: '#000807' }}>
+                      {t(titleKey)}
+                    </h3>
+                  </div>
+                  <a
+                    href="#contact"
+                    className="font-sans text-sm font-semibold flex-shrink-0 ml-4"
+                    style={{ color: '#3626A7' }}
+                  >
+                    {t('cta')} →
+                  </a>
+                </div>
+              </motion.div>
+            </ScrollReveal>
           ))}
         </motion.div>
 

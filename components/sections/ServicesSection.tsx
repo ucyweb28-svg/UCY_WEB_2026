@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/Badge';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 
 const SERVICES = [
@@ -48,43 +49,44 @@ export function ServicesSection() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          {SERVICES.map(({ image, titleKey, descKey }) => (
-            <motion.div
-              key={titleKey}
-              variants={fadeUp}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.2 }}
-              className="group rounded-2xl overflow-hidden flex flex-col"
-              style={{ backgroundColor: 'white', border: '1px solid rgba(0,8,7,0.08)' }}
-            >
-              <div
-                className="relative w-full h-[220px] overflow-hidden"
-                style={{ backgroundColor: '#F5F5F0' }}
+          {SERVICES.map(({ image, titleKey, descKey }, index) => (
+            <ScrollReveal key={titleKey} delay={index * 0.1}>
+              <motion.div
+                variants={fadeUp}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="group rounded-2xl overflow-hidden flex flex-col"
+                style={{ backgroundColor: 'white', border: '1px solid rgba(0,8,7,0.08)' }}
               >
-                <Image
-                  src={image}
-                  alt={t(titleKey)}
-                  fill
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-              <div className="p-6 flex flex-col gap-3 flex-1">
-                <h3 className="font-heading font-bold text-xl" style={{ color: '#000807' }}>
-                  {t(titleKey)}
-                </h3>
-                <p className="font-sans text-sm leading-relaxed flex-1" style={{ color: 'rgba(0,8,7,0.6)' }}>
-                  {t(descKey)}
-                </p>
-                <a
-                  href="#contact"
-                  className="font-sans text-sm font-semibold mt-1 inline-flex items-center gap-1"
-                  style={{ color: '#3626A7' }}
+                <div
+                  className="relative w-full h-[220px] overflow-hidden"
+                  style={{ backgroundColor: '#F5F5F0' }}
                 >
-                  {t('cta')} →
-                </a>
-              </div>
-            </motion.div>
+                  <Image
+                    src={image}
+                    alt={t(titleKey)}
+                    fill
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="p-6 flex flex-col gap-3 flex-1">
+                  <h3 className="font-heading font-bold text-xl" style={{ color: '#000807' }}>
+                    {t(titleKey)}
+                  </h3>
+                  <p className="font-sans text-sm leading-relaxed flex-1" style={{ color: 'rgba(0,8,7,0.6)' }}>
+                    {t(descKey)}
+                  </p>
+                  <a
+                    href="#contact"
+                    className="font-sans text-sm font-semibold mt-1 inline-flex items-center gap-1"
+                    style={{ color: '#3626A7' }}
+                  >
+                    {t('cta')} →
+                  </a>
+                </div>
+              </motion.div>
+            </ScrollReveal>
           ))}
         </motion.div>
 

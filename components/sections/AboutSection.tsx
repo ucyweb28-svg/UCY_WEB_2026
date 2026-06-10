@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/Badge';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 
 const TEAM = [
@@ -66,29 +67,31 @@ export function AboutSection() {
           viewport={{ once: true }}
           className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8"
         >
-          {TEAM.map(({ image, nameKey, roleKey }) => (
-            <motion.div key={nameKey} variants={fadeUp} className="flex flex-col gap-4">
-              <div
-                className="relative w-full aspect-square rounded-2xl overflow-hidden"
-                style={{ backgroundColor: '#111' }}
-              >
-                <Image
-                  src={image}
-                  alt={t(nameKey)}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, 33vw"
-                />
-              </div>
-              <div className="flex flex-col gap-1">
-                <p className="font-heading font-bold text-base" style={{ color: 'white' }}>
-                  {t(nameKey)}
-                </p>
-                <p className="font-sans text-sm" style={{ color: 'rgba(255,255,255,0.45)' }}>
-                  {t(roleKey)}
-                </p>
-              </div>
-            </motion.div>
+          {TEAM.map(({ image, nameKey, roleKey }, index) => (
+            <ScrollReveal key={nameKey} delay={index * 0.1}>
+              <motion.div variants={fadeUp} className="flex flex-col gap-4">
+                <div
+                  className="relative w-full aspect-square rounded-2xl overflow-hidden"
+                  style={{ backgroundColor: '#111' }}
+                >
+                  <Image
+                    src={image}
+                    alt={t(nameKey)}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <p className="font-heading font-bold text-base" style={{ color: 'white' }}>
+                    {t(nameKey)}
+                  </p>
+                  <p className="font-sans text-sm" style={{ color: 'rgba(255,255,255,0.45)' }}>
+                    {t(roleKey)}
+                  </p>
+                </div>
+              </motion.div>
+            </ScrollReveal>
           ))}
         </motion.div>
 

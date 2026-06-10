@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 
 export function StatsBar() {
@@ -24,22 +25,23 @@ export function StatsBar() {
           viewport={{ once: true }}
           className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/20"
         >
-          {STATS.map(({ value, label }) => (
-            <motion.div
-              key={label}
-              variants={fadeUp}
-              className="flex flex-col items-center gap-2 py-10 md:py-12 text-center"
-            >
-              <span className="font-heading font-extrabold text-7xl md:text-8xl leading-none bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent animate-gradient">
-                {value}
-              </span>
-              <span
-                className="font-sans text-sm"
-                style={{ color: 'rgba(255,255,255,0.4)' }}
+          {STATS.map(({ value, label }, index) => (
+            <ScrollReveal key={label} delay={index * 0.1}>
+              <motion.div
+                variants={fadeUp}
+                className="flex flex-col items-center gap-2 py-10 md:py-12 text-center"
               >
-                {label}
-              </span>
-            </motion.div>
+                <span className="font-heading font-extrabold text-7xl md:text-8xl leading-none bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent animate-gradient">
+                  {value}
+                </span>
+                <span
+                  className="font-sans text-sm"
+                  style={{ color: 'rgba(255,255,255,0.4)' }}
+                >
+                  {label}
+                </span>
+              </motion.div>
+            </ScrollReveal>
           ))}
         </motion.div>
 
