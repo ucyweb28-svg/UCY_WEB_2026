@@ -64,15 +64,13 @@ export function PortfolioSection() {
                 className="relative w-full h-[220px] md:h-[280px] overflow-hidden"
                 style={{ backgroundColor: '#F5F5F0' }}
               >
-                <div className="absolute inset-4">
-                  <Image
-                    src={image}
-                    alt={t(titleKey)}
-                    fill
-                    className="object-contain transition-transform duration-500 group-hover:scale-[1.04]"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
+                <Image
+                  src={image}
+                  alt={t(titleKey)}
+                  fill
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
               {/* Card footer */}
               <div className="px-5 py-4 flex items-center justify-between">
