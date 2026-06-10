@@ -5,20 +5,47 @@ import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/Badge';
 import { stagger, fadeUp, staggerFast } from '@/lib/utils/animations';
 
-const TOOLS = [
-  'Figma',
-  'Adobe Illustrator',
-  'Adobe Photoshop',
-  'After Effects',
-  'Framer',
-  'Next.js',
-  'React',
-  'TypeScript',
-  'Tailwind CSS',
-  'WordPress',
-  'Webflow',
-  'Notion',
-];
+const CATEGORIES = [
+  {
+    labelKey: 'category_design',
+    color: '#DF57BC',
+    tools: [
+      { name: 'Figma', primary: true },
+      { name: 'Adobe Illustrator', primary: false },
+      { name: 'Adobe Photoshop', primary: false },
+      { name: 'Framer', primary: false },
+    ],
+  },
+  {
+    labelKey: 'category_dev',
+    color: '#3626A7',
+    tools: [
+      { name: 'Next.js', primary: true },
+      { name: 'React', primary: false },
+      { name: 'TypeScript', primary: false },
+      { name: 'Tailwind CSS', primary: false },
+    ],
+  },
+  {
+    labelKey: 'category_motion',
+    color: '#DE541E',
+    tools: [
+      { name: 'After Effects', primary: true },
+      { name: 'GPT-4 / Claude', primary: false },
+      { name: 'Midjourney', primary: false },
+      { name: 'Cursor', primary: false },
+    ],
+  },
+  {
+    labelKey: 'category_platforms',
+    color: '#888888',
+    tools: [
+      { name: 'WordPress', primary: false },
+      { name: 'Webflow', primary: false },
+      { name: 'Notion', primary: false },
+    ],
+  },
+] as const;
 
 export function ToolsSection() {
   const t = useTranslations('tools');
@@ -40,33 +67,66 @@ export function ToolsSection() {
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="font-heading font-extrabold text-4xl md:text-5xl max-w-xl leading-tight"
+            className="font-heading font-extrabold text-4xl md:text-5xl leading-tight"
             style={{ color: 'white' }}
           >
-            {t('headline')}
+            {t('headline_start')}
+            <br />
+            <span className="bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent animate-gradient">
+              {t('headline_highlight')}
+            </span>
           </motion.h2>
         </motion.div>
 
-        {/* Tool pills */}
+        {/* Tools grid */}
         <motion.div
-          variants={staggerFast}
+          variants={stagger}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="flex flex-wrap gap-3"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden"
+          style={{ backgroundColor: '#1a1a1a' }}
         >
-          {TOOLS.map((tool) => (
-            <motion.span
-              key={tool}
+          {CATEGORIES.map(({ labelKey, color, tools }) => (
+            <motion.div
+              key={labelKey}
               variants={fadeUp}
-              className="font-sans text-sm font-medium px-5 py-2.5 rounded-full"
-              style={{
-                border: '1px solid rgba(255,255,255,0.14)',
-                color: 'rgba(255,255,255,0.75)',
-              }}
+              className="flex flex-col gap-4 p-6"
+              style={{ backgroundColor: '#0f0f0f' }}
             >
-              {tool}
-            </motion.span>
+              <div className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
+                <span
+                  className="font-sans text-[10px] font-semibold uppercase tracking-widest"
+                  style={{ color: 'rgba(255,255,255,0.5)' }}
+                >
+                  {t(labelKey)}
+                </span>
+              </div>
+
+              <motion.div variants={staggerFast} className="flex flex-col gap-3">
+                {tools.map(({ name, primary }) => (
+                  <motion.div key={name} variants={fadeUp} className="flex items-center gap-2.5">
+                    <span
+                      className="w-[22px] h-[22px] rounded-[6px] shrink-0"
+                      style={{ backgroundColor: 'rgba(255,255,255,0.06)' }}
+                    />
+                    <span
+                      className="font-sans text-[13px] truncate"
+                      style={{ color: primary ? 'white' : 'rgba(255,255,255,0.7)' }}
+                    >
+                      {name}
+                    </span>
+                    {primary && (
+                      <span
+                        className="ml-auto w-1.5 h-1.5 rounded-full shrink-0"
+                        style={{ backgroundColor: color }}
+                      />
+                    )}
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
           ))}
         </motion.div>
 

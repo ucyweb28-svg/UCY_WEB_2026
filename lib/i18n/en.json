@@ -63,7 +63,12 @@
   },
   "tools": {
     "label": "Tools",
-    "headline": "Our creative toolkit"
+    "headline_start": "Our creative",
+    "headline_highlight": "toolkit",
+    "category_design": "Design",
+    "category_dev": "Development",
+    "category_motion": "Motion & AI",
+    "category_platforms": "Platforms"
   },
   "ai": {
     "label": "AI & Production",

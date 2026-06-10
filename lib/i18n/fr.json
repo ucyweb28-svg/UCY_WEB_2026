@@ -63,7 +63,12 @@
   },
   "tools": {
     "label": "Outils",
-    "headline": "Notre arsenal créatif"
+    "headline_start": "Notre arsenal",
+    "headline_highlight": "créatif",
+    "category_design": "Design",
+    "category_dev": "Développement",
+    "category_motion": "Motion & IA",
+    "category_platforms": "Plateformes"
   },
   "ai": {
     "label": "IA & Production",
