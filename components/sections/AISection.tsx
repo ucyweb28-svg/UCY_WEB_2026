@@ -115,7 +115,7 @@ export function AISection() {
               {t('btn_primary')}
             </Button>
             <a
-              href="#tools"
+              href="/contact"
               className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-heading font-semibold border transition-all duration-200 hover:bg-white/5 active:scale-[0.98]"
               style={{ borderColor: '#2a2a3a', color: '#888888', backgroundColor: 'transparent' }}
             >
