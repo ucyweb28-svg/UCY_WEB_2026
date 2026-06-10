@@ -15,27 +15,22 @@ export function StatsBar() {
   ];
 
   return (
-    <section className="py-16 md:py-24" style={{ backgroundColor: '#000807' }}>
+    <section className="py-16" style={{ backgroundColor: '#000807' }}>
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           variants={stagger}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4"
-          style={{ borderLeft: '1px solid rgba(255,255,255,0.07)' }}
+          className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/20"
         >
           {STATS.map(({ value, label }) => (
             <motion.div
               key={label}
               variants={fadeUp}
               className="flex flex-col items-center gap-2 py-10 md:py-12 text-center"
-              style={{ borderRight: '1px solid rgba(255,255,255,0.07)' }}
             >
-              <span
-                className="font-heading font-extrabold text-5xl md:text-6xl leading-none"
-                style={{ color: 'white' }}
-              >
+              <span className="font-heading font-extrabold text-7xl md:text-8xl leading-none bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent animate-gradient">
                 {value}
               </span>
               <span
@@ -47,6 +42,10 @@ export function StatsBar() {
             </motion.div>
           ))}
         </motion.div>
+
+        <p className="text-center text-white/30 text-sm mt-8 tracking-widest uppercase">
+          {t('tagline')}
+        </p>
       </div>
     </section>
   );

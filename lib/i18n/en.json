@@ -28,13 +28,14 @@
   },
   "stats": {
     "projects_value": "50+",
-    "projects_label": "Projects delivered",
+    "projects_label": "Websites launched",
     "clients_value": "30+",
-    "clients_label": "Happy clients",
+    "clients_label": "Brands transformed",
     "satisfaction_value": "98%",
-    "satisfaction_label": "Satisfaction rate",
+    "satisfaction_label": "Customer satisfaction rate",
     "years_value": "5+",
-    "years_label": "Years of experience"
+    "years_label": "Years of expertise",
+    "tagline": "Jerusalem × Paris — Digital design & development studio"
   },
   "services": {
     "label": "Services",
