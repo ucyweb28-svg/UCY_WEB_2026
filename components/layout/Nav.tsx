@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -147,7 +148,7 @@ export function Nav() {
 
       {/* Fullscreen mobile/tablet menu */}
       <AnimatePresence>
-        {menuOpen && (
+        {menuOpen && createPortal(
           <motion.div
             key="fullscreen-menu"
             initial={{ y: '-100%' }}
@@ -232,7 +233,8 @@ export function Nav() {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </motion.div>,
+          document.body
         )}
       </AnimatePresence>
     </header>
