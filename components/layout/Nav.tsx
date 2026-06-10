@@ -125,15 +125,17 @@ export function Nav() {
 
         {/* Desktop CTA + Mobile hamburger */}
         <div className="flex items-center gap-3">
-          <Button
-            variant="primary"
-            href={whatsappHref}
-            size="md"
-            external
-            className="hidden lg:flex shrink-0 whitespace-nowrap [-webkit-appearance:none]"
-          >
-            {t('cta')}
-          </Button>
+          <div className="hidden lg:flex shrink-0">
+            <Button
+              variant="primary"
+              href={whatsappHref}
+              size="md"
+              external
+              className="whitespace-nowrap [-webkit-appearance:none]"
+            >
+              {t('cta')}
+            </Button>
+          </div>
 
           <button
             onClick={() => setMenuOpen((v) => !v)}
