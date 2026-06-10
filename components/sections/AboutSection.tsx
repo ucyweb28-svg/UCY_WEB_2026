@@ -29,53 +29,34 @@ export function AboutSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20"
+          className="flex flex-col items-start gap-6 mb-20"
         >
-          {/* Left: badge, heading, body, stats */}
-          <div className="flex flex-col items-start gap-6">
-            <motion.div variants={fadeUp}>
-              <Badge variant="dark">{t('label')}</Badge>
-            </motion.div>
-            <motion.h2
-              variants={fadeUp}
-              className="font-heading font-extrabold text-4xl md:text-5xl leading-tight"
-            >
-              <span style={{ color: 'white' }}>{t('headline_start')}</span>
-              <span
-                style={{
-                  background: 'linear-gradient(90deg, #3626A7, #DF57BC, #DE541E)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                {t('headline_highlight')}
-              </span>
-            </motion.h2>
-            <motion.p
-              variants={fadeUp}
-              className="font-sans text-base md:text-lg leading-relaxed"
-              style={{ color: 'rgba(255,255,255,0.55)' }}
-            >
-              {t('body')}
-            </motion.p>
-          </div>
-
-          {/* Right: brand manifesto quote */}
-          <motion.div variants={fadeUp} className="flex items-center">
-            <p
-              className="font-heading italic font-light"
+          <motion.div variants={fadeUp}>
+            <Badge variant="dark">{t('label')}</Badge>
+          </motion.div>
+          <motion.h2
+            variants={fadeUp}
+            className="font-heading font-extrabold text-4xl md:text-5xl leading-tight"
+          >
+            <span style={{ color: 'white' }}>{t('headline_start')}</span>
+            <span
               style={{
-                fontSize: 'clamp(22px, 2.5vw, 32px)',
-                lineHeight: 1.4,
-                color: 'rgba(255,255,255,0.85)',
-                borderLeft: '3px solid #DF57BC',
-                paddingLeft: 20,
+                background: 'linear-gradient(90deg, #3626A7, #DF57BC, #DE541E)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
               }}
             >
-              {t('manifesto_quote')}
-            </p>
-          </motion.div>
+              {t('headline_highlight')}
+            </span>
+          </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            className="font-sans text-base md:text-lg leading-relaxed"
+            style={{ color: 'rgba(255,255,255,0.55)' }}
+          >
+            {t('body')}
+          </motion.p>
         </motion.div>
 
         {/* Team label */}

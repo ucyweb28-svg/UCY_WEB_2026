@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { key: 'services', href: '#services' },
   { key: 'portfolio', href: '#portfolio' },
   { key: 'about', href: '#about' },
-  { key: 'contact', href: '#contact' },
+  { key: 'contact', href: '/contact' },
 ] as const;
 
 const SOCIAL_LINKS = [
