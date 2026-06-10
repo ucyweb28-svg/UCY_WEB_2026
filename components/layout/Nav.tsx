@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState, type MouseEvent } from 'react';
 import { createPortal } from 'react-dom';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { usePathname, useRouter } from 'next/navigation';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { formatWhatsAppLink } from '@/lib/utils/formatWhatsAppLink';
@@ -23,6 +23,15 @@ const SOCIAL_LINKS = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/115831904/', icon: '/icons/icon-linkedin.svg' },
   { label: 'Behance', href: 'https://www.behance.net/yonathanchetrit3', icon: '/icons/icon-behance.svg' },
 ];
+
+function getLocalizedPath(pathname: string, targetLocale: 'fr' | 'en'): string {
+  const isEn = pathname === '/en' || pathname.startsWith('/en/');
+  const pathWithoutLocale = isEn ? pathname.slice(3) || '/' : pathname;
+  if (targetLocale === 'en') {
+    return pathWithoutLocale === '/' ? '/en' : `/en${pathWithoutLocale}`;
+  }
+  return pathWithoutLocale;
+}
 
 function HamburgerIcon({ open }: { open: boolean }) {
   return (
@@ -50,9 +59,12 @@ export function Nav() {
   const t = useTranslations('nav');
   const tHero = useTranslations('hero');
   const tFooterCta = useTranslations('footer_cta');
+  const locale = useLocale();
+  const router = useRouter();
   const pathname = usePathname();
   const isContactPage = pathname?.endsWith('/contact') ?? false;
   const isHomePage = pathname === '/' || pathname === '/en';
+  const otherLocale = locale === 'fr' ? 'en' : 'fr';
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -79,6 +91,10 @@ export function Nav() {
       const id = href.slice(2);
       document.querySelector(`#${id}`)?.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const switchLocale = () => {
+    router.push(getLocalizedPath(pathname ?? '/', otherLocale));
   };
 
   const whatsappHref = formatWhatsAppLink(
@@ -111,27 +127,38 @@ export function Nav() {
           </span>
         </Link>
 
-        {/* Desktop links */}
-        <nav className="hidden md:flex items-center gap-8" aria-label="Navigation principale">
-          {NAV_LINKS.map(({ key, href }) => {
-            const isActive = key === 'contact' && isContactPage;
-            return (
-              <a
-                key={key}
-                href={href}
-                onClick={(e) => handleAnchorClick(e, href)}
-                className={[
-                  'font-sans text-sm transition-colors duration-200',
-                  isActive
-                    ? 'font-semibold text-accent'
-                    : 'font-medium text-black hover:text-accent',
-                ].join(' ')}
-              >
-                {t(key)}
-              </a>
-            );
-          })}
-        </nav>
+        {/* Desktop links + language switcher */}
+        <div className="hidden md:flex items-center gap-8">
+          <nav className="flex items-center gap-8" aria-label="Navigation principale">
+            {NAV_LINKS.map(({ key, href }) => {
+              const isActive = key === 'contact' && isContactPage;
+              return (
+                <a
+                  key={key}
+                  href={href}
+                  onClick={(e) => handleAnchorClick(e, href)}
+                  className={[
+                    'font-sans text-sm transition-colors duration-200',
+                    isActive
+                      ? 'font-semibold text-accent'
+                      : 'font-medium text-black hover:text-accent',
+                  ].join(' ')}
+                >
+                  {t(key)}
+                </a>
+              );
+            })}
+          </nav>
+
+          <button
+            onClick={switchLocale}
+            className="inline-flex items-center justify-center rounded-full border font-sans transition-colors duration-200 hover:bg-black/5 cursor-pointer"
+            style={{ borderColor: 'rgba(0,8,7,0.2)', color: '#000807', backgroundColor: 'transparent', padding: '6px 14px', fontSize: 13 }}
+            aria-label={`Switch language to ${otherLocale.toUpperCase()}`}
+          >
+            {otherLocale.toUpperCase()}
+          </button>
+        </div>
 
         {/* Desktop CTA + Mobile hamburger */}
         <div className="flex items-center gap-3">
@@ -217,6 +244,21 @@ export function Nav() {
                   </motion.a>
                 ))}
               </motion.nav>
+
+              {/* Language switcher (mobile) */}
+              <div className="shrink-0 px-6 md:px-8 pb-6">
+                <button
+                  onClick={() => {
+                    switchLocale();
+                    setMenuOpen(false);
+                  }}
+                  className="block w-full max-w-xs mx-auto rounded-full border font-sans text-center transition-colors duration-200 hover:bg-white/10 cursor-pointer"
+                  style={{ borderColor: 'rgba(255,255,255,0.2)', color: 'white', backgroundColor: 'transparent', padding: '10px 24px', fontSize: 15 }}
+                  aria-label={`Switch language to ${otherLocale.toUpperCase()}`}
+                >
+                  {otherLocale.toUpperCase()}
+                </button>
+              </div>
 
               {/* Bottom row: locale, WhatsApp CTAs, social links */}
               <div className="shrink-0 px-6 md:px-8 pb-8 md:pb-10 flex flex-col md:flex-row items-center md:items-end justify-between gap-6">
