@@ -90,7 +90,7 @@ export function Nav() {
       }}
     >
       {/* Main bar */}
-      <div className="max-w-[1400px] mx-auto px-6 md:px-8 h-16 md:h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
 
         {/* Logo */}
         <Link href="/" className="flex items-baseline gap-1.5 select-none">

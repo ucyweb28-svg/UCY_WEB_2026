@@ -23,7 +23,7 @@ export function PortfolioSection() {
       className="py-16 md:py-32"
       style={{ backgroundColor: '#FBF9FF', borderTop: '1px solid rgba(0,8,7,0.06)' }}
     >
-      <div className="max-w-[1400px] mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
         <motion.div

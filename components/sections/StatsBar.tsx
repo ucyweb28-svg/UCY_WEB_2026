@@ -17,7 +17,7 @@ export function StatsBar() {
 
   return (
     <section className="py-16" style={{ backgroundColor: '#000807' }}>
-      <div className="max-w-[1400px] mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           variants={stagger}
           initial="hidden"

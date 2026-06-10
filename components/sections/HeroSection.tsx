@@ -119,7 +119,7 @@ export function HeroSection() {
       className="min-h-screen flex flex-col pt-32 md:pt-20 pb-6 md:pb-8"
       style={{ backgroundColor: '#FBF9FF', marginTop: `${marginTop}px` }}
     >
-      <div className="max-w-[1400px] mx-auto px-6 md:px-8 lg:px-12 w-full flex flex-col flex-1">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full flex flex-col flex-1">
 
         {/* ── Centered headline + subtitle + CTAs ── */}
         <motion.div
