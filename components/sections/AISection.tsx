@@ -2,7 +2,6 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 
 const MODULES = [
@@ -45,25 +44,23 @@ export function AISection() {
   const t = useTranslations('ai');
 
   return (
-    <section className="relative overflow-hidden py-24" style={{ backgroundColor: '#0a0a0f' }}>
-      {/* Background image */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <Image
-          src="/images/ai-section-bg.jpg"
-          alt=""
-          fill
-          className="object-cover object-center"
-          style={{ opacity: 0.7 }}
-          priority
-        />
-      </div>
-
+    <section
+      className="relative overflow-hidden py-24"
+      style={{
+        backgroundImage: 'url(/images/ai-section-bg.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundColor: '#0a0a0f',
+      }}
+    >
       {/* Gradient overlay — directional left-to-right fade */}
       <div
-        className="absolute inset-0 z-10 pointer-events-none"
+        className="absolute inset-0 z-10"
         style={{
           background:
-            'linear-gradient(to right, rgba(10,10,15,0.75) 0%, rgba(10,10,15,0.55) 50%, rgba(10,10,15,0.2) 100%)',
+            'linear-gradient(to right, rgba(10,10,15,0.82) 0%, rgba(10,10,15,0.60) 50%, rgba(10,10,15,0.25) 100%)',
+          pointerEvents: 'none',
         }}
       />
 
