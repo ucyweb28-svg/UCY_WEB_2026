@@ -25,7 +25,10 @@ export function AnnouncementBanner() {
         {rest}
       </p>
       <button
-        onClick={() => setVisible(false)}
+        onClick={() => {
+          setVisible(false);
+          window.dispatchEvent(new Event('banner-closed'));
+        }}
         aria-label={t('close')}
         className="absolute right-6 top-1/2 -translate-y-1/2 flex-shrink-0 text-white/60 hover:text-white transition-colors duration-200 cursor-pointer"
       >

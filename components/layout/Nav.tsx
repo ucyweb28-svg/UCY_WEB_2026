@@ -69,7 +69,7 @@ export function Nav() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-black/10"
+      className="bg-white/95 backdrop-blur-md border-b border-black/10"
       style={{
         transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
         transition: 'transform 300ms ease, background-color 300ms ease, border-color 300ms ease, backdrop-filter 300ms ease',

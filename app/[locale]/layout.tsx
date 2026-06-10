@@ -72,8 +72,10 @@ export default async function LocaleLayout({
           strategy="afterInteractive"
         />
         <NextIntlClientProvider messages={messages}>
-          <AnnouncementBanner />
-          <Nav />
+          <div className="fixed top-0 left-0 right-0 z-50">
+            <AnnouncementBanner />
+            <Nav />
+          </div>
           {children}
           <Footer />
         </NextIntlClientProvider>

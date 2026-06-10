@@ -111,6 +111,14 @@ function VideoCarousel() {
 
 export function HeroSection() {
   const t = useTranslations('hero');
+  const [marginTop, setMarginTop] = useState(104);
+
+  useEffect(() => {
+    const onBannerClosed = () => setMarginTop(64);
+    window.addEventListener('banner-closed', onBannerClosed);
+    return () => window.removeEventListener('banner-closed', onBannerClosed);
+  }, []);
+
   const [line1, line2] = t('headline').split('\n');
   const highlight = t('headline_highlight');
   const splitIdx = line1.indexOf(highlight);
@@ -124,8 +132,8 @@ export function HeroSection() {
 
   return (
     <section
-      className="min-h-screen flex items-center pt-24 md:pt-32 pb-16 md:pb-24 mt-[104px]"
-      style={{ backgroundColor: '#FBF9FF' }}
+      className="min-h-screen flex items-center pt-24 md:pt-32 pb-16 md:pb-24"
+      style={{ backgroundColor: '#FBF9FF', marginTop: `${marginTop}px` }}
     >
       <div className="max-w-[1280px] mx-auto px-6 md:px-8 w-full">
         <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
