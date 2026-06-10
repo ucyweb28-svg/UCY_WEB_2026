@@ -129,7 +129,7 @@ export function HeroSection() {
           className="flex flex-col items-center text-center gap-6 md:gap-8 max-w-4xl mx-auto"
         >
           <h1
-            className="font-heading font-extrabold text-4xl md:text-6xl tracking-tight leading-[1.05]"
+            className="font-heading font-extrabold text-[1.75rem] md:text-6xl tracking-tight leading-[1.05] whitespace-nowrap"
             style={{ color: '#000807' }}
           >
             {t('headline')}
@@ -144,14 +144,21 @@ export function HeroSection() {
 
           <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
             {/* Primary CTA — dark with gradient glow */}
-            <Link
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative inline-flex items-center justify-center rounded-full bg-[#000807] text-white font-heading font-semibold text-base px-8 py-[14px] transition-transform duration-200 active:scale-[0.98] before:absolute before:-bottom-1 before:-left-1 before:w-full before:h-full before:rounded-full before:bg-gradient-to-tr before:from-[#3626A7] before:via-[#DF57BC] before:to-[#DE541E] before:blur-md before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100 before:-z-10"
+            <motion.div
+              className="relative inline-block rounded-full"
+              initial={{ boxShadow: '0px 0px 0px 0px rgba(54, 38, 167, 0)' }}
+              whileHover={{ boxShadow: '-4px 4px 20px rgba(54, 38, 167, 0.5)' }}
+              transition={{ duration: 0.3 }}
             >
-              {t('cta_primary')}
-            </Link>
+              <Link
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative inline-flex items-center justify-center rounded-full bg-[#000807] text-white font-heading font-semibold text-base px-8 py-[14px] transition-transform duration-200 active:scale-[0.98] before:absolute before:-bottom-1 before:-left-1 before:w-full before:h-full before:rounded-full before:bg-gradient-to-tr before:from-[#3626A7] before:via-[#DF57BC] before:to-[#DE541E] before:blur-md before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100 before:-z-10"
+              >
+                {t('cta_primary')}
+              </Link>
+            </motion.div>
 
             {/* Secondary CTA — minimalist underline link */}
             <a
@@ -172,7 +179,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
           className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 mt-auto pt-12 md:pt-16"
         >
-          <div className="relative w-full h-[240px] sm:h-[320px] md:h-[400px] rounded-3xl overflow-hidden lg:col-span-7">
+          <div className="relative w-full h-[240px] sm:h-[320px] md:h-[400px] lg:h-[480px] rounded-3xl overflow-hidden lg:col-span-7">
             <Image
               src="/images/hero-woman.jpg"
               alt={t('headline')}
@@ -183,7 +190,7 @@ export function HeroSection() {
             />
           </div>
 
-          <div className="relative w-full h-[240px] sm:h-[320px] md:h-[400px] rounded-3xl overflow-hidden lg:col-span-5">
+          <div className="relative w-full h-[240px] sm:h-[320px] md:h-[400px] lg:h-[480px] rounded-3xl overflow-hidden lg:col-span-5">
             <VideoCarousel />
           </div>
         </motion.div>
