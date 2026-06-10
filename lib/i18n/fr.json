@@ -48,7 +48,9 @@
     "branding_desc": "Logo, charte graphique, design system — une identité cohérente et mémorable.",
     "strategy_title": "Stratégie Digitale",
     "strategy_desc": "Réseaux sociaux, contenu, positionnement — une présence qui génère des résultats.",
-    "cta": "En savoir plus"
+    "cta": "En savoir plus",
+    "prev": "Précédent",
+    "next": "Suivant"
   },
   "tools": {
     "label": "Outils",

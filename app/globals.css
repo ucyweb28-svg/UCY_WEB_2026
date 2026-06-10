@@ -55,6 +55,15 @@ body {
   animation: gradient-shift 3s ease infinite;
 }
 
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .nav-fullscreen-link {
   background-image: linear-gradient(90deg, #3626A7, #DF57BC);
   background-size: 200% auto;

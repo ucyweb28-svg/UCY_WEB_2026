@@ -48,7 +48,9 @@
     "branding_desc": "Logo, visual guidelines, design system — a coherent and memorable identity.",
     "strategy_title": "Digital Strategy",
     "strategy_desc": "Social media, content, positioning — a presence that drives results.",
-    "cta": "Learn more"
+    "cta": "Learn more",
+    "prev": "Previous",
+    "next": "Next"
   },
   "tools": {
     "label": "Tools",
