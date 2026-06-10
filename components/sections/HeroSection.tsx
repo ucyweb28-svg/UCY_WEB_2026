@@ -180,7 +180,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 mt-auto pt-12 md:pt-16"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 mt-auto pt-6 md:pt-8"
         >
           <div className="relative w-full h-[240px] sm:h-[320px] md:h-[400px] lg:h-[480px] rounded-3xl overflow-hidden lg:col-span-7">
             <Image
