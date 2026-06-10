@@ -14,10 +14,10 @@ const SERVICES = [
   { image: '/images/icon-design.jpg',          titleKey: 'ui_title',          descKey: 'ui_desc',          hasImage: true },
   { image: '/images/icon-print.jpg',           titleKey: 'branding_title',    descKey: 'branding_desc',    hasImage: true },
   { image: '/images/icon-social.jpg',          titleKey: 'strategy_title',    descKey: 'strategy_desc',    hasImage: true },
-  { image: '/images/service-ecommerce.png',    titleKey: 'ecommerce_title',   descKey: 'ecommerce_desc',   hasImage: false },
-  { image: '/images/service-seo.png',          titleKey: 'seo_title',         descKey: 'seo_desc',         hasImage: false },
-  { image: '/images/service-mobile.png',       titleKey: 'mobile_title',      descKey: 'mobile_desc',      hasImage: false },
-  { image: '/images/service-maintenance.png',  titleKey: 'maintenance_title', descKey: 'maintenance_desc', hasImage: false },
+  { image: '/images/service-ecommerce.png',    titleKey: 'ecommerce_title',   descKey: 'ecommerce_desc',   hasImage: true },
+  { image: '/images/service-seo.png',          titleKey: 'seo_title',         descKey: 'seo_desc',         hasImage: true },
+  { image: '/images/service-mobile.png',       titleKey: 'mobile_title',      descKey: 'mobile_desc',      hasImage: true },
+  { image: '/images/service-maintenance.png',  titleKey: 'maintenance_title', descKey: 'maintenance_desc', hasImage: true },
 ] as const;
 
 const SCROLL_AMOUNT = 340;
