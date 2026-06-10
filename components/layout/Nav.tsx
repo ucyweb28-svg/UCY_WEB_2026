@@ -36,15 +36,6 @@ const SOCIAL_LINKS = [
   },
 ] as const;
 
-function getLocalizedPath(pathname: string, targetLocale: 'fr' | 'en'): string {
-  const isEn = pathname === '/en' || pathname.startsWith('/en/');
-  const pathWithoutLocale = isEn ? pathname.slice(3) || '/' : pathname;
-  if (targetLocale === 'en') {
-    return pathWithoutLocale === '/' ? '/en' : `/en${pathWithoutLocale}`;
-  }
-  return pathWithoutLocale;
-}
-
 function HamburgerIcon({ open }: { open: boolean }) {
   return (
     <div className="w-6 h-[18px] flex flex-col justify-between">
@@ -153,8 +144,18 @@ export function Nav() {
   };
 
   const switchLocale = () => {
-    const otherLocale = locale === 'fr' ? 'en' : 'fr';
-    router.push(getLocalizedPath(pathname ?? '/', otherLocale));
+    const nextLocale = locale === 'fr' ? 'en' : 'fr';
+
+    // Remove current locale prefix from pathname
+    const segments = (pathname ?? '/').split('/');
+    // segments[1] is the locale if present
+    if (segments[1] === 'fr' || segments[1] === 'en') {
+      segments[1] = nextLocale;
+    } else {
+      segments.splice(1, 0, nextLocale);
+    }
+    const newPath = segments.join('/') || '/';
+    router.push(newPath);
   };
 
   const whatsappHref = formatWhatsAppLink(
