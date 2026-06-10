@@ -8,7 +8,7 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 
 const PROJECTS = [
-  { image: '/images/project-eclat.png',   titleKey: 'project1_title', catKey: 'project1_cat' },
+  { image: '/images/project-bloomair.png', titleKey: 'project1_title', catKey: 'project1_cat' },
   { image: '/images/project-daniela.png', titleKey: 'project2_title', catKey: 'project2_cat' },
   { image: '/images/project-nexus.png',   titleKey: 'project3_title', catKey: 'project3_cat' },
   { image: '/images/project-aurora.png',  titleKey: 'project4_title', catKey: 'project4_cat' },
