@@ -61,15 +61,6 @@
     "prev": "Précédent",
     "next": "Suivant"
   },
-  "tools": {
-    "label": "Outils",
-    "headline_start": "Notre arsenal",
-    "headline_highlight": "créatif",
-    "category_design": "Design",
-    "category_dev": "Développement",
-    "category_motion": "Motion & IA",
-    "category_platforms": "Plateformes"
-  },
   "ai": {
     "badge": "IA & Production",
     "headline_start": "L'IA qu'on utilise. Celle qu'on intègre ",

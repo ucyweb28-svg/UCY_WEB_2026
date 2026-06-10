@@ -61,15 +61,6 @@
     "prev": "Previous",
     "next": "Next"
   },
-  "tools": {
-    "label": "Tools",
-    "headline_start": "Our creative",
-    "headline_highlight": "toolkit",
-    "category_design": "Design",
-    "category_dev": "Development",
-    "category_motion": "Motion & AI",
-    "category_platforms": "Platforms"
-  },
   "ai": {
     "badge": "AI & Production",
     "headline_start": "The AI we use. The one we build ",
