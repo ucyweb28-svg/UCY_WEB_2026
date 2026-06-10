@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { motion, type Variants } from 'framer-motion';
+import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 
 const columnFade: Variants = {
@@ -59,28 +60,30 @@ export function AISection() {
 
   return (
     <section
-      className="grid grid-cols-1 md:grid-cols-2 md:min-h-[600px]"
+      className="relative overflow-hidden grid grid-cols-1 md:grid-cols-2 md:min-h-[600px]"
       style={{ backgroundColor: '#0a0a0f' }}
     >
+      {/* Background image */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <Image
+          src="/images/ai-section-bg.jpg"
+          alt=""
+          fill
+          className="object-cover object-center"
+          style={{ opacity: 0.35 }}
+          priority
+        />
+      </div>
+
       {/* Left: text */}
       <motion.div
         variants={columnStagger}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="relative overflow-hidden flex items-center"
+        className="relative z-[1] flex items-center"
         style={{ padding: '52px 44px' }}
       >
-        {/* Glow orbs */}
-        <div
-          className="absolute -top-20 -left-20 w-64 h-64 rounded-full pointer-events-none"
-          style={{ backgroundColor: '#3626A7', opacity: 0.18, filter: 'blur(80px)' }}
-        />
-        <div
-          className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full pointer-events-none"
-          style={{ backgroundColor: '#DF57BC', opacity: 0.12, filter: 'blur(80px)' }}
-        />
-
         <motion.div variants={columnFade} className="relative flex flex-col items-start gap-6">
           <div
             className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5"
@@ -131,7 +134,7 @@ export function AISection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="flex items-center justify-center"
+        className="relative z-[1] flex items-center justify-center"
         style={{ padding: '32px 28px' }}
       >
         <motion.div
