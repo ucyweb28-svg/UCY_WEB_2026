@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
@@ -39,6 +40,8 @@ function HamburgerIcon({ open }: { open: boolean }) {
 
 export function Nav() {
   const t = useTranslations('nav');
+  const pathname = usePathname();
+  const isContactPage = pathname?.endsWith('/contact') ?? false;
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -92,15 +95,23 @@ export function Nav() {
 
         {/* Desktop links */}
         <nav className="hidden md:flex items-center gap-8" aria-label="Navigation principale">
-          {NAV_LINKS.map(({ key, href }) => (
-            <a
-              key={key}
-              href={href}
-              className="font-sans text-sm font-medium text-black hover:text-accent transition-colors duration-200"
-            >
-              {t(key)}
-            </a>
-          ))}
+          {NAV_LINKS.map(({ key, href }) => {
+            const isActive = key === 'contact' && isContactPage;
+            return (
+              <a
+                key={key}
+                href={href}
+                className={[
+                  'font-sans text-sm transition-colors duration-200',
+                  isActive
+                    ? 'font-semibold text-accent'
+                    : 'font-medium text-black hover:text-accent',
+                ].join(' ')}
+              >
+                {t(key)}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Desktop CTA + Mobile hamburger */}
@@ -138,16 +149,24 @@ export function Nav() {
             className="md:hidden overflow-hidden border-t border-black/10 bg-white/95 backdrop-blur-md"
           >
             <div className="px-6 pt-6 pb-8 flex flex-col gap-6">
-              {NAV_LINKS.map(({ key, href }) => (
-                <a
-                  key={key}
-                  href={href}
-                  onClick={() => setMenuOpen(false)}
-                  className="font-sans text-base font-medium text-black hover:text-accent transition-colors duration-200"
-                >
-                  {t(key)}
-                </a>
-              ))}
+              {NAV_LINKS.map(({ key, href }) => {
+                const isActive = key === 'contact' && isContactPage;
+                return (
+                  <a
+                    key={key}
+                    href={href}
+                    onClick={() => setMenuOpen(false)}
+                    className={[
+                      'font-sans text-base transition-colors duration-200',
+                      isActive
+                        ? 'font-semibold text-accent'
+                        : 'font-medium text-black hover:text-accent',
+                    ].join(' ')}
+                  >
+                    {t(key)}
+                  </a>
+                );
+              })}
               <Button
                 variant="primary"
                 href={whatsappHref}

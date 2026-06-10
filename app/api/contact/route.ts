@@ -5,7 +5,7 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(req: Request) {
   try {
-    const { name, email, message } = await req.json()
+    const { name, email, phone, message } = await req.json()
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
       to: 'contact@ucyweb.fr',
       replyTo: email,
       subject: `Nouveau message de ${name}`,
-      text: `Nom : ${name}\nEmail : ${email}\n\nMessage :\n${message}`,
+      text: `Nom : ${name}\nEmail : ${email}\nTél : ${phone || 'Non renseigné'}\n\nMessage :\n${message}`,
     })
 
     return NextResponse.json({ success: true })

@@ -88,5 +88,22 @@
     "address_jlm": "Jerusalem, Israel",
     "copyright": "© 2026 UCY Studio. All rights reserved.",
     "legal": "Legal notice"
+  },
+  "contact": {
+    "badge": "Contact",
+    "title": "Let's build something together",
+    "subtitle": "A project, an idea, a question — tell us what you need.",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "submit": "Send my request →",
+    "loading": "Sending...",
+    "success": "Message sent! We'll get back to you within 24h.",
+    "error": "Something went wrong. Try again or reach us on WhatsApp.",
+    "whatsapp_fr": "WhatsApp Paris",
+    "whatsapp_il": "WhatsApp Jerusalem",
+    "address_paris": "Paris, France",
+    "address_jerusalem": "Jerusalem, Israel"
   }
 }
