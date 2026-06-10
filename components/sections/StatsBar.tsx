@@ -31,7 +31,7 @@ export function StatsBar() {
                 variants={fadeUp}
                 className="flex flex-col items-center gap-2 py-10 md:py-12 text-center"
               >
-                <span className="font-heading font-extrabold text-4xl md:text-8xl leading-none bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent animate-gradient">
+                <span className="font-heading font-extrabold text-4xl md:text-7xl leading-none bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent animate-gradient">
                   {value}
                 </span>
                 <span
