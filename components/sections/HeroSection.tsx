@@ -126,7 +126,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col items-center text-center gap-6 md:gap-8 max-w-3xl mx-auto"
+          className="flex flex-col items-center text-center gap-6 md:gap-8 max-w-4xl mx-auto"
         >
           <h1
             className="font-heading font-extrabold text-4xl md:text-6xl tracking-tight leading-[1.05]"
@@ -136,7 +136,7 @@ export function HeroSection() {
           </h1>
 
           <p
-            className="font-sans text-base md:text-lg leading-relaxed max-w-xl"
+            className="font-sans text-base md:text-lg leading-relaxed max-w-4xl"
             style={{ color: 'rgba(0,8,7,0.65)' }}
           >
             {t('subheadline')}
@@ -148,7 +148,7 @@ export function HeroSection() {
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative inline-flex items-center justify-center rounded-full bg-[#000807] text-white font-heading font-semibold text-base px-8 py-[14px] transition-transform duration-200 active:scale-[0.98] before:absolute before:-bottom-1.5 before:-left-1.5 before:w-full before:h-full before:rounded-full before:bg-gradient-to-tr before:from-[#3626A7] before:via-[#DF57BC] before:to-[#DE541E] before:blur-lg before:opacity-75 before:-z-10"
+              className="relative inline-flex items-center justify-center rounded-full bg-[#000807] text-white font-heading font-semibold text-base px-8 py-[14px] transition-transform duration-200 active:scale-[0.98] before:absolute before:-bottom-1 before:-left-1 before:w-full before:h-full before:rounded-full before:bg-gradient-to-tr before:from-[#3626A7] before:via-[#DF57BC] before:to-[#DE541E] before:blur-md before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100 before:-z-10"
             >
               {t('cta_primary')}
             </Link>
@@ -170,9 +170,9 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-auto pt-12 md:pt-16"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 mt-auto pt-12 md:pt-16"
         >
-          <div className="relative w-full h-[240px] sm:h-[320px] md:h-[400px] rounded-3xl overflow-hidden">
+          <div className="relative w-full h-[240px] sm:h-[320px] md:h-[400px] rounded-3xl overflow-hidden lg:col-span-7">
             <Image
               src="/images/hero-woman.jpg"
               alt={t('headline')}
@@ -183,7 +183,7 @@ export function HeroSection() {
             />
           </div>
 
-          <div className="relative w-full h-[240px] sm:h-[320px] md:h-[400px] rounded-3xl overflow-hidden">
+          <div className="relative w-full h-[240px] sm:h-[320px] md:h-[400px] rounded-3xl overflow-hidden lg:col-span-5">
             <VideoCarousel />
           </div>
         </motion.div>
