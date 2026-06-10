@@ -17,7 +17,7 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: 'UCY Studio <contact@ucyweb.fr>',
       to: 'contact@ucyweb.fr',
-      replyTo: email,
+      reply_to: email,
       subject: `Nouveau message de ${name}`,
       text: `Nom : ${name}\nEmail : ${email}\nTél : ${phone || 'Non renseigné'}\n\nMessage :\n${message}`,
     })
