@@ -71,6 +71,9 @@ function VideoCarousel() {
         />
       </AnimatePresence>
 
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#000807]/70 to-transparent md:bg-gradient-to-r md:from-[#3626A7]/55 md:via-[#DF57BC]/35 md:to-transparent" />
+
       {/* Arrow — previous */}
       <button
         onClick={prev}
@@ -128,7 +131,7 @@ export function HeroSection() {
         <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
 
           {/* ── Left: text ── */}
-          <div className="w-full md:flex-1 flex flex-col items-start gap-7 md:gap-8">
+          <div className="relative z-[2] w-full md:flex-1 flex flex-col items-start gap-7 md:gap-8">
 
             <Badge>{t('badge')}</Badge>
 

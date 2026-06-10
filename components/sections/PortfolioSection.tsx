@@ -60,14 +60,19 @@ export function PortfolioSection() {
               style={{ backgroundColor: 'white', border: '1px solid rgba(0,8,7,0.08)' }}
             >
               {/* Project image */}
-              <div className="relative w-full aspect-[4/3] overflow-hidden">
-                <Image
-                  src={image}
-                  alt={t(titleKey)}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+              <div
+                className="relative w-full h-[220px] md:h-[280px] overflow-hidden"
+                style={{ backgroundColor: '#F5F5F0' }}
+              >
+                <div className="absolute inset-4">
+                  <Image
+                    src={image}
+                    alt={t(titleKey)}
+                    fill
+                    className="object-contain transition-transform duration-500 group-hover:scale-[1.04]"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
               </div>
               {/* Card footer */}
               <div className="px-5 py-4 flex items-center justify-between">
