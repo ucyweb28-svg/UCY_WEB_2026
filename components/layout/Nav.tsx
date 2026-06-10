@@ -147,96 +147,98 @@ export function Nav() {
       </div>
 
       {/* Fullscreen mobile/tablet menu */}
-      <AnimatePresence>
-        {menuOpen && createPortal(
-          <motion.div
-            key="fullscreen-menu"
-            initial={{ y: '-100%' }}
-            animate={{ y: 0 }}
-            exit={{ y: '-100%' }}
-            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="lg:hidden fixed inset-0 z-[100] flex flex-col overflow-y-auto"
-            style={{ backgroundColor: '#000807' }}
-          >
-            {/* Top bar: logo + close */}
-            <div className="shrink-0 flex items-center justify-between px-6 md:px-8 h-16 md:h-20">
-              <Link
-                href="/"
-                onClick={() => setMenuOpen(false)}
-                className="flex items-baseline gap-1.5 select-none"
-              >
-                <span className={`font-heading text-xl font-extrabold tracking-tight leading-none ${gradientText}`}>
-                  {t('logo')}
-                </span>
-                <span className="font-sans text-sm font-normal text-white/60 leading-none">
-                  {t('logo_suffix')}
-                </span>
-              </Link>
-              <button
-                onClick={() => setMenuOpen(false)}
-                aria-label={t('menu_close')}
-                className="text-3xl leading-none p-2 -mr-2 text-white/60 hover:text-white transition-colors duration-200 cursor-pointer"
-              >
-                ×
-              </button>
-            </div>
-
-            {/* Centered nav links */}
-            <motion.nav
-              variants={stagger}
-              initial="hidden"
-              animate="visible"
-              className="flex-1 flex flex-col items-center justify-center gap-6 md:gap-8 py-12"
-              aria-label="Navigation principale"
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              key="fullscreen-menu"
+              initial={{ y: '-100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '-100%' }}
+              transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+              className="lg:hidden fixed inset-0 z-[100] flex flex-col overflow-y-auto"
+              style={{ backgroundColor: '#000807' }}
             >
-              {NAV_LINKS.map(({ key, href }) => (
-                <motion.a
-                  key={key}
-                  variants={fadeUp}
-                  href={href}
+              {/* Top bar: logo + close */}
+              <div className="shrink-0 flex items-center justify-between px-6 md:px-8 h-16 md:h-20">
+                <Link
+                  href="/"
                   onClick={() => setMenuOpen(false)}
-                  className="nav-fullscreen-link font-heading font-bold text-4xl md:text-6xl text-white"
+                  className="flex items-baseline gap-1.5 select-none"
                 >
-                  {t(key)}
-                </motion.a>
-              ))}
-            </motion.nav>
-
-            {/* Bottom row: locale, WhatsApp CTAs, social links */}
-            <div className="shrink-0 px-6 md:px-8 pb-8 md:pb-10 flex flex-col md:flex-row items-center md:items-end justify-between gap-6">
-              <p className="order-3 md:order-1 font-sans text-xs md:text-sm text-white/40">
-                {tHero('badge')}
-              </p>
-
-              <div className="order-1 md:order-2 flex flex-wrap items-center justify-center gap-3">
-                <Button variant="whatsapp" href={whatsappHref} size="md" external>
-                  {tFooterCta('whatsapp_fr')}
-                </Button>
-                <Button variant="ghost" href={whatsappHrefIL} size="md" external>
-                  {tFooterCta('whatsapp_il')}
-                </Button>
+                  <span className={`font-heading text-xl font-extrabold tracking-tight leading-none ${gradientText}`}>
+                    {t('logo')}
+                  </span>
+                  <span className="font-sans text-sm font-normal text-white/60 leading-none">
+                    {t('logo_suffix')}
+                  </span>
+                </Link>
+                <button
+                  onClick={() => setMenuOpen(false)}
+                  aria-label={t('menu_close')}
+                  className="text-3xl leading-none p-2 -mr-2 text-white/60 hover:text-white transition-colors duration-200 cursor-pointer"
+                >
+                  ×
+                </button>
               </div>
 
-              <div className="order-2 md:order-3 flex items-center gap-3">
-                {SOCIAL_LINKS.map(({ label, href, icon }) => (
-                  <a
-                    key={label}
+              {/* Centered nav links */}
+              <motion.nav
+                variants={stagger}
+                initial="hidden"
+                animate="visible"
+                className="flex-1 flex flex-col items-center justify-center gap-6 md:gap-8 py-12"
+                aria-label="Navigation principale"
+              >
+                {NAV_LINKS.map(({ key, href }) => (
+                  <motion.a
+                    key={key}
+                    variants={fadeUp}
                     href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="block w-9 h-9 rounded-lg overflow-hidden"
+                    onClick={() => setMenuOpen(false)}
+                    className="nav-fullscreen-link font-heading font-bold text-4xl md:text-6xl text-white"
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={icon} alt="" className="w-full h-full object-cover" />
-                  </a>
+                    {t(key)}
+                  </motion.a>
                 ))}
+              </motion.nav>
+
+              {/* Bottom row: locale, WhatsApp CTAs, social links */}
+              <div className="shrink-0 px-6 md:px-8 pb-8 md:pb-10 flex flex-col md:flex-row items-center md:items-end justify-between gap-6">
+                <p className="order-3 md:order-1 font-sans text-xs md:text-sm text-white/40">
+                  {tHero('badge')}
+                </p>
+
+                <div className="order-1 md:order-2 flex flex-wrap items-center justify-center gap-3">
+                  <Button variant="whatsapp" href={whatsappHref} size="md" external>
+                    {tFooterCta('whatsapp_fr')}
+                  </Button>
+                  <Button variant="ghost" href={whatsappHrefIL} size="md" external>
+                    {tFooterCta('whatsapp_il')}
+                  </Button>
+                </div>
+
+                <div className="order-2 md:order-3 flex items-center gap-3">
+                  {SOCIAL_LINKS.map(({ label, href, icon }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className="block w-9 h-9 rounded-lg overflow-hidden"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={icon} alt="" className="w-full h-full object-cover" />
+                    </a>
+                  ))}
+                </div>
               </div>
-            </div>
-          </motion.div>,
-          document.body
-        )}
-      </AnimatePresence>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </header>
   );
 }
