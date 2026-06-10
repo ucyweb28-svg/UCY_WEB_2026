@@ -24,7 +24,7 @@ const SCROLL_AMOUNT = 340;
 
 function ArrowLeftIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <svg width="24" height="24" viewBox="0 0 16 16" fill="none" aria-hidden="true">
       <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
@@ -32,7 +32,7 @@ function ArrowLeftIcon() {
 
 function ArrowRightIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <svg width="24" height="24" viewBox="0 0 16 16" fill="none" aria-hidden="true">
       <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
@@ -83,8 +83,7 @@ export function ServicesSection() {
               type="button"
               onClick={() => scroll('left')}
               aria-label={t('prev')}
-              className="flex items-center justify-center w-12 h-12 rounded-full border border-white/20 text-white transition-colors duration-200 hover:border-white/60"
-              style={{ backgroundColor: '#000807' }}
+              className="inline-flex items-center justify-center text-[#000807] hover:text-[#3626A7] transition-colors duration-200"
             >
               <ArrowLeftIcon />
             </button>
@@ -92,8 +91,7 @@ export function ServicesSection() {
               type="button"
               onClick={() => scroll('right')}
               aria-label={t('next')}
-              className="flex items-center justify-center w-12 h-12 rounded-full border border-white/20 text-white transition-colors duration-200 hover:border-white/60"
-              style={{ backgroundColor: '#000807' }}
+              className="inline-flex items-center justify-center text-[#000807] hover:text-[#3626A7] transition-colors duration-200"
             >
               <ArrowRightIcon />
             </button>
@@ -110,35 +108,40 @@ export function ServicesSection() {
             {SERVICES.map(({ image, titleKey, descKey, hasImage }) => (
               <div
                 key={titleKey}
-                className="group flex-shrink-0 snap-start w-[280px] md:w-[320px] h-[380px] rounded-xl overflow-hidden flex flex-col border border-white/10 hover:border-white/30 transition-all duration-300"
-                style={{ backgroundColor: '#0A0A0F' }}
+                className="group flex-shrink-0 snap-start w-[280px] md:w-[320px] h-[380px] rounded-xl animate-gradient"
+                style={{
+                  background: 'linear-gradient(white, white) padding-box, linear-gradient(135deg, #3626A7, #DF57BC, #DE541E) border-box',
+                  border: '1.5px solid transparent',
+                }}
               >
-                <div className="relative w-full h-[180px] overflow-hidden rounded-t-xl">
-                  {hasImage ? (
-                    <Image
-                      src={image}
-                      alt={t(titleKey)}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 280px, 320px"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-white/5" />
-                  )}
-                </div>
-                <div className="p-5 flex flex-col gap-2 flex-1">
-                  <h3 className="font-sans font-semibold text-lg text-white">
-                    {t(titleKey)}
-                  </h3>
-                  <p className="font-sans text-sm leading-relaxed line-clamp-2 text-white/50">
-                    {t(descKey)}
-                  </p>
-                  <a
-                    href="#contact"
-                    className="font-sans text-sm font-semibold mt-auto inline-flex items-center gap-1 text-white/40 hover:text-white transition-colors"
-                  >
-                    {t('cta')} →
-                  </a>
+                <div className="w-full h-full rounded-xl overflow-hidden flex flex-col bg-white">
+                  <div className="relative w-full h-[180px] overflow-hidden rounded-t-xl">
+                    {hasImage ? (
+                      <Image
+                        src={image}
+                        alt={t(titleKey)}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 280px, 320px"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-[#000807]/5" />
+                    )}
+                  </div>
+                  <div className="p-5 flex flex-col gap-2 flex-1">
+                    <h3 className="font-sans font-semibold text-lg text-[#000807]">
+                      {t(titleKey)}
+                    </h3>
+                    <p className="font-sans text-sm leading-relaxed line-clamp-2 text-[#000807]/60">
+                      {t(descKey)}
+                    </p>
+                    <a
+                      href="#contact"
+                      className="font-sans text-sm font-semibold mt-auto inline-flex items-center gap-1 text-[#3626A7]"
+                    >
+                      {t('cta')} →
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
