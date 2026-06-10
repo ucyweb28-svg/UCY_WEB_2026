@@ -1,49 +1,51 @@
 'use client';
 
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/Badge';
+import { SimpleIcon } from '@/components/ui/SimpleIcon';
 import { stagger, fadeUp, staggerFast } from '@/lib/utils/animations';
+
+const WHITE_ICON_SLUGS = new Set(['nextdotjs', 'notion', 'cursor']);
 
 const CATEGORIES = [
   {
     labelKey: 'category_design',
     color: '#DF57BC',
     tools: [
-      { name: 'Figma', primary: true, icon: 'https://cdn.simpleicons.org/figma' },
-      { name: 'Adobe Illustrator', primary: false, icon: 'https://cdn.simpleicons.org/adobeillustrator' },
-      { name: 'Adobe Photoshop', primary: false, icon: 'https://cdn.simpleicons.org/adobephotoshop' },
-      { name: 'Framer', primary: false, icon: 'https://cdn.simpleicons.org/framer' },
+      { name: 'Figma', primary: true, icon: 'figma' },
+      { name: 'Adobe Illustrator', primary: false, icon: 'adobeillustrator' },
+      { name: 'Adobe Photoshop', primary: false, icon: 'adobephotoshop' },
+      { name: 'Framer', primary: false, icon: 'framer' },
     ],
   },
   {
     labelKey: 'category_dev',
     color: '#3626A7',
     tools: [
-      { name: 'Next.js', primary: true, icon: 'https://cdn.simpleicons.org/nextdotjs' },
-      { name: 'React', primary: false, icon: 'https://cdn.simpleicons.org/react' },
-      { name: 'TypeScript', primary: false, icon: 'https://cdn.simpleicons.org/typescript' },
-      { name: 'Tailwind CSS', primary: false, icon: 'https://cdn.simpleicons.org/tailwindcss' },
+      { name: 'Next.js', primary: true, icon: 'nextdotjs' },
+      { name: 'React', primary: false, icon: 'react' },
+      { name: 'TypeScript', primary: false, icon: 'typescript' },
+      { name: 'Tailwind CSS', primary: false, icon: 'tailwindcss' },
     ],
   },
   {
     labelKey: 'category_motion',
     color: '#DE541E',
     tools: [
-      { name: 'After Effects', primary: true, icon: 'https://cdn.simpleicons.org/adobeaftereffects' },
+      { name: 'After Effects', primary: true, icon: 'adobeaftereffects' },
       { name: 'GPT-4 / Claude', primary: false, icon: null },
       { name: 'Midjourney', primary: false, icon: null },
-      { name: 'Cursor', primary: false, icon: 'https://cdn.simpleicons.org/cursor' },
+      { name: 'Cursor', primary: false, icon: 'cursor' },
     ],
   },
   {
     labelKey: 'category_platforms',
     color: '#888888',
     tools: [
-      { name: 'WordPress', primary: false, icon: 'https://cdn.simpleicons.org/wordpress' },
-      { name: 'Webflow', primary: false, icon: 'https://cdn.simpleicons.org/webflow' },
-      { name: 'Notion', primary: false, icon: 'https://cdn.simpleicons.org/notion' },
+      { name: 'WordPress', primary: false, icon: 'wordpress' },
+      { name: 'Webflow', primary: false, icon: 'webflow' },
+      { name: 'Notion', primary: false, icon: 'notion' },
     ],
   },
 ] as const;
@@ -112,7 +114,13 @@ export function ToolsSection() {
                       className="w-[22px] h-[22px] rounded-[6px] shrink-0 flex items-center justify-center"
                       style={{ backgroundColor: 'rgba(255,255,255,0.06)' }}
                     >
-                      {icon && <Image src={icon} alt="" width={20} height={20} />}
+                      {icon && (
+                        <SimpleIcon
+                          slug={icon}
+                          size={20}
+                          color={WHITE_ICON_SLUGS.has(icon) ? '#ffffff' : undefined}
+                        />
+                      )}
                     </span>
                     <span
                       className="font-sans text-[13px] truncate"
