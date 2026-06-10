@@ -57,14 +57,19 @@ export function ServicesSection() {
               className="group rounded-2xl overflow-hidden flex flex-col"
               style={{ backgroundColor: 'white', border: '1px solid rgba(0,8,7,0.08)' }}
             >
-              <div className="relative w-full h-48 overflow-hidden">
-                <Image
-                  src={image}
-                  alt={t(titleKey)}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+              <div
+                className="relative w-full h-[220px] overflow-hidden"
+                style={{ backgroundColor: '#F5F5F0' }}
+              >
+                <div className="absolute inset-4">
+                  <Image
+                    src={image}
+                    alt={t(titleKey)}
+                    fill
+                    className="object-contain transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
               </div>
               <div className="p-6 flex flex-col gap-3 flex-1">
                 <h3 className="font-heading font-bold text-xl" style={{ color: '#000807' }}>
