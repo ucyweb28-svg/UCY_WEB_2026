@@ -53,7 +53,7 @@ export function AISection() {
           alt=""
           fill
           className="object-cover object-center"
-          style={{ opacity: 0.4 }}
+          style={{ opacity: 0.7 }}
           priority
         />
       </div>
@@ -63,16 +63,7 @@ export function AISection() {
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
           background:
-            'linear-gradient(to right, rgba(10,10,15,0.92) 0%, rgba(10,10,15,0.85) 45%, rgba(10,10,15,0.5) 100%)',
-        }}
-      />
-
-      {/* Gradient overlay — top/bottom fade */}
-      <div
-        className="absolute inset-0 z-10 pointer-events-none"
-        style={{
-          background:
-            'linear-gradient(to bottom, rgba(10,10,15,0.8) 0%, transparent 15%, transparent 85%, rgba(10,10,15,0.8) 100%)',
+            'linear-gradient(to right, rgba(10,10,15,0.75) 0%, rgba(10,10,15,0.55) 50%, rgba(10,10,15,0.2) 100%)',
         }}
       />
 
