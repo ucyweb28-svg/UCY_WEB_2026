@@ -116,7 +116,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="min-h-screen flex flex-col pt-24 md:pt-32 pb-6 md:pb-8"
+      className="min-h-screen flex flex-col pt-32 md:pt-20 pb-6 md:pb-8"
       style={{ backgroundColor: '#FBF9FF', marginTop: `${marginTop}px` }}
     >
       <div className="max-w-7xl mx-auto px-6 w-full flex flex-col flex-1">
