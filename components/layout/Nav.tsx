@@ -19,10 +19,22 @@ const NAV_LINKS = [
 ];
 
 const SOCIAL_LINKS = [
-  { label: 'Instagram', href: 'https://www.instagram.com/ucy_studio/', icon: '/icons/icon-instagram.svg' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/115831904/', icon: '/icons/icon-linkedin.svg' },
-  { label: 'Behance', href: 'https://www.behance.net/yonathanchetrit3', icon: '/icons/icon-behance.svg' },
-];
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/ucy_studio/',
+    path: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z',
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/115831904/',
+    path: 'M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z',
+  },
+  {
+    label: 'Behance',
+    href: 'https://www.behance.net/yonathanchetrit3',
+    path: 'M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z',
+  },
+] as const;
 
 function getLocalizedPath(pathname: string, targetLocale: 'fr' | 'en'): string {
   const isEn = pathname === '/en' || pathname.startsWith('/en/');
@@ -55,16 +67,63 @@ function HamburgerIcon({ open }: { open: boolean }) {
   );
 }
 
+function SocialIcon({ path, size = 22 }: { path: string; size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d={path} />
+    </svg>
+  );
+}
+
+function LocaleSwitch({
+  locale,
+  onSwitch,
+  size = 'lg',
+}: {
+  locale: string;
+  onSwitch: () => void;
+  size?: 'sm' | 'lg';
+}) {
+  const isLarge = size === 'lg';
+  return (
+    <div
+      className="inline-flex items-center"
+      style={{ border: '1px solid #e0e0e0', borderRadius: 20, padding: isLarge ? 4 : 3, gap: 2 }}
+    >
+      {(['fr', 'en'] as const).map((loc) => {
+        const isActive = loc === locale;
+        return (
+          <button
+            key={loc}
+            onClick={() => {
+              if (!isActive) onSwitch();
+            }}
+            className="font-sans font-semibold transition-colors duration-200 cursor-pointer"
+            style={{
+              borderRadius: 20,
+              padding: isLarge ? '8px 20px' : '4px 12px',
+              fontSize: isLarge ? 16 : 12,
+              backgroundColor: isActive ? '#3626A7' : 'transparent',
+              color: isActive ? '#ffffff' : '#888888',
+            }}
+            aria-label={`Switch language to ${loc.toUpperCase()}`}
+          >
+            {loc.toUpperCase()}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 export function Nav() {
   const t = useTranslations('nav');
   const tHero = useTranslations('hero');
-  const tFooterCta = useTranslations('footer_cta');
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
   const isContactPage = pathname?.endsWith('/contact') ?? false;
   const isHomePage = pathname === '/' || pathname === '/en';
-  const otherLocale = locale === 'fr' ? 'en' : 'fr';
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -94,15 +153,12 @@ export function Nav() {
   };
 
   const switchLocale = () => {
+    const otherLocale = locale === 'fr' ? 'en' : 'fr';
     router.push(getLocalizedPath(pathname ?? '/', otherLocale));
   };
 
   const whatsappHref = formatWhatsAppLink(
     'fr',
-    'Bonjour%20UCY%20Studio%2C%20je%20voudrais%20d%C3%A9marrer%20un%20projet'
-  );
-  const whatsappHrefIL = formatWhatsAppLink(
-    'il',
     'Bonjour%20UCY%20Studio%2C%20je%20voudrais%20d%C3%A9marrer%20un%20projet'
   );
 
@@ -150,14 +206,7 @@ export function Nav() {
             })}
           </nav>
 
-          <button
-            onClick={switchLocale}
-            className="inline-flex items-center justify-center rounded-full border font-sans transition-colors duration-200 hover:bg-black/5 cursor-pointer"
-            style={{ borderColor: 'rgba(0,8,7,0.2)', color: '#000807', backgroundColor: 'transparent', padding: '6px 14px', fontSize: 13 }}
-            aria-label={`Switch language to ${otherLocale.toUpperCase()}`}
-          >
-            {otherLocale.toUpperCase()}
-          </button>
+          <LocaleSwitch locale={locale} onSwitch={switchLocale} size="sm" />
         </div>
 
         {/* Desktop CTA + Mobile hamburger */}
@@ -196,7 +245,7 @@ export function Nav() {
               exit={{ y: '-100%' }}
               transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
               className="lg:hidden fixed inset-0 z-[100] flex flex-col overflow-y-auto"
-              style={{ backgroundColor: '#000807' }}
+              style={{ backgroundColor: '#ffffff' }}
             >
               {/* Top bar: logo + close */}
               <div className="shrink-0 flex items-center justify-between px-6 md:px-8 h-16 md:h-20">
@@ -208,25 +257,25 @@ export function Nav() {
                   <span className={`font-heading text-xl font-extrabold tracking-tight leading-none ${gradientText}`}>
                     {t('logo')}
                   </span>
-                  <span className="font-sans text-sm font-normal text-white/60 leading-none">
+                  <span className="font-sans text-sm font-normal text-black/50 leading-none">
                     {t('logo_suffix')}
                   </span>
                 </Link>
                 <button
                   onClick={() => setMenuOpen(false)}
                   aria-label={t('menu_close')}
-                  className="text-3xl leading-none p-2 -mr-2 text-white/60 hover:text-white transition-colors duration-200 cursor-pointer"
+                  className="text-3xl leading-none p-2 -mr-2 text-black/40 hover:text-black transition-colors duration-200 cursor-pointer"
                 >
                   ×
                 </button>
               </div>
 
-              {/* Centered nav links */}
+              {/* Nav links */}
               <motion.nav
                 variants={stagger}
                 initial="hidden"
                 animate="visible"
-                className="flex-1 flex flex-col items-center justify-center gap-6 md:gap-8 py-12"
+                className="flex-1 flex flex-col justify-center px-6 md:px-8"
                 aria-label="Navigation principale"
               >
                 {NAV_LINKS.map(({ key, href }) => (
@@ -238,59 +287,50 @@ export function Nav() {
                       handleAnchorClick(e, href);
                       setMenuOpen(false);
                     }}
-                    className="nav-fullscreen-link font-heading font-bold text-4xl md:text-6xl text-white"
+                    className="flex items-center justify-between font-heading transition-colors duration-200 text-[#0a0a0a] hover:text-[#3626A7]"
+                    style={{ fontSize: 42, fontWeight: 800, borderBottom: '1px solid #f0f0f0', padding: '16px 0' }}
                   >
-                    {t(key)}
+                    <span>{t(key)}</span>
+                    <span style={{ color: '#3626A7', fontSize: 24 }}>→</span>
                   </motion.a>
                 ))}
               </motion.nav>
 
-              {/* Language switcher (mobile) */}
-              <div className="shrink-0 px-6 md:px-8 pb-6">
-                <button
-                  onClick={() => {
+              {/* Language toggle switch */}
+              <div className="shrink-0 flex justify-center px-6 md:px-8" style={{ marginTop: 32 }}>
+                <LocaleSwitch
+                  locale={locale}
+                  onSwitch={() => {
                     switchLocale();
                     setMenuOpen(false);
                   }}
-                  className="block w-full max-w-xs mx-auto rounded-full border font-sans text-center transition-colors duration-200 hover:bg-white/10 cursor-pointer"
-                  style={{ borderColor: 'rgba(255,255,255,0.2)', color: 'white', backgroundColor: 'transparent', padding: '10px 24px', fontSize: 15 }}
-                  aria-label={`Switch language to ${otherLocale.toUpperCase()}`}
-                >
-                  {otherLocale.toUpperCase()}
-                </button>
+                  size="lg"
+                />
               </div>
 
-              {/* Bottom row: locale, WhatsApp CTAs, social links */}
-              <div className="shrink-0 px-6 md:px-8 pb-8 md:pb-10 flex flex-col md:flex-row items-center md:items-end justify-between gap-6">
-                <p className="order-3 md:order-1 font-sans text-xs md:text-sm text-white/40">
-                  {tHero('badge')}
-                </p>
-
-                <div className="order-1 md:order-2 flex flex-wrap items-center justify-center gap-3">
-                  <Button variant="whatsapp" href={whatsappHref} size="md" external>
-                    {tFooterCta('whatsapp_fr')}
-                  </Button>
-                  <Button variant="ghost" href={whatsappHrefIL} size="md" external>
-                    {tFooterCta('whatsapp_il')}
-                  </Button>
-                </div>
-
-                <div className="order-2 md:order-3 flex items-center gap-3">
-                  {SOCIAL_LINKS.map(({ label, href, icon }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                      className="block w-9 h-9 rounded-lg overflow-hidden"
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={icon} alt="" className="w-full h-full object-cover" />
-                    </a>
-                  ))}
-                </div>
+              {/* Social icons */}
+              <div className="shrink-0 flex items-center justify-center" style={{ gap: 24, marginTop: 24 }}>
+                {SOCIAL_LINKS.map(({ label, href, path }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="text-[#0a0a0a] opacity-60 hover:opacity-100 hover:text-[#3626A7] transition-all duration-200"
+                  >
+                    <SocialIcon path={path} size={22} />
+                  </a>
+                ))}
               </div>
+
+              {/* Bottom tag */}
+              <p
+                className="shrink-0 text-center font-sans"
+                style={{ fontSize: 12, color: '#aaa', marginTop: 16, paddingBottom: 32 }}
+              >
+                {tHero('badge')}
+              </p>
             </motion.div>
           )}
         </AnimatePresence>,
