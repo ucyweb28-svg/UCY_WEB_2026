@@ -71,10 +71,25 @@
     "category_platforms": "Platforms"
   },
   "ai": {
-    "label": "AI & Production",
-    "headline": "AI powering your project",
-    "body": "We integrate the best AI tools into our production process — faster delivery, no compromise on quality.",
-    "cta": "Discover our approach"
+    "badge": "AI & Production",
+    "headline_start": "The AI we use. The one we build ",
+    "headline_highlight": "into your product.",
+    "body": "We don't just use AI in our production — we can design and integrate AI features directly into your product: chatbot, content generation, automation, recommendations.",
+    "btn_primary": "Integrate AI into my project",
+    "btn_secondary": "Our AI stack →",
+    "card_title": "UCY AI Studio",
+    "card_badge": "Beta",
+    "modules_label": "Available modules",
+    "module1_name": "Content generation",
+    "module1_desc": "GPT-4 · copy, titles, SEO",
+    "module2_name": "Custom chatbot",
+    "module2_desc": "Claude API · your knowledge base",
+    "module3_name": "Automated visuals",
+    "module3_desc": "Midjourney · Firefly · Runway",
+    "status_live": "Live",
+    "status_soon": "Soon",
+    "cta_title": "Integrate into your product →",
+    "cta_subtitle": "We review your case for free"
   },
   "portfolio": {
     "label": "Portfolio",

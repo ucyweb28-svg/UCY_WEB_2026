@@ -54,7 +54,7 @@ export function ToolsSection() {
   const t = useTranslations('tools');
 
   return (
-    <section className="py-16 md:py-32" style={{ backgroundColor: '#000807' }}>
+    <section id="tools" className="py-16 md:py-32" style={{ backgroundColor: '#000807' }}>
       <div className="max-w-[1400px] mx-auto px-6">
 
         {/* Header */}

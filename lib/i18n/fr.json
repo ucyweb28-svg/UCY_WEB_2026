@@ -71,10 +71,25 @@
     "category_platforms": "Plateformes"
   },
   "ai": {
-    "label": "IA & Production",
-    "headline": "L'IA au service de votre projet",
-    "body": "Nous intégrons les meilleurs outils d'IA dans notre processus de production — plus vite, sans compromis sur la qualité.",
-    "cta": "Découvrir notre approche"
+    "badge": "IA & Production",
+    "headline_start": "L'IA qu'on utilise. Celle qu'on intègre ",
+    "headline_highlight": "dans votre produit.",
+    "body": "On ne se contente pas d'utiliser l'IA dans notre production — on peut aussi concevoir et intégrer des fonctionnalités IA directement dans votre produit : chatbot, génération de contenu, automatisation, recommandations.",
+    "btn_primary": "Intégrer l'IA à mon projet",
+    "btn_secondary": "Notre stack IA →",
+    "card_title": "UCY AI Studio",
+    "card_badge": "Beta",
+    "modules_label": "Modules disponibles",
+    "module1_name": "Génération de contenu",
+    "module1_desc": "GPT-4 · textes, titres, SEO",
+    "module2_name": "Chatbot sur-mesure",
+    "module2_desc": "Claude API · votre base de connaissance",
+    "module3_name": "Visuels automatisés",
+    "module3_desc": "Midjourney · Firefly · Runway",
+    "status_live": "Live",
+    "status_soon": "Bientôt",
+    "cta_title": "Intégrer à votre produit →",
+    "cta_subtitle": "On étudie votre cas gratuitement"
   },
   "portfolio": {
     "label": "Portfolio",
