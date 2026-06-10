@@ -116,7 +116,7 @@ export function Nav() {
             href={whatsappHref}
             size="md"
             external
-            className="hidden md:flex"
+            className="hidden md:flex shrink-0 whitespace-nowrap [-webkit-appearance:none]"
           >
             {t('cta')}
           </Button>
