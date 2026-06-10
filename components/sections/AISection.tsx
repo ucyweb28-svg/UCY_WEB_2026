@@ -47,23 +47,10 @@ export function AISection() {
     <section
       className="relative overflow-hidden py-24"
       style={{
-        backgroundImage: 'url(/images/ai-section-bg.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundColor: '#0a0a0f',
+        background:
+          'radial-gradient(ellipse at 20% 50%, rgba(54,38,167,0.3) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(223,87,188,0.15) 0%, transparent 60%), #0a0a0f',
       }}
     >
-      {/* Gradient overlay — directional left-to-right fade */}
-      <div
-        className="absolute inset-0 z-10"
-        style={{
-          background:
-            'linear-gradient(to right, rgba(10,10,15,0.82) 0%, rgba(10,10,15,0.60) 50%, rgba(10,10,15,0.25) 100%)',
-          pointerEvents: 'none',
-        }}
-      />
-
       {/* Content */}
       <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
