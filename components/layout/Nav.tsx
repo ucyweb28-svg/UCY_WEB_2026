@@ -146,16 +146,25 @@ export function Nav() {
   const switchLocale = () => {
     const nextLocale = locale === 'fr' ? 'en' : 'fr';
 
-    // Remove current locale prefix from pathname
+    // Save current scroll position
+    const scrollY = window.scrollY;
+
+    // Build new path
     const segments = (pathname ?? '/').split('/');
-    // segments[1] is the locale if present
     if (segments[1] === 'fr' || segments[1] === 'en') {
       segments[1] = nextLocale;
     } else {
       segments.splice(1, 0, nextLocale);
     }
     const newPath = segments.join('/') || '/';
+
+    // Navigate then restore scroll
     router.push(newPath);
+
+    // Restore scroll after navigation
+    setTimeout(() => {
+      window.scrollTo({ top: scrollY, behavior: 'instant' });
+    }, 100);
   };
 
   const whatsappHref = formatWhatsAppLink(
