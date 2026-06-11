@@ -42,6 +42,12 @@ body {
   100% { background-position: 0% 50%; }
 }
 
+@keyframes gradientShift {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
 .gradient-text {
   background: linear-gradient(135deg, #3626A7, #DF57BC, #DE541E, #3626A7);
   background-size: 300% 300%;
