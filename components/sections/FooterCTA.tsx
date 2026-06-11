@@ -50,7 +50,7 @@ export function FooterCTA() {
   const buttonLabel = loading ? t('btn_loading') : submitted ? t('btn_sent') : t('btn_default');
 
   return (
-    <section id="contact" className="py-16 px-6" style={{ backgroundColor: '#f2f0eb' }}>
+    <section id="contact" className="py-24 px-6" style={{ backgroundColor: '#f2f0eb' }}>
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
@@ -58,7 +58,7 @@ export function FooterCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="relative flex items-stretch overflow-hidden"
-          style={{ borderRadius: 24, minHeight: 240 }}
+          style={{ borderRadius: 24, minHeight: 320 }}
         >
           {/* Background layers */}
           <Image
@@ -78,7 +78,7 @@ export function FooterCTA() {
 
           {/* Content */}
           <div
-            className="relative z-10 flex flex-col md:flex-row items-center w-full flex-wrap px-6 py-8 md:px-[52px] md:py-[44px] gap-6 md:gap-10"
+            className="relative z-10 flex flex-col md:flex-row items-center w-full flex-wrap px-6 py-8 md:px-[64px] md:py-[64px] gap-6 md:gap-10"
           >
             {/* Left side */}
             <motion.div
@@ -90,18 +90,18 @@ export function FooterCTA() {
             >
               <p
                 className="font-sans font-bold uppercase"
-                style={{ fontSize: 10, letterSpacing: '0.15em', color: 'rgba(255,255,255,0.4)', marginBottom: 12 }}
+                style={{ fontSize: 12, letterSpacing: '0.15em', color: 'rgba(255,255,255,0.4)', marginBottom: 16 }}
               >
                 {t('kicker')}
               </p>
               <h2
                 className="font-heading font-black md:whitespace-nowrap"
-                style={{ fontSize: 'clamp(22px, 2.8vw, 34px)', color: 'white', lineHeight: 1.1, marginBottom: 8 }}
+                style={{ fontSize: 'clamp(28px, 3.5vw, 48px)', color: 'white', lineHeight: 1.1, marginBottom: 8 }}
               >
                 {t('headline_start')}
                 <span style={{ color: '#DF57BC' }}>{t('headline_highlight')}</span>
               </h2>
-              <p className="font-sans md:whitespace-nowrap" style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)' }}>
+              <p className="font-sans md:whitespace-nowrap" style={{ fontSize: 15, color: 'rgba(255,255,255,0.55)' }}>
                 {t('sub')}
               </p>
             </motion.div>
@@ -109,7 +109,7 @@ export function FooterCTA() {
             {/* Vertical divider */}
             <div
               className="hidden md:block self-stretch flex-shrink-0"
-              style={{ width: 1, backgroundColor: 'rgba(255,255,255,0.1)' }}
+              style={{ width: 1, backgroundColor: 'rgba(255,255,255,0.15)' }}
             />
 
             {/* Right side */}
@@ -118,7 +118,7 @@ export function FooterCTA() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col w-full md:w-[290px] flex-shrink-0"
+              className="flex flex-col w-full md:w-[340px] flex-shrink-0"
               style={{ gap: 10 }}
             >
               <p
@@ -139,8 +139,8 @@ export function FooterCTA() {
                       onClick={() => toggleNeed(need)}
                       className="font-sans transition-colors duration-200 cursor-pointer"
                       style={{
-                        fontSize: 11,
-                        padding: '5px 11px',
+                        fontSize: 13,
+                        padding: '6px 14px',
                         borderRadius: 20,
                         border: isSelected ? '1px solid #DF57BC' : '1px solid rgba(255,255,255,0.2)',
                         backgroundColor: isSelected ? 'rgba(223,87,188,0.25)' : 'transparent',
@@ -163,19 +163,19 @@ export function FooterCTA() {
                   onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                   placeholder={t('placeholder')}
                   className="flex-1 bg-transparent border-none outline-none font-sans"
-                  style={{ color: 'white', fontSize: 13, padding: '11px 14px' }}
+                  style={{ color: 'white', fontSize: 13, height: 44, padding: '0 14px' }}
                 />
                 <button
                   type="button"
                   onClick={handleSubmit}
                   className="font-sans font-bold whitespace-nowrap cursor-pointer"
-                  style={{ backgroundColor: 'white', color: '#0a0a0a', border: 'none', padding: '11px 16px', fontSize: 13 }}
+                  style={{ backgroundColor: 'white', color: '#0a0a0a', border: 'none', height: 44, padding: '0 20px', fontSize: 15 }}
                 >
                   {buttonLabel}
                 </button>
               </div>
 
-              <p className="font-sans text-center" style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)' }}>
+              <p className="font-sans text-center" style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)' }}>
                 {t('note')}
               </p>
             </motion.div>
