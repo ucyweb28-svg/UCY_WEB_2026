@@ -1,0 +1,18 @@
+{
+  "projectId": "88035c9d-bb88-40a3-95e5-16053535572d",
+  "shape": "package",
+  "pkg": "ucy-studio",
+  "globalName": "UcyStudio",
+  "entry": "components/ui/.synth-entry.js",
+  "srcDir": "components/ui",
+  "tsconfig": ".design-sync/tsconfig.json",
+  "cssEntry": ".design-sync/.cache/tailwind-compiled.css",
+  "dtsPropsFor": {
+    "Button": "  variant?: 'primary' | 'secondary' | 'whatsapp' | 'whatsapp-outline' | 'ghost';\n  size?: 'md' | 'lg';\n  href?: string;\n  children: React.ReactNode;\n  className?: string;\n  onClick?: () => void;\n  type?: 'button' | 'submit' | 'reset';\n  external?: boolean;\n  disabled?: boolean;",
+    "Badge": "  children: React.ReactNode;\n  className?: string;\n  variant?: 'default' | 'dark';",
+    "GlowButton": "  href: string;\n  children: React.ReactNode;\n  className?: string;\n  variant?: 'dark' | 'gradient' | 'white';\n  external?: boolean;",
+    "GradientGlow": "  children: React.ReactNode;\n  className?: string;",
+    "ScrollReveal": "  children: React.ReactNode;\n  delay?: number;\n  className?: string;",
+    "SimpleIcon": "  slug: string;\n  size?: number;\n  color?: string;"
+  }
+}
