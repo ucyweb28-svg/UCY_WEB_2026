@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/Badge';
@@ -116,39 +115,44 @@ export function PortfolioSection() {
           className="flex justify-end"
           style={{ marginTop: 32 }}
         >
-          <div style={{ position: 'relative', display: 'inline-block' }}>
+          <div style={{ position: 'relative', display: 'inline-block', overflow: 'visible' }}>
             <motion.div
               initial={{ opacity: 0 }}
-              whileHover={{ opacity: 0.6 }}
+              whileHover={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
               style={{
                 position: 'absolute',
-                bottom: -6,
-                left: -3,
+                bottom: -8,
+                left: -4,
                 width: '100%',
                 height: '100%',
                 borderRadius: 'inherit',
                 background: 'linear-gradient(135deg, #3626A7 0%, #DF57BC 50%, #DE541E 100%)',
-                filter: 'blur(10px)',
+                filter: 'blur(12px)',
                 zIndex: -1,
                 pointerEvents: 'none',
               }}
             />
-            <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.98 }}>
-              <Link
-                href="/portfolio"
-                className="inline-flex items-center bg-transparent font-sans font-semibold transition-colors duration-200 hover:bg-[#0a0a0a] hover:text-white"
-                style={{
-                  fontSize: 14,
-                  padding: '12px 24px',
-                  borderRadius: 10,
-                  border: '1.5px solid #0a0a0a',
-                  color: '#0a0a0a',
-                }}
-              >
-                {t('view_all')}
-              </Link>
-            </motion.div>
+            <motion.a
+              href="/portfolio"
+              whileHover={{ scale: 1.02, backgroundColor: '#0a0a0a', color: '#ffffff' }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+              className="font-sans"
+              style={{
+                display: 'inline-block',
+                border: '1.5px solid #0a0a0a',
+                color: '#0a0a0a',
+                padding: '12px 24px',
+                borderRadius: '10px',
+                fontSize: 14,
+                fontWeight: 600,
+                textDecoration: 'none',
+                position: 'relative',
+              }}
+            >
+              {t('view_all')}
+            </motion.a>
           </div>
         </motion.div>
 
