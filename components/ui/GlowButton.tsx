@@ -16,7 +16,7 @@ interface GlowButtonProps {
 
 const BG_MAP: Record<GlowButtonVariant, string> = {
   dark: '#0a0a0a',
-  gradient: 'linear-gradient(90deg, #3626A7, #DF57BC)',
+  gradient: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7)',
   white: '#ffffff',
 };
 
@@ -40,7 +40,7 @@ export function GlowButton({ href, children, className, variant = 'dark', extern
           width: '100%',
           height: '100%',
           borderRadius: 'inherit',
-          background: 'linear-gradient(135deg, #3626A7 0%, #DF57BC 50%, #DE541E 100%)',
+          background: 'linear-gradient(135deg, #DE541E 0%, #DF57BC 50%, #3626A7 100%)',
           filter: 'blur(14px)',
           zIndex: 0,
           pointerEvents: 'none',
