@@ -112,7 +112,7 @@ export function PortfolioSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="flex justify-end"
+          className="flex justify-center md:justify-end"
           style={{ marginTop: 32 }}
         >
           <div style={{ position: 'relative', display: 'inline-block', overflow: 'visible' }}>

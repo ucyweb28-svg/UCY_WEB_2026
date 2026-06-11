@@ -122,8 +122,8 @@ export function PricingPreviewSection() {
 
           <motion.p
             variants={fadeUp}
-            className="font-sans text-base whitespace-nowrap"
-            style={{ color: 'rgba(0,8,7,0.5)', marginTop: 12 }}
+            className="font-sans text-base text-center max-w-xs mx-auto md:max-w-none"
+            style={{ color: 'rgba(0,8,7,0.5)', marginTop: 12, whiteSpace: 'normal' }}
           >
             {t('subtitle')}
           </motion.p>
