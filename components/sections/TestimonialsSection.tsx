@@ -5,58 +5,21 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 
-interface Testimonial {
+interface TestimonialItem {
   client: string;
   logo: string;
   quote: string;
   author: string;
   role: string;
-  image: string;
   tags: string[];
 }
 
-const TESTIMONIALS: Testimonial[] = [
-  {
-    client: 'Bloomair',
-    logo: 'BLOOMAIR',
-    quote:
-      "UCY Studio a transformé notre présence digitale. Le site qu'ils ont livré dépasse tout ce qu'on espérait — en délai, en qualité, en impact.",
-    author: 'Sarah M.',
-    role: 'Fondatrice, Bloomair',
-    image: '/images/testimonial-bloomair.jpg',
-    tags: ['E-commerce', 'Branding'],
-  },
-  {
-    client: 'TopNos',
-    logo: 'TopNos',
-    quote:
-      'Une équipe qui comprend vraiment les enjeux de marque. Notre identité visuelle est maintenant cohérente sur tous nos supports.',
-    author: 'David L.',
-    role: 'Directeur Marketing, TopNos',
-    image: '/images/testimonial-topnos.jpg',
-    tags: ['Identité Visuelle', 'Print'],
-  },
-  {
-    client: 'Nexus Capital',
-    logo: 'NEXUS',
-    quote:
-      "Le dashboard qu'UCY a conçu pour nous a changé la façon dont nos équipes travaillent. UX irréprochable, livré en 3 semaines.",
-    author: 'Marc R.',
-    role: 'CTO, Nexus Capital',
-    image: '/images/testimonial-nexus.jpg',
-    tags: ['Fintech', 'Dashboard'],
-  },
-  {
-    client: 'Aurora Media',
-    logo: 'Aurora',
-    quote:
-      'Notre design system est maintenant la référence interne pour toutes nos équipes produit. Travail remarquable.',
-    author: 'Léa K.',
-    role: 'Head of Product, Aurora Media',
-    image: '/images/testimonial-aurora.jpg',
-    tags: ['Design System', 'UI'],
-  },
-];
+const TESTIMONIAL_IMAGES = [
+  '/images/testimonial-bloomair.jpg',
+  '/images/testimonial-topnos.jpg',
+  '/images/testimonial-nexus.jpg',
+  '/images/testimonial-aurora.jpg',
+] as const;
 
 const AUTO_ADVANCE_MS = 6000;
 
@@ -74,15 +37,16 @@ const imageVariants: Variants = {
 
 export function TestimonialsSection() {
   const t = useTranslations('testimonials');
+  const items = t.raw('items') as TestimonialItem[];
   const [activeIndex, setActiveIndex] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const startInterval = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
-      setActiveIndex((i) => (i + 1) % TESTIMONIALS.length);
+      setActiveIndex((i) => (i + 1) % items.length);
     }, AUTO_ADVANCE_MS);
-  }, []);
+  }, [items.length]);
 
   useEffect(() => {
     startInterval();
@@ -96,10 +60,11 @@ export function TestimonialsSection() {
     startInterval();
   };
 
-  const goPrev = () => goTo((activeIndex - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
-  const goNext = () => goTo((activeIndex + 1) % TESTIMONIALS.length);
+  const goPrev = () => goTo((activeIndex - 1 + items.length) % items.length);
+  const goNext = () => goTo((activeIndex + 1) % items.length);
 
-  const active = TESTIMONIALS[activeIndex];
+  const active = items[activeIndex];
+  const activeImage = TESTIMONIAL_IMAGES[activeIndex];
 
   return (
     <section className="py-16 md:py-32" style={{ backgroundColor: '#0a0a0f' }}>
@@ -221,7 +186,7 @@ export function TestimonialsSection() {
                 className="absolute inset-0"
               >
                 <Image
-                  src={active.image}
+                  src={activeImage}
                   alt={active.client}
                   fill
                   sizes="(max-width: 768px) 100vw, 45vw"
@@ -242,7 +207,7 @@ export function TestimonialsSection() {
 
         {/* Dot indicators */}
         <div className="flex items-center justify-center" style={{ gap: 8, marginTop: 24 }}>
-          {TESTIMONIALS.map((_, index) =>
+          {items.map((_, index) =>
             index === activeIndex ? (
               <motion.button
                 key={index}

@@ -100,7 +100,41 @@
     "heading_highlight": "us",
     "prev_aria": "Previous testimonial",
     "next_aria": "Next testimonial",
-    "go_to_aria": "Go to testimonial {number}"
+    "go_to_aria": "Go to testimonial {number}",
+    "items": [
+      {
+        "client": "Bloomair",
+        "logo": "BLOOMAIR",
+        "quote": "UCY Studio transformed our digital presence. The site they delivered exceeded all our expectations — in timing, quality, and impact.",
+        "author": "Sarah M.",
+        "role": "Founder, Bloomair",
+        "tags": ["E-commerce", "Branding"]
+      },
+      {
+        "client": "TopNos",
+        "logo": "TopNos",
+        "quote": "A team that truly understands brand challenges. Our visual identity is now consistent across all our materials.",
+        "author": "David L.",
+        "role": "Marketing Director, TopNos",
+        "tags": ["Visual Identity", "Print"]
+      },
+      {
+        "client": "Nexus Capital",
+        "logo": "NEXUS",
+        "quote": "The dashboard UCY designed changed the way our teams work. Flawless UX, delivered in 3 weeks.",
+        "author": "Marc R.",
+        "role": "CTO, Nexus Capital",
+        "tags": ["Fintech", "Dashboard"]
+      },
+      {
+        "client": "Aurora Media",
+        "logo": "Aurora",
+        "quote": "Our design system is now the internal reference for all our product teams. Remarkable work.",
+        "author": "Léa K.",
+        "role": "Head of Product, Aurora Media",
+        "tags": ["Design System", "UI"]
+      }
+    ]
   },
   "about": {
     "label": "About",
