@@ -177,10 +177,17 @@
     "member3_role": "Strategic Advisor"
   },
   "footer_cta": {
-    "headline": "Let's build something together",
-    "sub": "A project, an idea, a question — we're here.",
-    "whatsapp_fr": "WhatsApp Paris",
-    "whatsapp_il": "WhatsApp Jerusalem"
+    "kicker": "LET'S TALK ABOUT YOUR PROJECT",
+    "headline_start": "Delivered in ",
+    "headline_highlight": "3 weeks.",
+    "sub": "Jerusalem × Paris — we respond within 24h.",
+    "needs_label": "YOUR NEED",
+    "needs": ["Site web", "Branding", "UI/UX", "E-commerce", "IA"],
+    "placeholder": "your@email.com",
+    "btn_default": "Start →",
+    "btn_loading": "...",
+    "btn_sent": "Sent ✓",
+    "note": "Free quote · No commitment · Reply within 24h"
   },
   "footer": {
     "address_paris": "Paris, France",

@@ -177,10 +177,17 @@
     "member3_role": "Conseiller Stratégique"
   },
   "footer_cta": {
-    "headline": "Démarrons quelque chose ensemble",
-    "sub": "Un projet, une idée, une question — on est là.",
-    "whatsapp_fr": "WhatsApp Paris",
-    "whatsapp_il": "WhatsApp Jérusalem"
+    "kicker": "PARLONS DE VOTRE PROJET",
+    "headline_start": "Livré en ",
+    "headline_highlight": "3 semaines.",
+    "sub": "Jérusalem × Paris — on répond sous 24h.",
+    "needs_label": "VOTRE BESOIN",
+    "needs": ["Site web", "Branding", "UI/UX", "E-commerce", "IA"],
+    "placeholder": "votre@email.com",
+    "btn_default": "Démarrer →",
+    "btn_loading": "...",
+    "btn_sent": "Envoyé ✓",
+    "note": "Devis gratuit · Sans engagement · Réponse sous 24h"
   },
   "footer": {
     "address_paris": "Paris, France",
