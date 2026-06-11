@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const VIDEOS = [
   '/videos/hero-video-1.mp4',
@@ -100,8 +100,8 @@ function VideoCarousel() {
 
 export function HeroSection() {
   const t = useTranslations('hero');
-  const router = useRouter();
   const [marginTop, setMarginTop] = useState(104);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const onBannerClosed = () => setMarginTop(64);
@@ -142,51 +142,53 @@ export function HeroSection() {
 
           <div className="flex flex-col sm:flex-row items-center gap-4 pt-2" style={{ overflow: 'visible' }}>
             {/* Primary CTA — dark, animated gradient glow on hover */}
-            <div style={{ position: 'relative', display: 'inline-block' }}>
-              {/* Animated glow shadow — appears on hover */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.85 }}
-                whileHover={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
+            <div
+              style={{ position: 'relative', display: 'inline-block' }}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              {/* Glow shadow */}
+              <div
                 style={{
                   position: 'absolute',
-                  bottom: -10,
+                  bottom: -12,
                   left: '50%',
                   transform: 'translateX(-50%)',
-                  width: '85%',
+                  width: '80%',
                   height: '100%',
                   borderRadius: '100px',
                   background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7, #DF57BC, #DE541E)',
                   backgroundSize: '300% 300%',
                   animation: 'gradientShift 3s ease infinite',
-                  filter: 'blur(16px)',
+                  filter: 'blur(18px)',
+                  opacity: isHovered ? 1 : 0,
+                  transition: 'opacity 0.3s ease',
                   zIndex: 0,
                   pointerEvents: 'none',
                 }}
               />
 
               {/* Button */}
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2 }}
+              <Link
+                href="/contact"
                 style={{
                   position: 'relative',
                   zIndex: 1,
+                  display: 'inline-block',
                   background: '#0a0a0a',
                   color: '#fff',
                   padding: '14px 32px',
                   borderRadius: '100px',
                   fontSize: 15,
                   fontWeight: 700,
-                  border: 'none',
-                  cursor: 'pointer',
+                  textDecoration: 'none',
                   whiteSpace: 'nowrap',
+                  transform: isHovered ? 'scale(1.02)' : 'scale(1)',
+                  transition: 'transform 0.2s ease',
                 }}
-                onClick={() => router.push('/contact')}
               >
                 {t('cta_primary')}
-              </motion.button>
+              </Link>
             </div>
 
             {/* Secondary CTA — minimalist underline link */}
