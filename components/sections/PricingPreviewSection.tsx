@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/Badge';
+import { GlowButton } from '@/components/ui/GlowButton';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 
 type Currency = 'ILS' | 'EUR';
@@ -221,16 +222,14 @@ export function PricingPreviewSection() {
                   ))}
                 </ul>
 
-                <GlowCTA>
-                  {card.featured ? (
-                    <Link
-                      href="/pricing"
-                      className="flex items-center justify-center rounded-full font-heading font-semibold text-sm w-full"
-                      style={{ backgroundColor: '#3626A7', color: 'white', padding: '11px 0' }}
-                    >
+                {card.featured ? (
+                  <div className="w-full grid">
+                    <GlowButton href="/pricing" variant="gradient" className="w-full text-center">
                       {t(card.ctaKey)}
-                    </Link>
-                  ) : (
+                    </GlowButton>
+                  </div>
+                ) : (
+                  <GlowCTA>
                     <Link
                       href="/pricing"
                       className="flex items-center justify-center rounded-full font-sans font-semibold text-sm w-full transition-colors duration-200 hover:border-[#3626A7] hover:text-[#3626A7]"
@@ -238,8 +237,8 @@ export function PricingPreviewSection() {
                     >
                       {t(card.ctaKey)}
                     </Link>
-                  )}
-                </GlowCTA>
+                  </GlowCTA>
+                )}
               </motion.div>
             );
           })}

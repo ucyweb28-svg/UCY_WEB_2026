@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import { GlowButton } from '@/components/ui/GlowButton';
 
 const VIDEOS = [
   '/videos/hero-video-1.mp4',
@@ -140,34 +141,9 @@ export function HeroSection() {
 
           <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
             {/* Primary CTA — dark with gradient glow */}
-            <div style={{ position: 'relative', display: 'inline-block', overflow: 'visible' }}>
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-                style={{
-                  position: 'absolute',
-                  bottom: -8,
-                  left: -4,
-                  width: '100%',
-                  height: '100%',
-                  borderRadius: 'inherit',
-                  background: 'linear-gradient(135deg, #3626A7 0%, #DF57BC 50%, #DE541E 100%)',
-                  filter: 'blur(14px)',
-                  zIndex: -1,
-                  pointerEvents: 'none',
-                }}
-              />
-              <motion.a
-                href="/contact"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2 }}
-                className="relative inline-flex items-center justify-center rounded-full bg-[#000807] text-white font-heading font-semibold text-base px-8 py-[14px]"
-              >
-                {t('cta_primary')}
-              </motion.a>
-            </div>
+            <GlowButton href="/contact" variant="dark">
+              {t('cta_primary')}
+            </GlowButton>
 
             {/* Secondary CTA — minimalist underline link */}
             <a

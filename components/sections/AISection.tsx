@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/Button';
+import { GlowButton } from '@/components/ui/GlowButton';
 
 const MODULES = [
   {
@@ -92,9 +92,9 @@ export function AISection() {
           </p>
 
           <div className="flex flex-wrap items-center" style={{ gap: 12, marginTop: 32 }}>
-            <Button variant="primary" href="/contact">
+            <GlowButton href="/contact" variant="gradient">
               {t('btn_primary')}
-            </Button>
+            </GlowButton>
           </div>
         </motion.div>
 

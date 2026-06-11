@@ -204,15 +204,46 @@ export function ContactSection() {
               />
             </div>
 
-            <Button
-              type="submit"
-              variant="primary"
-              size="lg"
-              disabled={status === 'loading'}
-              className="w-full sm:w-auto"
-            >
-              {status === 'loading' ? t('loading') : t('submit')}
-            </Button>
+            <div className="relative inline-block w-full sm:w-auto">
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  position: 'absolute',
+                  bottom: -8,
+                  left: -4,
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: 'inherit',
+                  background: 'linear-gradient(135deg, #3626A7 0%, #DF57BC 50%, #DE541E 100%)',
+                  filter: 'blur(14px)',
+                  zIndex: 0,
+                  pointerEvents: 'none',
+                }}
+              />
+              <motion.button
+                type="submit"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+                disabled={status === 'loading'}
+                className="relative w-full sm:w-auto disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+                style={{
+                  display: 'inline-block',
+                  background: 'linear-gradient(90deg, #3626A7, #DF57BC)',
+                  color: '#ffffff',
+                  padding: '12px 28px',
+                  borderRadius: '100px',
+                  fontSize: 15,
+                  fontWeight: 700,
+                  border: 'none',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {status === 'loading' ? t('loading') : t('submit')}
+              </motion.button>
+            </div>
 
             {status === 'success' && (
               <p className="font-sans text-sm" style={{ color: '#3626A7' }}>

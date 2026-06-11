@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '@/components/ui/Button';
+import { GlowButton } from '@/components/ui/GlowButton';
 import { gradientText } from '@/lib/utils/gradientText';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 
@@ -217,14 +217,9 @@ export function Nav() {
         {/* Desktop CTA + Mobile hamburger */}
         <div className="flex items-center gap-3">
           <div className="hidden lg:flex shrink-0">
-            <Button
-              variant="primary"
-              href="/contact"
-              size="md"
-              className="whitespace-nowrap [-webkit-appearance:none]"
-            >
+            <GlowButton href="/contact" variant="gradient">
               {t('cta')}
-            </Button>
+            </GlowButton>
           </div>
 
           <button
