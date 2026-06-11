@@ -2,6 +2,7 @@ import { HeroSection }      from '@/components/sections/HeroSection';
 import { TrustStrip }       from '@/components/sections/TrustStrip';
 import { StatsBar }         from '@/components/sections/StatsBar';
 import { ServicesSection }  from '@/components/sections/ServicesSection';
+import { ProcessSection }   from '@/components/sections/ProcessSection';
 import { AISection }        from '@/components/sections/AISection';
 import { PortfolioSection } from '@/components/sections/PortfolioSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
@@ -15,6 +16,7 @@ export default function HomePage() {
       <TrustStrip />
       <StatsBar />
       <ServicesSection />
+      <ProcessSection />
       <AISection />
       <PortfolioSection />
       <TestimonialsSection />
