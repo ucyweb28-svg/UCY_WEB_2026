@@ -253,16 +253,13 @@ export function PricingPreviewSection() {
           className="text-center"
           style={{ marginTop: 40 }}
         >
-          <GlowCTA>
-            <Link
-              href="/pricing"
-              className="group inline-flex items-center justify-center font-sans font-semibold transition-opacity duration-200 hover:opacity-70"
-              style={{ color: '#3626A7', fontSize: 15, gap: 6 }}
-            >
-              <span>{t('cta_full')}</span>
-              <span aria-hidden className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </Link>
-          </GlowCTA>
+          <Link
+            href="/pricing"
+            className="font-sans hover:underline"
+            style={{ color: '#3626A7', fontWeight: 600, fontSize: 14 }}
+          >
+            {t('cta_full')}
+          </Link>
         </motion.div>
 
       </div>
