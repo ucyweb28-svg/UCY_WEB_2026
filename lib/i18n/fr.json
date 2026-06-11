@@ -205,6 +205,7 @@
     "legal": "Mentions légales"
   },
   "contact": {
+    "meta_title": "Contact | UCY Studio",
     "badge": "CONTACT",
     "title_start": "Parlons de ",
     "title_highlight": "votre projet.",
@@ -322,6 +323,8 @@
   },
   "legal": {
     "title": "Mentions légales",
+    "meta_title": "Mentions légales | UCY Studio",
+    "meta_description": "Mentions légales d'UCY Studio : éditeur, hébergement, propriété intellectuelle et protection des données personnelles.",
     "updated": "Dernière mise à jour : 10 juin 2026",
     "editor_title": "Éditeur du site",
     "editor_company": "UCY Studio",

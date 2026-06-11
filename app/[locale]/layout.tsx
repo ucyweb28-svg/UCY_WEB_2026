@@ -2,16 +2,16 @@ import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import Script from 'next/script';
 import { Syne, DM_Sans } from 'next/font/google';
 import { Nav } from '@/components/layout/Nav';
 import { Footer } from '@/components/layout/Footer';
 import { AnnouncementBanner } from '@/components/layout/AnnouncementBanner';
+import { buildPageMetadata, OrganizationSchema, SITE_URL, type Locale } from '@/components/SEO';
 import '../globals.css';
 
 const locales = ['fr', 'en'] as const;
-type Locale = (typeof locales)[number];
 
 const syne = Syne({
   subsets: ['latin'],
@@ -27,22 +27,27 @@ const dmSans = DM_Sans({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL('https://ucyweb.fr'),
-  title: {
-    default: 'UCY Studio — Design & Développement Digital',
-    template: '%s | UCY Studio',
-  },
-  description:
-    'Studio de design & développement digital haut de gamme. Jérusalem × Paris.',
-  openGraph: {
-    siteName: 'UCY Studio',
-    locale: 'fr_FR',
-  },
-  icons: {
-    icon: '/favicon.svg',
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const t = await getTranslations({ locale, namespace: 'meta' });
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    icons: {
+      icon: '/favicon.svg',
+    },
+    ...buildPageMetadata({
+      locale,
+      path: '/',
+      title: t('home_title'),
+      description: t('home_description'),
+    }),
+  };
+}
 
 export default async function LocaleLayout({
   children,
@@ -65,6 +70,7 @@ export default async function LocaleLayout({
       className={`${syne.variable} ${dmSans.variable}`}
     >
       <body>
+        <OrganizationSchema locale={locale as Locale} />
         <Script
           defer
           data-domain="ucyweb.fr"

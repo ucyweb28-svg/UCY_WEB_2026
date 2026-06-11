@@ -205,6 +205,7 @@
     "legal": "Legal notice"
   },
   "contact": {
+    "meta_title": "Contact | UCY Studio",
     "badge": "CONTACT",
     "title_start": "Let's discuss ",
     "title_highlight": "your project.",
@@ -322,6 +323,8 @@
   },
   "legal": {
     "title": "Legal Notice",
+    "meta_title": "Legal Notice | UCY Studio",
+    "meta_description": "Legal notice for UCY Studio: publisher information, hosting, intellectual property, and personal data protection.",
     "updated": "Last updated: June 10, 2026",
     "editor_title": "Site publisher",
     "editor_company": "UCY Studio",
