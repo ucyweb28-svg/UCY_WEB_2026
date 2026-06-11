@@ -6,6 +6,7 @@ import { ProcessSection }   from '@/components/sections/ProcessSection';
 import { AISection }        from '@/components/sections/AISection';
 import { PortfolioSection } from '@/components/sections/PortfolioSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
+import { PricingPreviewSection } from '@/components/sections/PricingPreviewSection';
 import { AboutSection }     from '@/components/sections/AboutSection';
 import { FooterCTA }        from '@/components/sections/FooterCTA';
 
@@ -20,6 +21,7 @@ export default function HomePage() {
       <AISection />
       <PortfolioSection />
       <TestimonialsSection />
+      <PricingPreviewSection />
       <AboutSection />
       <FooterCTA />
     </main>
