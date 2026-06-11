@@ -59,7 +59,10 @@ export function PricingPreviewSection() {
   const t = useTranslations('pricing_preview');
 
   return (
-    <section className="bg-white py-20">
+    <section
+      className="bg-white pt-20 pb-28"
+      style={{ borderTop: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 -4px 24px rgba(0,0,0,0.04)' }}
+    >
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Header */}
@@ -136,7 +139,10 @@ export function PricingPreviewSection() {
                 {t(card.tagKey)}
               </span>
 
-              <p className="font-heading font-extrabold" style={{ fontSize: 28, color: '#0a0a0f', marginTop: 16 }}>
+              <p
+                className="font-heading font-extrabold whitespace-nowrap"
+                style={{ fontSize: 'clamp(20px, 2.5vw, 28px)', color: '#0a0a0f', marginTop: 16 }}
+              >
                 {t(card.priceKey)}
               </p>
               <p className="font-sans" style={{ fontSize: 13, color: 'rgba(0,8,7,0.4)', marginTop: 2 }}>
