@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
+import { GradientGlow } from '@/components/ui/GradientGlow';
 
 type Variant = 'primary' | 'secondary' | 'whatsapp' | 'whatsapp-outline' | 'ghost';
 type Size = 'md' | 'lg';
@@ -54,23 +55,25 @@ export function Button({
     className,
   ].join(' ');
 
-  if (href) {
-    return (
-      <Link
-        href={href}
-        className={classes}
-        {...(external
-          ? { target: '_blank', rel: 'noopener noreferrer' }
-          : {})}
-      >
-        {children}
-      </Link>
-    );
-  }
-
-  return (
+  const button = href ? (
+    <Link
+      href={href}
+      className={classes}
+      {...(external
+        ? { target: '_blank', rel: 'noopener noreferrer' }
+        : {})}
+    >
+      {children}
+    </Link>
+  ) : (
     <button type={type} onClick={onClick} disabled={disabled} className={classes}>
       {children}
     </button>
   );
+
+  if (variant !== 'primary') {
+    return button;
+  }
+
+  return <GradientGlow className={className}>{button}</GradientGlow>;
 }

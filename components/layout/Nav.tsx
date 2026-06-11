@@ -7,7 +7,6 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
-import { formatWhatsAppLink } from '@/lib/utils/formatWhatsAppLink';
 import { gradientText } from '@/lib/utils/gradientText';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 
@@ -167,11 +166,6 @@ export function Nav() {
     }, 100);
   };
 
-  const whatsappHref = formatWhatsAppLink(
-    'fr',
-    'Bonjour%20UCY%20Studio%2C%20je%20voudrais%20d%C3%A9marrer%20un%20projet'
-  );
-
   return (
     <header
       className="bg-white/95 backdrop-blur-md border-b border-black/10"
@@ -224,9 +218,8 @@ export function Nav() {
           <div className="hidden lg:flex shrink-0">
             <Button
               variant="primary"
-              href={whatsappHref}
+              href="/contact"
               size="md"
-              external
               className="whitespace-nowrap [-webkit-appearance:none]"
             >
               {t('cta')}

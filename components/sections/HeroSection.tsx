@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { GradientGlow } from '@/components/ui/GradientGlow';
 import { formatWhatsAppLink } from '@/lib/utils/formatWhatsAppLink';
 
 const VIDEOS = [
@@ -147,21 +148,16 @@ export function HeroSection() {
 
           <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
             {/* Primary CTA — dark with gradient glow */}
-            <motion.div
-              className="relative inline-block rounded-full"
-              initial={{ boxShadow: '0px 0px 0px 0px rgba(54, 38, 167, 0)' }}
-              whileHover={{ boxShadow: '-4px 4px 20px rgba(54, 38, 167, 0.5)' }}
-              transition={{ duration: 0.3 }}
-            >
+            <GradientGlow>
               <Link
                 href={whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative inline-flex items-center justify-center rounded-full bg-[#000807] text-white font-heading font-semibold text-base px-8 py-[14px] transition-transform duration-200 active:scale-[0.98] before:absolute before:-bottom-1 before:-left-1 before:w-full before:h-full before:rounded-full before:bg-gradient-to-tr before:from-[#3626A7] before:via-[#DF57BC] before:to-[#DE541E] before:blur-md before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100 before:-z-10"
+                className="relative inline-flex items-center justify-center rounded-full bg-[#000807] text-white font-heading font-semibold text-base px-8 py-[14px]"
               >
                 {t('cta_primary')}
               </Link>
-            </motion.div>
+            </GradientGlow>
 
             {/* Secondary CTA — minimalist underline link */}
             <a
