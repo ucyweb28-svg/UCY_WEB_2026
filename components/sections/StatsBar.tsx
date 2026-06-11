@@ -5,6 +5,13 @@ import { motion } from 'framer-motion';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 
+const BORDER_CLASSES = [
+  '',
+  'border-l border-white/15',
+  'border-t border-white/15 md:border-t-0 md:border-l',
+  'border-t border-l border-white/15 md:border-t-0',
+];
+
 export function StatsBar() {
   const t = useTranslations('stats');
 
@@ -23,20 +30,23 @@ export function StatsBar() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/20 [&>*:nth-child(3)]:border-l-0 md:[&>*:nth-child(3)]:border-l"
+          className="grid grid-cols-2 md:grid-cols-4"
         >
           {STATS.map(({ value, label }, index) => (
             <ScrollReveal key={label} delay={index * 0.1}>
               <motion.div
                 variants={fadeUp}
-                className="flex flex-col items-center gap-2 py-10 md:py-12 text-center"
+                className={`flex flex-col items-center text-center py-10 px-6 ${BORDER_CLASSES[index]}`}
               >
-                <span className="font-heading font-extrabold text-4xl md:text-7xl leading-none bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent animate-gradient">
+                <span
+                  className="font-heading font-extrabold leading-none bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent animate-gradient"
+                  style={{ fontSize: 'clamp(32px, 6vw, 48px)' }}
+                >
                   {value}
                 </span>
                 <span
-                  className="font-sans text-sm"
-                  style={{ color: 'rgba(255,255,255,0.4)' }}
+                  className="font-sans mt-2"
+                  style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}
                 >
                   {label}
                 </span>
@@ -45,7 +55,10 @@ export function StatsBar() {
           ))}
         </motion.div>
 
-        <p className="text-center text-white/60 text-sm mt-8 tracking-widest uppercase">
+        <p
+          className="text-center text-white/60 text-sm mt-8 pt-6 mx-6 tracking-widest uppercase"
+          style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}
+        >
           {t('tagline')}
         </p>
       </div>
