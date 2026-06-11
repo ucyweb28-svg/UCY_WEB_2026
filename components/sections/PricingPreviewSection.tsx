@@ -1,17 +1,20 @@
 'use client';
 
+import { useState } from 'react';
+import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
 import { stagger, fadeUp } from '@/lib/utils/animations';
+
+type Currency = 'ILS' | 'EUR';
 
 interface PreviewCard {
   id: string;
   tagKey: string;
-  priceKey: string;
-  priceAltKey: string;
+  priceEurKey: string;
+  priceIlsKey: string;
   featuresKey: string[];
   ctaKey: string;
   featured: boolean;
@@ -21,8 +24,8 @@ const CARDS: PreviewCard[] = [
   {
     id: 'essentiel',
     tagKey: 'essentiel_tag',
-    priceKey: 'essentiel_price',
-    priceAltKey: 'essentiel_price_alt',
+    priceEurKey: 'essentiel_price_eur',
+    priceIlsKey: 'essentiel_price_ils',
     featuresKey: ['essentiel_feature1', 'essentiel_feature2', 'essentiel_feature3'],
     ctaKey: 'cta_details',
     featured: false,
@@ -30,8 +33,8 @@ const CARDS: PreviewCard[] = [
   {
     id: 'professionnel',
     tagKey: 'professionnel_tag',
-    priceKey: 'professionnel_price',
-    priceAltKey: 'professionnel_price_alt',
+    priceEurKey: 'professionnel_price_eur',
+    priceIlsKey: 'professionnel_price_ils',
     featuresKey: ['professionnel_feature1', 'professionnel_feature2', 'professionnel_feature3'],
     ctaKey: 'cta_simulate',
     featured: true,
@@ -39,8 +42,8 @@ const CARDS: PreviewCard[] = [
   {
     id: 'premium',
     tagKey: 'premium_tag',
-    priceKey: 'premium_price',
-    priceAltKey: 'premium_price_alt',
+    priceEurKey: 'premium_price_eur',
+    priceIlsKey: 'premium_price_ils',
     featuresKey: ['premium_feature1', 'premium_feature2', 'premium_feature3'],
     ctaKey: 'cta_details',
     featured: false,
@@ -55,8 +58,36 @@ function CheckIcon({ size = 14, color }: { size?: number; color: string }) {
   );
 }
 
+function GlowCTA({ children, className = '' }: { children: ReactNode; className?: string }) {
+  return (
+    <div style={{ position: 'relative', display: 'inline-block', width: '100%', overflow: 'visible' }} className={className}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileHover={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        style={{
+          position: 'absolute',
+          bottom: -8,
+          left: -4,
+          width: '100%',
+          height: '100%',
+          borderRadius: 'inherit',
+          background: 'linear-gradient(135deg, #3626A7 0%, #DF57BC 50%, #DE541E 100%)',
+          filter: 'blur(12px)',
+          zIndex: -1,
+          pointerEvents: 'none',
+        }}
+      />
+      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0.2 }}>
+        {children}
+      </motion.div>
+    </div>
+  );
+}
+
 export function PricingPreviewSection() {
   const t = useTranslations('pricing_preview');
+  const [currency, setCurrency] = useState<Currency>('ILS');
 
   return (
     <section
@@ -96,6 +127,30 @@ export function PricingPreviewSection() {
           >
             {t('subtitle')}
           </motion.p>
+
+          {/* Currency toggle */}
+          <motion.div variants={fadeUp} className="flex items-center" style={{ gap: 8, marginTop: 20 }}>
+            {(['ILS', 'EUR'] as const).map((cur) => {
+              const isActive = currency === cur;
+              return (
+                <button
+                  key={cur}
+                  type="button"
+                  onClick={() => setCurrency(cur)}
+                  className="font-sans font-semibold rounded-full transition-colors duration-200 cursor-pointer"
+                  style={{
+                    fontSize: 13,
+                    padding: '8px 20px',
+                    backgroundColor: isActive ? '#3626A7' : 'transparent',
+                    color: isActive ? '#ffffff' : '#888888',
+                    border: isActive ? '1px solid #3626A7' : '1px solid #e0e0e0',
+                  }}
+                >
+                  {t(cur === 'ILS' ? 'currency_ils' : 'currency_eur')}
+                </button>
+              );
+            })}
+          </motion.div>
         </motion.div>
 
         {/* Cards */}
@@ -106,77 +161,88 @@ export function PricingPreviewSection() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          {CARDS.map((card) => (
-            <motion.div
-              key={card.id}
-              variants={fadeUp}
-              className={[
-                'relative rounded-2xl flex flex-col p-6 transition-all duration-200',
-                card.featured
-                  ? 'border-2 border-[#3626A7] bg-[#fafafe] hover:shadow-sm'
-                  : 'border border-[#e5e7eb] bg-white hover:border-[#3626A7] hover:shadow-sm',
-              ].join(' ')}
-            >
-              {card.featured && (
+          {CARDS.map((card) => {
+            const priceKey = currency === 'ILS' ? card.priceIlsKey : card.priceEurKey;
+            const altKey = currency === 'ILS' ? card.priceEurKey : card.priceIlsKey;
+
+            return (
+              <motion.div
+                key={card.id}
+                variants={fadeUp}
+                className={[
+                  'relative rounded-2xl flex flex-col p-6 transition-all duration-200',
+                  card.featured
+                    ? 'border-2 border-[#3626A7] bg-[#fafafe] hover:shadow-sm'
+                    : 'border border-[#e5e7eb] bg-white hover:border-[#3626A7] hover:shadow-sm',
+                ].join(' ')}
+              >
+                {card.featured && (
+                  <span
+                    className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full font-sans font-bold uppercase tracking-wide"
+                    style={{
+                      top: -12,
+                      fontSize: 10,
+                      padding: '4px 14px',
+                      background: 'linear-gradient(90deg, #3626A7, #DF57BC, #DE541E)',
+                      color: 'white',
+                    }}
+                  >
+                    {t('professionnel_badge')}
+                  </span>
+                )}
+
                 <span
-                  className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full font-sans font-bold uppercase tracking-wide"
-                  style={{
-                    top: -12,
-                    fontSize: 10,
-                    padding: '4px 14px',
-                    background: 'linear-gradient(90deg, #3626A7, #DF57BC, #DE541E)',
-                    color: 'white',
-                  }}
+                  className="self-start inline-block rounded-full font-sans font-bold uppercase tracking-widest"
+                  style={{ fontSize: 10, padding: '4px 12px', backgroundColor: '#FBF9FF', color: '#3626A7' }}
                 >
-                  {t('professionnel_badge')}
+                  {t(card.tagKey)}
                 </span>
-              )}
 
-              <span
-                className="self-start inline-block rounded-full font-sans font-bold uppercase tracking-widest"
-                style={{ fontSize: 10, padding: '4px 12px', backgroundColor: '#FBF9FF', color: '#3626A7' }}
-              >
-                {t(card.tagKey)}
-              </span>
-
-              <p
-                className="font-heading font-extrabold whitespace-nowrap"
-                style={{ fontSize: 'clamp(20px, 2.5vw, 28px)', color: '#0a0a0f', marginTop: 16 }}
-              >
-                {t(card.priceKey)}
-              </p>
-              <p className="font-sans" style={{ fontSize: 13, color: 'rgba(0,8,7,0.4)', marginTop: 2 }}>
-                {t(card.priceAltKey)}
-              </p>
-
-              <ul className="flex flex-col" style={{ gap: 10, marginTop: 20, marginBottom: 24, flex: 1 }}>
-                {card.featuresKey.map((featureKey) => (
-                  <li key={featureKey} className="flex items-start" style={{ gap: 8 }}>
-                    <span style={{ marginTop: 2, flexShrink: 0 }}>
-                      <CheckIcon color="#3626A7" />
-                    </span>
-                    <span className="font-sans" style={{ fontSize: 13, color: 'rgba(0,8,7,0.6)', lineHeight: 1.5 }}>
-                      {t(featureKey)}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              {card.featured ? (
-                <Button variant="primary" href="/pricing" size="md" className="w-full">
-                  {t(card.ctaKey)}
-                </Button>
-              ) : (
-                <Link
-                  href="/pricing"
-                  className="inline-flex items-center justify-center rounded-full font-sans font-semibold text-sm w-full transition-colors duration-200 hover:border-[#3626A7] hover:text-[#3626A7]"
-                  style={{ border: '1px solid rgba(0,8,7,0.15)', color: '#000807', padding: '11px 0' }}
+                <p
+                  className="font-heading font-extrabold whitespace-nowrap"
+                  style={{ fontSize: 'clamp(16px, 2vw, 22px)', color: '#0a0a0f', marginTop: 16 }}
                 >
-                  {t(card.ctaKey)}
-                </Link>
-              )}
-            </motion.div>
-          ))}
+                  {t('price_prefix')}{t(priceKey)}
+                </p>
+                <p className="font-sans whitespace-nowrap" style={{ fontSize: 13, color: 'rgba(0,8,7,0.4)', marginTop: 2 }}>
+                  {t('price_alt_prefix')}{t(altKey)}
+                </p>
+
+                <ul className="flex flex-col" style={{ gap: 10, marginTop: 20, marginBottom: 24, flex: 1 }}>
+                  {card.featuresKey.map((featureKey) => (
+                    <li key={featureKey} className="flex items-start" style={{ gap: 8 }}>
+                      <span style={{ marginTop: 2, flexShrink: 0 }}>
+                        <CheckIcon color="#3626A7" />
+                      </span>
+                      <span className="font-sans" style={{ fontSize: 13, color: 'rgba(0,8,7,0.6)', lineHeight: 1.5 }}>
+                        {t(featureKey)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <GlowCTA>
+                  {card.featured ? (
+                    <Link
+                      href="/pricing"
+                      className="flex items-center justify-center rounded-full font-heading font-semibold text-sm w-full"
+                      style={{ backgroundColor: '#3626A7', color: 'white', padding: '11px 0' }}
+                    >
+                      {t(card.ctaKey)}
+                    </Link>
+                  ) : (
+                    <Link
+                      href="/pricing"
+                      className="flex items-center justify-center rounded-full font-sans font-semibold text-sm w-full transition-colors duration-200 hover:border-[#3626A7] hover:text-[#3626A7]"
+                      style={{ border: '1px solid rgba(0,8,7,0.15)', color: '#000807', padding: '11px 0', backgroundColor: '#ffffff' }}
+                    >
+                      {t(card.ctaKey)}
+                    </Link>
+                  )}
+                </GlowCTA>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
         {/* Bottom link */}
@@ -188,14 +254,16 @@ export function PricingPreviewSection() {
           className="text-center"
           style={{ marginTop: 40 }}
         >
-          <Link
-            href="/pricing"
-            className="group inline-flex items-center font-sans font-semibold transition-opacity duration-200 hover:opacity-70"
-            style={{ color: '#3626A7', fontSize: 15, gap: 6 }}
-          >
-            <span>{t('cta_full')}</span>
-            <span aria-hidden className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
-          </Link>
+          <GlowCTA>
+            <Link
+              href="/pricing"
+              className="group inline-flex items-center justify-center font-sans font-semibold transition-opacity duration-200 hover:opacity-70"
+              style={{ color: '#3626A7', fontSize: 15, gap: 6 }}
+            >
+              <span>{t('cta_full')}</span>
+              <span aria-hidden className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </Link>
+          </GlowCTA>
         </motion.div>
 
       </div>
