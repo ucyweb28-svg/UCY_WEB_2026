@@ -120,7 +120,8 @@
     "project3_title": "Nexus Capital",
     "project3_cat": "Fintech · Dashboard",
     "project4_title": "Aurora Media",
-    "project4_cat": "Design System · UI"
+    "project4_cat": "Design System · UI",
+    "view_all": "View all projects →"
   },
   "testimonials": {
     "heading_start": "Why they trust ",
@@ -275,7 +276,7 @@
     "badge": "PRICING",
     "headline_start": "Transparent ",
     "headline_highlight": "pricing",
-    "subtitle": "No hidden fees. Choose your pack, customise it with our options.",
+    "subtitle": "No hidden fees. Choose your pack and customize.",
     "currency_ils": "ILS",
     "currency_eur": "EUR",
     "price_prefix": "From ",

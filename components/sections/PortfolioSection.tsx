@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/Badge';
@@ -104,6 +105,51 @@ export function PortfolioSection() {
               </motion.div>
             </ScrollReveal>
           ))}
+        </motion.div>
+
+        {/* View all projects CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="flex justify-end"
+          style={{ marginTop: 32 }}
+        >
+          <div style={{ position: 'relative', display: 'inline-block' }}>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 0.6 }}
+              transition={{ duration: 0.3 }}
+              style={{
+                position: 'absolute',
+                bottom: -6,
+                left: -3,
+                width: '100%',
+                height: '100%',
+                borderRadius: 'inherit',
+                background: 'linear-gradient(135deg, #3626A7 0%, #DF57BC 50%, #DE541E 100%)',
+                filter: 'blur(10px)',
+                zIndex: -1,
+                pointerEvents: 'none',
+              }}
+            />
+            <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.98 }}>
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center bg-transparent font-sans font-semibold transition-colors duration-200 hover:bg-[#0a0a0a] hover:text-white"
+                style={{
+                  fontSize: 14,
+                  padding: '12px 24px',
+                  borderRadius: 10,
+                  border: '1.5px solid #0a0a0a',
+                  color: '#0a0a0a',
+                }}
+              >
+                {t('view_all')}
+              </Link>
+            </motion.div>
+          </div>
         </motion.div>
 
       </div>

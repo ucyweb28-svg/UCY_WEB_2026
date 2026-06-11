@@ -120,7 +120,8 @@
     "project3_title": "Nexus Capital",
     "project3_cat": "Fintech · Dashboard",
     "project4_title": "Aurora Media",
-    "project4_cat": "Design System · UI"
+    "project4_cat": "Design System · UI",
+    "view_all": "Voir tous nos projets →"
   },
   "testimonials": {
     "heading_start": "Pourquoi ils nous font ",
@@ -275,7 +276,7 @@
     "badge": "TARIFS",
     "headline_start": "Des tarifs ",
     "headline_highlight": "transparents",
-    "subtitle": "Pas de forfait caché. Choisissez votre pack, personnalisez avec nos options.",
+    "subtitle": "Pas de forfait caché. Choisissez votre pack et personnalisez.",
     "currency_ils": "ILS",
     "currency_eur": "EUR",
     "price_prefix": "À partir de ",
