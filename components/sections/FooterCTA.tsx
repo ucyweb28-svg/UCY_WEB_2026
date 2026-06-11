@@ -90,6 +90,7 @@ export function FooterCTA() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="flex-1 min-w-0 w-full md:w-auto"
+            style={{ maxWidth: '100%', overflow: 'hidden', paddingRight: 16 }}
           >
             <p
               className="font-sans font-bold uppercase"
@@ -98,8 +99,15 @@ export function FooterCTA() {
               {t('kicker')}
             </p>
             <h2
-              className="font-heading font-black md:whitespace-nowrap"
-              style={{ fontSize: 'clamp(32px, 4vw, 56px)', color: 'white', lineHeight: 1.1, marginBottom: 8 }}
+              className="font-heading font-black"
+              style={{
+                fontSize: 'clamp(20px, 2.2vw, 32px)',
+                color: 'white',
+                lineHeight: 1.1,
+                marginBottom: 8,
+                maxWidth: '100%',
+                wordBreak: 'break-word',
+              }}
             >
               {t('headline_start')}
               <span style={{ color: '#DF57BC' }}>{t('headline_highlight')}</span>
