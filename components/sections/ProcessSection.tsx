@@ -194,7 +194,7 @@ export function ProcessSection() {
               >
                 <p
                   className="font-sans uppercase font-bold"
-                  style={{ fontSize: 10, color: 'rgba(255,255,255,.2)', marginBottom: 12 }}
+                  style={{ fontSize: 10, color: 'rgba(255,255,255,.45)', marginBottom: 12 }}
                 >
                   {t(step.labelKey)}
                 </p>
@@ -215,14 +215,14 @@ export function ProcessSection() {
 
                 <p
                   className="font-sans"
-                  style={{ fontSize: 13, color: 'rgba(255,255,255,.38)', lineHeight: 1.55, marginBottom: 12 }}
+                  style={{ fontSize: 13, color: 'rgba(255,255,255,.65)', lineHeight: 1.55, marginBottom: 12 }}
                 >
                   {t(step.descKey)}
                 </p>
 
                 <div
                   className="font-sans"
-                  style={{ borderTop: '1px solid rgba(255,255,255,.06)', paddingTop: 8, fontSize: 10, color: 'rgba(255,255,255,.2)' }}
+                  style={{ borderTop: '1px solid rgba(255,255,255,.06)', paddingTop: 8, fontSize: 10, color: 'rgba(255,255,255,.4)' }}
                 >
                   {t('duration_label')}{' · '}
                   <span style={{ color: '#DF57BC', fontWeight: 600 }}>{t(step.durationKey)}</span>
