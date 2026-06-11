@@ -77,10 +77,16 @@ export function AISection() {
 
           <h2
             className="mt-6 font-heading font-extrabold"
-            style={{ color: 'white', fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: 1.15 }}
+            style={{
+              color: 'white',
+              fontSize: 'clamp(28px, 3vw, 42px)',
+              lineHeight: 1.15,
+              whiteSpace: 'normal',
+              maxWidth: 520,
+            }}
           >
-            {t('headline_start')}
-            <br />
+            {t('headline_start')}{' '}
+            <span className="hidden md:inline"><br /></span>
             <span style={{ color: '#DF57BC' }}>{t('headline_highlight')}</span>
           </h2>
 
