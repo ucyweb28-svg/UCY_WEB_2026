@@ -95,6 +95,13 @@
     "project4_title": "Aurora Media",
     "project4_cat": "Design System · UI"
   },
+  "testimonials": {
+    "heading_start": "Pourquoi ils nous font ",
+    "heading_highlight": "confiance",
+    "prev_aria": "Témoignage précédent",
+    "next_aria": "Témoignage suivant",
+    "go_to_aria": "Aller au témoignage {number}"
+  },
   "about": {
     "label": "À propos",
     "headline_start": "UCY ",
