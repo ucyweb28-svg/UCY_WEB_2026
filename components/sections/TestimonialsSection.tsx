@@ -67,7 +67,14 @@ export function TestimonialsSection() {
   const activeImage = TESTIMONIAL_IMAGES[activeIndex];
 
   return (
-    <section className="py-16 md:py-32" style={{ backgroundColor: '#0a0a0f' }}>
+    <section
+      className="py-16 md:py-32"
+      style={{
+        backgroundColor: '#f8f8f6',
+        borderTop: '1px solid rgba(0,0,0,0.06)',
+        borderBottom: '1px solid rgba(0,0,0,0.06)',
+      }}
+    >
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -80,7 +87,7 @@ export function TestimonialsSection() {
         <div className="flex items-end justify-between gap-6 flex-wrap" style={{ marginBottom: 32 }}>
           <h2
             className="font-heading font-extrabold leading-tight"
-            style={{ color: 'white', fontSize: 'clamp(1.5rem, 8vw, 3rem)' }}
+            style={{ color: '#0a0a0a', fontSize: 'clamp(1.5rem, 8vw, 3rem)' }}
           >
             {t('heading_start')}
             <span
@@ -99,16 +106,16 @@ export function TestimonialsSection() {
             <button
               onClick={goPrev}
               aria-label={t('prev_aria')}
-              className="flex items-center justify-center rounded-full cursor-pointer transition-colors duration-200 hover:bg-white/[0.08]"
-              style={{ width: 44, height: 44, border: '1px solid rgba(255,255,255,0.15)', color: 'white' }}
+              className="flex items-center justify-center rounded-full cursor-pointer transition-colors duration-200 hover:bg-black/[0.05]"
+              style={{ width: 44, height: 44, border: '1px solid rgba(0,0,0,0.12)', color: '#0a0a0a' }}
             >
               ←
             </button>
             <button
               onClick={goNext}
               aria-label={t('next_aria')}
-              className="flex items-center justify-center rounded-full cursor-pointer transition-colors duration-200 hover:bg-white/[0.08]"
-              style={{ width: 44, height: 44, border: '1px solid rgba(255,255,255,0.15)', color: 'white' }}
+              className="flex items-center justify-center rounded-full cursor-pointer transition-colors duration-200 hover:bg-black/[0.05]"
+              style={{ width: 44, height: 44, border: '1px solid rgba(0,0,0,0.12)', color: '#0a0a0a' }}
             >
               →
             </button>
@@ -116,14 +123,17 @@ export function TestimonialsSection() {
         </div>
 
         {/* Main card */}
-        <div className="flex flex-col md:flex-row rounded-[20px] overflow-hidden">
+        <div
+          className="flex flex-col md:flex-row rounded-[20px] overflow-hidden"
+          style={{ border: '1px solid #e8e8e4', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}
+        >
           {/* Left column */}
-          <div className="w-full md:w-[55%] p-6 md:p-12" style={{ backgroundColor: '#0f0f14' }}>
+          <div className="w-full md:w-[55%] p-6 md:p-12" style={{ backgroundColor: '#ffffff' }}>
             <AnimatePresence mode="wait">
               <motion.div key={activeIndex} variants={cardVariants} initial="initial" animate="animate" exit="exit">
                 <div
                   className="font-heading"
-                  style={{ fontSize: 28, fontWeight: 800, color: 'white', marginBottom: 32 }}
+                  style={{ fontSize: 28, fontWeight: 800, color: '#0a0a0a', marginBottom: 32 }}
                 >
                   {active.logo}
                 </div>
@@ -152,7 +162,7 @@ export function TestimonialsSection() {
                   style={{
                     fontSize: 20,
                     lineHeight: 1.6,
-                    color: 'rgba(255,255,255,0.85)',
+                    color: 'rgba(0,0,0,0.72)',
                     fontStyle: 'italic',
                     fontWeight: 300,
                     margin: '20px 0 32px',
@@ -164,10 +174,10 @@ export function TestimonialsSection() {
                   {active.quote}
                 </p>
 
-                <p className="font-sans" style={{ fontSize: 15, fontWeight: 600, color: 'white' }}>
+                <p className="font-sans" style={{ fontSize: 15, fontWeight: 600, color: '#0a0a0a' }}>
                   {active.author}
                 </p>
-                <p className="font-sans" style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>
+                <p className="font-sans" style={{ fontSize: 13, color: 'rgba(0,0,0,0.4)' }}>
                   {active.role}
                 </p>
               </motion.div>
@@ -196,11 +206,11 @@ export function TestimonialsSection() {
             </AnimatePresence>
             <div
               className="absolute inset-0 pointer-events-none"
-              style={{ background: 'linear-gradient(to right, #0f0f14 0%, transparent 30%)' }}
+              style={{ background: 'linear-gradient(to right, #ffffff 0%, transparent 30%)' }}
             />
             <div
               className="absolute inset-0 pointer-events-none"
-              style={{ background: 'linear-gradient(to top, #0f0f14 0%, transparent 40%)' }}
+              style={{ background: 'linear-gradient(to top, #ffffff 0%, transparent 40%)' }}
             />
           </div>
         </div>
@@ -228,7 +238,7 @@ export function TestimonialsSection() {
                 onClick={() => goTo(index)}
                 aria-label={t('go_to_aria', { number: index + 1 })}
                 className="cursor-pointer"
-                style={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.2)' }}
+                style={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: 'rgba(0,0,0,0.15)' }}
               />
             )
           )}
