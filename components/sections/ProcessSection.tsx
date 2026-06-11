@@ -183,39 +183,39 @@ export function ProcessSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-center lg:justify-center gap-3 lg:gap-0"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-stretch gap-4"
         >
           {STEPS.map((step, index) => (
             <Fragment key={step.titleKey}>
               <motion.div
                 variants={fadeUp}
-                className="w-full lg:w-40 lg:shrink-0 rounded-[14px] border border-[#1e1e2a] hover:border-[#3626A7] transition-colors duration-200"
-                style={{ backgroundColor: '#0d0d14', padding: '20px 18px' }}
+                className="w-full lg:flex-1 lg:min-w-0 rounded-[14px] border border-[#1e1e2a] hover:border-[#3626A7] transition-colors duration-200"
+                style={{ backgroundColor: '#0d0d14', padding: '28px 24px', minHeight: 220 }}
               >
                 <p
                   className="font-sans uppercase font-bold"
-                  style={{ fontSize: 9, color: 'rgba(255,255,255,.2)', marginBottom: 12 }}
+                  style={{ fontSize: 10, color: 'rgba(255,255,255,.2)', marginBottom: 12 }}
                 >
                   {t(step.labelKey)}
                 </p>
 
                 <div
                   className="flex items-center justify-center rounded-[8px] border"
-                  style={{ width: 36, height: 36, backgroundColor: step.iconBg, borderColor: step.iconBorderColor }}
+                  style={{ width: 44, height: 44, backgroundColor: step.iconBg, borderColor: step.iconBorderColor }}
                 >
-                  <step.Icon size={16} color={step.iconColor} />
+                  <step.Icon size={20} color={step.iconColor} />
                 </div>
 
                 <h3
                   className="font-heading font-bold"
-                  style={{ fontSize: 14, color: 'white', marginTop: 12, marginBottom: 6 }}
+                  style={{ fontSize: 16, color: 'white', marginTop: 12, marginBottom: 6 }}
                 >
                   {t(step.titleKey)}
                 </h3>
 
                 <p
                   className="font-sans"
-                  style={{ fontSize: 11, color: 'rgba(255,255,255,.38)', lineHeight: 1.55, marginBottom: 12 }}
+                  style={{ fontSize: 13, color: 'rgba(255,255,255,.38)', lineHeight: 1.55, marginBottom: 12 }}
                 >
                   {t(step.descKey)}
                 </p>
