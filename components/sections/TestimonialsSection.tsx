@@ -12,6 +12,7 @@ interface TestimonialItem {
   author: string;
   role: string;
   tags: string[];
+  avatar: string;
 }
 
 const TESTIMONIAL_IMAGES = [
@@ -174,12 +175,35 @@ export function TestimonialsSection() {
                   {active.quote}
                 </p>
 
-                <p className="font-sans" style={{ fontSize: 15, fontWeight: 600, color: '#0a0a0a' }}>
-                  {active.author}
-                </p>
-                <p className="font-sans" style={{ fontSize: 13, color: 'rgba(0,0,0,0.4)' }}>
-                  {active.role}
-                </p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <div
+                    style={{
+                      width: 38,
+                      height: 38,
+                      borderRadius: '50%',
+                      overflow: 'hidden',
+                      flexShrink: 0,
+                      border: '2px solid rgba(223,87,188,0.3)',
+                      position: 'relative',
+                    }}
+                  >
+                    <Image
+                      src={active.avatar}
+                      alt={active.author}
+                      fill
+                      style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                    />
+                  </div>
+
+                  <div>
+                    <p className="font-sans" style={{ fontSize: 15, fontWeight: 600, color: '#0a0a0a' }}>
+                      {active.author}
+                    </p>
+                    <p className="font-sans" style={{ fontSize: 13, color: 'rgba(0,0,0,0.4)' }}>
+                      {active.role}
+                    </p>
+                  </div>
+                </div>
               </motion.div>
             </AnimatePresence>
           </div>

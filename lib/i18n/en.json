@@ -135,7 +135,8 @@
         "quote": "UCY Studio transformed our digital presence. The site they delivered exceeded all our expectations — in timing, quality, and impact.",
         "author": "Sarah M.",
         "role": "Founder, Bloomair",
-        "tags": ["E-commerce", "Branding"]
+        "tags": ["E-commerce", "Branding"],
+        "avatar": "/images/avatar-sarah.jpg"
       },
       {
         "client": "TopNos",
@@ -143,7 +144,8 @@
         "quote": "A team that truly understands brand challenges. Our visual identity is now consistent across all our materials.",
         "author": "David L.",
         "role": "Marketing Director, TopNos",
-        "tags": ["Visual Identity", "Print"]
+        "tags": ["Visual Identity", "Print"],
+        "avatar": "/images/avatar-david.jpg"
       },
       {
         "client": "Nexus Capital",
@@ -151,7 +153,8 @@
         "quote": "The dashboard UCY designed changed the way our teams work. Flawless UX, delivered in 3 weeks.",
         "author": "Marc R.",
         "role": "CTO, Nexus Capital",
-        "tags": ["Fintech", "Dashboard"]
+        "tags": ["Fintech", "Dashboard"],
+        "avatar": "/images/avatar-marc.jpg"
       },
       {
         "client": "Aurora Media",
@@ -159,7 +162,8 @@
         "quote": "Our design system is now the internal reference for all our product teams. Remarkable work.",
         "author": "Léa K.",
         "role": "Head of Product, Aurora Media",
-        "tags": ["Design System", "UI"]
+        "tags": ["Design System", "UI"],
+        "avatar": "/images/avatar-lea.jpg"
       }
     ]
   },

@@ -135,7 +135,8 @@
         "quote": "UCY Studio a transformé notre présence digitale. Le site qu'ils ont livré dépasse tout ce qu'on espérait — en délai, en qualité, en impact.",
         "author": "Sarah M.",
         "role": "Fondatrice, Bloomair",
-        "tags": ["E-commerce", "Branding"]
+        "tags": ["E-commerce", "Branding"],
+        "avatar": "/images/avatar-sarah.jpg"
       },
       {
         "client": "TopNos",
@@ -143,7 +144,8 @@
         "quote": "Une équipe qui comprend vraiment les enjeux de marque. Notre identité visuelle est maintenant cohérente sur tous nos supports.",
         "author": "David L.",
         "role": "Directeur Marketing, TopNos",
-        "tags": ["Identité Visuelle", "Print"]
+        "tags": ["Identité Visuelle", "Print"],
+        "avatar": "/images/avatar-david.jpg"
       },
       {
         "client": "Nexus Capital",
@@ -151,7 +153,8 @@
         "quote": "Le dashboard qu'UCY a conçu pour nous a changé la façon dont nos équipes travaillent. UX irréprochable, livré en 3 semaines.",
         "author": "Marc R.",
         "role": "CTO, Nexus Capital",
-        "tags": ["Fintech", "Dashboard"]
+        "tags": ["Fintech", "Dashboard"],
+        "avatar": "/images/avatar-marc.jpg"
       },
       {
         "client": "Aurora Media",
@@ -159,7 +162,8 @@
         "quote": "Notre design system est maintenant la référence interne pour toutes nos équipes produit. Travail remarquable.",
         "author": "Léa K.",
         "role": "Head of Product, Aurora Media",
-        "tags": ["Design System", "UI"]
+        "tags": ["Design System", "UI"],
+        "avatar": "/images/avatar-lea.jpg"
       }
     ]
   },
