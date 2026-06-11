@@ -73,13 +73,42 @@ function LocaleSwitch({
 }: {
   locale: string;
   onSwitch: () => void;
-  size?: 'sm' | 'lg';
+  size?: 'lg' | 'minimal';
 }) {
-  const isLarge = size === 'lg';
+  if (size === 'minimal') {
+    return (
+      <div className="inline-flex items-center" style={{ fontSize: 13, gap: 6 }}>
+        {(['fr', 'en'] as const).map((loc, index) => {
+          const isActive = loc === locale;
+          return (
+            <span key={loc} className="inline-flex items-center" style={{ gap: 6 }}>
+              {index > 0 && (
+                <span aria-hidden style={{ color: 'rgba(0,0,0,0.2)' }}>·</span>
+              )}
+              <button
+                onClick={() => {
+                  if (!isActive) onSwitch();
+                }}
+                className={[
+                  'font-sans transition-colors duration-200',
+                  isActive ? 'cursor-default' : 'cursor-pointer text-black/35 hover:text-black/60',
+                ].join(' ')}
+                style={isActive ? { color: '#0a0a0a', fontWeight: 700 } : { fontWeight: 400 }}
+                aria-label={`Switch language to ${loc.toUpperCase()}`}
+              >
+                {loc.toUpperCase()}
+              </button>
+            </span>
+          );
+        })}
+      </div>
+    );
+  }
+
   return (
     <div
       className="inline-flex items-center"
-      style={{ border: '1px solid #e0e0e0', borderRadius: 20, padding: isLarge ? 4 : 3, gap: 2 }}
+      style={{ border: '1px solid #e0e0e0', borderRadius: 20, padding: 4, gap: 2 }}
     >
       {(['fr', 'en'] as const).map((loc) => {
         const isActive = loc === locale;
@@ -92,8 +121,8 @@ function LocaleSwitch({
             className="font-sans font-semibold transition-colors duration-200 cursor-pointer"
             style={{
               borderRadius: 20,
-              padding: isLarge ? '8px 20px' : '4px 12px',
-              fontSize: isLarge ? 16 : 12,
+              padding: '8px 20px',
+              fontSize: 16,
               backgroundColor: isActive ? '#3626A7' : 'transparent',
               color: isActive ? '#ffffff' : '#888888',
             }}
@@ -211,7 +240,7 @@ export function Nav() {
             })}
           </nav>
 
-          <LocaleSwitch locale={locale} onSwitch={switchLocale} size="sm" />
+          <LocaleSwitch locale={locale} onSwitch={switchLocale} size="minimal" />
         </div>
 
         {/* Desktop CTA + Mobile hamburger */}
