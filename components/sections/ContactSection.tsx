@@ -112,10 +112,20 @@ export function ContactSection() {
           </motion.div>
           <motion.h1
             variants={fadeUp}
-            className="font-heading font-extrabold text-4xl md:text-6xl leading-[1.05]"
-            style={{ color: '#000807' }}
+            className="font-heading font-extrabold"
+            style={{ color: '#000807', fontSize: 'clamp(36px, 5vw, 64px)', lineHeight: 1.1, maxWidth: 600 }}
           >
-            {t('title')}
+            {t('title_start')}
+            <span
+              style={{
+                background: 'linear-gradient(90deg, #3626A7, #DF57BC, #DE541E)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              {t('title_highlight')}
+            </span>
           </motion.h1>
           <motion.p
             variants={fadeUp}

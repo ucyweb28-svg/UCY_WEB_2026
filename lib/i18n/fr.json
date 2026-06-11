@@ -201,7 +201,8 @@
   },
   "contact": {
     "badge": "Contact",
-    "title": "Démarrons quelque chose ensemble",
+    "title_start": "Parlons de ",
+    "title_highlight": "votre projet.",
     "subtitle": "Un projet, une idée, une question — décrivez-nous votre besoin.",
     "name": "Nom",
     "email": "Email",

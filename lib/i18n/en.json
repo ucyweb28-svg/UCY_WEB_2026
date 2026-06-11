@@ -201,7 +201,8 @@
   },
   "contact": {
     "badge": "Contact",
-    "title": "Let's build something together",
+    "title_start": "Let's discuss ",
+    "title_highlight": "your project.",
     "subtitle": "A project, an idea, a question — tell us what you need.",
     "name": "Name",
     "email": "Email",
