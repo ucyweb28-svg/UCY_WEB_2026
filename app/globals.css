@@ -87,3 +87,14 @@ body {
   color: transparent;
   background-position: 100% center;
 }
+
+.whatsapp-card .whatsapp-card-btn {
+  background: #0a0a0a;
+  transition: background 0.3s ease;
+}
+
+.whatsapp-card:hover .whatsapp-card-btn {
+  background: linear-gradient(90deg, #DE541E, #DF57BC, #3626A7);
+  background-size: 200%;
+  animation: gradientShift 3s infinite;
+}

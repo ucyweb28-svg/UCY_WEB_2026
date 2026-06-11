@@ -201,11 +201,24 @@
     "legal": "Mentions légales"
   },
   "contact": {
-    "badge": "Contact",
+    "badge": "CONTACT",
     "title_start": "Parlons de ",
     "title_highlight": "votre projet.",
     "subtitle": "Un projet, une idée, une question — décrivez-nous votre besoin.",
-    "name": "Nom",
+    "bullet1_title": "Réponse sous 24h",
+    "bullet1_sub": "On revient vers vous avec un premier retour dans la journée.",
+    "bullet2_title": "Devis gratuit & sans engagement",
+    "bullet2_sub": "Une estimation claire, sans frais ni obligation.",
+    "bullet3_title": "Livré en 3 semaines",
+    "bullet3_sub": "De la maquette à la mise en ligne, sans traîner.",
+    "bullet4_title": "Studio Jérusalem × Paris",
+    "bullet4_sub": "Une équipe disponible sur les deux fuseaux horaires.",
+    "city_paris": "Paris",
+    "city_paris_sub": "France",
+    "city_jerusalem": "Jérusalem",
+    "city_jerusalem_sub": "Israël",
+    "first_name": "Prénom",
+    "last_name": "Nom",
     "email": "Email",
     "phone": "Téléphone",
     "message": "Message",
@@ -215,8 +228,7 @@
     "error": "Une erreur est survenue. Réessayez ou contactez-nous sur WhatsApp.",
     "whatsapp_fr": "WhatsApp Paris",
     "whatsapp_il": "WhatsApp Jérusalem",
-    "address_paris": "Paris, France",
-    "address_jerusalem": "Jérusalem, Israël"
+    "note": "Vos données restent confidentielles · Réponse sous 24h"
   },
   "pricing": {
     "meta_title": "Tarifs | UCY Studio",

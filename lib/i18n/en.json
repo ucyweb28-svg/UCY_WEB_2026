@@ -201,11 +201,24 @@
     "legal": "Legal notice"
   },
   "contact": {
-    "badge": "Contact",
+    "badge": "CONTACT",
     "title_start": "Let's discuss ",
     "title_highlight": "your project.",
     "subtitle": "A project, an idea, a question — tell us what you need.",
-    "name": "Name",
+    "bullet1_title": "Response within 24h",
+    "bullet1_sub": "We'll get back to you with initial feedback the same day.",
+    "bullet2_title": "Free quote & no commitment",
+    "bullet2_sub": "A clear estimate, no fees or obligations.",
+    "bullet3_title": "Delivered in 3 weeks",
+    "bullet3_sub": "From design to launch, without delay.",
+    "bullet4_title": "Jerusalem × Paris studio",
+    "bullet4_sub": "A team available across both time zones.",
+    "city_paris": "Paris",
+    "city_paris_sub": "France",
+    "city_jerusalem": "Jerusalem",
+    "city_jerusalem_sub": "Israel",
+    "first_name": "First name",
+    "last_name": "Last name",
     "email": "Email",
     "phone": "Phone",
     "message": "Message",
@@ -215,8 +228,7 @@
     "error": "Something went wrong. Try again or reach us on WhatsApp.",
     "whatsapp_fr": "WhatsApp Paris",
     "whatsapp_il": "WhatsApp Jerusalem",
-    "address_paris": "Paris, France",
-    "address_jerusalem": "Jerusalem, Israel"
+    "note": "Your data stays confidential · Reply within 24h"
   },
   "pricing": {
     "meta_title": "Pricing | UCY Studio",
