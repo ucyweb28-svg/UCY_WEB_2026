@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "home_title": "UCY Studio — Agence Web & Design à Jérusalem et Paris",
+    "home_description": "Studio de design et développement web haut de gamme. Sites Next.js sur-mesure, branding et stratégie digitale pour marques exigeantes. Jérusalem × Paris."
+  },
   "banner": {
     "highlight": "Nouveau :",
     "text": "Nouveau : Sites Next.js haut de gamme livrés en 3 semaines — Jérusalem × Paris",
@@ -18,11 +22,11 @@
   },
   "hero": {
     "badge": "Jérusalem × Paris",
-    "headline_start": "Propulsez votre ",
-    "headline_highlight": "digital.",
-    "subheadline": "Sites Next.js sur-mesure, designs d'exception et performances absolues pour marques exigeantes.",
-    "cta_primary": "Démarrer un projet",
-    "cta_secondary": "Voir les services"
+    "headline_start": "Propulsez votre digital vers l'",
+    "headline_highlight": "excellence.",
+    "subheadline": "Sites sur-mesure. Design d'exception. Performance sans compromis.",
+    "cta_primary": "Démarrer un projet",
+    "cta_secondary": "Voir les services"
   },
   "trust": {
     "label": "Ils nous font confiance"

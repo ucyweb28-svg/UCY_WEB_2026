@@ -124,7 +124,7 @@ export function HeroSection() {
           className="flex flex-col items-center text-center gap-6 md:gap-8 max-w-4xl mx-auto"
         >
           <h1
-            className="font-heading font-extrabold text-4xl md:text-5xl lg:whitespace-nowrap tracking-tight leading-[1.05]"
+            className="font-heading font-extrabold text-4xl md:text-5xl lg:whitespace-nowrap tracking-tight leading-[1.05] text-balance"
             style={{ color: '#000807' }}
           >
             {t('headline_start')}
@@ -134,7 +134,7 @@ export function HeroSection() {
           </h1>
 
           <p
-            className="font-sans text-base md:text-lg leading-relaxed max-w-4xl"
+            className="font-sans text-base md:text-lg leading-relaxed max-w-4xl text-pretty"
             style={{ color: 'rgba(0,8,7,0.65)' }}
           >
             {t('subheadline')}

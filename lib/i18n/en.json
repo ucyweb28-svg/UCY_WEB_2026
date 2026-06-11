@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "home_title": "UCY Studio — Web Design & Development Agency in Jerusalem & Paris",
+    "home_description": "Premium web design and development studio. Custom Next.js websites, branding, and digital strategy for ambitious brands. Jerusalem × Paris."
+  },
   "banner": {
     "highlight": "New:",
     "text": "New: Premium Next.js websites delivered in 3 weeks — Jerusalem × Paris",
@@ -18,11 +22,11 @@
   },
   "hero": {
     "badge": "Jerusalem × Paris",
-    "headline_start": "Power your ",
-    "headline_highlight": "digital.",
-    "subheadline": "Custom-built Next.js websites, exceptional design, and uncompromising performance for ambitious brands.",
-    "cta_primary": "Start a project",
-    "cta_secondary": "See our services"
+    "headline_start": "Elevate your digital to ",
+    "headline_highlight": "excellence.",
+    "subheadline": "Custom-built websites. Exceptional design. Uncompromising performance.",
+    "cta_primary": "Start a project",
+    "cta_secondary": "See our services"
   },
   "trust": {
     "label": "Trusted by"
