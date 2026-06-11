@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { GlowButton } from '@/components/ui/GlowButton';
+import { useRouter } from 'next/navigation';
 
 const VIDEOS = [
   '/videos/hero-video-1.mp4',
@@ -100,6 +100,7 @@ function VideoCarousel() {
 
 export function HeroSection() {
   const t = useTranslations('hero');
+  const router = useRouter();
   const [marginTop, setMarginTop] = useState(104);
 
   useEffect(() => {
@@ -139,11 +140,54 @@ export function HeroSection() {
             {t('subheadline')}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
-            {/* Primary CTA — dark with gradient glow */}
-            <GlowButton href="/contact" variant="dark">
-              {t('cta_primary')}
-            </GlowButton>
+          <div className="flex flex-col sm:flex-row items-center gap-4 pt-2" style={{ overflow: 'visible' }}>
+            {/* Primary CTA — dark, animated gradient glow on hover */}
+            <div style={{ position: 'relative', display: 'inline-block' }}>
+              {/* Animated glow shadow — appears on hover */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.85 }}
+                whileHover={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                style={{
+                  position: 'absolute',
+                  bottom: -10,
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: '85%',
+                  height: '100%',
+                  borderRadius: '100px',
+                  background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7, #DF57BC, #DE541E)',
+                  backgroundSize: '300% 300%',
+                  animation: 'gradientShift 3s ease infinite',
+                  filter: 'blur(16px)',
+                  zIndex: 0,
+                  pointerEvents: 'none',
+                }}
+              />
+
+              {/* Button */}
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+                style={{
+                  position: 'relative',
+                  zIndex: 1,
+                  background: '#0a0a0a',
+                  color: '#fff',
+                  padding: '14px 32px',
+                  borderRadius: '100px',
+                  fontSize: 15,
+                  fontWeight: 700,
+                  border: 'none',
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                }}
+                onClick={() => router.push('/contact')}
+              >
+                {t('cta_primary')}
+              </motion.button>
+            </div>
 
             {/* Secondary CTA — minimalist underline link */}
             <a
