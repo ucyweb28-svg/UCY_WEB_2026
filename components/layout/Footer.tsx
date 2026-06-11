@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 const NAV_LINKS = [
   { key: 'services', href: '#services' },
   { key: 'portfolio', href: '#portfolio' },
+  { key: 'pricing', href: '/pricing' },
   { key: 'about', href: '#about' },
   { key: 'contact', href: '/contact' },
 ] as const;

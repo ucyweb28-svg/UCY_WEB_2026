@@ -13,6 +13,7 @@ import { stagger, fadeUp } from '@/lib/utils/animations';
 const NAV_LINKS = [
   { key: 'services' as const, href: '/#services' },
   { key: 'portfolio' as const, href: '/#portfolio' },
+  { key: 'pricing' as const, href: '/pricing' },
   { key: 'about' as const, href: '/#about' },
   { key: 'contact' as const, href: '/contact' },
 ];
