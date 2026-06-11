@@ -76,18 +76,11 @@ export function AISection() {
           </div>
 
           <h2
-            className="mt-6 font-heading font-extrabold"
-            style={{
-              color: 'white',
-              fontSize: 'clamp(28px, 3vw, 42px)',
-              lineHeight: 1.15,
-              whiteSpace: 'normal',
-              maxWidth: 520,
-            }}
+            className="mt-6 font-heading font-black text-[clamp(22px,5vw,30px)] md:text-[clamp(24px,2.8vw,38px)]"
+            style={{ color: 'white', lineHeight: 1.15 }}
           >
-            {t('headline_start')}{' '}
-            <span className="hidden md:inline"><br /></span>
-            <span style={{ color: '#DF57BC' }}>{t('headline_highlight')}</span>
+            <span className="block">{t('headline_start')}</span>
+            <span className="block" style={{ color: '#DF57BC' }}>{t('headline_highlight')}</span>
           </h2>
 
           <p
