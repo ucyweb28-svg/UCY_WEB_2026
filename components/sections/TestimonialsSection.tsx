@@ -24,16 +24,16 @@ const TESTIMONIAL_IMAGES = [
 
 const AUTO_ADVANCE_MS = 6000;
 
-const cardVariants: Variants = {
-  initial: { opacity: 0, x: -20 },
-  animate: { opacity: 1, x: 0, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } },
-  exit: { opacity: 0, x: -20, transition: { duration: 0.2 } },
-};
-
-const imageVariants: Variants = {
-  initial: { opacity: 0, scale: 1.02 },
-  animate: { opacity: 1, scale: 1, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } },
-  exit: { opacity: 0, transition: { duration: 0.2 } },
+const slideVariants: Variants = {
+  initial: { clipPath: 'inset(0 0 0 100%)' },
+  animate: {
+    clipPath: 'inset(0 0 0 0%)',
+    transition: { duration: 0.55, ease: [0.76, 0, 0.24, 1] },
+  },
+  exit: {
+    clipPath: 'inset(0 100% 0 0)',
+    transition: { duration: 0.55, ease: [0.76, 0, 0.24, 1] },
+  },
 };
 
 export function TestimonialsSection() {
@@ -131,7 +131,7 @@ export function TestimonialsSection() {
           {/* Left column */}
           <div className="w-full md:w-[55%] p-6 md:p-12" style={{ backgroundColor: '#ffffff' }}>
             <AnimatePresence mode="wait">
-              <motion.div key={activeIndex} variants={cardVariants} initial="initial" animate="animate" exit="exit">
+              <motion.div key={activeIndex} variants={slideVariants} initial="initial" animate="animate" exit="exit">
                 <div
                   className="font-heading"
                   style={{ fontSize: 28, fontWeight: 800, color: '#0a0a0a', marginBottom: 32 }}
@@ -191,6 +191,7 @@ export function TestimonialsSection() {
                       src={active.avatar}
                       alt={active.author}
                       fill
+                      quality={85}
                       style={{ objectFit: 'cover', objectPosition: 'center top' }}
                     />
                   </div>
@@ -213,7 +214,7 @@ export function TestimonialsSection() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
-                variants={imageVariants}
+                variants={slideVariants}
                 initial="initial"
                 animate="animate"
                 exit="exit"
@@ -223,7 +224,10 @@ export function TestimonialsSection() {
                   src={activeImage}
                   alt={active.client}
                   fill
-                  sizes="(max-width: 768px) 100vw, 45vw"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={85}
+                  priority={activeIndex === 0}
+                  loading={activeIndex === 0 ? undefined : 'lazy'}
                   className="object-cover"
                 />
               </motion.div>
