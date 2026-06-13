@@ -191,7 +191,7 @@
     "headline_highlight": "3 semaines.",
     "sub": "Jérusalem × Paris — on répond sous 24h.",
     "needs_label": "VOTRE BESOIN",
-    "needs": ["Site web", "Branding", "UI/UX", "E-commerce", "IA"],
+    "needs": ["Site web", "Branding", "UI/UX", "IA", "E-commerce"],
     "placeholder": "votre@email.com",
     "btn_default": "Démarrer →",
     "btn_loading": "...",
