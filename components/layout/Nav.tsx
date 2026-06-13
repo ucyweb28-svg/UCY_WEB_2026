@@ -319,7 +319,7 @@ export function Nav() {
                     style={{ fontSize: 42, fontWeight: 800, borderBottom: '1px solid #f0f0f0', padding: '16px 0' }}
                   >
                     <span>{t(key)}</span>
-                    <span style={{ color: '#3626A7', fontSize: 24 }}>→</span>
+                    <span style={{ color: '#3626A7', fontSize: 24 }}>↗</span>
                   </motion.a>
                 ))}
               </motion.nav>
