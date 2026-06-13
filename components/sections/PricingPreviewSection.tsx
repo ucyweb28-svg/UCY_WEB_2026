@@ -23,29 +23,29 @@ interface PreviewCard {
 
 const CARDS: PreviewCard[] = [
   {
-    id: 'essentiel',
-    tagKey: 'essentiel_tag',
-    priceEurKey: 'essentiel_price_eur',
-    priceIlsKey: 'essentiel_price_ils',
-    featuresKey: ['essentiel_feature1', 'essentiel_feature2', 'essentiel_feature3'],
+    id: 'presence',
+    tagKey: 'presence_tag',
+    priceEurKey: 'presence_price_eur',
+    priceIlsKey: 'presence_price_ils',
+    featuresKey: ['presence_feature1', 'presence_feature2', 'presence_feature3'],
     ctaKey: 'cta_details',
     featured: false,
   },
   {
-    id: 'professionnel',
-    tagKey: 'professionnel_tag',
-    priceEurKey: 'professionnel_price_eur',
-    priceIlsKey: 'professionnel_price_ils',
-    featuresKey: ['professionnel_feature1', 'professionnel_feature2', 'professionnel_feature3'],
+    id: 'conversion',
+    tagKey: 'conversion_tag',
+    priceEurKey: 'conversion_price_eur',
+    priceIlsKey: 'conversion_price_ils',
+    featuresKey: ['conversion_feature1', 'conversion_feature2', 'conversion_feature3'],
     ctaKey: 'cta_simulate',
     featured: true,
   },
   {
-    id: 'premium',
-    tagKey: 'premium_tag',
-    priceEurKey: 'premium_price_eur',
-    priceIlsKey: 'premium_price_ils',
-    featuresKey: ['premium_feature1', 'premium_feature2', 'premium_feature3'],
+    id: 'autonomie',
+    tagKey: 'autonomie_tag',
+    priceEurKey: 'autonomie_price_eur',
+    priceIlsKey: 'autonomie_price_ils',
+    featuresKey: ['autonomie_feature1', 'autonomie_feature2', 'autonomie_feature3'],
     ctaKey: 'cta_details',
     featured: false,
   },
@@ -188,7 +188,7 @@ export function PricingPreviewSection() {
                       color: 'white',
                     }}
                   >
-                    {t('professionnel_badge')}
+                    {t('conversion_badge')}
                   </span>
                 )}
 

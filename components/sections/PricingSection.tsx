@@ -1,138 +1,19 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/Badge';
-import { GradientGlow } from '@/components/ui/GradientGlow';
 import { stagger, fadeUp } from '@/lib/utils/animations';
-
-type Currency = 'ILS' | 'EUR';
-
-interface Pack {
-  id: string;
-  nameKey: string;
-  titleKey: string;
-  taglineKey: string;
-  minILS: number;
-  maxILS: number;
-  minEUR: number;
-  maxEUR: number;
-  featuresKey: string[];
-  featured: boolean;
-  deliveryDays: string;
-}
-
-interface Option {
-  id: string;
-  nameKey: string;
-  fixedILS: number | null;
-  fixedEUR: number | null;
-  percentOfPack: number | null;
-}
-
-interface PriceRange {
-  min: number;
-  max: number;
-}
-
-const PACKS: Pack[] = [
-  {
-    id: 'essentiel',
-    nameKey: 'pack_essentiel_name',
-    titleKey: 'pack_essentiel_title',
-    taglineKey: 'pack_essentiel_tagline',
-    minILS: 3000,
-    maxILS: 5000,
-    minEUR: 750,
-    maxEUR: 1250,
-    featuresKey: [
-      'pack_essentiel_feature1',
-      'pack_essentiel_feature2',
-      'pack_essentiel_feature3',
-      'pack_essentiel_feature4',
-      'pack_essentiel_feature5',
-    ],
-    featured: false,
-    deliveryDays: 'pack_essentiel_delivery',
-  },
-  {
-    id: 'professionnel',
-    nameKey: 'pack_professionnel_name',
-    titleKey: 'pack_professionnel_title',
-    taglineKey: 'pack_professionnel_tagline',
-    minILS: 5000,
-    maxILS: 8000,
-    minEUR: 1250,
-    maxEUR: 2000,
-    featuresKey: [
-      'pack_professionnel_feature1',
-      'pack_professionnel_feature2',
-      'pack_professionnel_feature3',
-      'pack_professionnel_feature4',
-      'pack_professionnel_feature5',
-    ],
-    featured: true,
-    deliveryDays: 'pack_professionnel_delivery',
-  },
-  {
-    id: 'premium',
-    nameKey: 'pack_premium_name',
-    titleKey: 'pack_premium_title',
-    taglineKey: 'pack_premium_tagline',
-    minILS: 8000,
-    maxILS: 12000,
-    minEUR: 2000,
-    maxEUR: 3000,
-    featuresKey: [
-      'pack_premium_feature1',
-      'pack_premium_feature2',
-      'pack_premium_feature3',
-      'pack_premium_feature4',
-      'pack_premium_feature5',
-    ],
-    featured: false,
-    deliveryDays: 'pack_premium_delivery',
-  },
-];
-
-const OPTIONS: Option[] = [
-  { id: 'langue', nameKey: 'option_langue_name', fixedILS: null, fixedEUR: null, percentOfPack: 0.25 },
-  { id: 'calendrier', nameKey: 'option_calendrier_name', fixedILS: 2000, fixedEUR: 500, percentOfPack: null },
-  { id: 'crm', nameKey: 'option_crm_name', fixedILS: 3000, fixedEUR: 750, percentOfPack: null },
-  { id: 'cms', nameKey: 'option_cms_name', fixedILS: 4000, fixedEUR: 1000, percentOfPack: null },
-];
-
-const MAINTENANCE_RATE = 0.2;
-
-function formatNumber(value: number): string {
-  return Math.round(value).toLocaleString('fr-FR');
-}
-
-function formatRange(range: PriceRange, currency: Currency): string {
-  const symbol = currency === 'ILS' ? '₪' : '€';
-  if (range.min === range.max) return `${formatNumber(range.min)} ${symbol}`;
-  return `${formatNumber(range.min)} – ${formatNumber(range.max)} ${symbol}`;
-}
-
-function getPackPrice(pack: Pack, currency: Currency): PriceRange {
-  return currency === 'ILS'
-    ? { min: pack.minILS, max: pack.maxILS }
-    : { min: pack.minEUR, max: pack.maxEUR };
-}
-
-function getOptionPrice(option: Option, pack: Pack | null, currency: Currency): PriceRange {
-  if (option.percentOfPack !== null) {
-    if (!pack) return { min: 0, max: 0 };
-    const packPrice = getPackPrice(pack, currency);
-    return {
-      min: packPrice.min * option.percentOfPack,
-      max: packPrice.max * option.percentOfPack,
-    };
-  }
-  const fixed = currency === 'ILS' ? option.fixedILS : option.fixedEUR;
-  return { min: fixed ?? 0, max: fixed ?? 0 };
-}
+import {
+  PRICING_PACKS,
+  PRICING_OPTIONS,
+  type Currency,
+  formatPrice,
+  getPackPrice,
+  getOptionPrice,
+} from '@/lib/utils/pricing';
 
 function CheckIcon({ size = 14, color }: { size?: number; color: string }) {
   return (
@@ -144,11 +25,12 @@ function CheckIcon({ size = 14, color }: { size?: number; color: string }) {
 
 export function PricingSection() {
   const t = useTranslations('pricing');
-  const [currency, setCurrency] = useState<Currency>('ILS');
+  const [currency, setCurrency] = useState<Currency>('EUR');
   const [selectedPack, setSelectedPack] = useState<string | null>(null);
   const [selectedOptions, setSelectedOptions] = useState<Set<string>>(new Set());
 
   const toggleOption = (id: string) => {
+    if (!selectedPack) return;
     setSelectedOptions((prev) => {
       const next = new Set(prev);
       if (next.has(id)) {
@@ -160,32 +42,21 @@ export function PricingSection() {
     });
   };
 
-  const selectedPackObj = PACKS.find((pack) => pack.id === selectedPack) ?? null;
+  const selectedPackObj = PRICING_PACKS.find((pack) => pack.id === selectedPack) ?? null;
 
-  const packPrice = selectedPackObj ? getPackPrice(selectedPackObj, currency) : null;
+  const optionsTotal = Array.from(selectedOptions).reduce((sum, id) => {
+    const option = PRICING_OPTIONS.find((o) => o.id === id);
+    return option ? sum + getOptionPrice(option, currency) : sum;
+  }, 0);
 
-  const optionsTotal = Array.from(selectedOptions).reduce<PriceRange>(
-    (acc, id) => {
-      const option = OPTIONS.find((o) => o.id === id);
-      if (!option) return acc;
-      const price = getOptionPrice(option, selectedPackObj, currency);
-      return { min: acc.min + price.min, max: acc.max + price.max };
-    },
-    { min: 0, max: 0 }
-  );
+  const total = selectedPackObj ? getPackPrice(selectedPackObj, currency) + optionsTotal : null;
 
-  const subtotal: PriceRange | null = packPrice
-    ? { min: packPrice.min + optionsTotal.min, max: packPrice.max + optionsTotal.max }
-    : null;
-
-  const maintenance: PriceRange | null = subtotal
-    ? { min: subtotal.min * MAINTENANCE_RATE, max: subtotal.max * MAINTENANCE_RATE }
-    : null;
-
-  const total = subtotal;
+  const quoteHref = selectedPackObj
+    ? `/devis?pack=${selectedPackObj.id}${selectedOptions.size ? `&options=${Array.from(selectedOptions).join(',')}` : ''}`
+    : '/devis';
 
   return (
-    <section className="py-24" style={{ backgroundColor: '#0a0a0f' }}>
+    <section className="py-14" style={{ backgroundColor: '#f5f3ee' }}>
       <div className="max-w-5xl mx-auto px-6">
 
         {/* Header */}
@@ -197,16 +68,16 @@ export function PricingSection() {
           className="flex flex-col items-center text-center"
           style={{ marginBottom: 40 }}
         >
-          <Badge variant="dark">{t('badge')}</Badge>
+          <Badge>{t('badge')}</Badge>
 
-          <h2
-            className="font-heading font-extrabold leading-tight"
-            style={{ color: 'white', fontSize: 'clamp(1.75rem, 4.5vw, 3rem)', marginTop: 16 }}
+          <h1
+            className="font-heading"
+            style={{ fontSize: 'clamp(28px, 4vw, 36px)', fontWeight: 900, color: '#0a0a0f', marginTop: 16, lineHeight: 1.2 }}
           >
             {t('headline_start')}
             <span
               style={{
-                background: 'linear-gradient(90deg, #3626A7, #DF57BC, #DE541E)',
+                background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -214,9 +85,9 @@ export function PricingSection() {
             >
               {t('headline_highlight')}
             </span>
-          </h2>
+          </h1>
 
-          <p className="font-sans" style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, marginTop: 12 }}>
+          <p className="font-sans" style={{ color: 'rgba(10,10,15,0.5)', fontSize: 14, marginTop: 12 }}>
             {t('subtitle')}
           </p>
 
@@ -234,8 +105,8 @@ export function PricingSection() {
                     fontSize: 13,
                     padding: '8px 20px',
                     backgroundColor: isActive ? '#3626A7' : 'transparent',
-                    color: isActive ? '#ffffff' : 'rgba(255,255,255,.4)',
-                    border: isActive ? '1px solid #3626A7' : '1px solid #2a2a3a',
+                    color: isActive ? '#ffffff' : 'rgba(10,10,15,.5)',
+                    border: isActive ? '1px solid #3626A7' : '1px solid #e4e1d8',
                   }}
                 >
                   {t(cur === 'ILS' ? 'currency_ils' : 'currency_eur')}
@@ -253,64 +124,63 @@ export function PricingSection() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-3 gap-4"
         >
-          {PACKS.map((pack) => {
+          {PRICING_PACKS.map((pack) => {
             const isSelected = selectedPack === pack.id;
-            const range = getPackPrice(pack, currency);
+            const price = getPackPrice(pack, currency);
             return (
               <motion.div
                 key={pack.id}
                 variants={fadeUp}
                 whileHover={{ scale: 1.01 }}
-                animate={{
-                  borderColor: isSelected ? '#DF57BC' : pack.featured ? '#3626A7' : '#1e1e2a',
-                  boxShadow: isSelected ? '0 0 0 3px rgba(223,87,188,0.15)' : '0 0 0 0px rgba(223,87,188,0)',
-                }}
-                transition={{ duration: 0.2 }}
                 onClick={() => setSelectedPack(pack.id)}
-                className="relative rounded-2xl cursor-pointer flex flex-col"
+                className="relative rounded-2xl cursor-pointer flex flex-col bg-white"
                 style={{
-                  backgroundColor: pack.featured ? '#0d0d1a' : '#0d0d14',
-                  borderWidth: 1.5,
+                  borderRadius: 18,
+                  padding: 28,
+                  borderWidth: isSelected || pack.featured ? 2 : 1.5,
                   borderStyle: 'solid',
-                  padding: 24,
+                  borderColor: isSelected ? '#DF57BC' : pack.featured ? '#3626A7' : '#e4e1d8',
                 }}
               >
                 {pack.featured && (
                   <span
                     className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full font-sans font-bold uppercase tracking-wide"
                     style={{
-                      top: -10,
+                      top: -12,
                       fontSize: 10,
                       padding: '4px 14px',
-                      background: 'linear-gradient(90deg, #3626A7, #DF57BC, #DE541E)',
+                      background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7)',
                       color: 'white',
                     }}
                   >
-                    ✦ {t('recommended')}
+                    {t('recommended')}
                   </span>
                 )}
 
                 <p
                   className="font-sans uppercase font-semibold"
-                  style={{ fontSize: 10, letterSpacing: '0.15em', color: 'rgba(255,255,255,.4)' }}
+                  style={{ fontSize: 11, letterSpacing: '0.15em', color: '#3626A7' }}
                 >
-                  {t(pack.nameKey)}
+                  {t(pack.tagKey)}
                 </p>
 
-                <h3 className="font-heading font-bold" style={{ fontSize: 18, color: 'white', marginTop: 6 }}>
+                <h3 className="font-heading font-bold" style={{ fontSize: 20, color: '#0a0a0f', marginTop: 8 }}>
                   {t(pack.titleKey)}
                 </h3>
 
-                <p className="font-sans" style={{ fontSize: 12, fontStyle: 'italic', color: 'rgba(255,255,255,.35)', marginTop: 6 }}>
+                <p className="font-sans" style={{ fontSize: 13, fontStyle: 'italic', color: 'rgba(10,10,15,.5)', marginTop: 6, minHeight: 32 }}>
                   {t(pack.taglineKey)}
                 </p>
 
-                <div style={{ marginTop: 20, marginBottom: 20 }}>
-                  <p className="font-heading font-bold" style={{ fontSize: 28, color: 'white', lineHeight: 1.2 }}>
-                    {formatRange(range, currency)}
+                <div style={{ marginTop: 20, marginBottom: 16 }}>
+                  <p className="font-heading" style={{ fontSize: 30, fontWeight: 900, color: '#0a0a0f', lineHeight: 1.2 }}>
+                    {formatPrice(price, currency)}
                   </p>
-                  <p className="font-sans" style={{ fontSize: 12, color: 'rgba(255,255,255,.35)', marginTop: 4 }}>
-                    {t('delivery_prefix')} {t(pack.deliveryDays)}
+                  <p className="font-sans" style={{ fontSize: 13, color: 'rgba(10,10,15,.5)', marginTop: 4 }}>
+                    {t(pack.pagesKey)}
+                  </p>
+                  <p className="font-sans font-semibold" style={{ fontSize: 13, color: '#3626A7', marginTop: 2 }}>
+                    {t('delivery_prefix')} {t(pack.deliveryKey)}
                   </p>
                 </div>
 
@@ -320,7 +190,7 @@ export function PricingSection() {
                       <span style={{ marginTop: 2, flexShrink: 0 }}>
                         <CheckIcon color="#DF57BC" />
                       </span>
-                      <span className="font-sans" style={{ fontSize: 13, color: 'rgba(255,255,255,.6)', lineHeight: 1.5 }}>
+                      <span className="font-sans" style={{ fontSize: 13, color: 'rgba(10,10,15,.7)', lineHeight: 1.5 }}>
                         {t(featureKey)}
                       </span>
                     </li>
@@ -329,12 +199,15 @@ export function PricingSection() {
 
                 <button
                   type="button"
-                  onClick={() => setSelectedPack(pack.id)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedPack(pack.id);
+                  }}
                   className="w-full rounded-full font-sans font-semibold transition-all duration-200 cursor-pointer"
                   style={
                     isSelected
                       ? {
-                          background: 'linear-gradient(135deg, #3626A7 0%, #DF57BC 50%, #DE541E 100%)',
+                          background: 'linear-gradient(135deg, #3626A7 0%, #DF57BC 100%)',
                           color: 'white',
                           padding: '10px 0',
                           fontSize: 13,
@@ -342,10 +215,10 @@ export function PricingSection() {
                         }
                       : {
                           background: 'transparent',
-                          color: 'rgba(255,255,255,.7)',
+                          color: '#0a0a0f',
                           padding: '10px 0',
                           fontSize: 13,
-                          border: '1px solid rgba(255,255,255,.15)',
+                          border: '1px solid #e4e1d8',
                         }
                   }
                 >
@@ -356,148 +229,159 @@ export function PricingSection() {
           })}
         </motion.div>
 
-        {/* Options à la carte */}
+        {/* Options */}
         <div
-          className="rounded-2xl"
-          style={{ backgroundColor: '#0d0d14', border: '1px solid #1e1e2a', padding: 24, marginTop: 16 }}
+          className="bg-white"
+          style={{
+            border: '1px solid #e4e1d8',
+            borderRadius: 18,
+            padding: 28,
+            marginTop: 16,
+            marginBottom: 24,
+            opacity: selectedPack ? 1 : 0.55,
+            transition: 'opacity 0.2s ease',
+          }}
         >
-          <h3 className="font-heading font-bold" style={{ fontSize: 16, color: 'white' }}>
+          <h3 className="font-heading font-bold" style={{ fontSize: 18, color: '#0a0a0f' }}>
             {t('options_title')}
           </h3>
-          <p className="font-sans" style={{ fontSize: 12, color: 'rgba(255,255,255,.35)', marginTop: 4, marginBottom: 20 }}>
-            {t('options_subtitle')}
+          <p className="font-sans" style={{ fontSize: 13, color: 'rgba(10,10,15,.5)', marginTop: 4, marginBottom: 20 }}>
+            {selectedPack ? t('options_subtitle_selected') : t('options_subtitle_empty')}
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: 12 }}>
-            {OPTIONS.map((option) => {
+          <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: 10 }}>
+            {PRICING_OPTIONS.map((option) => {
               const checked = selectedOptions.has(option.id);
-              const price = getOptionPrice(option, selectedPackObj, currency);
-
-              let priceLabel: string;
-              if (option.percentOfPack !== null) {
-                if (selectedPackObj) {
-                  priceLabel = `+${formatRange(price, currency)} (${option.percentOfPack * 100}% ${t('of_pack')})`;
-                } else {
-                  priceLabel = `+${option.percentOfPack * 100}% ${t('of_pack')}`;
-                }
-              } else {
-                priceLabel = `+${formatNumber(price.min)} ${currency === 'ILS' ? '₪' : '€'}`;
-              }
+              const price = getOptionPrice(option, currency);
+              const priceLabel = `${option.hasFromPrefix ? `${t('price_from_prefix')} ` : ''}${formatPrice(price, currency)}`;
 
               return (
                 <button
                   key={option.id}
                   type="button"
+                  disabled={!selectedPack}
                   onClick={() => toggleOption(option.id)}
-                  className="flex items-center text-left rounded-xl transition-colors duration-200 cursor-pointer"
-                  style={{ gap: 12, padding: 12, border: '1px solid rgba(255,255,255,.06)', backgroundColor: checked ? 'rgba(223,87,188,0.06)' : 'transparent' }}
+                  className="flex flex-col text-left rounded-xl transition-colors duration-200"
+                  style={{
+                    padding: 14,
+                    border: checked ? '1px solid #DF57BC' : '1px solid #e4e1d8',
+                    backgroundColor: checked ? 'rgba(223,87,188,0.05)' : 'transparent',
+                    cursor: selectedPack ? 'pointer' : 'not-allowed',
+                  }}
                 >
-                  <span
-                    className="flex items-center justify-center rounded-[5px] shrink-0"
-                    style={{
-                      width: 18,
-                      height: 18,
-                      backgroundColor: checked ? '#DF57BC' : 'transparent',
-                      border: checked ? '1px solid #DF57BC' : '1px solid rgba(255,255,255,.2)',
-                    }}
-                  >
-                    {checked && <CheckIcon size={12} color="white" />}
-                  </span>
-                  <span className="flex-1 min-w-0">
-                    <span className="font-sans block" style={{ fontSize: 13, color: 'white', fontWeight: 600 }}>
-                      {t(option.nameKey)}
+                  <div className="flex items-center" style={{ gap: 12 }}>
+                    <span
+                      className="flex items-center justify-center rounded-[5px] shrink-0"
+                      style={{
+                        width: 20,
+                        height: 20,
+                        backgroundColor: checked ? '#DF57BC' : 'transparent',
+                        border: checked ? '1px solid #DF57BC' : '1px solid #e4e1d8',
+                      }}
+                    >
+                      {checked && <CheckIcon size={13} color="white" />}
                     </span>
-                    <span className="font-sans block" style={{ fontSize: 12, color: '#DF57BC', marginTop: 2 }}>
+                    <span className="font-sans font-bold flex-1" style={{ fontSize: 13, color: '#0a0a0f' }}>
+                      {t(option.nameKey)}
+                      {option.noteKey && <sup style={{ marginLeft: 2 }}>†</sup>}
+                    </span>
+                    <span className="font-sans font-semibold" style={{ fontSize: 13, color: '#DF57BC', whiteSpace: 'nowrap' }}>
                       {priceLabel}
                     </span>
-                  </span>
+                  </div>
+                  <p className="font-sans" style={{ fontSize: 12, color: 'rgba(10,10,15,.5)', lineHeight: 1.5, marginTop: 6 }}>
+                    {t(option.pitchKey)}
+                  </p>
                 </button>
               );
             })}
           </div>
+
+          <p className="font-sans" style={{ fontSize: 10.5, color: 'rgba(10,10,15,.4)', marginTop: 14 }}>
+            {t('option_photo_note')}
+          </p>
         </div>
 
-        {/* Simulator */}
+        {/* Live quote */}
         <div
-          className="rounded-2xl"
           style={{
-            background: 'linear-gradient(135deg, rgba(54,38,167,.15) 0%, rgba(223,87,188,.08) 100%)',
-            border: '1px solid rgba(255,255,255,.08)',
-            padding: 24,
-            marginTop: 16,
+            background: 'linear-gradient(135deg, rgba(54,38,167,.14) 0%, rgba(223,87,188,.10) 100%)',
+            border: '1px solid rgba(223,87,188,.33)',
+            borderRadius: 18,
+            padding: 28,
           }}
         >
-          {!selectedPackObj || !packPrice || !subtotal || !maintenance || !total ? (
-            <p className="text-center font-sans" style={{ fontSize: 14, color: 'rgba(255,255,255,.3)' }}>
-              ← {t('simulator_empty')}
+          {!selectedPackObj || total === null ? (
+            <p className="text-center font-sans" style={{ fontSize: 14, color: 'rgba(10,10,15,.4)' }}>
+              {t('quote_empty')}
             </p>
           ) : (
             <div className="flex flex-col">
-              <h3 className="font-heading font-bold" style={{ fontSize: 16, color: 'white', marginBottom: 16 }}>
-                {t('simulator_title')}
-              </h3>
+              <p className="font-sans uppercase font-semibold" style={{ fontSize: 11, letterSpacing: '0.15em', color: '#3626A7', marginBottom: 16 }}>
+                {t('quote_label')}
+              </p>
 
-              <div className="flex items-center justify-between font-sans" style={{ fontSize: 14, color: 'white', padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,.06)' }}>
+              <div className="flex items-center justify-between font-sans" style={{ fontSize: 14, color: '#0a0a0f', padding: '10px 0', borderBottom: '1px solid rgba(10,10,15,.08)' }}>
                 <span>{t(selectedPackObj.titleKey)}</span>
-                <span style={{ fontWeight: 600 }}>{formatRange(packPrice, currency)}</span>
+                <span style={{ fontWeight: 700 }}>{formatPrice(getPackPrice(selectedPackObj, currency), currency)}</span>
               </div>
 
               {Array.from(selectedOptions).map((id) => {
-                const option = OPTIONS.find((o) => o.id === id);
+                const option = PRICING_OPTIONS.find((o) => o.id === id);
                 if (!option) return null;
-                const price = getOptionPrice(option, selectedPackObj, currency);
+                const price = getOptionPrice(option, currency);
                 return (
                   <div
                     key={id}
                     className="flex items-center justify-between font-sans"
-                    style={{ fontSize: 13, color: 'rgba(255,255,255,.6)', padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,.06)' }}
+                    style={{ fontSize: 13, color: 'rgba(10,10,15,.6)', padding: '10px 0', borderBottom: '1px solid rgba(10,10,15,.08)' }}
                   >
                     <span>{t(option.nameKey)}</span>
-                    <span>+{formatRange(price, currency)}</span>
+                    <span>+{formatPrice(price, currency)}</span>
                   </div>
                 );
               })}
 
-              <div
-                className="flex items-center justify-between font-sans"
-                style={{ fontSize: 12, color: 'rgba(255,255,255,.3)', padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,.06)' }}
-              >
-                <span>{t('maintenance_label')}</span>
-                <span>{formatRange(maintenance, currency)}{t('maintenance_suffix')}</span>
-              </div>
-
               <div className="flex items-center justify-between" style={{ padding: '16px 0' }}>
-                <span className="font-heading font-bold" style={{ fontSize: 15, color: 'white' }}>
-                  {t('total_label')}
+                <span className="font-heading font-bold" style={{ fontSize: 15, color: '#0a0a0f' }}>
+                  {t('quote_total')}
                 </span>
-                <span className="font-heading font-extrabold" style={{ fontSize: 24, color: 'white' }}>
-                  {formatRange(total, currency)}
+                <span className="font-heading" style={{ fontSize: 26, fontWeight: 900, color: '#0a0a0f' }}>
+                  {formatPrice(total, currency)}
                 </span>
               </div>
 
-              <div className="flex justify-center" style={{ marginTop: 8 }}>
-                <GradientGlow className="w-full sm:w-auto">
-                  <a
-                    href={`/contact?pack=${selectedPackObj.id}&total=${Math.round(total.min)}-${Math.round(total.max)}`}
-                    className="flex items-center justify-center rounded-full font-heading font-semibold w-full sm:w-auto"
-                    style={{
-                      background: 'linear-gradient(135deg, #3626A7 0%, #DF57BC 50%, #DE541E 100%)',
-                      color: 'white',
-                      fontSize: 14,
-                      padding: '14px 32px',
-                    }}
-                  >
-                    {t('cta')}
-                  </a>
-                </GradientGlow>
-              </div>
+              <Link
+                href={quoteHref}
+                className="flex items-center justify-center font-heading font-semibold w-full"
+                style={{
+                  background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7)',
+                  backgroundSize: '300% 100%',
+                  animation: 'gradientShift 4s ease infinite',
+                  borderRadius: 100,
+                  color: 'white',
+                  fontSize: 14,
+                  padding: '14px 0',
+                  marginTop: 8,
+                }}
+              >
+                {t('quote_cta')}
+              </Link>
 
-              <p className="text-center font-sans" style={{ fontSize: 11, color: 'rgba(255,255,255,.3)', marginTop: 16 }}>
-                {t('micro_text')}
+              <p className="text-center font-sans" style={{ fontSize: 12, color: 'rgba(10,10,15,.5)', marginTop: 16 }}>
+                {t('quote_micro_prefix')}
+                <Link href={quoteHref} className="underline" style={{ color: '#3626A7' }}>
+                  {t('quote_micro_link')}
+                </Link>
               </p>
             </div>
           )}
         </div>
+
+        {/* Pages note */}
+        <p className="font-sans text-center" style={{ fontSize: 11, color: 'rgba(10,10,15,.4)', marginTop: 24 }}>
+          {t('pages_note')}
+        </p>
 
       </div>
     </section>
