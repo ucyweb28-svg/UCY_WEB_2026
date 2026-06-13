@@ -218,10 +218,6 @@
     "bullet3_sub": "From design to launch, without delay.",
     "bullet4_title": "Jerusalem × Paris studio",
     "bullet4_sub": "A team available across both time zones.",
-    "city_paris": "Paris",
-    "city_paris_sub": "France",
-    "city_jerusalem": "Jerusalem",
-    "city_jerusalem_sub": "Israel",
     "first_name": "First name",
     "last_name": "Last name",
     "email": "Email",
@@ -231,8 +227,8 @@
     "loading": "Sending...",
     "success": "Message sent! We'll get back to you within 24h.",
     "error": "Something went wrong. Try again or reach us on WhatsApp.",
-    "whatsapp_fr": "WhatsApp Paris",
-    "whatsapp_il": "WhatsApp Jerusalem",
+    "whatsapp_fr": "Message on WhatsApp 🇫🇷",
+    "whatsapp_il": "Message on WhatsApp 🇮🇱",
     "note": "Your data stays confidential · Reply within 24h"
   },
   "pricing": {

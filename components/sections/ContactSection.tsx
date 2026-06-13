@@ -41,14 +41,10 @@ function WhatsAppIcon({ size = 18, color = 'currentColor' }: { size?: number; co
 
 function WhatsAppCard({
   flag,
-  city,
-  sub,
   label,
   href,
 }: {
   flag: string;
-  city: string;
-  sub: string;
   label: string;
   href: string;
 }) {
@@ -62,13 +58,7 @@ function WhatsAppCard({
       <div className="flex justify-center mb-2">
         <WhatsAppIcon size={28} color="#25D366" />
       </div>
-      <div className="mb-1 text-xl">{flag}</div>
-      <p className="font-sans font-bold text-[13px]" style={{ color: '#0a0a0a' }}>
-        {city}
-      </p>
-      <p className="font-sans mb-[10px] text-[10px]" style={{ color: 'rgba(0,0,0,0.4)' }}>
-        {sub}
-      </p>
+      <div className="mb-[10px] text-xl">{flag}</div>
       <span className="whatsapp-card-btn block w-full font-sans text-[11px] font-bold text-white py-[7px] px-[14px] rounded-full">
         {label}
       </span>
@@ -194,15 +184,11 @@ export function ContactSection() {
           <motion.div variants={fadeUp} className="grid grid-cols-2 max-[374px]:grid-cols-1 gap-[10px] mt-auto pt-8">
             <WhatsAppCard
               flag="🇫🇷"
-              city={t('city_paris')}
-              sub={t('city_paris_sub')}
               label={t('whatsapp_fr')}
               href={whatsappFR}
             />
             <WhatsAppCard
               flag="🇮🇱"
-              city={t('city_jerusalem')}
-              sub={t('city_jerusalem_sub')}
               label={t('whatsapp_il')}
               href={whatsappIL}
             />

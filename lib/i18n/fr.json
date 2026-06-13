@@ -218,10 +218,6 @@
     "bullet3_sub": "De la maquette à la mise en ligne, sans traîner.",
     "bullet4_title": "Studio Jérusalem × Paris",
     "bullet4_sub": "Une équipe disponible sur les deux fuseaux horaires.",
-    "city_paris": "Paris",
-    "city_paris_sub": "France",
-    "city_jerusalem": "Jérusalem",
-    "city_jerusalem_sub": "Israël",
     "first_name": "Prénom",
     "last_name": "Nom",
     "email": "Email",
@@ -231,8 +227,8 @@
     "loading": "Envoi en cours...",
     "success": "Message envoyé ! On revient vers vous sous 24h.",
     "error": "Une erreur est survenue. Réessayez ou contactez-nous sur WhatsApp.",
-    "whatsapp_fr": "WhatsApp Paris",
-    "whatsapp_il": "WhatsApp Jérusalem",
+    "whatsapp_fr": "Écrire sur WhatsApp 🇫🇷",
+    "whatsapp_il": "Écrire sur WhatsApp 🇮🇱",
     "note": "Vos données restent confidentielles · Réponse sous 24h"
   },
   "pricing": {
