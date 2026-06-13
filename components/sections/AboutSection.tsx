@@ -8,7 +8,7 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 
 const TEAM = [
-  { image: '/images/team-yonathan.png', nameKey: 'member1_name', roleKey: 'member1_role', objectPosition: 'center 20%', linkedin: 'https://www.linkedin.com/company/115831904/' },
+  { image: '/images/team-yonathan.png', nameKey: 'member1_name', roleKey: 'member1_role', objectPosition: 'center 20%', linkedin: 'https://www.linkedin.com/in/yonathan-chetrit/' },
   { image: '/images/team-sarah.png',    nameKey: 'member2_name', roleKey: 'member2_role', objectPosition: 'center 15%', linkedin: null },
   { image: '/images/team-lucas.png',    nameKey: 'member3_name', roleKey: 'member3_role', objectPosition: 'center 10%', linkedin: null },
 ] as const;
