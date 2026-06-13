@@ -12,22 +12,6 @@ const VIDEOS = [
   '/videos/hero-video-3.mp4',
 ];
 
-function ChevronLeft() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M10 12L6 8L10 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function ChevronRight() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M6 4L10 8L6 12" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
 function VideoCarousel() {
   const [activeVideo, setActiveVideo] = useState(0);
 
@@ -37,9 +21,6 @@ function VideoCarousel() {
     }, 6000);
     return () => clearInterval(interval);
   }, []);
-
-  const prev = () => setActiveVideo((v) => (v - 1 + VIDEOS.length) % VIDEOS.length);
-  const next = () => setActiveVideo((v) => (v + 1) % VIDEOS.length);
 
   return (
     <div className="relative w-full h-full" style={{ backgroundColor: '#000807' }}>
@@ -62,24 +43,6 @@ function VideoCarousel() {
 
       {/* Gradient overlay */}
       <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#000807]/70 to-transparent md:bg-gradient-to-r md:from-[#3626A7]/55 md:via-[#DF57BC]/35 md:to-transparent" />
-
-      {/* Arrow — previous */}
-      <button
-        onClick={prev}
-        aria-label="Vidéo précédente"
-        className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center backdrop-blur-sm bg-white/20 hover:bg-white/40 transition-colors duration-200 cursor-pointer z-10"
-      >
-        <ChevronLeft />
-      </button>
-
-      {/* Arrow — next */}
-      <button
-        onClick={next}
-        aria-label="Vidéo suivante"
-        className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center backdrop-blur-sm bg-white/20 hover:bg-white/40 transition-colors duration-200 cursor-pointer z-10"
-      >
-        <ChevronRight />
-      </button>
 
       {/* Dot indicators */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
