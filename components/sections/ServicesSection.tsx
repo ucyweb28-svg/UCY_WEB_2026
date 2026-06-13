@@ -50,10 +50,23 @@ export function ServicesSection() {
   };
 
   const scroll = (direction: 'left' | 'right') => {
-    scrollRef.current?.scrollBy({
-      left: direction === 'left' ? -SCROLL_AMOUNT : SCROLL_AMOUNT,
-      behavior: 'smooth',
-    });
+    const el = scrollRef.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+
+    if (direction === 'right') {
+      if (el.scrollLeft >= max - 1) {
+        el.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        el.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' });
+      }
+    } else {
+      if (el.scrollLeft <= 1) {
+        el.scrollTo({ left: max, behavior: 'smooth' });
+      } else {
+        el.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' });
+      }
+    }
   };
 
   return (
