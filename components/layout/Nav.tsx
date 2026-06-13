@@ -347,7 +347,7 @@ export function Nav() {
                     aria-label={label}
                     className="text-[#0a0a0a] opacity-60 hover:opacity-100 hover:text-[#3626A7] transition-all duration-200"
                   >
-                    <SocialIcon path={path} size={22} />
+                    <SocialIcon path={path} size={24} />
                   </a>
                 ))}
               </div>
