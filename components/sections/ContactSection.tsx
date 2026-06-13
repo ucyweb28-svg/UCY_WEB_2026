@@ -125,7 +125,7 @@ export function ContactSection() {
       <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-[42%_58%] gap-10 lg:gap-16 items-start">
 
         {/* Left column */}
-        <motion.div variants={stagger} initial="hidden" animate="visible" className="lg:sticky lg:top-8">
+        <motion.div variants={stagger} initial="hidden" animate="visible" className="lg:sticky lg:top-8 flex flex-col h-full">
           <motion.span
             variants={fadeUp}
             className="inline-block rounded-full font-sans font-semibold uppercase tracking-widest mb-5"
@@ -191,7 +191,7 @@ export function ContactSection() {
 
           <motion.div variants={fadeUp} className="my-6" style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }} />
 
-          <motion.div variants={fadeUp} className="grid grid-cols-2 max-[374px]:grid-cols-1 gap-[10px]">
+          <motion.div variants={fadeUp} className="grid grid-cols-2 max-[374px]:grid-cols-1 gap-[10px] mt-auto pt-8">
             <WhatsAppCard
               flag="🇫🇷"
               city={t('city_paris')}
@@ -214,10 +214,10 @@ export function ContactSection() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="bg-white rounded-[20px] p-6 md:p-9"
+          className="bg-white rounded-[20px] p-6 md:p-9 flex flex-col h-full"
           style={{ border: '1px solid #e8e8e4', boxShadow: '0 4px 24px rgba(0,0,0,0.05)' }}
         >
-          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5 flex-1">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div>
                 <label htmlFor="firstName" className={labelClass}>
@@ -292,39 +292,41 @@ export function ContactSection() {
               />
             </div>
 
-            <button
-              type="submit"
-              disabled={status === 'loading'}
-              className="w-full font-sans text-white text-sm font-bold mt-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
-              style={{
-                background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7, #DF57BC, #DE541E)',
-                backgroundSize: '300% 300%',
-                animation: 'gradientShift 4s ease infinite',
-                padding: '14px 28px',
-                borderRadius: '100px',
-                border: 'none',
-              }}
-            >
-              {status === 'loading' ? t('loading') : t('submit')}
-            </button>
-
-            {status === 'success' && (
-              <p
-                className="flex items-center justify-center gap-2 font-sans text-sm font-semibold"
-                style={{ color: '#1D9E75' }}
+            <div className="mt-auto pt-6 flex flex-col gap-5">
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className="w-full font-sans text-white text-sm font-bold cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                style={{
+                  background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7, #DF57BC, #DE541E)',
+                  backgroundSize: '300% 300%',
+                  animation: 'gradientShift 4s ease infinite',
+                  padding: '14px 28px',
+                  borderRadius: '100px',
+                  border: 'none',
+                }}
               >
-                <span aria-hidden>✓</span> {t('success')}
-              </p>
-            )}
-            {status === 'error' && (
-              <p className="text-center font-sans text-sm" style={{ color: '#DE541E' }}>
-                {t('error')}
-              </p>
-            )}
+                {status === 'loading' ? t('loading') : t('submit')}
+              </button>
 
-            <p className="text-center font-sans" style={{ fontSize: 11, color: 'rgba(0,0,0,0.35)' }}>
-              {t('note')}
-            </p>
+              {status === 'success' && (
+                <p
+                  className="flex items-center justify-center gap-2 font-sans text-sm font-semibold"
+                  style={{ color: '#1D9E75' }}
+                >
+                  <span aria-hidden>✓</span> {t('success')}
+                </p>
+              )}
+              {status === 'error' && (
+                <p className="text-center font-sans text-sm" style={{ color: '#DE541E' }}>
+                  {t('error')}
+                </p>
+              )}
+
+              <p className="text-center font-sans" style={{ fontSize: 11, color: 'rgba(0,0,0,0.35)' }}>
+                {t('note')}
+              </p>
+            </div>
           </form>
         </motion.div>
 
