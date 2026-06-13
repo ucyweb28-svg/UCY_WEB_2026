@@ -118,7 +118,7 @@ export function ContactSection() {
         <motion.div variants={stagger} initial="hidden" animate="visible" className="lg:sticky lg:top-8 flex flex-col h-full">
           <motion.span
             variants={fadeUp}
-            className="inline-block rounded-full font-sans font-semibold uppercase tracking-widest mb-5"
+            className="inline-block self-start rounded-full font-sans font-semibold uppercase tracking-widest mb-5"
             style={{ fontSize: 10, color: '#3626A7', border: '1px solid rgba(54,38,167,0.2)', padding: '4px 12px' }}
           >
             {t('badge')}
@@ -181,7 +181,7 @@ export function ContactSection() {
 
           <motion.div variants={fadeUp} className="my-6" style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }} />
 
-          <motion.div variants={fadeUp} className="grid grid-cols-2 max-[374px]:grid-cols-1 gap-[10px] mt-auto pt-8">
+          <motion.div variants={fadeUp} className="grid grid-cols-2 max-[374px]:grid-cols-1 gap-[10px]">
             <WhatsAppCard
               flag="🇫🇷"
               label={t('whatsapp_fr')}
