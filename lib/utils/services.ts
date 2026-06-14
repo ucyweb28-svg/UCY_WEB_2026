@@ -79,8 +79,8 @@ export const SERVICES: Service[] = [
       en: 'Web Design.',
     },
     heroSub: {
-      fr: 'Du premier wireframe au déploiement en production, voici tout ce qui est inclus dans ce service.',
-      en: "From the first wireframe to production deployment, here's everything included in this service.",
+      fr: 'Du premier wireframe au déploiement — design, dev et performance inclus.',
+      en: 'From first wireframe to deployment — design, dev and performance included.',
     },
     meta: {
       title: {
@@ -177,8 +177,8 @@ export const SERVICES: Service[] = [
       en: 'UI/UX Design.',
     },
     heroSub: {
-      fr: 'De la recherche utilisateur aux prototypes interactifs, voici ce que comprend notre accompagnement UI/UX.',
-      en: "From user research to interactive prototypes, here's what our UI/UX work covers.",
+      fr: 'Research, wireframes, UI haute-fidélité et tests utilisateurs.',
+      en: 'Research, wireframes, high-fidelity UI and user testing.',
     },
     meta: {
       title: {
@@ -275,8 +275,8 @@ export const SERVICES: Service[] = [
       en: 'Branding.',
     },
     heroSub: {
-      fr: 'Du logo à la charte complète, voici tout ce qui compose une identité de marque cohérente.',
-      en: "From logo to full guidelines, here's everything that makes up a coherent brand identity.",
+      fr: 'Logo, charte graphique et design system — une identité qui dure.',
+      en: 'Logo, brand guidelines and design system — an identity built to last.',
     },
     meta: {
       title: {
@@ -373,8 +373,8 @@ export const SERVICES: Service[] = [
       en: 'Digital Strategy.',
     },
     heroSub: {
-      fr: "Positionnement, contenu, réseaux sociaux — voici les piliers d'une stratégie digitale qui fonctionne.",
-      en: 'Positioning, content, social media — here are the pillars of a digital strategy that works.',
+      fr: 'Réseaux sociaux, contenu et acquisition — une présence qui génère.',
+      en: 'Social media, content and acquisition — a presence that generates.',
     },
     meta: {
       title: {
@@ -471,8 +471,8 @@ export const SERVICES: Service[] = [
       en: 'SEO.',
     },
     heroSub: {
-      fr: 'Audit, Core Web Vitals, suivi mensuel — voici ce qui rend votre site visible et rapide.',
-      en: "Audit, Core Web Vitals, monthly tracking — here's what makes your site visible and fast.",
+      fr: 'Audit technique, mots-clés et Core Web Vitals — visible durablement.',
+      en: 'Technical audit, keywords and Core Web Vitals — visible for the long run.',
     },
     meta: {
       title: {
@@ -569,8 +569,8 @@ export const SERVICES: Service[] = [
       en: 'Mobile Apps.',
     },
     heroSub: {
-      fr: 'De React Native aux stores, voici ce que comprend le développement de votre application mobile.',
-      en: "From React Native to the app stores, here's what your mobile app development includes.",
+      fr: 'React Native et PWA — des apps iOS et Android sans compromis.',
+      en: 'React Native and PWA — iOS and Android apps without compromise.',
     },
     meta: {
       title: {
@@ -667,8 +667,8 @@ export const SERVICES: Service[] = [
       en: 'Maintenance.',
     },
     heroSub: {
-      fr: 'Sécurité, hébergement, support — voici ce qui garde votre site sain au quotidien.',
-      en: "Security, hosting, support — here's what keeps your site healthy day to day.",
+      fr: "Mises à jour, sécurité et support — on s'occupe de tout.",
+      en: 'Updates, security and support — we handle everything.',
     },
     meta: {
       title: {

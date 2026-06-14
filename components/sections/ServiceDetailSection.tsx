@@ -150,7 +150,7 @@ export function ServiceDetailSection({
                 {heroGradientWord}
               </span>
             </h2>
-            <p className="font-sans text-[13px] max-w-xl mb-10" style={{ color: '#888' }}>
+            <p className="font-sans text-[13px] mb-10" style={{ color: '#888' }}>
               {heroSub}
             </p>
           </ScrollReveal>
