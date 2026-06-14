@@ -212,10 +212,6 @@ export function ProcessSection() {
                 </span>
 
                 <div>
-                  <p className="font-sans uppercase tracking-widest" style={{ fontSize: 10, color: '#aaa' }}>
-                    {t(step.labelKey)}
-                  </p>
-
                   <div
                     className="flex items-center justify-center rounded-full"
                     style={{ width: 40, height: 40, background: ICON_CIRCLE_BG, marginTop: 16 }}
