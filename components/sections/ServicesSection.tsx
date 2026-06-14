@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react';
 import type { UIEvent } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowDiag } from '@/components/ui/ArrowDiag';
@@ -11,14 +12,14 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 
 const SERVICES = [
-  { image: '/images/icon-engineering.jpg',     titleKey: 'web_title',         descKey: 'web_desc',         hasImage: true },
-  { image: '/images/icon-design.jpg',          titleKey: 'ui_title',          descKey: 'ui_desc',          hasImage: true },
-  { image: '/images/icon-print.jpg',           titleKey: 'branding_title',    descKey: 'branding_desc',    hasImage: true },
-  { image: '/images/icon-social.jpg',          titleKey: 'strategy_title',    descKey: 'strategy_desc',    hasImage: true },
-  { image: '/images/service-ecommerce.png',    titleKey: 'ecommerce_title',   descKey: 'ecommerce_desc',   hasImage: true },
-  { image: '/images/service-seo.png',          titleKey: 'seo_title',         descKey: 'seo_desc',         hasImage: true },
-  { image: '/images/service-mobile.png',       titleKey: 'mobile_title',      descKey: 'mobile_desc',      hasImage: true },
-  { image: '/images/service-maintenance.png',  titleKey: 'maintenance_title', descKey: 'maintenance_desc', hasImage: true },
+  { image: '/images/icon-engineering.jpg',     titleKey: 'web_title',         descKey: 'web_desc',         hasImage: true, slug: 'web-design' },
+  { image: '/images/icon-design.jpg',          titleKey: 'ui_title',          descKey: 'ui_desc',          hasImage: true, slug: 'ui-ux' },
+  { image: '/images/icon-print.jpg',           titleKey: 'branding_title',    descKey: 'branding_desc',    hasImage: true, slug: 'branding' },
+  { image: '/images/icon-social.jpg',          titleKey: 'strategy_title',    descKey: 'strategy_desc',    hasImage: true, slug: 'strategie-digitale' },
+  { image: '/images/service-ecommerce.png',    titleKey: 'ecommerce_title',   descKey: 'ecommerce_desc',   hasImage: true, slug: null },
+  { image: '/images/service-seo.png',          titleKey: 'seo_title',         descKey: 'seo_desc',         hasImage: true, slug: 'seo' },
+  { image: '/images/service-mobile.png',       titleKey: 'mobile_title',      descKey: 'mobile_desc',      hasImage: true, slug: 'application-mobile' },
+  { image: '/images/service-maintenance.png',  titleKey: 'maintenance_title', descKey: 'maintenance_desc', hasImage: true, slug: 'maintenance' },
 ] as const;
 
 const SCROLL_AMOUNT = 340;
@@ -119,7 +120,7 @@ export function ServicesSection() {
             onScroll={handleScroll}
             className="flex gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar"
           >
-            {SERVICES.map(({ image, titleKey, descKey, hasImage }) => (
+            {SERVICES.map(({ image, titleKey, descKey, hasImage, slug }) => (
               <div
                 key={titleKey}
                 className="group flex-shrink-0 snap-start w-[280px] md:w-[320px] h-[380px] rounded-xl animate-gradient"
@@ -149,13 +150,23 @@ export function ServicesSection() {
                     <p className="font-sans text-sm leading-relaxed line-clamp-2 text-[#000807]/60">
                       {t(descKey)}
                     </p>
-                    <a
-                      href="#contact"
-                      className="font-sans text-sm font-semibold mt-auto inline-flex items-center gap-1 text-[#3626A7]"
-                    >
-                      {t('cta')}
-                      <ArrowDiag size={11} />
-                    </a>
+                    {slug ? (
+                      <Link
+                        href={`/services/${slug}`}
+                        className="font-sans text-sm font-semibold mt-auto inline-flex items-center gap-1 text-[#3626A7]"
+                      >
+                        {t('cta')}
+                        <ArrowDiag size={11} />
+                      </Link>
+                    ) : (
+                      <a
+                        href="#contact"
+                        className="font-sans text-sm font-semibold mt-auto inline-flex items-center gap-1 text-[#3626A7]"
+                      >
+                        {t('cta')}
+                        <ArrowDiag size={11} />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

@@ -423,5 +423,23 @@
     "analytics_body": "This site uses Plausible Analytics, a privacy-friendly analytics tool that does not use cookies and does not collect any personally identifiable data.",
     "credits_title": "Credits",
     "credits_body": "Design and development: UCY Studio — ucyweb.fr"
+  },
+  "service_detail": {
+    "badge": "Services",
+    "back_link": "Back to services",
+    "cta_pricing": "View our pricing",
+    "cta_whatsapp_fr": "WhatsApp France",
+    "cta_whatsapp_il": "WhatsApp Israel",
+    "features_badge": "What we do",
+    "features_heading_start": "What we ",
+    "features_heading_highlight": "do",
+    "process_badge": "Our process",
+    "process_heading_start": "Our ",
+    "process_heading_highlight": "process",
+    "step_label": "Step",
+    "related_heading": "Related projects",
+    "final_cta_badge": "Let's talk",
+    "final_cta_heading": "Ready to start your project?",
+    "final_cta_subtitle": "Quick response, no commitment — let's discuss your needs on WhatsApp."
   }
 }
