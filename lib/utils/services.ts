@@ -31,11 +31,14 @@ export interface RelatedProjectRef {
 export interface Service {
   slug: ServiceSlug;
   image: string;
+  color: string;
   hero: {
     title: LocalizedText;
     subtitle: LocalizedText;
     tagline: LocalizedText;
   };
+  heroGradientWord: LocalizedText;
+  heroSub: LocalizedText;
   meta: {
     title: LocalizedText;
     description: LocalizedText;
@@ -56,6 +59,7 @@ export const SERVICES: Service[] = [
   {
     slug: 'web-design',
     image: '/images/icon-engineering.jpg',
+    color: '#3626A7',
     hero: {
       title: {
         fr: 'Web Design & Développement',
@@ -69,6 +73,14 @@ export const SERVICES: Service[] = [
         fr: 'Du design au code, sans compromis.',
         en: 'From design to code, no compromise.',
       },
+    },
+    heroGradientWord: {
+      fr: 'le Web Design.',
+      en: 'Web Design.',
+    },
+    heroSub: {
+      fr: 'Du premier wireframe au déploiement en production, voici tout ce qui est inclus dans ce service.',
+      en: "From the first wireframe to production deployment, here's everything included in this service.",
     },
     meta: {
       title: {
@@ -145,6 +157,7 @@ export const SERVICES: Service[] = [
   {
     slug: 'ui-ux',
     image: '/images/icon-design.jpg',
+    color: '#DF57BC',
     hero: {
       title: {
         fr: 'UI/UX Design',
@@ -158,6 +171,14 @@ export const SERVICES: Service[] = [
         fr: 'Une expérience qui se sent juste.',
         en: 'An experience that feels right.',
       },
+    },
+    heroGradientWord: {
+      fr: "l'UI/UX Design.",
+      en: 'UI/UX Design.',
+    },
+    heroSub: {
+      fr: 'De la recherche utilisateur aux prototypes interactifs, voici ce que comprend notre accompagnement UI/UX.',
+      en: "From user research to interactive prototypes, here's what our UI/UX work covers.",
     },
     meta: {
       title: {
@@ -234,6 +255,7 @@ export const SERVICES: Service[] = [
   {
     slug: 'branding',
     image: '/images/icon-print.jpg',
+    color: '#DE541E',
     hero: {
       title: {
         fr: 'Branding & Identité',
@@ -247,6 +269,14 @@ export const SERVICES: Service[] = [
         fr: "Une marque qu'on reconnaît du premier coup d'œil.",
         en: 'A brand you recognize at a glance.',
       },
+    },
+    heroGradientWord: {
+      fr: 'le Branding.',
+      en: 'Branding.',
+    },
+    heroSub: {
+      fr: 'Du logo à la charte complète, voici tout ce qui compose une identité de marque cohérente.',
+      en: "From logo to full guidelines, here's everything that makes up a coherent brand identity.",
     },
     meta: {
       title: {
@@ -323,6 +353,7 @@ export const SERVICES: Service[] = [
   {
     slug: 'strategie-digitale',
     image: '/images/icon-social.jpg',
+    color: '#DF57BC',
     hero: {
       title: {
         fr: 'Stratégie Digitale',
@@ -336,6 +367,14 @@ export const SERVICES: Service[] = [
         fr: 'Une présence qui travaille pour vous.',
         en: 'A presence that works for you.',
       },
+    },
+    heroGradientWord: {
+      fr: 'la Stratégie Digitale.',
+      en: 'Digital Strategy.',
+    },
+    heroSub: {
+      fr: "Positionnement, contenu, réseaux sociaux — voici les piliers d'une stratégie digitale qui fonctionne.",
+      en: 'Positioning, content, social media — here are the pillars of a digital strategy that works.',
     },
     meta: {
       title: {
@@ -412,6 +451,7 @@ export const SERVICES: Service[] = [
   {
     slug: 'seo',
     image: '/images/service-seo.png',
+    color: '#3626A7',
     hero: {
       title: {
         fr: 'SEO & Performance',
@@ -425,6 +465,14 @@ export const SERVICES: Service[] = [
         fr: 'Être trouvé. Être rapide.',
         en: 'Get found. Stay fast.',
       },
+    },
+    heroGradientWord: {
+      fr: 'le SEO.',
+      en: 'SEO.',
+    },
+    heroSub: {
+      fr: 'Audit, Core Web Vitals, suivi mensuel — voici ce qui rend votre site visible et rapide.',
+      en: "Audit, Core Web Vitals, monthly tracking — here's what makes your site visible and fast.",
     },
     meta: {
       title: {
@@ -501,6 +549,7 @@ export const SERVICES: Service[] = [
   {
     slug: 'application-mobile',
     image: '/images/service-mobile.png',
+    color: '#DE541E',
     hero: {
       title: {
         fr: 'Application Mobile',
@@ -514,6 +563,14 @@ export const SERVICES: Service[] = [
         fr: 'Votre produit, dans toutes les poches.',
         en: 'Your product, in every pocket.',
       },
+    },
+    heroGradientWord: {
+      fr: "l'Application Mobile.",
+      en: 'Mobile Apps.',
+    },
+    heroSub: {
+      fr: 'De React Native aux stores, voici ce que comprend le développement de votre application mobile.',
+      en: "From React Native to the app stores, here's what your mobile app development includes.",
     },
     meta: {
       title: {
@@ -590,6 +647,7 @@ export const SERVICES: Service[] = [
   {
     slug: 'maintenance',
     image: '/images/service-maintenance.png',
+    color: '#3626A7',
     hero: {
       title: {
         fr: 'Maintenance & Support',
@@ -603,6 +661,14 @@ export const SERVICES: Service[] = [
         fr: 'Votre site, toujours en bonne santé.',
         en: 'Your site, always in good health.',
       },
+    },
+    heroGradientWord: {
+      fr: 'la Maintenance.',
+      en: 'Maintenance.',
+    },
+    heroSub: {
+      fr: 'Sécurité, hébergement, support — voici ce qui garde votre site sain au quotidien.',
+      en: "Security, hosting, support — here's what keeps your site healthy day to day.",
     },
     meta: {
       title: {

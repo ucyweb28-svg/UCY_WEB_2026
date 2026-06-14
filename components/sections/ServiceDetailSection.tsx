@@ -31,12 +31,24 @@ interface ProcessStepContent {
 interface ServiceDetailSectionProps {
   image: string;
   hero: LocalizedContent;
+  color: string;
+  heroGradientWord: string;
+  heroSub: string;
   features: FeatureContent[];
   process: ProcessStepContent[];
   relatedProjects: RelatedProjectRef[];
 }
 
-export function ServiceDetailSection({ image, hero, features, process, relatedProjects }: ServiceDetailSectionProps) {
+export function ServiceDetailSection({
+  image,
+  hero,
+  color,
+  heroGradientWord,
+  heroSub,
+  features,
+  process,
+  relatedProjects,
+}: ServiceDetailSectionProps) {
   const t = useTranslations('service_detail');
   const tPortfolio = useTranslations('portfolio');
   const locale = useLocale();
@@ -122,16 +134,25 @@ export function ServiceDetailSection({ image, hero, features, process, relatedPr
       <section className="section" style={{ backgroundColor: '#ffffff' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <ScrollReveal>
-            <Badge>{t('features_badge')}</Badge>
             <h2
-              className="font-heading font-extrabold text-3xl md:text-4xl leading-tight mt-4 mb-10"
-              style={{ color: '#000807' }}
+              className="font-heading font-extrabold leading-tight mb-3"
+              style={{ color: '#0a0a0f', fontSize: 'clamp(1.75rem, 4vw, 2.75rem)' }}
             >
-              {t('features_heading_start')}
-              <span className="bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent">
-                {t('features_heading_highlight')}
+              {t('features_heading_prefix')}
+              <span
+                style={{
+                  background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                {heroGradientWord}
               </span>
             </h2>
+            <p className="font-sans text-[13px] max-w-xl mb-10" style={{ color: '#888' }}>
+              {heroSub}
+            </p>
           </ScrollReveal>
 
           <motion.div
@@ -141,17 +162,26 @@ export function ServiceDetailSection({ image, hero, features, process, relatedPr
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
-            {features.map((feature) => (
+            {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
                 variants={fadeUp}
-                className="rounded-2xl p-6"
-                style={{ border: '1px solid #e8e8e4' }}
+                whileHover={{ borderColor: color, transition: { duration: 0.3, ease: 'easeOut' } }}
+                className="relative overflow-hidden rounded-[20px]"
+                style={{ backgroundColor: '#ffffff', border: '1px solid #e4e1d8', padding: 32 }}
               >
-                <h3 className="font-heading font-bold text-lg mb-2" style={{ color: '#000807' }}>
+                <span
+                  className="absolute font-heading font-extrabold pointer-events-none select-none"
+                  style={{ bottom: -16, right: 16, fontSize: 96, lineHeight: 1, color: '#0a0a0f', opacity: 0.04 }}
+                  aria-hidden="true"
+                >
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span className="block w-2 h-2 rounded-full" style={{ backgroundColor: color, marginBottom: 20 }} />
+                <h3 className="font-heading font-bold" style={{ fontSize: 16, color: '#0a0a0f', marginBottom: 10 }}>
                   {feature.title}
                 </h3>
-                <p className="font-sans text-sm leading-relaxed" style={{ color: 'rgba(0,8,7,0.6)' }}>
+                <p className="font-sans" style={{ fontSize: 14, color: '#666', lineHeight: 1.7 }}>
                   {feature.desc}
                 </p>
               </motion.div>

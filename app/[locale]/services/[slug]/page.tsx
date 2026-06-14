@@ -57,6 +57,9 @@ export default function ServiceDetailPage({
       <ServiceDetailSection
         image={service.image}
         hero={hero}
+        color={service.color}
+        heroGradientWord={service.heroGradientWord[locale]}
+        heroSub={service.heroSub[locale]}
         features={features}
         process={process}
         relatedProjects={service.relatedProjects}
