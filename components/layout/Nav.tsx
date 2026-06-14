@@ -205,7 +205,7 @@ export function Nav() {
       }}
     >
       {/* Main bar */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 h-[72px] flex items-center justify-between">
 
         {/* Logo */}
         <Link href="/" className="select-none">
@@ -271,7 +271,7 @@ export function Nav() {
               style={{ backgroundColor: '#ffffff' }}
             >
               {/* Top bar: logo + close */}
-              <div className="shrink-0 flex items-center justify-between px-6 md:px-8 h-16 md:h-20">
+              <div className="shrink-0 flex items-center justify-between px-6 md:px-8 h-[72px]">
                 <Link
                   href="/"
                   onClick={() => setMenuOpen(false)}
