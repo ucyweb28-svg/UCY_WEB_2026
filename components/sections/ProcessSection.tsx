@@ -54,7 +54,6 @@ interface ProcessStep {
   descKey: string;
   durationKey: string;
   Icon: ComponentType<IconProps>;
-  iconColor: string;
 }
 
 const STEPS: ProcessStep[] = [
@@ -64,7 +63,6 @@ const STEPS: ProcessStep[] = [
     descKey: 'step1_desc',
     durationKey: 'step1_duration',
     Icon: SearchIcon,
-    iconColor: '#7F77DD',
   },
   {
     labelKey: 'step2_label',
@@ -72,7 +70,6 @@ const STEPS: ProcessStep[] = [
     descKey: 'step2_desc',
     durationKey: 'step2_duration',
     Icon: PencilIcon,
-    iconColor: '#DF57BC',
   },
   {
     labelKey: 'step3_label',
@@ -80,7 +77,6 @@ const STEPS: ProcessStep[] = [
     descKey: 'step3_desc',
     durationKey: 'step3_duration',
     Icon: CodeIcon,
-    iconColor: '#c070e0',
   },
   {
     labelKey: 'step4_label',
@@ -88,26 +84,15 @@ const STEPS: ProcessStep[] = [
     descKey: 'step4_desc',
     durationKey: 'step4_duration',
     Icon: RocketIcon,
-    iconColor: '#DE541E',
   },
 ];
 
-const TIMELINE_GRADIENT = 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7)';
-const TIMELINE_GRADIENT_VERTICAL = 'linear-gradient(180deg, #DE541E, #DF57BC, #3626A7)';
-const DOT_GRADIENT = 'linear-gradient(135deg, #3626A7, #DF57BC)';
+const ICON_CIRCLE_BG = 'linear-gradient(135deg, rgba(54,38,167,0.15), rgba(223,87,188,0.15))';
 
-function ChevronConnector({ index, className, style }: { index: number; className?: string; style?: CSSProperties }) {
-  const gradientId = `process-chevron-${index}`;
-
+function ChevronArrow({ className, style }: { className?: string; style?: CSSProperties }) {
   return (
-    <svg width="20" height="12" viewBox="0 0 20 12" className={className} style={style} aria-hidden="true">
-      <defs>
-        <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#DF57BC" />
-          <stop offset="100%" stopColor="#3626A7" />
-        </linearGradient>
-      </defs>
-      <path d="M0 6 L16 6 M11 1 L16 6 L11 11" stroke={`url(#${gradientId})`} strokeWidth="1.5" strokeLinecap="round" fill="none" />
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className={className} style={style} aria-hidden="true">
+      <path d="M4 2 L10 8 L4 14" stroke="url(#process-arrow-gradient)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -119,147 +104,160 @@ export function ProcessSection() {
     <section className="section" style={{ backgroundColor: '#0a0a0f' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col items-center text-center"
-          style={{ marginBottom: 48 }}
-        >
-          <div
-            className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5"
-            style={{ borderColor: 'rgba(223,87,188,.3)' }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#DF57BC' }} />
-            <span className="font-sans text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#DF57BC' }}>
-              {t('badge')}
-            </span>
-          </div>
+        {/* Shared gradient defs for icons & connectors */}
+        <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
+          <defs>
+            <linearGradient id="process-icon-gradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#3626A7" />
+              <stop offset="1" stopColor="#DF57BC" />
+            </linearGradient>
+            <linearGradient id="process-arrow-gradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#DF57BC" />
+              <stop offset="1" stopColor="#3626A7" />
+            </linearGradient>
+          </defs>
+        </svg>
 
-          <h2
-            className="font-heading font-extrabold leading-tight"
-            style={{ color: 'white', fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', marginTop: 16 }}
+        {/* Wrapper */}
+        <div
+          className="mx-auto p-6 md:p-12"
+          style={{
+            background: 'linear-gradient(135deg, #3626A714 0%, #DF57BC0a 50%, #0a0a0f 100%)',
+            border: '1px solid rgba(255,255,255,0.06)',
+            borderRadius: 24,
+            maxWidth: 1100,
+          }}
+        >
+
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col items-center text-center mb-10"
           >
-            {t('headline_start')}
-            <span
-              style={{
-                background: 'linear-gradient(90deg, #3626A7, #DF57BC, #DE541E)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
+            <div
+              className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5"
+              style={{ borderColor: 'rgba(223,87,188,.3)' }}
             >
-              {t('headline_highlight')}
-            </span>
-          </h2>
+              <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#DF57BC' }} />
+              <span className="font-sans text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#DF57BC' }}>
+                {t('badge')}
+              </span>
+            </div>
 
-          <p className="font-sans" style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, marginTop: 12 }}>
-            {t('subtitle')}
-          </p>
-        </motion.div>
+            <h2
+              className="font-heading font-extrabold leading-tight"
+              style={{ color: 'white', fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', marginTop: 16 }}
+            >
+              {t('headline_start')}
+              <span
+                style={{
+                  background: 'linear-gradient(90deg, #3626A7, #DF57BC, #DE541E)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                {t('headline_highlight')}
+              </span>
+            </h2>
 
-        {/* Timeline */}
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="relative grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-0"
-        >
-          {/* Horizontal line (desktop) */}
-          <div
-            className="hidden md:block absolute pointer-events-none"
-            style={{ top: 7, left: '12.5%', right: '12.5%', height: 2, background: TIMELINE_GRADIENT }}
-          />
+            <p className="font-sans" style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, marginTop: 12 }}>
+              {t('subtitle')}
+            </p>
+          </motion.div>
 
-          {/* Vertical line (mobile) */}
-          <div
-            className="md:hidden absolute pointer-events-none"
-            style={{ top: 7, bottom: 7, left: 7, width: 2, background: TIMELINE_GRADIENT_VERTICAL }}
-          />
-
-          {STEPS.map((step, index) => {
-            const accent = step.iconColor;
-
-            return (
+          {/* Cards */}
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          >
+            {STEPS.map((step, index) => (
               <motion.div
                 key={step.titleKey}
                 variants={fadeUp}
-                className="relative flex flex-row md:flex-col items-start md:items-center text-left md:text-center gap-4 md:gap-0"
+                whileHover={{
+                  borderColor: 'rgba(223,87,188,0.3)',
+                  backgroundColor: 'rgba(255,255,255,0.05)',
+                  transition: { duration: 0.3, ease: 'easeOut' },
+                }}
+                className="relative flex flex-col justify-between"
+                style={{
+                  backgroundColor: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  borderRadius: 16,
+                  padding: 24,
+                  overflow: 'hidden',
+                }}
               >
-                {/* Dot */}
-                <div
-                  className="relative z-10 shrink-0 w-[14px] h-[14px] rounded-full border-2 border-white mt-[1px] md:mt-0"
-                  style={{ background: DOT_GRADIENT }}
-                />
+                <span
+                  className="absolute font-heading font-extrabold pointer-events-none select-none"
+                  style={{ top: 8, right: 12, fontSize: 48, lineHeight: 1, color: '#ffffff', opacity: 0.06 }}
+                  aria-hidden="true"
+                >
+                  {String(index + 1).padStart(2, '0')}
+                </span>
 
-                {/* Chevron to next step (desktop) */}
-                {index < STEPS.length - 1 && (
-                  <ChevronConnector
-                    index={index}
-                    className="hidden md:block absolute z-10"
-                    style={{ top: 1, right: 0, transform: 'translateX(50%)' }}
-                  />
-                )}
-
-                {/* Content */}
-                <div className="flex flex-col items-start md:items-center md:mt-6">
-                  <p
-                    className="font-sans uppercase tracking-widest"
-                    style={{ fontSize: 10, color: '#aaa', marginBottom: 8 }}
-                  >
+                <div>
+                  <p className="font-sans uppercase tracking-widest" style={{ fontSize: 10, color: '#aaa' }}>
                     {t(step.labelKey)}
                   </p>
 
                   <div
                     className="flex items-center justify-center rounded-full"
-                    style={{ width: 40, height: 40, backgroundColor: `${accent}1A` }}
+                    style={{ width: 40, height: 40, background: ICON_CIRCLE_BG, marginTop: 16 }}
                   >
-                    <step.Icon size={20} color={accent} />
+                    <step.Icon size={20} color="url(#process-icon-gradient)" />
                   </div>
 
-                  <h3
-                    className="font-heading font-bold"
-                    style={{ fontSize: 15, color: '#ffffff', marginTop: 12 }}
-                  >
+                  <h3 className="font-heading font-bold" style={{ fontSize: 15, color: '#ffffff', marginTop: 12 }}>
                     {t(step.titleKey)}
                   </h3>
 
-                  <p
-                    className="font-sans"
-                    style={{ fontSize: 13, color: '#aaa', marginTop: 8, maxWidth: 200 }}
-                  >
+                  <p className="font-sans" style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', marginTop: 8, lineHeight: 1.7 }}>
                     {t(step.descKey)}
                   </p>
-
-                  <span
-                    className="font-sans font-bold inline-block"
-                    style={{
-                      fontSize: 10,
-                      color: accent,
-                      backgroundColor: `${accent}20`,
-                      borderRadius: 100,
-                      padding: '3px 10px',
-                      marginTop: 12,
-                    }}
-                  >
-                    {t(step.durationKey)}
-                  </span>
                 </div>
+
+                <span
+                  className="font-sans font-bold inline-flex self-start"
+                  style={{
+                    fontSize: 11,
+                    color: '#DF57BC',
+                    backgroundColor: 'rgba(54,38,167,0.2)',
+                    borderRadius: 100,
+                    padding: '4px 12px',
+                    marginTop: 16,
+                  }}
+                >
+                  {t(step.durationKey)}
+                </span>
               </motion.div>
-            );
-          })}
-        </motion.div>
+            ))}
 
-        {/* Bottom */}
-        <p className="text-center font-sans" style={{ marginTop: 28, fontSize: 13, color: 'rgba(255,255,255,.35)' }}>
-          {t('footer_start')}
-          <span style={{ color: '#DF57BC', fontWeight: 700 }}>{t('footer_highlight')}</span>
-          {t('footer_end')}
-        </p>
+            {/* Connectors (desktop only) */}
+            {[0, 1, 2].map((i) => (
+              <ChevronArrow
+                key={i}
+                className="hidden lg:block absolute pointer-events-none"
+                style={{ top: '50%', left: `${(i + 1) * 25}%`, transform: 'translate(-50%, -50%)' }}
+              />
+            ))}
+          </motion.div>
 
+          {/* Footer */}
+          <p className="text-center font-sans" style={{ marginTop: 28, fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>
+            {t('footer_start')}
+            <span style={{ color: '#DF57BC', fontWeight: 700 }}>{t('footer_highlight')}</span>
+            {t('footer_end')}
+          </p>
+
+        </div>
       </div>
     </section>
   );
