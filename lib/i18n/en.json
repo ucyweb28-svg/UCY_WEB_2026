@@ -67,9 +67,8 @@
   },
   "process": {
     "badge": "OUR PROCESS",
-    "headline_start": "How we ",
-    "headline_highlight": "work together",
-    "subtitle": "2 to 6 weeks depending on your project — clear framework, no surprises.",
+    "headline_start": "Step by ",
+    "headline_highlight": "step.",
     "duration_label": "Duration",
     "step1_label": "Step 01",
     "step1_title": "Discovery",
@@ -86,10 +85,7 @@
     "step4_label": "Step 04",
     "step4_title": "Launch",
     "step4_desc": "Go live, cross-device testing and 30-day post-launch support included.",
-    "step4_duration": "1–2 days",
-    "footer_start": "Présence · 2 wks  —  Conversion · 3–4 wks  —  Autonomie · 5–6 wks",
-    "footer_highlight": "",
-    "footer_end": ""
+    "step4_duration": "1–2 days"
   },
   "ai": {
     "badge": "AI & Production",

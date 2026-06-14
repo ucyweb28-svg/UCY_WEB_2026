@@ -67,9 +67,8 @@
   },
   "process": {
     "badge": "NOTRE PROCESSUS",
-    "headline_start": "Comment on ",
-    "headline_highlight": "travaille ensemble",
-    "subtitle": "De 2 à 6 semaines selon votre projet — un cadre clair, zéro surprise.",
+    "headline_start": "Étape par ",
+    "headline_highlight": "étape.",
     "duration_label": "Durée",
     "step1_label": "Étape 01",
     "step1_title": "Discovery",
@@ -86,10 +85,7 @@
     "step4_label": "Étape 04",
     "step4_title": "Lancement",
     "step4_desc": "Mise en ligne, tests cross-device et support inclus 30 jours après livraison.",
-    "step4_duration": "1–2 jours",
-    "footer_start": "Présence · 2 sem  —  Conversion · 3–4 sem  —  Autonomie · 5–6 sem",
-    "footer_highlight": "",
-    "footer_end": ""
+    "step4_duration": "1–2 jours"
   },
   "ai": {
     "badge": "IA & Production",

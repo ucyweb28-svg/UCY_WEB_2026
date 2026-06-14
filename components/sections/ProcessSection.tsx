@@ -153,7 +153,7 @@ export function ProcessSection() {
               {t('headline_start')}
               <span
                 style={{
-                  background: 'linear-gradient(90deg, #3626A7, #DF57BC, #DE541E)',
+                  background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -162,10 +162,6 @@ export function ProcessSection() {
                 {t('headline_highlight')}
               </span>
             </h2>
-
-            <p className="font-sans" style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, marginTop: 12 }}>
-              {t('subtitle')}
-            </p>
           </motion.div>
 
           {/* Cards */}
@@ -248,13 +244,6 @@ export function ProcessSection() {
               />
             ))}
           </motion.div>
-
-          {/* Footer */}
-          <p className="text-center font-sans" style={{ marginTop: 28, fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>
-            {t('footer_start')}
-            <span style={{ color: '#DF57BC', fontWeight: 700 }}>{t('footer_highlight')}</span>
-            {t('footer_end')}
-          </p>
 
         </div>
       </div>
