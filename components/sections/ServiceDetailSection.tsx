@@ -301,7 +301,7 @@ export function ServiceDetailSection({
                     overflow: 'hidden',
                   }}
                 >
-                  <div>
+                  <div style={{ position: 'relative', zIndex: 1 }}>
                     <h3 className="font-heading font-bold" style={{ fontSize: 14, color: '#ffffff', marginBottom: 32 }}>
                       {step.title}
                     </h3>
@@ -325,14 +325,14 @@ export function ServiceDetailSection({
 
                   <span
                     className="relative font-sans uppercase tracking-widest"
-                    style={{ fontSize: 10, color: 'rgba(255,255,255,0.5)' }}
+                    style={{ fontSize: 10, color: 'rgba(255,255,255,0.5)', zIndex: 1 }}
                   >
                     {t('step_label')} {String(index + 1).padStart(2, '0')}
                   </span>
 
                   <span
                     className="absolute font-heading font-black pointer-events-none select-none"
-                    style={{ bottom: -10, right: 16, fontSize: 80, lineHeight: 1, color: 'rgba(255,255,255,0.08)' }}
+                    style={{ bottom: -20, right: -8, fontSize: 96, lineHeight: 1, color: 'rgba(255,255,255,0.06)', zIndex: 0 }}
                     aria-hidden="true"
                   >
                     {index + 1}
