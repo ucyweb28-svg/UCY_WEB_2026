@@ -159,6 +159,18 @@ export function TestimonialsSection() {
                   ))}
                 </div>
 
+                <span
+                  style={{
+                    display: 'block',
+                    color: '#DF57BC',
+                    fontSize: 60,
+                    lineHeight: 0,
+                    verticalAlign: '-20px',
+                    marginBottom: 12,
+                  }}
+                >
+                  "
+                </span>
                 <p
                   className="font-sans"
                   style={{
@@ -170,9 +182,6 @@ export function TestimonialsSection() {
                     margin: '20px 0 32px',
                   }}
                 >
-                  <span style={{ color: '#DF57BC', fontSize: 60, lineHeight: 0, verticalAlign: '-20px' }}>
-                    "
-                  </span>
                   {active.quote}
                 </p>
 
