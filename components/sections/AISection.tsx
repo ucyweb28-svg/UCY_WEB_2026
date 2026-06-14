@@ -61,7 +61,7 @@ export function AISection() {
       />
 
       {/* Layer 3: content */}
-      <div className="relative z-10 h-full max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center min-h-[85vh]">
+      <div className="relative z-10 h-full max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-[55fr_45fr] gap-16 items-center min-h-[85vh]">
 
         {/* Left: text */}
         <motion.div
@@ -84,7 +84,7 @@ export function AISection() {
 
           <h2
             className="max-w-md font-heading font-extrabold"
-            style={{ fontSize: 'clamp(28px, 3.5vw, 48px)', color: '#ffffff', lineHeight: 1.15 }}
+            style={{ fontSize: 'clamp(36px, 4.5vw, 64px)', color: '#ffffff', lineHeight: 1.1 }}
           >
             <span className="block">{t('headline_start')}</span>
             <span className="block">{t('headline_middle')}</span>
@@ -123,6 +123,7 @@ export function AISection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="hidden md:flex relative items-center justify-center"
+          style={{ marginLeft: 'auto', marginRight: -40 }}
         >
           {/* Pink glow */}
           <div
