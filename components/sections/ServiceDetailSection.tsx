@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDiag } from '@/components/ui/ArrowDiag';
 import { Badge } from '@/components/ui/Badge';
 import { GlowButton } from '@/components/ui/GlowButton';
@@ -48,64 +48,74 @@ export function ServiceDetailSection({ image, hero, features, process, relatedPr
   const whatsappFR = formatWhatsAppLink('fr', encodeURIComponent(waMessage));
   const whatsappIL = formatWhatsAppLink('il', encodeURIComponent(waMessage));
 
+  const titleWords = hero.title.split(' ');
+  const titleHighlight = titleWords.pop() ?? '';
+  const titleStart = titleWords.length > 0 ? `${titleWords.join(' ')} ` : '';
+
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 120]);
+
   return (
     <>
       {/* Hero */}
-      <section className="pt-[104px] pb-16 md:pb-20" style={{ backgroundColor: '#f5f3ee' }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <Link
-              href="/#services"
-              className="inline-flex items-center gap-1 font-sans text-sm font-semibold mb-6"
-              style={{ color: '#3626A7' }}
-            >
-              <ArrowDiag size={11} className="rotate-180" />
-              {t('back_link')}
-            </Link>
-          </ScrollReveal>
+      <section className="relative overflow-hidden min-h-[85vh] flex items-center justify-center">
+        <motion.div style={{ y }} className="absolute inset-0 scale-110">
+          <Image
+            src={image}
+            alt={hero.title}
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+        </motion.div>
 
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            animate="visible"
-            className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
+        <div
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(to bottom, rgba(10,10,15,0.55) 0%, rgba(10,10,15,0.75) 100%)' }}
+        />
+
+        <div className="absolute top-6 left-6 md:top-8 md:left-8 z-10">
+          <Link
+            href="/#services"
+            className="inline-flex items-center gap-1 font-sans text-sm font-semibold text-white/80 hover:text-white transition-colors duration-200"
           >
-            <motion.div variants={fadeUp} className="flex flex-col items-start gap-4">
-              <Badge>{t('badge')}</Badge>
-              <h1
-                className="font-heading font-extrabold text-4xl md:text-6xl leading-tight"
-                style={{ color: '#000807' }}
-              >
-                {hero.title}
-              </h1>
-              <p className="font-sans text-base md:text-lg leading-relaxed" style={{ color: 'rgba(0,8,7,0.6)' }}>
-                {hero.subtitle}
-              </p>
-              <span className="font-heading font-bold text-lg bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent">
-                {hero.tagline}
-              </span>
-              <div className="mt-2">
-                <GlowButton href="/pricing" variant="gradient">
-                  {t('cta_pricing')}
-                  <ArrowDiag size={11} className="inline ml-1" />
-                </GlowButton>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={fadeUp}
-              className="relative w-full h-[280px] md:h-[380px] rounded-2xl overflow-hidden"
-            >
-              <Image
-                src={image}
-                alt={hero.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </motion.div>
-          </motion.div>
+            <ArrowDiag size={11} className="rotate-180" />
+            {t('back_link')}
+          </Link>
         </div>
+
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          animate="visible"
+          className="relative z-10 max-w-3xl mx-auto text-center px-6 flex flex-col items-center"
+        >
+          <motion.div variants={fadeUp}>
+            <Badge variant="dark">{t('badge')}</Badge>
+          </motion.div>
+          <motion.h1
+            variants={fadeUp}
+            className="font-heading font-extrabold leading-tight text-white text-[clamp(40px,6vw,72px)] mt-4"
+          >
+            {titleStart}
+            <span className="bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent">
+              {titleHighlight}
+            </span>
+          </motion.h1>
+          <motion.p variants={fadeUp} className="font-sans text-base text-white/80 max-w-xl mx-auto mt-4">
+            {hero.subtitle}
+          </motion.p>
+          <motion.span variants={fadeUp} className="font-sans text-[13px] uppercase tracking-widest text-white/50 mt-2">
+            {hero.tagline}
+          </motion.span>
+          <motion.div variants={fadeUp} className="mt-8">
+            <GlowButton href={whatsappFR} variant="white" external>
+              {t('hero_cta')}
+              <ArrowDiag size={11} className="inline ml-1" />
+            </GlowButton>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Ce qu'on fait */}

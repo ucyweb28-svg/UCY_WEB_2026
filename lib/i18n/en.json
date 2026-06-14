@@ -427,6 +427,7 @@
   "service_detail": {
     "badge": "Services",
     "back_link": "Back to services",
+    "hero_cta": "Start this project",
     "cta_pricing": "View our pricing",
     "cta_whatsapp_fr": "WhatsApp France",
     "cta_whatsapp_il": "WhatsApp Israel",
