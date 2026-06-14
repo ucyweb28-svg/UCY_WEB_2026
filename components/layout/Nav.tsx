@@ -7,7 +7,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GlowButton } from '@/components/ui/GlowButton';
-import { gradientText } from '@/lib/utils/gradientText';
+import { Logo } from '@/components/ui/Logo';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 
 const NAV_LINKS = [
@@ -208,13 +208,8 @@ export function Nav() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="flex items-baseline gap-1.5 select-none">
-          <span className={`font-heading text-xl font-extrabold tracking-tight leading-none ${gradientText}`}>
-            {t('logo')}
-          </span>
-          <span className="font-sans text-sm font-normal text-black/60 leading-none">
-            {t('logo_suffix')}
-          </span>
+        <Link href="/" className="select-none">
+          <Logo />
         </Link>
 
         {/* Desktop links + language switcher */}
@@ -280,14 +275,9 @@ export function Nav() {
                 <Link
                   href="/"
                   onClick={() => setMenuOpen(false)}
-                  className="flex items-baseline gap-1.5 select-none"
+                  className="select-none"
                 >
-                  <span className={`font-heading text-xl font-extrabold tracking-tight leading-none ${gradientText}`}>
-                    {t('logo')}
-                  </span>
-                  <span className="font-sans text-sm font-normal text-black/50 leading-none">
-                    {t('logo_suffix')}
-                  </span>
+                  <Logo />
                 </Link>
                 <button
                   onClick={() => setMenuOpen(false)}
