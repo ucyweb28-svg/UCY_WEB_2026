@@ -95,6 +95,11 @@ export function DevisSection() {
     });
   };
 
+  const goToStep = (n: Step) => {
+    setStep(n);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
   const selectedPackObj = PRICING_PACKS.find((pack) => pack.id === selectedPack) ?? null;
   const optionsTotal = Array.from(selectedOptions).reduce((sum, id) => {
     const option = PRICING_OPTIONS.find((o) => o.id === id);
@@ -420,7 +425,7 @@ export function DevisSection() {
             <button
               type="button"
               disabled={!selectedPack}
-              onClick={() => setStep(2)}
+              onClick={() => goToStep(2)}
               className="flex items-center justify-center font-heading font-semibold w-full"
               style={{ ...gradientButton, opacity: selectedPack ? 1 : 0.4, cursor: selectedPack ? 'pointer' : 'not-allowed' }}
             >
@@ -456,7 +461,7 @@ export function DevisSection() {
             <div className="flex" style={{ gap: 12 }}>
               <button
                 type="button"
-                onClick={() => setStep(1)}
+                onClick={() => goToStep(1)}
                 className="flex-1 flex items-center justify-center font-heading font-semibold"
                 style={{ background: 'transparent', border: '1px solid #e4e1d8', borderRadius: 100, color: '#0a0a0f', fontSize: 14, padding: '14px 0', cursor: 'pointer' }}
               >
@@ -464,7 +469,7 @@ export function DevisSection() {
               </button>
               <button
                 type="button"
-                onClick={() => setStep(3)}
+                onClick={() => goToStep(3)}
                 className="flex-[2] flex items-center justify-center font-heading font-semibold"
                 style={{ ...gradientButton, cursor: 'pointer' }}
               >
@@ -565,7 +570,7 @@ export function DevisSection() {
             {/* Back button */}
             <button
               type="button"
-              onClick={() => setStep(2)}
+              onClick={() => goToStep(2)}
               className="flex items-center justify-center font-heading font-semibold w-full"
               style={{ background: 'transparent', border: '1px solid #e4e1d8', borderRadius: 100, color: '#0a0a0f', fontSize: 14, padding: '14px 0', cursor: 'pointer' }}
             >
