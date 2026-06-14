@@ -174,7 +174,7 @@ export function PricingPreviewSection() {
                 className={[
                   'relative rounded-2xl flex flex-col p-6 transition-all duration-200',
                   card.featured
-                    ? 'border-2 border-[#3626A7] bg-[#f5f3ee] hover:shadow-sm'
+                    ? 'border-2 border-[#3626A7] bg-white hover:shadow-sm'
                     : 'border border-[#e5e7eb] bg-white hover:border-[#3626A7] hover:shadow-sm',
                 ].join(' ')}
               >
