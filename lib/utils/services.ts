@@ -64,8 +64,8 @@ export const SERVICES: Service[] = [
     color: '#3626A7',
     hero: {
       title: {
-        fr: 'Web Design & Développement',
-        en: 'Web Design & Development',
+        fr: 'Web Design & Dev.',
+        en: 'Web Design & Dev.',
       },
       subtitle: {
         fr: 'Des sites sur-mesure, rapides et conçus pour convertir — de la maquette Figma au code Next.js livré en production.',

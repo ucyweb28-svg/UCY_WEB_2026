@@ -109,11 +109,14 @@ export function ServiceDetailSection({
           </motion.div>
           <motion.h1
             variants={fadeUp}
-            className="font-heading font-extrabold leading-tight text-white text-[clamp(32px,5vw,60px)]"
-            style={{ wordBreak: 'break-word', overflowWrap: 'break-word' }}
+            className="font-heading font-extrabold leading-tight text-white text-[clamp(28px,4.5vw,56px)]"
+            style={{ wordBreak: 'keep-all', overflowWrap: 'normal', hyphens: 'none' }}
           >
             {titleStart}
-            <span className="bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent">
+            <span
+              className="bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent"
+              style={{ display: 'inline' }}
+            >
               {titleHighlight}
             </span>
           </motion.h1>
@@ -178,18 +181,20 @@ export function ServiceDetailSection({
               >
                 <span
                   className="absolute font-heading font-extrabold pointer-events-none select-none"
-                  style={{ bottom: -16, right: 16, fontSize: 96, lineHeight: 1, color: '#0a0a0f', opacity: 0.04 }}
+                  style={{ bottom: 12, right: 16, fontSize: 72, lineHeight: 1, color: '#0a0a0f', opacity: 0.05, zIndex: 0 }}
                   aria-hidden="true"
                 >
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <span className="block w-2 h-2 rounded-full" style={{ backgroundColor: color, marginBottom: 20 }} />
-                <h3 className="font-heading font-bold" style={{ fontSize: 16, color: '#0a0a0f', marginBottom: 10 }}>
-                  {feature.title}
-                </h3>
-                <p className="font-sans" style={{ fontSize: 14, color: '#666', lineHeight: 1.7 }}>
-                  {feature.desc}
-                </p>
+                <div style={{ position: 'relative', zIndex: 1 }}>
+                  <span className="block w-2 h-2 rounded-full" style={{ backgroundColor: color, marginBottom: 20 }} />
+                  <h3 className="font-heading font-bold" style={{ fontSize: 16, color: '#0a0a0f', marginBottom: 10 }}>
+                    {feature.title}
+                  </h3>
+                  <p className="font-sans" style={{ fontSize: 14, color: '#666', lineHeight: 1.7 }}>
+                    {feature.desc}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </motion.div>
