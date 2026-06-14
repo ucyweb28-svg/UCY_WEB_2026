@@ -198,7 +198,7 @@ export function Nav() {
 
   return (
     <header
-      className="bg-[#f5f3ee]/95 backdrop-blur-md border-b border-black/10"
+      className="bg-[#f5f3ee]/95 backdrop-blur-md border-b border-[rgba(10,10,15,0.06)]"
       style={{
         transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
         transition: 'transform 300ms ease, background-color 300ms ease, border-color 300ms ease, backdrop-filter 300ms ease',
