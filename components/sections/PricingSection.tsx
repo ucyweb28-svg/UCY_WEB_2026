@@ -59,7 +59,7 @@ export function PricingSection() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'instant' });
 
   return (
-    <section className="pt-14 section-b" style={{ backgroundColor: '#f5f3ee' }}>
+    <section className="pt-14 section-b" style={{ backgroundColor: '#FBF9FF' }}>
       <div className="max-w-5xl mx-auto px-6">
 
         {/* Header */}

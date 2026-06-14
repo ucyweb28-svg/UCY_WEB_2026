@@ -110,7 +110,7 @@ export function AISection() {
 
           <Link
             href="/contact"
-            className="mt-10 inline-flex items-center gap-1 font-sans font-bold text-[13px] rounded-full px-7 py-3 bg-white text-[#0a0a0f] hover:bg-[#f5f3ee] transition-colors duration-200"
+            className="mt-10 inline-flex items-center gap-1 font-sans font-bold text-[13px] rounded-full px-7 py-3 bg-white text-[#0a0a0f] hover:bg-[#FBF9FF] transition-colors duration-200"
           >
             {t('btn_primary')} ↗
           </Link>

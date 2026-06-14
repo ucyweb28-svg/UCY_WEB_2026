@@ -236,7 +236,7 @@ export function ServiceDetailSection({
       </section>
 
       {/* Notre processus */}
-      <section className="section" style={{ backgroundColor: '#f5f3ee' }}>
+      <section className="section" style={{ backgroundColor: '#FBF9FF' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div
             className="mx-auto"

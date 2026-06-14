@@ -22,7 +22,7 @@ export function PortfolioSection() {
     <section
       id="portfolio"
       className="section"
-      style={{ backgroundColor: '#f5f3ee', borderTop: '1px solid rgba(0,8,7,0.06)' }}
+      style={{ backgroundColor: '#FBF9FF', borderTop: '1px solid rgba(0,8,7,0.06)' }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
@@ -74,7 +74,7 @@ export function PortfolioSection() {
                 {/* Project image */}
                 <div
                   className="relative w-full h-[220px] md:h-[280px] overflow-hidden"
-                  style={{ backgroundColor: '#f5f3ee' }}
+                  style={{ backgroundColor: '#FBF9FF' }}
                 >
                   <Image
                     src={image}

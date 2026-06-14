@@ -195,7 +195,7 @@ export function PricingPreviewSection() {
 
                 <span
                   className="self-start inline-block rounded-full font-sans font-bold uppercase tracking-widest"
-                  style={{ fontSize: 10, padding: '4px 12px', backgroundColor: '#f5f3ee', color: '#3626A7' }}
+                  style={{ fontSize: 10, padding: '4px 12px', backgroundColor: '#FBF9FF', color: '#3626A7' }}
                 >
                   {t(card.tagKey)}
                 </span>

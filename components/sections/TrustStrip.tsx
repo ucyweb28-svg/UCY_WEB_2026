@@ -14,7 +14,7 @@ export function TrustStrip() {
     <section
       className="py-[24px] overflow-hidden"
       style={{
-        backgroundColor: '#f5f3ee',
+        backgroundColor: '#FBF9FF',
         borderTop: '1px solid rgba(0,8,7,0.07)',
         borderBottom: '1px solid rgba(0,8,7,0.07)',
       }}
@@ -32,11 +32,11 @@ export function TrustStrip() {
         {/* Edge fades */}
         <div
           className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background: 'linear-gradient(to right, #f5f3ee, transparent)' }}
+          style={{ background: 'linear-gradient(to right, #FBF9FF, transparent)' }}
         />
         <div
           className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background: 'linear-gradient(to left, #f5f3ee, transparent)' }}
+          style={{ background: 'linear-gradient(to left, #FBF9FF, transparent)' }}
         />
 
         <div

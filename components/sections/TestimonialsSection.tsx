@@ -72,7 +72,7 @@ export function TestimonialsSection() {
     <section
       className="section"
       style={{
-        backgroundColor: '#f5f3ee',
+        backgroundColor: '#FBF9FF',
         borderTop: '1px solid rgba(0,0,0,0.06)',
         borderBottom: '1px solid rgba(0,0,0,0.06)',
       }}

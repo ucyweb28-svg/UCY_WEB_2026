@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 type BadgeVariant = 'default' | 'dark';
 
 const VARIANT_STYLES: Record<BadgeVariant, string> = {
-  default: 'border-[#3626A7] bg-[#f5f3ee] text-[#3626A7]',
+  default: 'border-[#3626A7] bg-[#FBF9FF] text-[#3626A7]',
   dark:    'border-white/25 bg-white/10 text-white',
 };
 

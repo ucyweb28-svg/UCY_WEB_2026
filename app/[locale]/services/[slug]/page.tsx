@@ -54,7 +54,7 @@ export default function ServiceDetailPage({
   }));
 
   return (
-    <main style={{ backgroundColor: '#f5f3ee' }}>
+    <main style={{ backgroundColor: '#FBF9FF' }}>
       <ServiceDetailSection
         image={service.image}
         hero={hero}

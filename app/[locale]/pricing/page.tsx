@@ -21,7 +21,7 @@ export async function generateMetadata({
 
 export default function PricingPage() {
   return (
-    <main className="pt-[104px]" style={{ backgroundColor: '#f5f3ee' }}>
+    <main className="pt-[104px]" style={{ backgroundColor: '#FBF9FF' }}>
       <PricingSection />
     </main>
   );
