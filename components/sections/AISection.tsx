@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { scrollToTop } from '@/lib/utils/scrollToTop';
 
 const MODULES = [
   {
@@ -61,7 +62,7 @@ export function AISection() {
       />
 
       {/* Layer 3: content */}
-      <div className="relative z-10 h-full max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-[55fr_45fr] gap-16 items-center min-h-[85vh]">
+      <div className="relative z-10 h-full max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center min-h-[85vh]">
 
         {/* Left: text */}
         <motion.div
@@ -83,8 +84,8 @@ export function AISection() {
           </div>
 
           <h2
-            className="max-w-md font-heading font-extrabold"
-            style={{ fontSize: 'clamp(36px, 4.5vw, 64px)', color: '#ffffff', lineHeight: 1.1 }}
+            className="font-heading font-extrabold"
+            style={{ fontSize: 'clamp(28px, 3vw, 44px)', color: '#ffffff', lineHeight: 1.2 }}
           >
             <span className="block">{t('headline_start')}</span>
             <span className="block">{t('headline_middle')}</span>
@@ -110,6 +111,7 @@ export function AISection() {
 
           <Link
             href="/contact"
+            onClick={scrollToTop}
             className="mt-10 inline-flex items-center gap-1 font-sans font-bold text-[13px] rounded-full px-7 py-3 bg-white text-[#0a0a0f] hover:bg-[#FBF9FF] transition-colors duration-200"
           >
             {t('btn_primary')} ↗
