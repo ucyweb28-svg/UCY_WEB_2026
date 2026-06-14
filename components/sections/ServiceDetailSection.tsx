@@ -236,7 +236,7 @@ export function ServiceDetailSection({
           <div
             className="mx-auto"
             style={{
-              background: 'linear-gradient(135deg, #3626A7 0%, #DF57BC 50%, #DE541E 100%)',
+              background: 'linear-gradient(135deg, #1a1060 0%, #3626A7 40%, #8B2580 70%, #7A2410 100%)',
               borderRadius: 28,
               padding: '48px 40px',
               maxWidth: 1100,
@@ -248,8 +248,8 @@ export function ServiceDetailSection({
                 <span
                   className="inline-block font-sans uppercase"
                   style={{
-                    backgroundColor: 'rgba(255,255,255,0.15)',
-                    border: '1px solid rgba(255,255,255,0.3)',
+                    backgroundColor: 'rgba(0,0,0,0.3)',
+                    border: '1px solid rgba(255,255,255,0.25)',
                     color: '#ffffff',
                     borderRadius: 100,
                     fontSize: 11,
@@ -264,7 +264,7 @@ export function ServiceDetailSection({
                   {t('process_heading_start')}
                   <span style={{ color: '#ffffff' }}>{t('process_heading_highlight')}</span>
                 </h2>
-                <p className="font-sans mt-2" style={{ color: 'rgba(255,255,255,0.7)', fontSize: 14 }}>
+                <p className="font-sans mt-2" style={{ color: 'rgba(255,255,255,0.75)', fontSize: 14 }}>
                   {t('process_subtitle')}
                 </p>
               </div>
@@ -288,8 +288,8 @@ export function ServiceDetailSection({
                   }}
                   className="relative flex flex-col justify-between backdrop-blur-[8px]"
                   style={{
-                    backgroundColor: 'rgba(255,255,255,0.12)',
-                    border: '1px solid rgba(255,255,255,0.2)',
+                    backgroundColor: 'rgba(0,0,0,0.25)',
+                    border: '1px solid rgba(255,255,255,0.15)',
                     borderRadius: 18,
                     padding: 24,
                     minHeight: 200,
@@ -300,7 +300,7 @@ export function ServiceDetailSection({
                     <h3 className="font-heading font-bold" style={{ fontSize: 14, color: '#ffffff', marginBottom: 32 }}>
                       {step.title}
                     </h3>
-                    <p className="font-sans" style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6 }}>
+                    <p className="font-sans" style={{ fontSize: 12, color: 'rgba(255,255,255,0.80)', lineHeight: 1.6 }}>
                       {step.desc}
                     </p>
                     <span
@@ -308,7 +308,7 @@ export function ServiceDetailSection({
                       style={{
                         fontSize: 11,
                         color: '#ffffff',
-                        backgroundColor: 'rgba(255,255,255,0.15)',
+                        backgroundColor: 'rgba(255,255,255,0.2)',
                         borderRadius: 100,
                         padding: '3px 10px',
                         marginTop: 12,
@@ -327,7 +327,7 @@ export function ServiceDetailSection({
 
                   <span
                     className="absolute font-heading font-black pointer-events-none select-none"
-                    style={{ bottom: -10, right: 16, fontSize: 80, lineHeight: 1, color: 'rgba(255,255,255,0.15)' }}
+                    style={{ bottom: -10, right: 16, fontSize: 80, lineHeight: 1, color: 'rgba(255,255,255,0.08)' }}
                     aria-hidden="true"
                   >
                     {index + 1}
