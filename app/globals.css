@@ -3,7 +3,7 @@
 @theme {
   /* Colors */
   --color-black: #000807;
-  --color-bg: #FBF9FF;
+  --color-bg: #f5f3ee;
   --color-accent: #3626A7;
   --color-pop: #DF57BC;
   --color-energy: #DE541E;
@@ -28,7 +28,7 @@ html {
 }
 
 body {
-  background-color: #FBF9FF;
+  background-color: #f5f3ee;
   color: #000807;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -94,7 +94,7 @@ body {
 }
 
 .whatsapp-card .whatsapp-card-btn {
-  background: #0a0a0a;
+  background: #0a0a0f;
   transition: background 0.3s ease;
 }
 

@@ -198,7 +198,7 @@ export function Nav() {
 
   return (
     <header
-      className="bg-white/95 backdrop-blur-md border-b border-black/10"
+      className="bg-[#f5f3ee]/95 backdrop-blur-md border-b border-black/10"
       style={{
         transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
         transition: 'transform 300ms ease, background-color 300ms ease, border-color 300ms ease, backdrop-filter 300ms ease',
@@ -268,7 +268,7 @@ export function Nav() {
               exit={{ y: '-100%' }}
               transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
               className="lg:hidden fixed inset-0 z-[100] flex flex-col overflow-y-auto"
-              style={{ backgroundColor: '#ffffff' }}
+              style={{ backgroundColor: '#f5f3ee' }}
             >
               {/* Top bar: logo + close */}
               <div className="shrink-0 flex items-center justify-between px-6 md:px-8 h-[72px]">

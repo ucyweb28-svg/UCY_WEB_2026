@@ -71,7 +71,7 @@ export function ServicesSection() {
   };
 
   return (
-    <section id="services" className="section" style={{ backgroundColor: '#FBF9FF' }}>
+    <section id="services" className="section" style={{ backgroundColor: '#f5f3ee' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
