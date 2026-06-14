@@ -23,7 +23,7 @@ export function StatsBar() {
   ];
 
   return (
-    <section className="py-[40px]" style={{ backgroundColor: '#000807' }}>
+    <section className="py-[24px]" style={{ backgroundColor: '#000807' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           variants={stagger}
