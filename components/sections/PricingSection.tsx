@@ -56,8 +56,6 @@ export function PricingSection() {
     ? `/devis?pack=${selectedPackObj.id}${selectedOptions.size ? `&options=${Array.from(selectedOptions).join(',')}` : ''}`
     : '/devis';
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'instant' });
-
   return (
     <section className="pt-14 section-b" style={{ backgroundColor: '#FBF9FF' }}>
       <div className="max-w-5xl mx-auto px-6">
@@ -356,7 +354,7 @@ export function PricingSection() {
 
               <Link
                 href={quoteHref}
-                onClick={scrollToTop}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
                 className="flex items-center justify-center font-heading font-semibold w-full"
                 style={{
                   background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7)',
@@ -375,7 +373,7 @@ export function PricingSection() {
 
               <p className="text-center font-sans" style={{ fontSize: 12, color: 'rgba(10,10,15,.5)', marginTop: 16 }}>
                 {t('quote_micro_prefix')}
-                <Link href={quoteHref} onClick={scrollToTop} className="underline" style={{ color: '#3626A7' }}>
+                <Link href={quoteHref} onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })} className="underline" style={{ color: '#3626A7' }}>
                   {t('quote_micro_link')}
                   <ArrowDiag size={11} className="inline ml-1" />
                 </Link>

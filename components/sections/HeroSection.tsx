@@ -134,6 +134,7 @@ export function HeroSection() {
               {/* Button */}
               <Link
                 href="/contact"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
                 style={{
                   position: 'relative',
                   zIndex: 1,

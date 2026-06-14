@@ -32,7 +32,7 @@ export function Footer() {
         >
           {/* Logo + tagline */}
           <div className="flex flex-col gap-3">
-            <Link href="/" className="flex items-baseline gap-1.5">
+            <Link href="/" className="flex items-baseline gap-1.5" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
               <span className="font-heading text-xl font-extrabold tracking-tight" style={{ color: 'white' }}>
                 {tNav('logo')}
               </span>

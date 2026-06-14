@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { scrollToTop } from '@/lib/utils/scrollToTop';
 
 const MODULES = [
   {
@@ -111,7 +110,7 @@ export function AISection() {
 
           <Link
             href="/contact"
-            onClick={scrollToTop}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
             className="mt-10 inline-flex items-center gap-1 font-sans font-bold text-[13px] rounded-full px-7 py-3 bg-white text-[#0a0a0f] hover:bg-[#FBF9FF] transition-colors duration-200"
           >
             {t('btn_primary')} ↗

@@ -208,7 +208,7 @@ export function Nav() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-12 md:h-[72px] flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="select-none">
+        <Link href="/" className="select-none" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
           <Logo />
         </Link>
 
@@ -241,7 +241,7 @@ export function Nav() {
         {/* Desktop CTA + Mobile hamburger */}
         <div className="flex items-center gap-3">
           <div className="hidden lg:flex shrink-0">
-            <GlowButton href="/contact" variant="gradient">
+            <GlowButton href="/contact" variant="gradient" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
               {t('cta')}
             </GlowButton>
           </div>
@@ -274,7 +274,10 @@ export function Nav() {
               <div className="shrink-0 flex items-center justify-between px-6 md:px-8 h-[72px]">
                 <Link
                   href="/"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => {
+                    setMenuOpen(false);
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                  }}
                   className="select-none"
                 >
                   <Logo />

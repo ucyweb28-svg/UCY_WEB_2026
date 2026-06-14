@@ -153,6 +153,7 @@ export function ServicesSection() {
                     {slug ? (
                       <Link
                         href={`/services/${slug}`}
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
                         className="font-sans text-sm font-semibold mt-auto inline-flex items-center gap-1 text-[#3626A7]"
                       >
                         {t('cta')}

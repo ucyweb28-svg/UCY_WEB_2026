@@ -90,6 +90,7 @@ export function ServiceDetailSection({
         <div className="absolute top-6 left-6 md:top-8 md:left-8 z-10">
           <Link
             href="/#services"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
             className="inline-flex items-center gap-1 font-sans text-sm font-semibold text-white/80 hover:text-white transition-colors duration-200"
           >
             <ArrowDiag size={11} className="rotate-180" />
@@ -211,7 +212,7 @@ export function ServiceDetailSection({
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {relatedProjects.map((project) => (
                   <ScrollReveal key={project.titleKey}>
-                    <Link href="/#portfolio" className="group block relative h-[140px] rounded-xl overflow-hidden">
+                    <Link href="/#portfolio" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })} className="group block relative h-[140px] rounded-xl overflow-hidden">
                       <Image
                         src={project.image}
                         alt={tPortfolio(project.titleKey)}

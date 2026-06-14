@@ -225,7 +225,7 @@ export function PricingPreviewSection() {
 
                 {card.featured ? (
                   <div className="w-full grid">
-                    <GlowButton href="/pricing" variant="gradient" className="w-full text-center">
+                    <GlowButton href="/pricing" variant="gradient" className="w-full text-center" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
                       {t(card.ctaKey)}
                       <ArrowDiag size={12} className="inline ml-1" />
                     </GlowButton>
@@ -234,6 +234,7 @@ export function PricingPreviewSection() {
                   <GlowCTA>
                     <Link
                       href="/pricing"
+                      onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
                       className="flex items-center justify-center rounded-full font-sans font-semibold text-sm w-full transition-colors duration-200 hover:border-[#3626A7] hover:text-[#3626A7]"
                       style={{ border: '1px solid rgba(0,8,7,0.15)', color: '#000807', padding: '11px 0', backgroundColor: '#ffffff' }}
                     >
@@ -258,6 +259,7 @@ export function PricingPreviewSection() {
         >
           <Link
             href="/pricing"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
             className="font-sans hover:underline"
             style={{ color: '#3626A7', fontWeight: 600, fontSize: 14 }}
           >
