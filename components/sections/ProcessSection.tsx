@@ -101,7 +101,24 @@ export function ProcessSection() {
   const t = useTranslations('process');
 
   return (
-    <section className="section" style={{ backgroundColor: '#0a0a0f' }}>
+    <section className="section" style={{ backgroundColor: '#FBF9FF', position: 'relative', overflow: 'visible', zIndex: 0 }}>
+      {/* Glow violet en arrière-plan */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '70%',
+          height: '80%',
+          background: 'radial-gradient(ellipse at center, rgba(54,38,167,0.18) 0%, rgba(223,87,188,0.08) 50%, transparent 75%)',
+          filter: 'blur(60px)',
+          pointerEvents: 'none',
+          zIndex: -1,
+        }}
+        aria-hidden="true"
+      />
+
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Shared gradient defs for icons & connectors */}
@@ -122,9 +139,10 @@ export function ProcessSection() {
         <div
           className="mx-auto max-w-6xl px-10 py-12 md:px-14 md:py-14"
           style={{
-            background: 'linear-gradient(135deg, #3626A714 0%, #DF57BC0a 50%, #0a0a0f 100%)',
+            background: 'rgba(10, 10, 15, 0.6)',
+            backdropFilter: 'blur(12px)',
             border: '1px solid rgba(255,255,255,0.06)',
-            borderRadius: 24,
+            borderRadius: 28,
           }}
         >
 
