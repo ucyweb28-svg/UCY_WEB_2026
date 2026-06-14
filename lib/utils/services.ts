@@ -3,6 +3,7 @@ export type ServiceSlug =
   | 'ui-ux'
   | 'branding'
   | 'strategie-digitale'
+  | 'e-commerce'
   | 'seo'
   | 'application-mobile'
   | 'maintenance';
@@ -464,6 +465,108 @@ export const SERVICES: Service[] = [
       },
     ],
     relatedProjects: [PORTFOLIO_PROJECTS.bloomair, PORTFOLIO_PROJECTS.topnos, PORTFOLIO_PROJECTS.aurora],
+  },
+  {
+    slug: 'e-commerce',
+    image: '/images/service-ecommerce.png',
+    color: '#DE541E',
+    hero: {
+      title: {
+        fr: 'Des boutiques qui vendent.',
+        en: 'Shops that sell.',
+      },
+      subtitle: {
+        fr: 'Des boutiques en ligne pensées pour vendre — Shopify, WooCommerce, tunnel de conversion optimisé et SEO produit inclus.',
+        en: 'Online stores built to sell — Shopify, WooCommerce, optimised conversion funnel and product SEO included.',
+      },
+      tagline: {
+        fr: 'Rapide. Fiable. Optimisé pour convertir.',
+        en: 'Fast. Reliable. Built to convert.',
+      },
+    },
+    heroGradientWord: {
+      fr: "l'E-commerce.",
+      en: 'E-commerce.',
+    },
+    heroSub: {
+      fr: 'Shopify et WooCommerce optimisés pour la conversion et le SEO.',
+      en: 'Shopify and WooCommerce optimised for conversion and SEO.',
+    },
+    meta: {
+      title: {
+        fr: 'E-commerce & Boutiques en ligne — UCY Studio',
+        en: 'E-commerce & Online Stores — UCY Studio',
+      },
+      description: {
+        fr: 'Création de boutiques Shopify et WooCommerce optimisées pour la conversion et le SEO. Studio e-commerce UCY, Jérusalem × Paris.',
+        en: 'Shopify and WooCommerce store builds optimised for conversion and SEO. UCY e-commerce studio, Jerusalem × Paris.',
+      },
+    },
+    features: [
+      {
+        title: { fr: 'Shopify & WooCommerce', en: 'Shopify & WooCommerce' },
+        desc: {
+          fr: 'Les deux plateformes leaders, maîtrisées de A à Z — du thème sur-mesure aux automatisations.',
+          en: 'Both leading platforms, mastered end to end — from custom theme to automations.',
+        },
+      },
+      {
+        title: { fr: 'Tunnel de conversion optimisé', en: 'Optimised conversion funnel' },
+        desc: {
+          fr: "Fiche produit, panier, checkout — chaque étape pensée pour réduire l'abandon et augmenter le panier moyen.",
+          en: 'Product page, cart, checkout — every step designed to reduce abandonment and increase average order.',
+        },
+      },
+      {
+        title: { fr: 'SEO e-commerce', en: 'E-commerce SEO' },
+        desc: {
+          fr: 'Balises produits, rich snippets, vitesse — vos produits trouvés avant ceux de vos concurrents.',
+          en: 'Product tags, rich snippets, speed — your products found before your competitors.',
+        },
+      },
+      {
+        title: { fr: 'Paiement & logistique', en: 'Payment & logistics' },
+        desc: {
+          fr: "Stripe, PayPal, livraison automatisée — une expérience d'achat fluide de bout en bout.",
+          en: 'Stripe, PayPal, automated shipping — a seamless buying experience end to end.',
+        },
+      },
+    ],
+    process: [
+      {
+        title: { fr: 'Stratégie & catalogue', en: 'Strategy & catalogue' },
+        desc: {
+          fr: 'Analyse de votre marché, structure du catalogue et choix de la plateforme.',
+          en: 'Market analysis, catalogue structure and platform choice.',
+        },
+        duration: { fr: '2–3 jours', en: '2–3 days' },
+      },
+      {
+        title: { fr: 'Design & UX', en: 'Design & UX' },
+        desc: {
+          fr: 'Maquettes Figma du store avec focus conversion et identité de marque.',
+          en: 'Figma mockups of the store focused on conversion and brand identity.',
+        },
+        duration: { fr: '4–6 jours', en: '4–6 days' },
+      },
+      {
+        title: { fr: 'Développement', en: 'Development' },
+        desc: {
+          fr: 'Intégration Shopify/WooCommerce, paiement, stock et automatisations.',
+          en: 'Shopify/WooCommerce integration, payment, stock and automations.',
+        },
+        duration: { fr: '7–14 jours', en: '7–14 days' },
+      },
+      {
+        title: { fr: 'Lancement & formation', en: 'Launch & training' },
+        desc: {
+          fr: 'Mise en ligne, tests complets et formation à la gestion du store.',
+          en: 'Go live, full testing and training on store management.',
+        },
+        duration: { fr: '1–2 jours', en: '1–2 days' },
+      },
+    ],
+    relatedProjects: [PORTFOLIO_PROJECTS.bloomair, PORTFOLIO_PROJECTS.topnos],
   },
   {
     slug: 'seo',

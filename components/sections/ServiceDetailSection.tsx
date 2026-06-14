@@ -71,7 +71,7 @@ export function ServiceDetailSection({
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden min-h-[85vh] flex items-center justify-center">
+      <section className="relative overflow-hidden min-h-[75vh] flex items-center justify-center">
         <motion.div style={{ y }} className="absolute inset-0 scale-110">
           <Image
             src={image}
@@ -102,21 +102,26 @@ export function ServiceDetailSection({
           variants={stagger}
           initial="hidden"
           animate="visible"
-          className="relative z-10 max-w-3xl mx-auto text-center px-6 flex flex-col items-center"
+          className="relative z-10 max-w-3xl mx-auto text-center px-4 md:px-8 pt-20 md:pt-28 flex flex-col items-center"
         >
-          <motion.div variants={fadeUp}>
+          <motion.div variants={fadeUp} className="mb-5">
             <Badge variant="dark">{t('badge')}</Badge>
           </motion.div>
           <motion.h1
             variants={fadeUp}
-            className="font-heading font-extrabold leading-tight text-white text-[clamp(40px,6vw,72px)] mt-4"
+            className="font-heading font-extrabold leading-tight text-white text-[clamp(32px,5vw,60px)]"
+            style={{ wordBreak: 'break-word', overflowWrap: 'break-word' }}
           >
             {titleStart}
             <span className="bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent">
               {titleHighlight}
             </span>
           </motion.h1>
-          <motion.p variants={fadeUp} className="font-sans text-base text-white/80 max-w-xl mx-auto mt-4">
+          <motion.p
+            variants={fadeUp}
+            className="font-sans text-base text-white/80 max-w-full px-4 md:max-w-xl md:px-0 mx-auto mt-4"
+            style={{ wordBreak: 'break-word', overflowWrap: 'break-word' }}
+          >
             {hero.subtitle}
           </motion.p>
           <motion.span variants={fadeUp} className="font-sans text-[13px] uppercase tracking-widest text-white/50 mt-2">
