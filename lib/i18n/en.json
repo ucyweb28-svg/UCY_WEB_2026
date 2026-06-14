@@ -108,7 +108,7 @@
     "module3_desc": "Midjourney · Firefly · Runway",
     "status_live": "Live",
     "status_soon": "Soon",
-    "cta_title": "Integrate into your product →",
+    "cta_title": "Integrate into your product",
     "cta_subtitle": "We review your case for free"
   },
   "portfolio": {
@@ -124,7 +124,7 @@
     "project3_cat": "Fintech · Dashboard",
     "project4_title": "Aurora Media",
     "project4_cat": "Design System · UI",
-    "view_all": "View all projects →"
+    "view_all": "View all projects"
   },
   "testimonials": {
     "heading_start": "Why they trust ",
@@ -192,7 +192,7 @@
     "needs_label": "YOUR NEED",
     "needs": ["Site web", "Branding", "UI/UX", "IA", "E-commerce"],
     "placeholder": "your@email.com",
-    "btn_default": "Start →",
+    "btn_default": "Start",
     "btn_loading": "...",
     "btn_sent": "Sent ✓",
     "note": "Free quote · No commitment · Reply within 24h"
@@ -222,7 +222,7 @@
     "email": "Email",
     "phone": "Phone",
     "message": "Message",
-    "submit": "Send my request →",
+    "submit": "Send my request",
     "loading": "Sending...",
     "success": "Message sent! We'll get back to you within 24h.",
     "error": "Something went wrong. Try again or reach us on WhatsApp.",
@@ -285,9 +285,9 @@
     "quote_label": "YOUR SELECTION",
     "quote_empty": "← Select a pack to see your estimated quote",
     "quote_total": "Estimated total",
-    "quote_cta": "Continue my request →",
+    "quote_cta": "Continue my request",
     "quote_micro_prefix": "Free quote · No commitment · ",
-    "quote_micro_link": "See detailed terms →",
+    "quote_micro_link": "See detailed terms",
     "pages_note": "* One page = one unique content page with its own URL (Home, About, Services…). Extra page: +€150 / ₪510. Timelines start once all your materials are received (copy, logo, access)."
   },
   "pricing_preview": {
@@ -318,9 +318,9 @@
     "autonomie_feature1": "CMS to edit your content",
     "autonomie_feature2": "CRM automations",
     "autonomie_feature3": "GDPR security + reCAPTCHA",
-    "cta_details": "See details →",
-    "cta_simulate": "Get my quote →",
-    "cta_full": "See all pricing & options →"
+    "cta_details": "See details",
+    "cta_simulate": "Get my quote",
+    "cta_full": "See all pricing & options"
   },
   "devis": {
     "meta_title": "Get a quote | UCY Studio",
@@ -343,7 +343,7 @@
     "recap_options_one": "1 additional option",
     "recap_options_other": "{count} additional options",
     "recap_total_label": "Estimated total",
-    "step1_next": "Continue → See terms",
+    "step1_next": "Continue",
 
     "cond_title1": "Additional pages",
     "cond_text1": "Your pack price includes a set number of pages. Any extra page beyond that limit is billed at €150 (₪510) per page, design and integration included.",
@@ -357,7 +357,7 @@
     "cond_text5": "Hosting, domain registration and copywriting are not included in our packs, unless you've selected the matching option. We're happy to help you set these up if needed.",
     "cond_info": "By clicking \"I've read and I agree\", you confirm you've read these terms. They'll be restated in the detailed quote we send you.",
     "step2_back": "← Back",
-    "step2_accept": "I've read and I agree →",
+    "step2_accept": "I've read and I agree",
 
     "firstname_label": "First name",
     "firstname_placeholder": "John",
@@ -390,7 +390,7 @@
 
     "mini_recap_label": "SUMMARY",
     "step3_back": "← Back",
-    "submit": "Send my request →",
+    "submit": "Send my request",
     "submit_loading": "Sending...",
     "submit_error": "Something went wrong, please try again.",
     "submit_note": "Free quote · No commitment · Reply within 24h",

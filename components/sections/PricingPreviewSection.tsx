@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { ArrowDiag } from '@/components/ui/ArrowDiag';
 import { Badge } from '@/components/ui/Badge';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { stagger, fadeUp } from '@/lib/utils/animations';
@@ -226,6 +227,7 @@ export function PricingPreviewSection() {
                   <div className="w-full grid">
                     <GlowButton href="/pricing" variant="gradient" className="w-full text-center">
                       {t(card.ctaKey)}
+                      <ArrowDiag size={12} className="inline ml-1" />
                     </GlowButton>
                   </div>
                 ) : (
@@ -236,6 +238,7 @@ export function PricingPreviewSection() {
                       style={{ border: '1px solid rgba(0,8,7,0.15)', color: '#000807', padding: '11px 0', backgroundColor: '#ffffff' }}
                     >
                       {t(card.ctaKey)}
+                      <ArrowDiag size={11} className="inline ml-1" />
                     </Link>
                   </GlowCTA>
                 )}
@@ -259,6 +262,7 @@ export function PricingPreviewSection() {
             style={{ color: '#3626A7', fontWeight: 600, fontSize: 14 }}
           >
             {t('cta_full')}
+            <ArrowDiag size={11} className="inline ml-1" />
           </Link>
         </motion.div>
 

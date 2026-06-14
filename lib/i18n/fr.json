@@ -108,7 +108,7 @@
     "module3_desc": "Midjourney · Firefly · Runway",
     "status_live": "Live",
     "status_soon": "Bientôt",
-    "cta_title": "Intégrer à votre produit →",
+    "cta_title": "Intégrer à votre produit",
     "cta_subtitle": "On étudie votre cas gratuitement"
   },
   "portfolio": {
@@ -124,7 +124,7 @@
     "project3_cat": "Fintech · Dashboard",
     "project4_title": "Aurora Media",
     "project4_cat": "Design System · UI",
-    "view_all": "Voir tous nos projets →"
+    "view_all": "Voir tous nos projets"
   },
   "testimonials": {
     "heading_start": "Pourquoi ils nous font ",
@@ -192,7 +192,7 @@
     "needs_label": "VOTRE BESOIN",
     "needs": ["Site web", "Branding", "UI/UX", "IA", "E-commerce"],
     "placeholder": "votre@email.com",
-    "btn_default": "Démarrer →",
+    "btn_default": "Démarrer",
     "btn_loading": "...",
     "btn_sent": "Envoyé ✓",
     "note": "Devis gratuit · Sans engagement · Réponse sous 24h"
@@ -222,7 +222,7 @@
     "email": "Email",
     "phone": "Téléphone",
     "message": "Message",
-    "submit": "Envoyer ma demande →",
+    "submit": "Envoyer ma demande",
     "loading": "Envoi en cours...",
     "success": "Message envoyé ! On revient vers vous sous 24h.",
     "error": "Une erreur est survenue. Réessayez ou contactez-nous sur WhatsApp.",
@@ -285,9 +285,9 @@
     "quote_label": "VOTRE SÉLECTION",
     "quote_empty": "← Sélectionnez un pack pour voir votre devis estimé",
     "quote_total": "Total estimé",
-    "quote_cta": "Continuer ma demande →",
+    "quote_cta": "Continuer ma demande",
     "quote_micro_prefix": "Devis gratuit · Sans engagement · ",
-    "quote_micro_link": "Voir les conditions détaillées →",
+    "quote_micro_link": "Voir les conditions détaillées",
     "pages_note": "* Une page = une page de contenu unique avec sa propre URL (Accueil, À propos, Services…). Page supplémentaire : +150 € / 510 ₪. Délais calculés à réception de tous vos éléments (textes, logo, accès)."
   },
   "pricing_preview": {
@@ -318,9 +318,9 @@
     "autonomie_feature1": "CMS pour modifier vos textes",
     "autonomie_feature2": "Automatisations CRM",
     "autonomie_feature3": "Sécurité RGPD + reCAPTCHA",
-    "cta_details": "Voir les détails →",
-    "cta_simulate": "Simuler mon devis →",
-    "cta_full": "Voir tous nos tarifs & options →"
+    "cta_details": "Voir les détails",
+    "cta_simulate": "Simuler mon devis",
+    "cta_full": "Voir tous nos tarifs & options"
   },
   "devis": {
     "meta_title": "Demande de devis | UCY Studio",
@@ -343,7 +343,7 @@
     "recap_options_one": "1 option supplémentaire",
     "recap_options_other": "{count} options supplémentaires",
     "recap_total_label": "Total estimé",
-    "step1_next": "Continuer → Voir les conditions",
+    "step1_next": "Continuer",
 
     "cond_title1": "Pages additionnelles",
     "cond_text1": "Le tarif de votre pack inclut un nombre de pages défini. Toute page supplémentaire au-delà de cette limite est facturée 150 € (510 ₪) par page, conception et intégration comprises.",
@@ -357,7 +357,7 @@
     "cond_text5": "L'hébergement, le nom de domaine et la rédaction des contenus ne sont pas compris dans nos forfaits, sauf si vous avez sélectionné l'option correspondante. Nous pouvons vous accompagner dans leur mise en place si besoin.",
     "cond_info": "En cliquant sur « J'ai lu et j'accepte », vous confirmez avoir pris connaissance de ces conditions. Elles seront rappelées dans le devis détaillé qui vous sera envoyé.",
     "step2_back": "← Retour",
-    "step2_accept": "J'ai lu et j'accepte →",
+    "step2_accept": "J'ai lu et j'accepte",
 
     "firstname_label": "Prénom",
     "firstname_placeholder": "Jean",
@@ -390,7 +390,7 @@
 
     "mini_recap_label": "RÉCAPITULATIF",
     "step3_back": "← Retour",
-    "submit": "Envoyer ma demande →",
+    "submit": "Envoyer ma demande",
     "submit_loading": "Envoi en cours...",
     "submit_error": "Une erreur est survenue, réessayez.",
     "submit_note": "Devis gratuit · Sans engagement · Réponse sous 24h",

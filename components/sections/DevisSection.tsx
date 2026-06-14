@@ -5,6 +5,7 @@ import type { CSSProperties, FormEvent } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { ArrowDiag } from '@/components/ui/ArrowDiag';
 import { Badge } from '@/components/ui/Badge';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 import { formatWhatsAppLink } from '@/lib/utils/formatWhatsAppLink';
@@ -424,6 +425,7 @@ export function DevisSection() {
               style={{ ...gradientButton, opacity: selectedPack ? 1 : 0.4, cursor: selectedPack ? 'pointer' : 'not-allowed' }}
             >
               {t('step1_next')}
+              <ArrowDiag size={12} className="inline ml-1" />
             </button>
           </div>
         ) : step === 2 ? (
@@ -467,6 +469,7 @@ export function DevisSection() {
                 style={{ ...gradientButton, cursor: 'pointer' }}
               >
                 {t('step2_accept')}
+                <ArrowDiag size={12} className="inline ml-1" />
               </button>
             </div>
           </div>
@@ -576,7 +579,14 @@ export function DevisSection() {
               className="flex items-center justify-center font-heading font-semibold w-full"
               style={{ ...gradientButton, cursor: status === 'loading' ? 'wait' : 'pointer', opacity: status === 'loading' ? 0.7 : 1 }}
             >
-              {status === 'loading' ? t('submit_loading') : t('submit')}
+              {status === 'loading' ? (
+                t('submit_loading')
+              ) : (
+                <>
+                  {t('submit')}
+                  <ArrowDiag size={12} className="inline ml-1" />
+                </>
+              )}
             </button>
 
             {status === 'error' && (

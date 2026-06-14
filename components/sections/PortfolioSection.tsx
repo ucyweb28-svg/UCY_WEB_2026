@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { ArrowDiag } from '@/components/ui/ArrowDiag';
 import { Badge } from '@/components/ui/Badge';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { stagger, fadeUp } from '@/lib/utils/animations';
@@ -95,10 +96,11 @@ export function PortfolioSection() {
                   </div>
                   <a
                     href="#contact"
-                    className="font-sans text-sm font-semibold flex-shrink-0 ml-4"
+                    className="font-sans text-sm font-semibold flex-shrink-0 ml-4 inline-flex items-center gap-1"
                     style={{ color: '#3626A7' }}
                   >
-                    {t('cta')} →
+                    {t('cta')}
+                    <ArrowDiag size={11} />
                   </a>
                 </div>
               </motion.div>
@@ -152,6 +154,7 @@ export function PortfolioSection() {
               }}
             >
               {t('view_all')}
+              <ArrowDiag size={11} className="inline ml-1" />
             </motion.a>
           </div>
         </motion.div>

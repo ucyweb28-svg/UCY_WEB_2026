@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
+import { ArrowDiag } from '@/components/ui/ArrowDiag';
 
 interface TestimonialItem {
   client: string;
@@ -110,7 +111,7 @@ export function TestimonialsSection() {
               className="flex items-center justify-center rounded-full cursor-pointer transition-colors duration-200 hover:bg-black/[0.05]"
               style={{ width: 44, height: 44, border: '1px solid rgba(0,0,0,0.12)', color: '#0a0a0a' }}
             >
-              ←
+              <ArrowDiag size={16} className="-rotate-[135deg]" />
             </button>
             <button
               onClick={goNext}
@@ -118,7 +119,7 @@ export function TestimonialsSection() {
               className="flex items-center justify-center rounded-full cursor-pointer transition-colors duration-200 hover:bg-black/[0.05]"
               style={{ width: 44, height: 44, border: '1px solid rgba(0,0,0,0.12)', color: '#0a0a0a' }}
             >
-              →
+              <ArrowDiag size={16} className="rotate-45" />
             </button>
           </div>
         </div>

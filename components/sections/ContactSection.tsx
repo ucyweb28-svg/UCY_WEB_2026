@@ -4,6 +4,7 @@ import { useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { ArrowDiag } from '@/components/ui/ArrowDiag';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 import { formatWhatsAppLink } from '@/lib/utils/formatWhatsAppLink';
 
@@ -292,7 +293,14 @@ export function ContactSection() {
                   border: 'none',
                 }}
               >
-                {status === 'loading' ? t('loading') : t('submit')}
+                {status === 'loading' ? (
+                  t('loading')
+                ) : (
+                  <>
+                    {t('submit')}
+                    <ArrowDiag size={12} className="inline ml-1" />
+                  </>
+                )}
               </button>
 
               {status === 'success' && (

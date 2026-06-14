@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { ArrowDiag } from '@/components/ui/ArrowDiag';
 import { Badge } from '@/components/ui/Badge';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 import {
@@ -366,12 +367,14 @@ export function PricingSection() {
                 }}
               >
                 {t('quote_cta')}
+                <ArrowDiag size={12} className="inline ml-1" />
               </Link>
 
               <p className="text-center font-sans" style={{ fontSize: 12, color: 'rgba(10,10,15,.5)', marginTop: 16 }}>
                 {t('quote_micro_prefix')}
                 <Link href={quoteHref} className="underline" style={{ color: '#3626A7' }}>
                   {t('quote_micro_link')}
+                  <ArrowDiag size={11} className="inline ml-1" />
                 </Link>
               </p>
             </div>

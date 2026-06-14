@@ -5,6 +5,7 @@ import type { ChangeEvent } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { ArrowDiag } from '@/components/ui/ArrowDiag';
 
 export function FooterCTA() {
   const t = useTranslations('footer_cta');
@@ -48,6 +49,7 @@ export function FooterCTA() {
   };
 
   const buttonLabel = loading ? t('btn_loading') : submitted ? t('btn_sent') : t('btn_default');
+  const showArrow = !loading && !submitted;
 
   return (
     <section id="contact" className="py-24" style={{ backgroundColor: '#f2f0eb' }}>
@@ -183,6 +185,7 @@ export function FooterCTA() {
                 style={{ backgroundColor: 'white', color: '#0a0a0a', border: 'none', height: 52, padding: '0 20px', fontSize: 16 }}
               >
                 {buttonLabel}
+                {showArrow && <ArrowDiag size={11} className="inline ml-1" />}
               </button>
             </div>
 
