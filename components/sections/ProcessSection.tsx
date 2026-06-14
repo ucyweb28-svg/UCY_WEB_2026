@@ -120,12 +120,11 @@ export function ProcessSection() {
 
         {/* Wrapper */}
         <div
-          className="mx-auto p-6 md:p-12"
+          className="mx-auto max-w-6xl px-10 py-12 md:px-14 md:py-14"
           style={{
             background: 'linear-gradient(135deg, #3626A714 0%, #DF57BC0a 50%, #0a0a0f 100%)',
             border: '1px solid rgba(255,255,255,0.06)',
             borderRadius: 24,
-            maxWidth: 1100,
           }}
         >
 
@@ -175,7 +174,7 @@ export function ProcessSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+            className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"
           >
             {STEPS.map((step, index) => (
               <motion.div
@@ -191,7 +190,7 @@ export function ProcessSection() {
                   backgroundColor: 'rgba(255,255,255,0.03)',
                   border: '1px solid rgba(255,255,255,0.08)',
                   borderRadius: 16,
-                  padding: 24,
+                  padding: 28,
                   overflow: 'hidden',
                 }}
               >
