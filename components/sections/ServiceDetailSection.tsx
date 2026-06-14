@@ -236,40 +236,44 @@ export function ServiceDetailSection({
       </section>
 
       {/* Notre processus */}
-      <section className="section" style={{ backgroundColor: '#FBF9FF' }}>
+      <section className="section" style={{ backgroundColor: '#0a0a0f' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div
             className="mx-auto"
             style={{
-              background: 'linear-gradient(135deg, #1a1060 0%, #3626A7 40%, #8B2580 70%, #7A2410 100%)',
-              borderRadius: 28,
+              background: 'linear-gradient(135deg, #3626A714 0%, #DF57BC0a 50%, #0a0a0f 100%)',
+              border: '1px solid rgba(255,255,255,0.06)',
+              borderRadius: 24,
               padding: '48px 40px',
               maxWidth: 1100,
               overflow: 'hidden',
             }}
           >
             <ScrollReveal>
-              <div className="text-center mb-10">
-                <span
-                  className="inline-block font-sans uppercase"
-                  style={{
-                    backgroundColor: 'rgba(0,0,0,0.3)',
-                    border: '1px solid rgba(255,255,255,0.25)',
-                    color: '#ffffff',
-                    borderRadius: 100,
-                    fontSize: 11,
-                    fontWeight: 700,
-                    letterSpacing: '0.1em',
-                    padding: '5px 14px',
-                  }}
+              <div className="flex flex-col items-center text-center mb-10">
+                <div
+                  className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5"
+                  style={{ borderColor: 'rgba(223,87,188,.3)' }}
                 >
-                  {t('process_badge')}
-                </span>
+                  <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#DF57BC' }} />
+                  <span className="font-sans text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#DF57BC' }}>
+                    {t('process_badge')}
+                  </span>
+                </div>
                 <h2 className="font-heading font-extrabold text-4xl leading-tight mt-4" style={{ color: '#ffffff' }}>
                   {t('process_heading_start')}
-                  <span style={{ color: '#ffffff' }}>{t('process_heading_highlight')}</span>
+                  <span
+                    style={{
+                      background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
+                    {t('process_heading_highlight')}
+                  </span>
                 </h2>
-                <p className="font-sans mt-2" style={{ color: 'rgba(255,255,255,0.75)', fontSize: 14 }}>
+                <p className="font-sans mt-2" style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14 }}>
                   {t('process_subtitle')}
                 </p>
               </div>
@@ -287,61 +291,50 @@ export function ServiceDetailSection({
                   key={step.title}
                   variants={fadeUp}
                   whileHover={{
-                    backgroundColor: 'rgba(255,255,255,0.2)',
-                    borderColor: 'rgba(255,255,255,0.4)',
+                    borderColor: 'rgba(223,87,188,0.3)',
+                    backgroundColor: 'rgba(255,255,255,0.05)',
                     transition: { duration: 0.3, ease: 'easeOut' },
                   }}
-                  className="relative flex flex-col backdrop-blur-[8px]"
+                  className="relative flex flex-col justify-between"
                   style={{
-                    backgroundColor: 'rgba(0,0,0,0.25)',
-                    border: '1px solid rgba(255,255,255,0.15)',
-                    borderRadius: 18,
+                    backgroundColor: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: 16,
                     padding: 24,
                     minHeight: 200,
                     overflow: 'hidden',
                   }}
                 >
-                  <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', flex: 1 }}>
-                    <div style={{ flex: 1 }}>
-                      <span className="font-sans uppercase tracking-widest block" style={{ fontSize: 10, color: 'rgba(255,255,255,0.5)', marginBottom: 12 }}>
-                        {t('step_label')} {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <h3 className="font-heading font-bold" style={{ fontSize: 14, color: '#ffffff', marginBottom: 8 }}>
-                        {step.title}
-                      </h3>
-                      <p className="font-sans" style={{ fontSize: 12, color: 'rgba(255,255,255,0.80)', lineHeight: 1.6 }}>
-                        {step.desc}
-                      </p>
-                    </div>
-
-                    <div style={{ marginTop: 'auto', paddingTop: 16 }}>
-                      <span
-                        className="font-sans font-bold inline-block"
-                        style={{
-                          fontSize: 11,
-                          color: '#ffffff',
-                          backgroundColor: 'rgba(255,255,255,0.2)',
-                          borderRadius: 100,
-                          padding: '3px 10px',
-                        }}
-                      >
-                        {step.duration}
-                      </span>
-                    </div>
+                  <div>
+                    <span className="font-sans uppercase tracking-widest block" style={{ fontSize: 10, color: '#aaa', marginBottom: 12 }}>
+                      {t('step_label')} {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="font-heading font-bold" style={{ fontSize: 14, color: '#ffffff', marginBottom: 8 }}>
+                      {step.title}
+                    </h3>
+                    <p className="font-sans" style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>
+                      {step.desc}
+                    </p>
                   </div>
 
                   <span
-                    className="absolute font-heading font-black pointer-events-none select-none"
-                    style={{ bottom: -20, right: -8, fontSize: 96, lineHeight: 1, color: 'rgba(255,255,255,0.06)', zIndex: 0 }}
-                    aria-hidden="true"
+                    className="font-sans font-bold inline-flex self-start"
+                    style={{
+                      fontSize: 11,
+                      color: '#DF57BC',
+                      backgroundColor: 'rgba(54,38,167,0.2)',
+                      borderRadius: 100,
+                      padding: '3px 10px',
+                      marginTop: 16,
+                    }}
                   >
-                    {index + 1}
+                    {step.duration}
                   </span>
                 </motion.div>
               ))}
             </motion.div>
 
-            <p className="text-center font-sans mt-8" style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12 }}>
+            <p className="text-center font-sans mt-8" style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12 }}>
               {t('process_footer')}
             </p>
           </div>
