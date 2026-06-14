@@ -1,8 +1,9 @@
 'use client';
 
+import Image from 'next/image';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { GlowButton } from '@/components/ui/GlowButton';
 
 const MODULES = [
   {
@@ -44,15 +45,23 @@ export function AISection() {
   const t = useTranslations('ai');
 
   return (
-    <section
-      className="relative overflow-hidden section"
-      style={{
-        background:
-          'radial-gradient(ellipse at 20% 50%, rgba(54,38,167,0.3) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(223,87,188,0.15) 0%, transparent 60%), #0a0a0f',
-      }}
-    >
-      {/* Content */}
-      <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section className="relative overflow-hidden section" style={{ minHeight: '85vh' }}>
+      {/* Layer 1: background image */}
+      <div className="absolute inset-0">
+        <Image src="/images/ai-bg.jpg" fill className="object-cover object-center" alt="" priority />
+      </div>
+
+      {/* Layer 2: gradient overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(105deg, rgba(10,10,15,0.92) 0%, rgba(10,10,15,0.75) 40%, rgba(54,38,167,0.3) 70%, rgba(223,87,188,0.15) 100%)',
+        }}
+      />
+
+      {/* Layer 3: content */}
+      <div className="relative z-10 h-full max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center min-h-[85vh]">
 
         {/* Left: text */}
         <motion.div
@@ -60,41 +69,51 @@ export function AISection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-20 flex flex-col items-start"
+          className="relative flex flex-col items-start"
         >
+          <img src="/logo.svg" alt="UCY Studio" width={80} className="mb-12 brightness-0 invert opacity-80" />
+
           <div
-            className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5"
-            style={{ borderColor: 'rgba(223,87,188,.3)' }}
+            className="inline-flex items-center rounded-full border px-3 py-1.5 mb-6"
+            style={{ borderColor: 'rgba(255,255,255,0.2)', backgroundColor: 'rgba(255,255,255,0.08)' }}
           >
-            <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#DF57BC' }} />
-            <span
-              className="font-sans text-[10px] font-semibold uppercase tracking-widest"
-              style={{ color: '#DF57BC' }}
-            >
+            <span className="font-sans text-[11px] font-semibold uppercase tracking-widest text-white">
               {t('badge')}
             </span>
           </div>
 
           <h2
-            className="mt-6 font-heading font-black text-[clamp(22px,5vw,30px)] md:text-[clamp(24px,2.8vw,38px)]"
-            style={{ color: 'white', lineHeight: 1.15 }}
+            className="max-w-md font-heading font-extrabold"
+            style={{ fontSize: 'clamp(28px, 3.5vw, 48px)', color: '#ffffff', lineHeight: 1.15 }}
           >
             <span className="block">{t('headline_start')}</span>
-            <span className="block" style={{ color: '#DF57BC' }}>{t('headline_highlight')}</span>
+            <span className="block">{t('headline_middle')}</span>
+            <span
+              className="block"
+              style={{
+                background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              {t('headline_highlight')}
+            </span>
           </h2>
 
           <p
-            className="mt-6 font-sans leading-relaxed"
-            style={{ color: 'rgba(255,255,255,0.6)', maxWidth: 420, fontSize: 15 }}
+            className="max-w-sm mt-6 font-sans"
+            style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}
           >
             {t('body')}
           </p>
 
-          <div className="flex flex-wrap items-center" style={{ gap: 12, marginTop: 32 }}>
-            <GlowButton href="/contact" variant="gradient">
-              {t('btn_primary')}
-            </GlowButton>
-          </div>
+          <Link
+            href="/contact"
+            className="mt-10 inline-flex items-center gap-1 font-sans font-bold text-[13px] rounded-full px-7 py-3 bg-white text-[#0a0a0f] hover:bg-[#f5f3ee] transition-colors duration-200"
+          >
+            {t('btn_primary')} ↗
+          </Link>
         </motion.div>
 
         {/* Right: product UI mockup */}
@@ -103,120 +122,138 @@ export function AISection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-20 flex items-center justify-center mt-8 md:mt-0"
+          className="hidden md:flex relative items-center justify-center"
         >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            animate={{ borderColor: ['#1e1e2e', '#3626A7', '#1e1e2e'] }}
-            transition={{
-              default: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-              borderColor: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
+          {/* Pink glow */}
+          <div
+            className="absolute pointer-events-none"
+            style={{
+              width: 400,
+              height: 400,
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              background: 'radial-gradient(circle, rgba(223,87,188,0.2) 0%, transparent 70%)',
+              filter: 'blur(60px)',
+              borderRadius: '50%',
             }}
-            className="w-full max-w-[420px] rounded-xl overflow-hidden"
-            style={{ backgroundColor: '#111118', borderWidth: 1, borderStyle: 'solid', borderColor: '#1e1e2e' }}
+            aria-hidden="true"
+          />
+
+          {/* Glass card */}
+          <div
+            className="relative w-full max-w-[420px]"
+            style={{
+              backgroundColor: 'rgba(10,10,15,0.7)',
+              backdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: 20,
+              padding: 28,
+              boxShadow: '0 0 60px rgba(223,87,188,0.15), 0 0 120px rgba(54,38,167,0.1)',
+            }}
           >
-            {/* Top bar */}
-            <div
-              className="flex items-center justify-between"
-              style={{ backgroundColor: '#0d0d16', borderBottom: '1px solid #1a1a28', padding: '10px 14px' }}
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex items-center gap-1.5">
-                  <span className="rounded-full" style={{ width: 7, height: 7, backgroundColor: '#ff5f57' }} />
-                  <span className="rounded-full" style={{ width: 7, height: 7, backgroundColor: '#ffbd2e' }} />
-                  <span className="rounded-full" style={{ width: 7, height: 7, backgroundColor: '#28ca41' }} />
+            <div className="rounded-xl overflow-hidden" style={{ backgroundColor: '#111118', border: '1px solid #1e1e2e' }}>
+              {/* Top bar */}
+              <div
+                className="flex items-center justify-between"
+                style={{ backgroundColor: '#0d0d16', borderBottom: '1px solid #1a1a28', padding: '10px 14px' }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1.5">
+                    <span className="rounded-full" style={{ width: 7, height: 7, backgroundColor: '#ff5f57' }} />
+                    <span className="rounded-full" style={{ width: 7, height: 7, backgroundColor: '#ffbd2e' }} />
+                    <span className="rounded-full" style={{ width: 7, height: 7, backgroundColor: '#28ca41' }} />
+                  </div>
+                  <span className="font-sans" style={{ fontSize: 11, color: '#555555' }}>
+                    {t('card_title')}
+                  </span>
                 </div>
-                <span className="font-sans" style={{ fontSize: 11, color: '#555555' }}>
-                  {t('card_title')}
+                <span
+                  className="font-sans font-bold uppercase tracking-wide rounded-full px-2 py-0.5"
+                  style={{ fontSize: 9, color: '#3626A7', backgroundColor: 'rgba(54,38,167,.15)' }}
+                >
+                  {t('card_badge')}
                 </span>
               </div>
-              <span
-                className="font-sans font-bold uppercase tracking-wide rounded-full px-2 py-0.5"
-                style={{ fontSize: 9, color: '#3626A7', backgroundColor: 'rgba(54,38,167,.15)' }}
-              >
-                {t('card_badge')}
-              </span>
-            </div>
 
-            {/* Body */}
-            <div className="flex flex-col gap-3" style={{ padding: '16px' }}>
-              <p
-                className="font-sans uppercase tracking-widest"
-                style={{ fontSize: 9, color: '#444444' }}
-              >
-                {t('modules_label')}
-              </p>
+              {/* Body */}
+              <div className="flex flex-col gap-3" style={{ padding: '16px' }}>
+                <p
+                  className="font-sans uppercase tracking-widest"
+                  style={{ fontSize: 9, color: '#444444' }}
+                >
+                  {t('modules_label')}
+                </p>
 
-              <div className="flex flex-col gap-2">
-                {MODULES.map((mod) => (
-                  <motion.div
-                    key={mod.nameKey}
-                    whileHover={{ backgroundColor: 'rgba(54,38,167,0.2)', x: 4 }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                    className="flex items-center gap-2.5 rounded-[7px] border cursor-pointer"
-                    style={{
-                      padding: '8px 10px',
-                      backgroundColor: mod.active ? 'rgba(54,38,167,.12)' : 'transparent',
-                      borderColor: mod.active ? 'rgba(54,38,167,.25)' : 'transparent',
-                    }}
-                  >
-                    <span
-                      className="shrink-0 flex items-center justify-center rounded-[6px]"
-                      style={{ width: 28, height: 28, backgroundColor: mod.iconBg, color: mod.iconColor, fontSize: 13 }}
+                <div className="flex flex-col gap-2">
+                  {MODULES.map((mod) => (
+                    <motion.div
+                      key={mod.nameKey}
+                      whileHover={{ backgroundColor: 'rgba(54,38,167,0.2)', x: 4 }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                      className="flex items-center gap-2.5 rounded-[7px] border cursor-pointer"
+                      style={{
+                        padding: '8px 10px',
+                        backgroundColor: mod.active ? 'rgba(54,38,167,.12)' : 'transparent',
+                        borderColor: mod.active ? 'rgba(54,38,167,.25)' : 'transparent',
+                      }}
                     >
-                      {mod.icon}
-                    </span>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-sans font-medium truncate" style={{ fontSize: 12, color: 'white' }}>
-                        {t(mod.nameKey)}
-                      </p>
-                      <p className="font-sans truncate" style={{ fontSize: 10, color: '#666666' }}>
-                        {t(mod.descKey)}
-                      </p>
-                    </div>
-                    {mod.statusKey === 'status_live' ? (
-                      <motion.span
-                        animate={{ opacity: [1, 0.5, 1] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                        className="shrink-0 font-sans font-semibold rounded-full px-2 py-0.5"
-                        style={{ fontSize: 9, backgroundColor: mod.statusBg, color: mod.statusColor }}
-                      >
-                        {t(mod.statusKey)}
-                      </motion.span>
-                    ) : (
                       <span
-                        className="shrink-0 font-sans font-semibold rounded-full px-2 py-0.5"
-                        style={{ fontSize: 9, backgroundColor: mod.statusBg, color: mod.statusColor }}
+                        className="shrink-0 flex items-center justify-center rounded-[6px]"
+                        style={{ width: 28, height: 28, backgroundColor: mod.iconBg, color: mod.iconColor, fontSize: 13 }}
                       >
-                        {t(mod.statusKey)}
+                        {mod.icon}
                       </span>
-                    )}
-                  </motion.div>
-                ))}
-              </div>
-
-              <div style={{ borderTop: '1px solid #1a1a28' }} />
-
-              <motion.a
-                href="/contact"
-                whileHover={{ scale: 1.02 }}
-                className="flex items-center justify-between gap-3 rounded-lg cursor-pointer"
-                style={{ backgroundColor: 'rgba(223,87,188,.06)', border: '1px solid rgba(223,87,188,.15)', padding: '10px' }}
-              >
-                <div className="min-w-0">
-                  <p className="font-sans font-bold truncate" style={{ fontSize: 11, color: '#DF57BC' }}>
-                    {t('cta_title')}
-                  </p>
-                  <p className="font-sans truncate" style={{ fontSize: 10, color: '#555555' }}>
-                    {t('cta_subtitle')}
-                  </p>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-sans font-medium truncate" style={{ fontSize: 12, color: 'white' }}>
+                          {t(mod.nameKey)}
+                        </p>
+                        <p className="font-sans truncate" style={{ fontSize: 10, color: '#666666' }}>
+                          {t(mod.descKey)}
+                        </p>
+                      </div>
+                      {mod.statusKey === 'status_live' ? (
+                        <motion.span
+                          animate={{ opacity: [1, 0.5, 1] }}
+                          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                          className="shrink-0 font-sans font-semibold rounded-full px-2 py-0.5"
+                          style={{ fontSize: 9, backgroundColor: mod.statusBg, color: mod.statusColor }}
+                        >
+                          {t(mod.statusKey)}
+                        </motion.span>
+                      ) : (
+                        <span
+                          className="shrink-0 font-sans font-semibold rounded-full px-2 py-0.5"
+                          style={{ fontSize: 9, backgroundColor: mod.statusBg, color: mod.statusColor }}
+                        >
+                          {t(mod.statusKey)}
+                        </span>
+                      )}
+                    </motion.div>
+                  ))}
                 </div>
-                <span className="shrink-0" style={{ color: '#DF57BC' }}>↗</span>
-              </motion.a>
+
+                <div style={{ borderTop: '1px solid #1a1a28' }} />
+
+                <motion.a
+                  href="/contact"
+                  whileHover={{ scale: 1.02 }}
+                  className="flex items-center justify-between gap-3 rounded-lg cursor-pointer"
+                  style={{ backgroundColor: 'rgba(223,87,188,.06)', border: '1px solid rgba(223,87,188,.15)', padding: '10px' }}
+                >
+                  <div className="min-w-0">
+                    <p className="font-sans font-bold truncate" style={{ fontSize: 11, color: '#DF57BC' }}>
+                      {t('cta_title')}
+                    </p>
+                    <p className="font-sans truncate" style={{ fontSize: 10, color: '#555555' }}>
+                      {t('cta_subtitle')}
+                    </p>
+                  </div>
+                  <span className="shrink-0" style={{ color: '#DF57BC' }}>↗</span>
+                </motion.a>
+              </div>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
 
       </div>

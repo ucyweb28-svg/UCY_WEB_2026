@@ -93,9 +93,10 @@
   },
   "ai": {
     "badge": "AI & Production",
-    "headline_start": "The AI we use. The one we build",
+    "headline_start": "The AI we use.",
+    "headline_middle": "The one we build",
     "headline_highlight": "into your product.",
-    "body": "We don't just use AI in our production — we can design and integrate AI features directly into your product: chatbot, content generation, automation, recommendations.",
+    "body": "Chatbot, content generation, recommendations — we design and integrate AI directly into your product.",
     "btn_primary": "Integrate AI into my project",
     "card_title": "UCY AI Studio",
     "card_badge": "Beta",

@@ -93,9 +93,10 @@
   },
   "ai": {
     "badge": "IA & Production",
-    "headline_start": "L'IA qu'on utilise. Celle qu'on intègre",
+    "headline_start": "L'IA qu'on utilise.",
+    "headline_middle": "Celle qu'on intègre",
     "headline_highlight": "dans votre produit.",
-    "body": "On ne se contente pas d'utiliser l'IA dans notre production — on peut aussi concevoir et intégrer des fonctionnalités IA directement dans votre produit : chatbot, génération de contenu, automatisation, recommandations.",
+    "body": "Chatbot, génération de contenu, recommandations — on conçoit et intègre l'IA directement dans votre produit.",
     "btn_primary": "Intégrer l'IA à mon projet",
     "card_title": "UCY AI Studio",
     "card_badge": "Beta",
