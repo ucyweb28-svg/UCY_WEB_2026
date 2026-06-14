@@ -291,7 +291,7 @@ export function ServiceDetailSection({
                     borderColor: 'rgba(255,255,255,0.4)',
                     transition: { duration: 0.3, ease: 'easeOut' },
                   }}
-                  className="relative flex flex-col justify-between backdrop-blur-[8px]"
+                  className="relative flex flex-col backdrop-blur-[8px]"
                   style={{
                     backgroundColor: 'rgba(0,0,0,0.25)',
                     border: '1px solid rgba(255,255,255,0.15)',
@@ -301,34 +301,34 @@ export function ServiceDetailSection({
                     overflow: 'hidden',
                   }}
                 >
-                  <div style={{ position: 'relative', zIndex: 1 }}>
-                    <h3 className="font-heading font-bold" style={{ fontSize: 14, color: '#ffffff', marginBottom: 32 }}>
-                      {step.title}
-                    </h3>
-                    <p className="font-sans" style={{ fontSize: 12, color: 'rgba(255,255,255,0.80)', lineHeight: 1.6 }}>
-                      {step.desc}
-                    </p>
-                    <span
-                      className="font-sans font-bold inline-block"
-                      style={{
-                        fontSize: 11,
-                        color: '#ffffff',
-                        backgroundColor: 'rgba(255,255,255,0.2)',
-                        borderRadius: 100,
-                        padding: '3px 10px',
-                        marginTop: 12,
-                      }}
-                    >
-                      {step.duration}
-                    </span>
-                  </div>
+                  <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', flex: 1 }}>
+                    <div style={{ flex: 1 }}>
+                      <span className="font-sans uppercase tracking-widest block" style={{ fontSize: 10, color: 'rgba(255,255,255,0.5)', marginBottom: 12 }}>
+                        {t('step_label')} {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <h3 className="font-heading font-bold" style={{ fontSize: 14, color: '#ffffff', marginBottom: 8 }}>
+                        {step.title}
+                      </h3>
+                      <p className="font-sans" style={{ fontSize: 12, color: 'rgba(255,255,255,0.80)', lineHeight: 1.6 }}>
+                        {step.desc}
+                      </p>
+                    </div>
 
-                  <span
-                    className="relative font-sans uppercase tracking-widest"
-                    style={{ fontSize: 10, color: 'rgba(255,255,255,0.5)', zIndex: 1 }}
-                  >
-                    {t('step_label')} {String(index + 1).padStart(2, '0')}
-                  </span>
+                    <div style={{ marginTop: 'auto', paddingTop: 16 }}>
+                      <span
+                        className="font-sans font-bold inline-block"
+                        style={{
+                          fontSize: 11,
+                          color: '#ffffff',
+                          backgroundColor: 'rgba(255,255,255,0.2)',
+                          borderRadius: 100,
+                          padding: '3px 10px',
+                        }}
+                      >
+                        {step.duration}
+                      </span>
+                    </div>
+                  </div>
 
                   <span
                     className="absolute font-heading font-black pointer-events-none select-none"
