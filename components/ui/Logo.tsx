@@ -4,7 +4,7 @@ export function Logo({ className = '' }: { className?: string }) {
   return (
     <svg width={100} height="auto" viewBox="0 0 240 47"
       fill="none" xmlns="http://www.w3.org/2000/svg"
-      className={['w-[72px] md:w-[100px] h-auto', className].filter(Boolean).join(' ')}>
+      className={['w-[60px] md:w-[100px] h-auto', className].filter(Boolean).join(' ')}>
       <defs>
         <linearGradient id="ucy-nav-gradient"
           x1="0" y1="0" x2="240" y2="0"
