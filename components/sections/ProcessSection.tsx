@@ -1,6 +1,7 @@
 'use client';
 
 import type { ComponentType, CSSProperties } from 'react';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { stagger, fadeUp } from '@/lib/utils/animations';
@@ -101,25 +102,30 @@ export function ProcessSection() {
   const t = useTranslations('process');
 
   return (
-    <section className="section" style={{ backgroundColor: '#FBF9FF', position: 'relative', overflow: 'visible', zIndex: 0 }}>
-      {/* Glow violet en arrière-plan */}
+    <section className="section" style={{ position: 'relative', overflow: 'hidden', backgroundColor: '#0a0a0f' }}>
+      {/* Background image layer */}
+      <div className="absolute inset-0" style={{ zIndex: 0 }}>
+        <Image
+          src="/images/process-bg.jpg"
+          fill
+          className="object-cover object-center"
+          alt=""
+          priority
+        />
+      </div>
+
+      {/* Overlay layer */}
       <div
+        className="absolute inset-0"
         style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '70%',
-          height: '80%',
-          background: 'radial-gradient(ellipse at center, rgba(54,38,167,0.18) 0%, rgba(223,87,188,0.08) 50%, transparent 75%)',
-          filter: 'blur(60px)',
-          pointerEvents: 'none',
-          zIndex: -1,
+          zIndex: 1,
+          background:
+            'linear-gradient(135deg, rgba(10,10,15,0.88) 0%, rgba(10,10,15,0.75) 50%, rgba(54,38,167,0.25) 80%, rgba(222,84,30,0.15) 100%)',
         }}
-        aria-hidden="true"
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      {/* Content layer */}
+      <div className="relative max-w-6xl mx-auto px-10 py-16" style={{ zIndex: 2 }}>
 
         {/* Shared gradient defs for icons & connectors */}
         <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
@@ -135,18 +141,7 @@ export function ProcessSection() {
           </defs>
         </svg>
 
-        {/* Wrapper */}
-        <div
-          className="mx-auto max-w-6xl px-10 py-12 md:px-14 md:py-14"
-          style={{
-            background: 'rgba(10, 10, 15, 0.6)',
-            backdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255,255,255,0.06)',
-            borderRadius: 28,
-          }}
-        >
-
-          {/* Header */}
+        {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -201,8 +196,8 @@ export function ProcessSection() {
                 }}
                 className="relative flex flex-col justify-between"
                 style={{
-                  backgroundColor: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(255,255,255,0.08)',
+                  backgroundColor: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
                   borderRadius: 16,
                   padding: 28,
                   overflow: 'hidden',
@@ -263,7 +258,6 @@ export function ProcessSection() {
             ))}
           </motion.div>
 
-        </div>
       </div>
     </section>
   );
