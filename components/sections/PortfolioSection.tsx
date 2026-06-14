@@ -74,7 +74,7 @@ export function PortfolioSection() {
                 {/* Project image */}
                 <div
                   className="relative w-full h-[220px] md:h-[280px] overflow-hidden"
-                  style={{ backgroundColor: '#F5F5F0' }}
+                  style={{ backgroundColor: '#f5f3ee' }}
                 >
                   <Image
                     src={image}

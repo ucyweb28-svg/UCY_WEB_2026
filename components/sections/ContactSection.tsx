@@ -28,7 +28,7 @@ const BULLETS = [
 ] as const;
 
 const inputClass =
-  'w-full px-[14px] py-3 bg-[#f8f8f6] border-[1.5px] border-[#e8e8e4] rounded-[10px] font-sans text-sm text-[#0a0a0a] outline-none transition-colors duration-200 focus:border-[#3626A7] focus:bg-white';
+  'w-full px-[14px] py-3 bg-[#f5f3ee] border-[1.5px] border-[#e8e8e4] rounded-[10px] font-sans text-sm text-[#0a0a0a] outline-none transition-colors duration-200 focus:border-[#3626A7] focus:bg-white';
 
 const labelClass = 'block font-sans text-[11px] font-bold uppercase tracking-wider text-[#0a0a0a] mb-2';
 
@@ -112,7 +112,7 @@ export function ContactSection() {
   );
 
   return (
-    <section className="bg-[#f8f8f6] min-h-screen pt-12 section-b px-4 md:px-6">
+    <section className="bg-[#f5f3ee] min-h-screen pt-12 section-b px-4 md:px-6">
       <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-[42%_58%] gap-10 lg:gap-16 items-start">
 
         {/* Left column */}

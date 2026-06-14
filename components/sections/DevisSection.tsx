@@ -27,7 +27,7 @@ const CONDITION_COLORS = ['#3626A7', '#DF57BC', '#DE541E', '#3626A7', '#DF57BC']
 
 const inputClass =
   'font-sans w-full outline-none transition-colors duration-200 border-[1.5px] border-[#e4e1d8] focus:border-[#3626A7] focus:bg-white';
-const inputStyle: CSSProperties = { backgroundColor: '#f8f7f3', borderRadius: 10, padding: '12px 14px', fontSize: 14, color: '#0a0a0f' };
+const inputStyle: CSSProperties = { backgroundColor: '#f5f3ee', borderRadius: 10, padding: '12px 14px', fontSize: 14, color: '#0a0a0f' };
 const labelClass = 'font-sans font-bold uppercase tracking-wider block';
 const labelStyle: CSSProperties = { fontSize: 11, color: 'rgba(10,10,15,.5)', marginBottom: 6 };
 
