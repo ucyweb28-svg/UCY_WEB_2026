@@ -286,7 +286,7 @@ export function PricingSection() {
                     </span>
                     <span className="font-sans font-bold flex-1" style={{ fontSize: 13, color: '#0a0a0f' }}>
                       {t(option.nameKey)}
-                      {option.noteKey && <sup style={{ marginLeft: 2 }}>†</sup>}
+                      {option.noteKey && <sup style={{ marginLeft: 2 }}>*</sup>}
                     </span>
                     <span className="font-sans font-semibold" style={{ fontSize: 13, color: '#DF57BC', whiteSpace: 'nowrap' }}>
                       {priceLabel}
