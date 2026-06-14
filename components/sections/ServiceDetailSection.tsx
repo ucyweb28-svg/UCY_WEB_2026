@@ -179,8 +179,8 @@ export function ServiceDetailSection({
                 style={{ backgroundColor: '#ffffff', border: '1px solid #e4e1d8', padding: 32 }}
               >
                 <span
-                  className="absolute font-heading font-extrabold pointer-events-none select-none"
-                  style={{ bottom: 12, right: 16, fontSize: 72, lineHeight: 1, color: '#0a0a0f', opacity: 0.05, zIndex: 0 }}
+                  className="absolute font-heading pointer-events-none select-none"
+                  style={{ top: 16, right: 16, fontSize: 72, fontWeight: 900, lineHeight: 1, color: 'rgba(10, 10, 15, 0.07)', zIndex: 0 }}
                   aria-hidden="true"
                 >
                   {String(index + 1).padStart(2, '0')}
