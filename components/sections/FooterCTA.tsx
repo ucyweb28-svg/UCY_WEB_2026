@@ -52,7 +52,7 @@ export function FooterCTA() {
   const showArrow = !loading && !submitted;
 
   return (
-    <section id="contact" className="py-24" style={{ backgroundColor: '#f2f0eb' }}>
+    <section id="contact" className="section" style={{ backgroundColor: '#f2f0eb' }}>
       <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
         whileInView={{ opacity: 1, scale: 1 }}

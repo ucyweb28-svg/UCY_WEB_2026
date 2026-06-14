@@ -45,7 +45,7 @@ export function AISection() {
 
   return (
     <section
-      className="relative overflow-hidden py-24"
+      className="relative overflow-hidden section"
       style={{
         background:
           'radial-gradient(ellipse at 20% 50%, rgba(54,38,167,0.3) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(223,87,188,0.15) 0%, transparent 60%), #0a0a0f',

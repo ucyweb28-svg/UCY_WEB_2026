@@ -103,3 +103,23 @@ body {
   background-size: 200%;
   animation: gradientShift 3s infinite;
 }
+
+.section {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.section-b {
+  padding-bottom: 120px;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .section-b {
+    padding-bottom: 72px;
+  }
+}

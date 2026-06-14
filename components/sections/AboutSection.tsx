@@ -20,7 +20,7 @@ export function AboutSection() {
   const t = useTranslations('about');
 
   return (
-    <section id="about" className="py-16 md:py-24" style={{ backgroundColor: '#000807' }}>
+    <section id="about" className="section" style={{ backgroundColor: '#000807' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Manifesto */}

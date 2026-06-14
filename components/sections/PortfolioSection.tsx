@@ -21,7 +21,7 @@ export function PortfolioSection() {
   return (
     <section
       id="portfolio"
-      className="py-16 md:py-32"
+      className="section"
       style={{ backgroundColor: '#FBF9FF', borderTop: '1px solid rgba(0,8,7,0.06)' }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">

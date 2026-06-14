@@ -93,7 +93,7 @@ export function PricingPreviewSection() {
 
   return (
     <section
-      className="bg-white pt-20 pb-28"
+      className="bg-white section"
       style={{ borderTop: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 -4px 24px rgba(0,0,0,0.04)' }}
     >
       <div className="max-w-7xl mx-auto px-6">

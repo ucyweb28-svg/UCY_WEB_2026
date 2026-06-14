@@ -12,7 +12,7 @@ export function TrustStrip() {
 
   return (
     <section
-      className="py-12 overflow-hidden"
+      className="py-[40px] overflow-hidden"
       style={{
         backgroundColor: '#FBF9FF',
         borderTop: '1px solid rgba(0,8,7,0.07)',

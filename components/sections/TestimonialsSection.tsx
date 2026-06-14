@@ -70,7 +70,7 @@ export function TestimonialsSection() {
 
   return (
     <section
-      className="py-16 md:py-32"
+      className="section"
       style={{
         backgroundColor: '#f8f8f6',
         borderTop: '1px solid rgba(0,0,0,0.06)',

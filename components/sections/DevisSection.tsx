@@ -143,7 +143,7 @@ export function DevisSection() {
   };
 
   return (
-    <section className="py-14" style={{ backgroundColor: '#f5f3ee' }}>
+    <section className="pt-14 section-b" style={{ backgroundColor: '#f5f3ee' }}>
       <div className="max-w-2xl mx-auto px-6">
 
         {/* Header */}

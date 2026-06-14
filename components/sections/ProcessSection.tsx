@@ -133,7 +133,7 @@ export function ProcessSection() {
   const t = useTranslations('process');
 
   return (
-    <section className="py-20" style={{ backgroundColor: '#0a0a0f' }}>
+    <section className="section" style={{ backgroundColor: '#0a0a0f' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
