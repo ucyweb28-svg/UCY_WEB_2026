@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { FooterCTA } from '@/components/sections/FooterCTA';
 import { ServiceDetailSection } from '@/components/sections/ServiceDetailSection';
 import { buildPageMetadata, type Locale } from '@/components/SEO';
 import { getServiceBySlug } from '@/lib/utils/services';
@@ -65,6 +66,7 @@ export default function ServiceDetailPage({
         process={process}
         relatedProjects={service.relatedProjects}
       />
+      <FooterCTA />
     </main>
   );
 }

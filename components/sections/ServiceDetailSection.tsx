@@ -59,7 +59,6 @@ export function ServiceDetailSection({
       ? `Hi UCY Studio, I'm interested in your ${hero.title} service`
       : `Bonjour UCY Studio, je suis intéressé(e) par votre service ${hero.title}`;
   const whatsappFR = formatWhatsAppLink('fr', encodeURIComponent(waMessage));
-  const whatsappIL = formatWhatsAppLink('il', encodeURIComponent(waMessage));
 
   const titleWords = hero.title.split(' ');
   const titleHighlight = titleWords.pop() ?? '';
@@ -338,34 +337,6 @@ export function ServiceDetailSection({
               {t('process_footer')}
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* CTA WhatsApp */}
-      <section className="section" style={{ backgroundColor: '#0a0a0f' }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center">
-          <ScrollReveal>
-            <Badge variant="dark">{t('final_cta_badge')}</Badge>
-            <h2
-              className="font-heading font-extrabold text-3xl md:text-5xl leading-tight mt-4 mb-4"
-              style={{ color: '#ffffff' }}
-            >
-              {t('final_cta_heading')}
-            </h2>
-            <p className="font-sans text-base mb-8 max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.6)' }}>
-              {t('final_cta_subtitle')}
-            </p>
-            <div className="flex flex-wrap gap-3 justify-center">
-              <GlowButton href={whatsappFR} variant="gradient" external>
-                {t('cta_whatsapp_fr')}
-                <ArrowDiag size={11} className="inline ml-1" />
-              </GlowButton>
-              <GlowButton href={whatsappIL} variant="white" external>
-                {t('cta_whatsapp_il')}
-                <ArrowDiag size={11} className="inline ml-1" />
-              </GlowButton>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
     </>
