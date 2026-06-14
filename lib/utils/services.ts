@@ -20,6 +20,7 @@ export interface ServiceFeature {
 export interface ServiceProcessStep {
   title: LocalizedText;
   desc: LocalizedText;
+  duration: LocalizedText;
 }
 
 export interface RelatedProjectRef {
@@ -129,6 +130,7 @@ export const SERVICES: Service[] = [
           fr: 'On cadre vos objectifs, votre cible et le périmètre exact du site.',
           en: 'We define your goals, audience and the exact scope of the website.',
         },
+        duration: { fr: '2–3 jours', en: '2–3 days' },
       },
       {
         title: { fr: 'Maquettes Figma', en: 'Figma mockups' },
@@ -136,6 +138,7 @@ export const SERVICES: Service[] = [
           fr: 'Design haute-fidélité validé avec vous avant tout développement.',
           en: 'High-fidelity designs validated with you before any development starts.',
         },
+        duration: { fr: '1–2 semaines', en: '1–2 weeks' },
       },
       {
         title: { fr: 'Intégration & développement', en: 'Build & development' },
@@ -143,6 +146,7 @@ export const SERVICES: Service[] = [
           fr: 'Code Next.js avec preview en direct à chaque étape.',
           en: 'Next.js build with a live preview at every step.',
         },
+        duration: { fr: '2–3 semaines', en: '2–3 weeks' },
       },
       {
         title: { fr: 'Mise en ligne & suivi', en: 'Launch & follow-up' },
@@ -150,6 +154,7 @@ export const SERVICES: Service[] = [
           fr: 'Déploiement, tests cross-device et accompagnement après livraison.',
           en: 'Deployment, cross-device testing and support after delivery.',
         },
+        duration: { fr: '1 semaine', en: '1 week' },
       },
     ],
     relatedProjects: [PORTFOLIO_PROJECTS.bloomair, PORTFOLIO_PROJECTS.nexus, PORTFOLIO_PROJECTS.aurora],
@@ -227,6 +232,7 @@ export const SERVICES: Service[] = [
           fr: 'Analyse de votre produit existant, de vos utilisateurs et de vos concurrents.',
           en: 'Analysis of your existing product, your users and your competitors.',
         },
+        duration: { fr: '2–3 jours', en: '2–3 days' },
       },
       {
         title: { fr: 'Architecture & wireframes', en: 'Architecture & wireframes' },
@@ -234,6 +240,7 @@ export const SERVICES: Service[] = [
           fr: 'Structuration des parcours et des écrans clés en basse fidélité.',
           en: 'Structuring user flows and key screens in low fidelity.',
         },
+        duration: { fr: '1 semaine', en: '1 week' },
       },
       {
         title: { fr: 'UI design & design system', en: 'UI design & design system' },
@@ -241,6 +248,7 @@ export const SERVICES: Service[] = [
           fr: 'Habillage visuel complet avec composants réutilisables.',
           en: 'Full visual design with reusable components.',
         },
+        duration: { fr: '2–3 semaines', en: '2–3 weeks' },
       },
       {
         title: { fr: 'Tests & itérations', en: 'Testing & iteration' },
@@ -248,6 +256,7 @@ export const SERVICES: Service[] = [
           fr: 'Prototypes testés, ajustés et livrés prêts pour le développement.',
           en: 'Prototypes tested, refined and delivered ready for development.',
         },
+        duration: { fr: '1 semaine', en: '1 week' },
       },
     ],
     relatedProjects: [PORTFOLIO_PROJECTS.aurora, PORTFOLIO_PROJECTS.nexus, PORTFOLIO_PROJECTS.topnos],
@@ -325,6 +334,7 @@ export const SERVICES: Service[] = [
           fr: 'Immersion dans votre univers, vos valeurs et votre positionnement.',
           en: 'Immersion in your world, your values and your positioning.',
         },
+        duration: { fr: '2–3 jours', en: '2–3 days' },
       },
       {
         title: { fr: 'Recherche visuelle', en: 'Visual exploration' },
@@ -332,6 +342,7 @@ export const SERVICES: Service[] = [
           fr: 'Exploration de pistes graphiques, moodboards et directions créatives.',
           en: 'Exploring graphic directions, moodboards and creative options.',
         },
+        duration: { fr: '1 semaine', en: '1 week' },
       },
       {
         title: { fr: 'Création & finalisation', en: 'Creation & refinement' },
@@ -339,6 +350,7 @@ export const SERVICES: Service[] = [
           fr: 'Développement du logo et des éléments de marque jusqu’à la version finale.',
           en: 'Developing the logo and brand elements through to the final version.',
         },
+        duration: { fr: '1–2 semaines', en: '1–2 weeks' },
       },
       {
         title: { fr: 'Livraison & guidelines', en: 'Delivery & guidelines' },
@@ -346,6 +358,7 @@ export const SERVICES: Service[] = [
           fr: 'Fichiers sources, charte graphique complète et formats prêts à l’emploi.',
           en: 'Source files, full brand guidelines and ready-to-use formats.',
         },
+        duration: { fr: '2–3 jours', en: '2–3 days' },
       },
     ],
     relatedProjects: [PORTFOLIO_PROJECTS.topnos, PORTFOLIO_PROJECTS.aurora, PORTFOLIO_PROJECTS.bloomair],
@@ -423,6 +436,7 @@ export const SERVICES: Service[] = [
           fr: 'État des lieux de votre présence actuelle et de celle de vos concurrents.',
           en: "Assessment of your current presence and your competitors'.",
         },
+        duration: { fr: '2–3 jours', en: '2–3 days' },
       },
       {
         title: { fr: 'Stratégie & messages clés', en: 'Strategy & key messages' },
@@ -430,6 +444,7 @@ export const SERVICES: Service[] = [
           fr: 'Définition du positionnement, des cibles et des messages prioritaires.',
           en: 'Defining positioning, target audiences and priority messages.',
         },
+        duration: { fr: '1 semaine', en: '1 week' },
       },
       {
         title: { fr: 'Production de contenu', en: 'Content production' },
@@ -437,6 +452,7 @@ export const SERVICES: Service[] = [
           fr: 'Création des visuels, textes et formats adaptés à chaque plateforme.',
           en: 'Creating visuals, copy and formats tailored to each platform.',
         },
+        duration: { fr: '1–2 semaines', en: '1–2 weeks' },
       },
       {
         title: { fr: 'Pilotage & reporting', en: 'Management & reporting' },
@@ -444,6 +460,7 @@ export const SERVICES: Service[] = [
           fr: 'Suivi régulier des résultats et ajustements de la stratégie.',
           en: 'Regular results tracking and strategy adjustments.',
         },
+        duration: { fr: 'En continu', en: 'Ongoing' },
       },
     ],
     relatedProjects: [PORTFOLIO_PROJECTS.bloomair, PORTFOLIO_PROJECTS.topnos, PORTFOLIO_PROJECTS.aurora],
@@ -521,6 +538,7 @@ export const SERVICES: Service[] = [
           fr: 'Crawl complet du site et identification des points de blocage.',
           en: 'Full site crawl and identification of blocking issues.',
         },
+        duration: { fr: '2–3 jours', en: '2–3 days' },
       },
       {
         title: { fr: 'Recherche de mots-clés', en: 'Keyword research' },
@@ -528,6 +546,7 @@ export const SERVICES: Service[] = [
           fr: 'Identification des requêtes pertinentes pour votre activité et votre marché.',
           en: 'Identifying the search queries that matter for your business and market.',
         },
+        duration: { fr: '2–3 jours', en: '2–3 days' },
       },
       {
         title: { fr: 'Optimisations techniques', en: 'Technical optimizations' },
@@ -535,6 +554,7 @@ export const SERVICES: Service[] = [
           fr: 'Corrections de structure, vitesse et balisage appliquées au site.',
           en: 'Structure, speed and markup fixes applied to the site.',
         },
+        duration: { fr: '1–2 semaines', en: '1–2 weeks' },
       },
       {
         title: { fr: 'Suivi mensuel', en: 'Monthly monitoring' },
@@ -542,6 +562,7 @@ export const SERVICES: Service[] = [
           fr: 'Reporting régulier des positions, du trafic et des prochaines actions.',
           en: 'Regular reporting on rankings, traffic and next actions.',
         },
+        duration: { fr: 'Mensuel', en: 'Monthly' },
       },
     ],
     relatedProjects: [PORTFOLIO_PROJECTS.bloomair, PORTFOLIO_PROJECTS.nexus],
@@ -619,6 +640,7 @@ export const SERVICES: Service[] = [
           fr: 'Définition des fonctionnalités clés, des plateformes cibles et du scope MVP.',
           en: 'Defining key features, target platforms and MVP scope.',
         },
+        duration: { fr: '2–3 jours', en: '2–3 days' },
       },
       {
         title: { fr: 'Design mobile', en: 'Mobile design' },
@@ -626,6 +648,7 @@ export const SERVICES: Service[] = [
           fr: 'Maquettes Figma adaptées aux standards iOS et Android.',
           en: 'Figma mockups tailored to iOS and Android standards.',
         },
+        duration: { fr: '1–2 semaines', en: '1–2 weeks' },
       },
       {
         title: { fr: 'Développement React Native', en: 'React Native development' },
@@ -633,6 +656,7 @@ export const SERVICES: Service[] = [
           fr: 'Construction de l’app avec tests réguliers sur appareils réels.',
           en: 'Building the app with regular testing on real devices.',
         },
+        duration: { fr: '3–5 semaines', en: '3–5 weeks' },
       },
       {
         title: { fr: 'Publication & suivi', en: 'Publishing & follow-up' },
@@ -640,6 +664,7 @@ export const SERVICES: Service[] = [
           fr: 'Soumission aux stores, suivi post-lancement et corrections.',
           en: 'Store submission, post-launch monitoring and fixes.',
         },
+        duration: { fr: '1 semaine', en: '1 week' },
       },
     ],
     relatedProjects: [PORTFOLIO_PROJECTS.nexus, PORTFOLIO_PROJECTS.bloomair],
@@ -717,6 +742,7 @@ export const SERVICES: Service[] = [
           fr: 'État des lieux du site, des dépendances et des points de vigilance.',
           en: 'Assessment of the site, its dependencies and points of attention.',
         },
+        duration: { fr: '2–3 jours', en: '2–3 days' },
       },
       {
         title: { fr: 'Mise en place du suivi', en: 'Monitoring setup' },
@@ -724,6 +750,7 @@ export const SERVICES: Service[] = [
           fr: 'Configuration de la surveillance, des sauvegardes et des outils de reporting.',
           en: 'Setting up monitoring, backups and reporting tools.',
         },
+        duration: { fr: '2–3 jours', en: '2–3 days' },
       },
       {
         title: { fr: 'Maintenance continue', en: 'Ongoing maintenance' },
@@ -731,6 +758,7 @@ export const SERVICES: Service[] = [
           fr: 'Mises à jour régulières, corrections et petites évolutions au fil du temps.',
           en: 'Regular updates, fixes and small improvements over time.',
         },
+        duration: { fr: 'En continu', en: 'Ongoing' },
       },
       {
         title: { fr: 'Reporting mensuel', en: 'Monthly reporting' },
@@ -738,6 +766,7 @@ export const SERVICES: Service[] = [
           fr: 'Bilan mensuel de l’état du site et des actions réalisées.',
           en: "Monthly summary of the site's status and completed actions.",
         },
+        duration: { fr: 'Mensuel', en: 'Monthly' },
       },
     ],
     relatedProjects: [PORTFOLIO_PROJECTS.topnos, PORTFOLIO_PROJECTS.aurora],

@@ -26,6 +26,7 @@ interface FeatureContent {
 interface ProcessStepContent {
   title: string;
   desc: string;
+  duration: string;
 }
 
 interface ServiceDetailSectionProps {
@@ -227,40 +228,113 @@ export function ServiceDetailSection({
       {/* Notre processus */}
       <section className="section" style={{ backgroundColor: '#f5f3ee' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <Badge>{t('process_badge')}</Badge>
-            <h2
-              className="font-heading font-extrabold text-3xl md:text-4xl leading-tight mt-4 mb-10"
-              style={{ color: '#000807' }}
-            >
-              {t('process_heading_start')}
-              <span className="bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent">
-                {t('process_heading_highlight')}
-              </span>
-            </h2>
-          </ScrollReveal>
-
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-4 gap-6"
+          <div
+            className="mx-auto"
+            style={{
+              background: 'linear-gradient(135deg, #3626A7 0%, #DF57BC 50%, #DE541E 100%)',
+              borderRadius: 28,
+              padding: '48px 40px',
+              maxWidth: 1100,
+              overflow: 'hidden',
+            }}
           >
-            {process.map((step, index) => (
-              <motion.div key={step.title} variants={fadeUp} className="flex flex-col gap-3">
-                <span className="font-heading font-extrabold text-sm" style={{ color: '#3626A7' }}>
-                  {t('step_label')} {String(index + 1).padStart(2, '0')}
+            <ScrollReveal>
+              <div className="text-center mb-10">
+                <span
+                  className="inline-block font-sans uppercase"
+                  style={{
+                    backgroundColor: 'rgba(255,255,255,0.15)',
+                    border: '1px solid rgba(255,255,255,0.3)',
+                    color: '#ffffff',
+                    borderRadius: 100,
+                    fontSize: 11,
+                    fontWeight: 700,
+                    letterSpacing: '0.1em',
+                    padding: '5px 14px',
+                  }}
+                >
+                  {t('process_badge')}
                 </span>
-                <h3 className="font-heading font-bold text-lg" style={{ color: '#000807' }}>
-                  {step.title}
-                </h3>
-                <p className="font-sans text-sm leading-relaxed" style={{ color: 'rgba(0,8,7,0.6)' }}>
-                  {step.desc}
+                <h2 className="font-heading font-extrabold text-4xl leading-tight mt-4" style={{ color: '#ffffff' }}>
+                  {t('process_heading_start')}
+                  <span style={{ color: '#ffffff' }}>{t('process_heading_highlight')}</span>
+                </h2>
+                <p className="font-sans mt-2" style={{ color: 'rgba(255,255,255,0.7)', fontSize: 14 }}>
+                  {t('process_subtitle')}
                 </p>
-              </motion.div>
-            ))}
-          </motion.div>
+              </div>
+            </ScrollReveal>
+
+            <motion.div
+              variants={stagger}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+            >
+              {process.map((step, index) => (
+                <motion.div
+                  key={step.title}
+                  variants={fadeUp}
+                  whileHover={{
+                    backgroundColor: 'rgba(255,255,255,0.2)',
+                    borderColor: 'rgba(255,255,255,0.4)',
+                    transition: { duration: 0.3, ease: 'easeOut' },
+                  }}
+                  className="relative flex flex-col justify-between backdrop-blur-[8px]"
+                  style={{
+                    backgroundColor: 'rgba(255,255,255,0.12)',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    borderRadius: 18,
+                    padding: 24,
+                    minHeight: 200,
+                    overflow: 'hidden',
+                  }}
+                >
+                  <div>
+                    <h3 className="font-heading font-bold" style={{ fontSize: 14, color: '#ffffff', marginBottom: 32 }}>
+                      {step.title}
+                    </h3>
+                    <p className="font-sans" style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6 }}>
+                      {step.desc}
+                    </p>
+                    <span
+                      className="font-sans font-bold inline-block"
+                      style={{
+                        fontSize: 11,
+                        color: '#ffffff',
+                        backgroundColor: 'rgba(255,255,255,0.15)',
+                        borderRadius: 100,
+                        padding: '3px 10px',
+                        marginTop: 12,
+                      }}
+                    >
+                      {step.duration}
+                    </span>
+                  </div>
+
+                  <span
+                    className="relative font-sans uppercase tracking-widest"
+                    style={{ fontSize: 10, color: 'rgba(255,255,255,0.5)' }}
+                  >
+                    {t('step_label')} {String(index + 1).padStart(2, '0')}
+                  </span>
+
+                  <span
+                    className="absolute font-heading font-black pointer-events-none select-none"
+                    style={{ bottom: -10, right: 16, fontSize: 80, lineHeight: 1, color: 'rgba(255,255,255,0.15)' }}
+                    aria-hidden="true"
+                  >
+                    {index + 1}
+                  </span>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <p className="text-center font-sans mt-8" style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12 }}>
+              {t('process_footer')}
+            </p>
+          </div>
         </div>
       </section>
 

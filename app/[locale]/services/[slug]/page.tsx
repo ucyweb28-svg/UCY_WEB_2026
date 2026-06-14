@@ -50,6 +50,7 @@ export default function ServiceDetailPage({
   const process = service.process.map((step) => ({
     title: step.title[locale],
     desc: step.desc[locale],
+    duration: step.duration[locale],
   }));
 
   return (
