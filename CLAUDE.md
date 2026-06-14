@@ -1,149 +1,151 @@
-# CLAUDE.md — UCY Studio
-> Fichier de contexte persistant pour Claude Code.
-> À placer à la racine du projet. Ne jamais supprimer.
+# UCY Studio — CLAUDE.md
+Last updated: June 2026
 
----
+## Project
+- Repo: github.com/ucyweb28-svg/UCY_WEB_2026
+- Live: ucyweb.fr / Staging: ucy-web-2026.vercel.app
+- Stack: Next.js 14 App Router · TypeScript strict · Tailwind CSS v4
+  · Framer Motion · next-intl (FR/EN) · Resend · Plausible
 
-## 🏢 Studio
+## Palette
+- Ink: #000807
+- Pink: #DF57BC
+- Purple: #3626A7
+- Orange: #DE541E
+- White: #FBF9FF
+- Gradient: linear-gradient(90deg, #DE541E, #DF57BC, #3626A7)
 
-| Champ | Valeur |
-|---|---|
-| Nom | UCY Studio |
-| Fondateur | Yonathan Chetrit |
-| Localisations | Jérusalem, Israël · Paris, France |
-| Positionnement | Studio de design & développement digital haut de gamme |
-| Services | Logo, branding, print, UI/UX, design systems, web design, développement web (code & no-code, WordPress & custom), stratégie digitale & réseaux sociaux |
+## Fonts
+- Headings: Syne 700-800
+- Body: DM Sans 400/500/600
 
----
+## Rules (never break these)
+- Never hardcode API keys
+- Always run tsc --noEmit before committing
+- Commits in English: feat/fix/chore: description
+- All backgrounds must use palette colors only
+- Never touch globals.css gradientShift keyframe
 
-## 🛠 Stack technique
+## Architecture
 
-```
-Framework     : Next.js 14 — App Router
-Language      : TypeScript (strict mode)
-Styling       : Tailwind CSS v4
-Animations    : Framer Motion
-Déploiement   : Vercel
-Emails        : Resend (via API Route Next.js)
-Analytics     : Plausible
-i18n          : Français (défaut) + Anglais
-Thème         : Light mode uniquement — pas de dark mode, pas de toggle
-```
+### App routes
+- `app/layout.tsx` — root layout
+- `app/[locale]/layout.tsx` — locale layout (fonts, Nav, Footer, AnnouncementBanner, i18n provider)
+- `app/[locale]/page.tsx` — homepage
+- `app/[locale]/contact/page.tsx` — contact page
+- `app/[locale]/pricing/page.tsx` — pricing page
+- `app/[locale]/devis/page.tsx` — quote request page (3-step form)
+- `app/[locale]/mentions-legales/page.tsx` — legal notice page
+- `app/[locale]/services/[slug]/page.tsx` — dynamic service detail page
+- `app/api/contact/route.ts` — Resend email API route
+- `middleware.ts` — next-intl locale middleware
+- `i18n/request.ts` — next-intl request config
 
----
+### components/layout
+- `Nav.tsx` — sticky nav, hide-on-scroll, mobile fullscreen menu
+- `Footer.tsx` — site footer
+- `AnnouncementBanner.tsx` — top announcement bar
 
-## 📁 Structure des fichiers
+### components/sections
+- `HeroSection.tsx` — homepage hero
+- `TrustStrip.tsx` — client logos marquee
+- `StatsBar.tsx` — key stats
+- `ServicesSection.tsx` — services grid (homepage)
+- `PortfolioSection.tsx` — case studies grid
+- `ProcessSection.tsx` — "Notre processus" (dark, Dribbble-style cards)
+- `TestimonialsSection.tsx` — testimonials
+- `AISection.tsx` — AI differentiator section (dark, atmospheric bg)
+- `PricingPreviewSection.tsx` — pricing teaser (homepage)
+- `PricingSection.tsx` — full pricing page section
+- `AboutSection.tsx` — about / team / manifesto
+- `FooterCTA.tsx` — shared bottom CTA with mini contact form (used on homepage + service pages)
+- `ContactSection.tsx` — contact page form/section
+- `DevisSection.tsx` — 3-step quote request form
+- `ServiceDetailSection.tsx` — full service detail page (hero, features, process, related projects)
 
-```
-/app
-  /[locale]         → routing i18n (fr / en)
-    /page.tsx       → landing page principale
-    /layout.tsx     → layout global
-  /api
-    /contact        → route Resend pour le formulaire
-/components
-  /sections         → un fichier par section de la landing (Hero, Services, Portfolio…)
-  /ui               → composants réutilisables (Button, Badge, Card…)
-  /layout           → Nav, Footer
-/lib
-  /i18n             → dictionnaires de traduction fr.json / en.json
-  /utils            → fonctions utilitaires
-/public
-  /images           → assets visuels optimisés
-  /fonts            → polices locales si applicable
-```
+### components/ui
+- `Logo.tsx` — animated SVG logo
+- `ArrowDiag.tsx` — diagonal arrow used site-wide
+- `Badge.tsx` — pill badge (light/dark variants)
+- `GlowButton.tsx` — primary CTA button (gradient/white/dark variants)
+- `GradientGlow.tsx` — decorative gradient glow blob
+- `ScrollReveal.tsx` — scroll-triggered reveal wrapper
+- `SimpleIcon.tsx` — lightweight inline icon component
+- `Button.tsx` — base shadcn/ui button (currently unused)
 
----
+### components (root)
+- `SEO.tsx` — metadata builder, Organization schema, locale types
 
-## 🌍 i18n — Règles de traduction
+### lib
+- `lib/utils.ts` — shadcn `cn()` helper (clsx + tailwind-merge)
+- `lib/utils/animations.ts` — Framer Motion variants (stagger, fadeUp…)
+- `lib/utils/formatWhatsAppLink.ts` — WhatsApp link builder
+- `lib/utils/gradientText.ts` — gradient text helper
+- `lib/utils/pricing.ts` — pricing data source of truth
+- `lib/utils/services.ts` — all 8 service pages data
+- `lib/i18n/fr.json` / `lib/i18n/en.json` — translation dictionaries
 
-- Toute chaîne de texte visible passe par les fichiers `/lib/i18n/fr.json` et `/lib/i18n/en.json`
-- **Jamais de texte hardcodé** dans les composants
-- Le français est la langue par défaut (`defaultLocale: 'fr'`)
-- Les clés de traduction suivent le format `section.element` — ex: `hero.headline`, `services.cta`
-- Ne jamais modifier le copy anglais sans modifier le copy français en même temps
+## Pages
+- / (homepage — 11 sections)
+- /contact
+- /pricing
+- /devis (3-step form)
+- /mentions-legales
+- /services/[slug] (8 services: web-design, ui-ux, branding,
+  strategie-digitale, seo, application-mobile, maintenance, e-commerce)
 
----
+## Key files
+- lib/utils/pricing.ts — pricing data source of truth
+- lib/utils/services.ts — all 8 service pages data
+- components/ui/Logo.tsx — animated SVG logo
+- components/ui/ArrowDiag.tsx — diagonal arrow used site-wide
+- components/layout/Nav.tsx — hide-on-scroll, mobile menu
+- app/api/contact/route.ts — Resend email API
 
-## 🎨 Design — Règles absolues
+## Environment variables
+- RESEND_API_KEY (in .env.local + Vercel)
 
-- **Light mode uniquement** — ne jamais ajouter de classes `dark:` Tailwind
-- Ne jamais modifier les design tokens (couleurs, typographie, espacements) sans instruction explicite de Yonathan
-- Ne jamais toucher aux `keyframes` ou configurations d'animation Framer Motion existantes
-- Chaque nouveau composant doit être **responsive mobile-first**
-- Résolutions à tester : 375px / 768px / 1280px / 1440px
-- Aucun composant ne doit provoquer de scroll horizontal
+## DO NOT TOUCH
+- globals.css gradientShift keyframe
+- public/logo.svg (source of truth for logo)
+- DNS records in Hostinger (DKIM, MX, SPF, DMARC)
+- Vercel Pro deployment config
 
----
+## Current state
 
-## 📐 Conventions de code
+Last 20 commits:
+- `6d0f105` feat: service pages use shared FooterCTA component
+- `831a840` fix: service process section dark mode aligned with homepage
+- `8f41ec7` fix: process cards number positioning + duration badge alignment
+- `f0e1380` fix: revert bg color to official #FBF9FF palette value
+- `6617265` fix: nav background aligned to #f5f3ee palette
+- `09e0f14` fix: process section title simplified + remove subtitle and footer line
+- `2dd336a` feat: AI section full redesign with atmospheric background
+- `28f60d9` fix: homepage process section wider container and cards
+- `8e1c334` fix: process card index numbers subtle crop effect all service pages
+- `52d35e9` fix: hero title overflow + feature card index number positioning
+- `0e20d18` fix: service process section contrast and readability
+- `11f5e2c` fix: e-commerce slug + hero sizing + mobile text overflow
+- `8cbf183` feat: service process section gradient wrapper Dribbble style
+- `f7e6a12` fix: service page subtitles single line across all 7 services
+- `6a06a34` fix: pricing middle card bg white with purple border
+- `8cd7804` feat: process section Dribbble-style card container redesign
+- `2b7e113` feat: service pages feature section editorial index cards
+- `63ae64a` feat: process section horizontal timeline with gradient line and styled arrows
+- `9ab0e20` feat: service pages hero full-bleed parallax background
+- `04a2da9` feat: 7 dedicated service pages with dynamic routing
 
-- **Composants** : PascalCase — `HeroSection.tsx`, `ServiceCard.tsx`
-- **Hooks custom** : camelCase préfixé `use` — `useScrollAnimation.ts`
-- **Utils** : camelCase — `formatWhatsAppLink.ts`
-- **Fichiers i18n** : snake_case pour les clés — `hero.main_headline`
-- Imports : absolute paths via `@/` (configuré dans `tsconfig.json`)
-- Pas de `any` TypeScript — typage strict obligatoire
-- Chaque composant de section reçoit ses textes via props typées, jamais hardcodés
+**Summary:** The 8 service detail pages were built out (dynamic routing, full-bleed
+parallax hero, editorial feature cards, gradient "process" wrapper). The process
+section went through several iterations on both the homepage and service pages
+(horizontal timeline → Dribbble-style cards → wider container → contrast fixes →
+simplified header → number/badge alignment), and was finally aligned to a shared
+dark-mode style matching the homepage's `ProcessSection`. The homepage `AISection`
+got a full visual redesign with an atmospheric background. Pricing's middle card
+and the nav background were corrected to match the official palette. Most recently,
+the service pages' dark "Prêt à démarrer votre projet ?" CTA was removed and
+replaced with the shared `FooterCTA` component (also used on the homepage).
 
----
-
-## 📱 Contact & liens
-
-```
-WhatsApp FR   : +33 6 56 68 46 40
-WhatsApp IL   : +972 58 746 7029
-Domaine       : ucyweb.fr
-Instagram     : https://www.instagram.com/ucy_studio/
-LinkedIn      : https://www.linkedin.com/company/115831904/
-Behance       : https://www.behance.net/yonathanchetrit3
-```
-
-> Les liens WhatsApp doivent utiliser le format :
-> `https://wa.me/[numéro_sans_espaces_ni_+]?text=[message_encodé]`
-> Ex FR : `https://wa.me/33656684640?text=Bonjour%20UCY%20Studio`
-> Ex IL : `https://wa.me/972587467029?text=Bonjour%20UCY%20Studio`
-
----
-
-## 🔒 Règles d'autonomie — IMPORTANT
-
-Claude Code doit **toujours** respecter ce protocole :
-
-1. **Avant toute modification** → décrire précisément ce qui va changer et attendre la validation de Yonathan
-2. **Une section à la fois** → ne jamais modifier plusieurs sections en une seule opération non validée
-3. **Jamais supprimer** un fichier, composant ou section existant sans confirmation explicite
-4. **Jamais remplacer** une animation ou un effet visuel existant sans confirmation explicite
-5. **Toujours proposer** le nouveau copy dans les deux langues (FR + EN) avant de l'intégrer
-6. En cas de doute sur l'intention → **demander, ne pas interpréter**
-
----
-
-## 🗂 Ordre des sections — Landing page
-
-```
-1.  Nav               → sticky, logo + ancres + CTA WhatsApp
-2.  Hero              → headline fort, sous-titre Jerusalem × Paris, 2 CTAs
-3.  Trust Strip       → logos clients en défilement
-4.  Stats Bar         → chiffres clés (projets, clients, satisfaction)
-5.  Services          → 4 cards (Web, UI/UX, Branding, Stratégie)
-6.  Tools             → outils utilisés (Figma, Adobe CC, Framer, WordPress…)
-7.  IA Section        → différenciateur IA dans la production
-8.  Portfolio         → 4 case studies (Maison Éclat, Daniella Studio, Nexus Capital, Aurora Media)
-9.  About + Team      → Yonathan + équipe, manifeste de marque
-10. Footer CTA        → "Démarrons quelque chose ensemble" + WhatsApp CTA
-11. Footer            → liens, adresses Jérusalem + Paris, réseaux sociaux
-```
-
----
-
-## ✅ Checklist avant chaque déploiement
-
-- [ ] `npm run build` passe sans erreur TypeScript
-- [ ] Toutes les chaînes traduites existent en FR et EN
-- [ ] Aucun lien WhatsApp avec numéro incorrect
-- [ ] Plausible script présent dans `layout.tsx`
-- [ ] Images optimisées via `next/image`
-- [ ] Métadonnées SEO renseignées (title, description, og:image) en FR et EN
-- [ ] Formulaire Resend testé en staging avant prod
-- [ ] Responsive validé sur 375px, 768px, 1280px
+## Next session priorities
+1. Full mobile review at 375px
+2. Update memory/notes after each major change
