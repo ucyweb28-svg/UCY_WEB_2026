@@ -1,9 +1,8 @@
 'use client';
 
-import { Fragment } from 'react';
-import type { ComponentType } from 'react';
+import type { ComponentType, CSSProperties } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion, type Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 
 interface IconProps {
@@ -56,8 +55,6 @@ interface ProcessStep {
   durationKey: string;
   Icon: ComponentType<IconProps>;
   iconColor: string;
-  iconBg: string;
-  iconBorderColor: string;
 }
 
 const STEPS: ProcessStep[] = [
@@ -68,8 +65,6 @@ const STEPS: ProcessStep[] = [
     durationKey: 'step1_duration',
     Icon: SearchIcon,
     iconColor: '#7F77DD',
-    iconBg: 'rgba(54,38,167,.15)',
-    iconBorderColor: 'rgba(54,38,167,.25)',
   },
   {
     labelKey: 'step2_label',
@@ -78,8 +73,6 @@ const STEPS: ProcessStep[] = [
     durationKey: 'step2_duration',
     Icon: PencilIcon,
     iconColor: '#DF57BC',
-    iconBg: 'rgba(223,87,188,.1)',
-    iconBorderColor: 'rgba(223,87,188,.2)',
   },
   {
     labelKey: 'step3_label',
@@ -88,8 +81,6 @@ const STEPS: ProcessStep[] = [
     durationKey: 'step3_duration',
     Icon: CodeIcon,
     iconColor: '#c070e0',
-    iconBg: 'rgba(140,60,190,.1)',
-    iconBorderColor: 'rgba(140,60,190,.2)',
   },
   {
     labelKey: 'step4_label',
@@ -98,34 +89,26 @@ const STEPS: ProcessStep[] = [
     durationKey: 'step4_duration',
     Icon: RocketIcon,
     iconColor: '#DE541E',
-    iconBg: 'rgba(222,84,30,.1)',
-    iconBorderColor: 'rgba(222,84,30,.2)',
   },
 ];
 
-const arrowLineVariants: Variants = {
-  hidden: { width: 0 },
-  visible: { width: 20, transition: { duration: 0.4, ease: 'easeOut' } },
-};
+const TIMELINE_GRADIENT = 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7)';
+const TIMELINE_GRADIENT_VERTICAL = 'linear-gradient(180deg, #DE541E, #DF57BC, #3626A7)';
+const DOT_GRADIENT = 'linear-gradient(135deg, #3626A7, #DF57BC)';
 
-function ArrowConnector() {
+function ChevronConnector({ index, className, style }: { index: number; className?: string; style?: CSSProperties }) {
+  const gradientId = `process-chevron-${index}`;
+
   return (
-    <div className="hidden lg:flex items-center justify-center" style={{ width: 40, flexShrink: 0 }}>
-      <motion.div
-        variants={arrowLineVariants}
-        style={{ height: 1, background: 'linear-gradient(90deg, #3626A7, #DF57BC)' }}
-      />
-      <div
-        style={{
-          width: 0,
-          height: 0,
-          borderTop: '4px solid transparent',
-          borderBottom: '4px solid transparent',
-          borderLeft: '5px solid #DF57BC',
-          marginLeft: -1,
-        }}
-      />
-    </div>
+    <svg width="20" height="12" viewBox="0 0 20 12" className={className} style={style} aria-hidden="true">
+      <defs>
+        <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#DF57BC" />
+          <stop offset="100%" stopColor="#3626A7" />
+        </linearGradient>
+      </defs>
+      <path d="M0 6 L16 6 M11 1 L16 6 L11 11" stroke={`url(#${gradientId})`} strokeWidth="1.5" strokeLinecap="round" fill="none" />
+    </svg>
   );
 }
 
@@ -177,61 +160,97 @@ export function ProcessSection() {
           </p>
         </motion.div>
 
-        {/* Cards row */}
+        {/* Timeline */}
         <motion.div
           variants={stagger}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-stretch gap-4"
+          className="relative grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-0"
         >
-          {STEPS.map((step, index) => (
-            <Fragment key={step.titleKey}>
+          {/* Horizontal line (desktop) */}
+          <div
+            className="hidden md:block absolute pointer-events-none"
+            style={{ top: 7, left: '12.5%', right: '12.5%', height: 2, background: TIMELINE_GRADIENT }}
+          />
+
+          {/* Vertical line (mobile) */}
+          <div
+            className="md:hidden absolute pointer-events-none"
+            style={{ top: 7, bottom: 7, left: 7, width: 2, background: TIMELINE_GRADIENT_VERTICAL }}
+          />
+
+          {STEPS.map((step, index) => {
+            const accent = step.iconColor;
+
+            return (
               <motion.div
+                key={step.titleKey}
                 variants={fadeUp}
-                className="w-full lg:flex-1 lg:min-w-0 rounded-[14px] border border-[#1e1e2a] hover:border-[#3626A7] transition-colors duration-200"
-                style={{ backgroundColor: '#0d0d14', padding: '28px 24px', minHeight: 220 }}
+                className="relative flex flex-row md:flex-col items-start md:items-center text-left md:text-center gap-4 md:gap-0"
               >
-                <p
-                  className="font-sans uppercase font-bold"
-                  style={{ fontSize: 10, color: 'rgba(255,255,255,.45)', marginBottom: 12 }}
-                >
-                  {t(step.labelKey)}
-                </p>
-
+                {/* Dot */}
                 <div
-                  className="flex items-center justify-center rounded-[8px] border"
-                  style={{ width: 44, height: 44, backgroundColor: step.iconBg, borderColor: step.iconBorderColor }}
-                >
-                  <step.Icon size={20} color={step.iconColor} />
-                </div>
+                  className="relative z-10 shrink-0 w-[14px] h-[14px] rounded-full border-2 border-white mt-[1px] md:mt-0"
+                  style={{ background: DOT_GRADIENT }}
+                />
 
-                <h3
-                  className="font-heading font-bold"
-                  style={{ fontSize: 16, color: 'white', marginTop: 12, marginBottom: 6 }}
-                >
-                  {t(step.titleKey)}
-                </h3>
+                {/* Chevron to next step (desktop) */}
+                {index < STEPS.length - 1 && (
+                  <ChevronConnector
+                    index={index}
+                    className="hidden md:block absolute z-10"
+                    style={{ top: 1, right: 0, transform: 'translateX(50%)' }}
+                  />
+                )}
 
-                <p
-                  className="font-sans"
-                  style={{ fontSize: 13, color: 'rgba(255,255,255,.65)', lineHeight: 1.55, marginBottom: 12 }}
-                >
-                  {t(step.descKey)}
-                </p>
+                {/* Content */}
+                <div className="flex flex-col items-start md:items-center md:mt-6">
+                  <p
+                    className="font-sans uppercase tracking-widest"
+                    style={{ fontSize: 10, color: '#aaa', marginBottom: 8 }}
+                  >
+                    {t(step.labelKey)}
+                  </p>
 
-                <div
-                  className="font-sans"
-                  style={{ borderTop: '1px solid rgba(255,255,255,.06)', paddingTop: 8, fontSize: 10, color: 'rgba(255,255,255,.4)' }}
-                >
-                  {t('duration_label')}{' · '}
-                  <span style={{ color: '#DF57BC', fontWeight: 600 }}>{t(step.durationKey)}</span>
+                  <div
+                    className="flex items-center justify-center rounded-full"
+                    style={{ width: 40, height: 40, backgroundColor: `${accent}1A` }}
+                  >
+                    <step.Icon size={20} color={accent} />
+                  </div>
+
+                  <h3
+                    className="font-heading font-bold"
+                    style={{ fontSize: 15, color: '#ffffff', marginTop: 12 }}
+                  >
+                    {t(step.titleKey)}
+                  </h3>
+
+                  <p
+                    className="font-sans"
+                    style={{ fontSize: 13, color: '#aaa', marginTop: 8, maxWidth: 200 }}
+                  >
+                    {t(step.descKey)}
+                  </p>
+
+                  <span
+                    className="font-sans font-bold inline-block"
+                    style={{
+                      fontSize: 10,
+                      color: accent,
+                      backgroundColor: `${accent}20`,
+                      borderRadius: 100,
+                      padding: '3px 10px',
+                      marginTop: 12,
+                    }}
+                  >
+                    {t(step.durationKey)}
+                  </span>
                 </div>
               </motion.div>
-
-              {index < STEPS.length - 1 && <ArrowConnector />}
-            </Fragment>
-          ))}
+            );
+          })}
         </motion.div>
 
         {/* Bottom */}
