@@ -9,7 +9,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, X } from '@phosphor-icons/react';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { Logo } from '@/components/ui/Logo';
-import { stagger, fadeUp } from '@/lib/utils/animations';
+import { staggerNav, EASE_REVEAL } from '@/lib/utils/animations';
+import type { Variants } from 'framer-motion';
+
+const menuLinkVariant: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: EASE_REVEAL } },
+};
 
 const NAV_LINKS = [
   { key: 'services' as const, href: '/#services' },
@@ -270,7 +276,7 @@ export function Nav() {
               initial={{ y: '-100%' }}
               animate={{ y: 0 }}
               exit={{ y: '-100%' }}
-              transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{ duration: 0.38, ease: EASE_REVEAL }}
               className="lg:hidden fixed inset-0 z-[100] flex flex-col overflow-y-auto"
               style={{ backgroundColor: '#FBF9FF' }}
             >
@@ -297,7 +303,7 @@ export function Nav() {
 
               {/* Nav links */}
               <motion.nav
-                variants={stagger}
+                variants={staggerNav}
                 initial="hidden"
                 animate="visible"
                 className="flex-1 flex flex-col justify-center px-6 md:px-8"
@@ -306,7 +312,7 @@ export function Nav() {
                 {NAV_LINKS.map(({ key, href }) => (
                   <motion.a
                     key={key}
-                    variants={fadeUp}
+                    variants={menuLinkVariant}
                     href={href}
                     onClick={(e) => {
                       handleAnchorClick(e, href);
