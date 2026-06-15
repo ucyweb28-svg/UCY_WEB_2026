@@ -181,7 +181,7 @@ export function ServiceDetailSection({
               >
                 <span
                   className="absolute font-heading pointer-events-none select-none"
-                  style={{ top: 16, right: 16, fontSize: 72, fontWeight: 900, lineHeight: 1, color: 'rgba(10, 10, 15, 0.07)', zIndex: 0 }}
+                  style={{ top: 12, right: 16, fontSize: 32, fontWeight: 900, lineHeight: 1, color: 'rgba(10, 10, 15, 0.08)', zIndex: 0 }}
                   aria-hidden="true"
                 >
                   {String(index + 1).padStart(2, '0')}
