@@ -53,6 +53,10 @@ body {
   100% { background-position: 0% 50% }
 }
 
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 .gradient-text {
   background: linear-gradient(135deg, #3626A7, #DF57BC, #DE541E, #3626A7);
   background-size: 300% 300%;
