@@ -6,6 +6,7 @@ Last updated: June 2026
 - Live: ucyweb.fr / Staging: ucy-web-2026.vercel.app
 - Stack: Next.js 14 App Router · TypeScript strict · Tailwind CSS v4
   · Framer Motion · next-intl (FR/EN) · Resend · Plausible
+  · @phosphor-icons/react
 
 ## Palette
 - Ink: #000807
@@ -101,6 +102,11 @@ Last updated: June 2026
 - components/ui/ArrowDiag.tsx — diagonal arrow used site-wide
 - components/layout/Nav.tsx — hide-on-scroll, mobile menu
 - app/api/contact/route.ts — Resend email API
+- public/images/ai-bg.jpg — AISection atmospheric background
+- public/images/process-bg.jpg — homepage ProcessSection background
+- public/images/process-bg2.jpg — service detail process section background
+- public/favicon.svg — gradient UCY favicon (source for generated PNGs)
+- public/favicon-32x32.png — generated favicon PNG
 
 ## Environment variables
 - RESEND_API_KEY (in .env.local + Vercel)
@@ -108,44 +114,61 @@ Last updated: June 2026
 ## DO NOT TOUCH
 - globals.css gradientShift keyframe
 - public/logo.svg (source of truth for logo)
+- public/images/ai-bg.jpg
+- public/images/process-bg.jpg
+- public/images/process-bg2.jpg
 - DNS records in Hostinger (DKIM, MX, SPF, DMARC)
 - Vercel Pro deployment config
 
 ## Current state
 
 Last 20 commits:
-- `6d0f105` feat: service pages use shared FooterCTA component
-- `831a840` fix: service process section dark mode aligned with homepage
-- `8f41ec7` fix: process cards number positioning + duration badge alignment
-- `f0e1380` fix: revert bg color to official #FBF9FF palette value
-- `6617265` fix: nav background aligned to #f5f3ee palette
-- `09e0f14` fix: process section title simplified + remove subtitle and footer line
-- `2dd336a` feat: AI section full redesign with atmospheric background
-- `28f60d9` fix: homepage process section wider container and cards
-- `8e1c334` fix: process card index numbers subtle crop effect all service pages
-- `52d35e9` fix: hero title overflow + feature card index number positioning
-- `0e20d18` fix: service process section contrast and readability
-- `11f5e2c` fix: e-commerce slug + hero sizing + mobile text overflow
-- `8cbf183` feat: service process section gradient wrapper Dribbble style
-- `f7e6a12` fix: service page subtitles single line across all 7 services
-- `6a06a34` fix: pricing middle card bg white with purple border
-- `8cd7804` feat: process section Dribbble-style card container redesign
-- `2b7e113` feat: service pages feature section editorial index cards
-- `63ae64a` feat: process section horizontal timeline with gradient line and styled arrows
-- `9ab0e20` feat: service pages hero full-bleed parallax background
-- `04a2da9` feat: 7 dedicated service pages with dynamic routing
+- `3bcdf6f` revert: AboutSection fully restored to original pre-photo-changes
+- `fa48c8e` fix: remove page transition flash on navigation
+- `5d8682b` revert: AboutSection restored to original state before photo changes
+- `4764193` fix: team photos height reduced to 420px
+- `d4cee14` fix: devis page loading state prevents footer flash on navigation
+- `9097897` feat: service process section bg image process-bg2 + remove pack timing line
+- `9d4b22b` fix: feature card index numbers smaller top-right watermark
+- `05c6af6` fix: use Next.js Link scroll=true for pricing→devis navigation
+- `c4112b2` revert: Yonathan photo crop back to object-center
+- `f15490b` fix: Yonathan photo crop centered on face
+- `e8349cd` feat: UCY gradient favicon + updated email logo
+- `7de5f3f` feat: Phosphor icons, testimonial quote mark, process card layout, AI title clamp
+- `77bf5f8` fix: add missing onClick prop to GlowButton
+- `a295183` fix: resolve scrollToTop import error - inline instead
+- `b47a3e4` fix: AI section title 2 lines max correct font size
+- `fc77754` fix: remove redundant ÉTAPE labels from process cards
+- `44307ad` fix: shooting photo dagger symbol replaced with asterisk
+- `5c24038` fix: AI section layout 55/45 columns + card pushed right
+- `8715494` fix: testimonial quote mark spacing from body text
+- `3a6a1d2` feat: process section grain texture background image
 
-**Summary:** The 8 service detail pages were built out (dynamic routing, full-bleed
-parallax hero, editorial feature cards, gradient "process" wrapper). The process
-section went through several iterations on both the homepage and service pages
-(horizontal timeline → Dribbble-style cards → wider container → contrast fixes →
-simplified header → number/badge alignment), and was finally aligned to a shared
-dark-mode style matching the homepage's `ProcessSection`. The homepage `AISection`
-got a full visual redesign with an atmospheric background. Pricing's middle card
-and the nav background were corrected to match the official palette. Most recently,
-the service pages' dark "Prêt à démarrer votre projet ?" CTA was removed and
-replaced with the shared `FooterCTA` component (also used on the homepage).
+**Summary:** A failed Vercel build (missing `scrollToTop` util, then a missing
+`onClick` prop on `GlowButton`) was fixed by inlining `window.scrollTo` calls and
+extending `GlowButtonProps`. `@phosphor-icons/react` was installed and inline
+glyphs (sparkle, checkmarks, arrows, hamburger/close) were replaced with Phosphor
+icons across `AnnouncementBanner`, `Nav`, `AISection`, and `ContactSection`. The
+homepage `TestimonialsSection` gained a large decorative gradient quote-mark
+watermark; the homepage `ProcessSection` cards now align their icon and step
+number in the same row; the `AISection` title is clamped to
+`clamp(24px, 2.8vw, 40px)` for a 2–3 line max. A new gradient UCY favicon/app
+icons and an updated email logo were added (matching logo-mark redesign). On
+service detail pages, the feature-card index numbers were reduced to a subtle
+32px top-right watermark, the "Notre processus" section gained a
+`process-bg2.jpg` background with gradient overlay, and the pack-timing footer
+line was removed. The pricing→devis CTA now uses `<Link scroll={true}>` instead
+of manual `window.scrollTo` + `router.push`, and `/devis` is `force-dynamic`
+with a proper spinner `Suspense` fallback (`@keyframes spin` added to
+`globals.css`). A page-transition opacity fade + `::view-transition-*(root)`
+reset were added to `app/[locale]/layout.tsx` / `globals.css` to address a
+client-side navigation flash. Yonathan's team photo crop and the team photo
+card height were each tried, then fully reverted back to their original values
+(`objectPosition: 'center 20%'`, `height: 380`).
 
 ## Next session priorities
 1. Full mobile review at 375px
-2. Update memory/notes after each major change
+2. Investigate whether the pricing→devis navigation flash is fully resolved
+   (Suspense fallback was confirmed to never visibly render — root cause may
+   be elsewhere)
+3. Update memory/notes after each major change
