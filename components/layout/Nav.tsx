@@ -199,10 +199,13 @@ export function Nav() {
 
   return (
     <header
-      className="bg-[#FBF9FF]/95 backdrop-blur-md border-b border-[rgba(10,10,15,0.06)]"
+      className={[
+        isHomePage && scrolled ? 'bg-[#FBF9FF]/95 backdrop-blur-md' : 'bg-[#FBF9FF]',
+        scrolled ? 'shadow-[0_2px_24px_rgba(0,0,0,0.07)]' : 'shadow-none',
+      ].join(' ')}
       style={{
         transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
-        transition: 'transform 300ms ease, background-color 300ms ease, border-color 300ms ease, backdrop-filter 300ms ease',
+        transition: 'transform 300ms ease, box-shadow 0.3s ease, background-color 0.3s ease',
       }}
     >
       {/* Main bar */}
