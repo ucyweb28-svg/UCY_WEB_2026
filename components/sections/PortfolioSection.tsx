@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { ArrowDiag } from '@/components/ui/ArrowDiag';
 import { Badge } from '@/components/ui/Badge';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { stagger, fadeUp } from '@/lib/utils/animations';
+import { stagger, fadeUp, EASE_REVEAL } from '@/lib/utils/animations';
 
 const PROJECTS = [
   { image: '/images/project-bloomair.png', titleKey: 'project1_title', catKey: 'project1_cat' },
@@ -31,7 +31,7 @@ export function PortfolioSection() {
           variants={stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-80px' }}
           className="flex flex-col items-start gap-4 mb-16"
         >
           <motion.div variants={fadeUp}>
@@ -61,13 +61,14 @@ export function PortfolioSection() {
           variants={stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-80px' }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {PROJECTS.map(({ image, titleKey, catKey }, index) => (
             <ScrollReveal key={titleKey} delay={index * 0.1}>
               <motion.div
                 variants={fadeUp}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
                 className="group rounded-2xl overflow-hidden"
                 style={{ backgroundColor: 'white', border: '1px solid rgba(0,8,7,0.08)' }}
               >
@@ -112,8 +113,8 @@ export function PortfolioSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6, ease: EASE_REVEAL }}
           className="flex justify-center md:justify-start"
           style={{ marginTop: 32 }}
         >

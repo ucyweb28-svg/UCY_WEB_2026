@@ -80,7 +80,7 @@ export function ServicesSection() {
           variants={stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-80px' }}
           className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10"
         >
           <motion.div variants={fadeUp} className="flex flex-col items-start gap-4">
