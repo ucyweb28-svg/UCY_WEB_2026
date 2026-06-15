@@ -25,15 +25,16 @@ const TESTIMONIAL_IMAGES = [
 
 const AUTO_ADVANCE_MS = 6000;
 
-const slideVariants: Variants = {
-  initial: { clipPath: 'inset(0 0 0 100%)' },
+const cardVariants: Variants = {
+  initial: { opacity: 0, y: 10 },
   animate: {
-    clipPath: 'inset(0 0 0 0%)',
-    transition: { duration: 0.55, ease: [0.76, 0, 0.24, 1] },
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.25, 0.1, 0.0, 1] },
   },
   exit: {
-    clipPath: 'inset(0 100% 0 0)',
-    transition: { duration: 0.55, ease: [0.76, 0, 0.24, 1] },
+    opacity: 0,
+    transition: { duration: 0.25 },
   },
 };
 
@@ -129,145 +130,134 @@ export function TestimonialsSection() {
           className="flex flex-col md:flex-row rounded-[20px] overflow-hidden"
           style={{ border: '1px solid #e8e8e4', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}
         >
-          {/* Left column */}
-          <div className="relative w-full md:w-[55%] p-6 md:p-12 overflow-hidden" style={{ backgroundColor: '#ffffff' }}>
-            {/* Decorative gradient quote mark */}
-            <span
-              aria-hidden="true"
-              className="absolute font-heading pointer-events-none select-none"
-              style={{
-                top: -28,
-                left: 12,
-                fontSize: 'clamp(140px, 16vw, 220px)',
-                lineHeight: 1,
-                fontWeight: 800,
-                background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                opacity: 0.08,
-                zIndex: 0,
-              }}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              variants={cardVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="flex flex-col md:flex-row w-full"
             >
-              "
-            </span>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeIndex}
-                variants={slideVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                className="relative"
-                style={{ zIndex: 1 }}
-              >
-                <div
-                  className="font-heading"
-                  style={{ fontSize: 28, fontWeight: 800, color: '#0a0a0a', marginBottom: 32 }}
-                >
-                  {active.logo}
-                </div>
-
-                <div className="flex flex-wrap" style={{ gap: 8 }}>
-                  {active.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="font-sans"
-                      style={{
-                        backgroundColor: 'rgba(223,87,188,0.1)',
-                        color: '#DF57BC',
-                        border: '1px solid rgba(223,87,188,0.2)',
-                        fontSize: 11,
-                        padding: '3px 10px',
-                        borderRadius: 20,
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <p
-                  className="font-sans"
+              {/* Left column */}
+              <div className="relative w-full md:w-[55%] p-6 md:p-12 overflow-hidden" style={{ backgroundColor: '#ffffff' }}>
+                {/* Decorative gradient quote mark */}
+                <span
+                  aria-hidden="true"
+                  className="absolute font-heading pointer-events-none select-none"
                   style={{
-                    fontSize: 20,
-                    lineHeight: 1.6,
-                    color: 'rgba(0,0,0,0.72)',
-                    fontStyle: 'italic',
-                    fontWeight: 300,
-                    margin: '20px 0 32px',
+                    top: -28,
+                    left: 12,
+                    fontSize: 'clamp(140px, 16vw, 220px)',
+                    lineHeight: 1,
+                    fontWeight: 800,
+                    background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    opacity: 0.08,
+                    zIndex: 0,
                   }}
                 >
-                  {active.quote}
-                </p>
+                  "
+                </span>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div className="relative" style={{ zIndex: 1 }}>
                   <div
+                    className="font-heading"
+                    style={{ fontSize: 28, fontWeight: 800, color: '#0a0a0a', marginBottom: 32 }}
+                  >
+                    {active.logo}
+                  </div>
+
+                  <div className="flex flex-wrap" style={{ gap: 8 }}>
+                    {active.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="font-sans"
+                        style={{
+                          backgroundColor: 'rgba(223,87,188,0.1)',
+                          color: '#DF57BC',
+                          border: '1px solid rgba(223,87,188,0.2)',
+                          fontSize: 11,
+                          padding: '3px 10px',
+                          borderRadius: 20,
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <p
+                    className="font-sans"
                     style={{
-                      width: 38,
-                      height: 38,
-                      borderRadius: '50%',
-                      overflow: 'hidden',
-                      flexShrink: 0,
-                      border: '2px solid rgba(223,87,188,0.3)',
-                      position: 'relative',
+                      fontSize: 20,
+                      lineHeight: 1.6,
+                      color: 'rgba(0,0,0,0.72)',
+                      fontStyle: 'italic',
+                      fontWeight: 300,
+                      margin: '20px 0 32px',
                     }}
                   >
-                    <Image
-                      src={active.avatar}
-                      alt={active.author}
-                      fill
-                      quality={85}
-                      style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                    />
-                  </div>
+                    {active.quote}
+                  </p>
 
-                  <div>
-                    <p className="font-sans" style={{ fontSize: 15, fontWeight: 600, color: '#0a0a0a' }}>
-                      {active.author}
-                    </p>
-                    <p className="font-sans" style={{ fontSize: 13, color: 'rgba(0,0,0,0.4)' }}>
-                      {active.role}
-                    </p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div
+                      style={{
+                        width: 38,
+                        height: 38,
+                        borderRadius: '50%',
+                        overflow: 'hidden',
+                        flexShrink: 0,
+                        border: '2px solid rgba(223,87,188,0.3)',
+                        position: 'relative',
+                      }}
+                    >
+                      <Image
+                        src={active.avatar}
+                        alt={active.author}
+                        fill
+                        quality={85}
+                        style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                      />
+                    </div>
+
+                    <div>
+                      <p className="font-sans" style={{ fontSize: 15, fontWeight: 600, color: '#0a0a0a' }}>
+                        {active.author}
+                      </p>
+                      <p className="font-sans" style={{ fontSize: 13, color: 'rgba(0,0,0,0.4)' }}>
+                        {active.role}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+              </div>
 
-          {/* Right column */}
-          <div className="relative w-full md:w-[45%] min-h-[280px] md:min-h-[400px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeIndex}
-                variants={slideVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                className="absolute inset-0"
-              >
+              {/* Right column */}
+              <div className="relative w-full md:w-[45%] min-h-[280px] md:min-h-[400px]">
                 <Image
                   src={activeImage}
                   alt={active.client}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   quality={85}
-                  priority={activeIndex === 0}
-                  loading={activeIndex === 0 ? undefined : 'lazy'}
+                  priority
                   className="object-cover"
                 />
-              </motion.div>
-            </AnimatePresence>
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{ background: 'linear-gradient(to right, #ffffff 0%, transparent 30%)' }}
-            />
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{ background: 'linear-gradient(to top, #ffffff 0%, transparent 40%)' }}
-            />
-          </div>
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{ background: 'linear-gradient(to right, #ffffff 0%, transparent 30%)' }}
+                />
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{ background: 'linear-gradient(to top, #ffffff 0%, transparent 40%)' }}
+                />
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Dot indicators */}
