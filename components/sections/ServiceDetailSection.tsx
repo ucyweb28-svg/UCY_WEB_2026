@@ -236,8 +236,22 @@ export function ServiceDetailSection({
       </section>
 
       {/* Notre processus */}
-      <section className="section" style={{ backgroundColor: '#0a0a0f' }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="section" style={{ position: 'relative', overflow: 'hidden', backgroundColor: '#0a0a0f' }}>
+        {/* Background image layer */}
+        <div className="absolute inset-0" style={{ zIndex: 0 }}>
+          <Image src="/images/process-bg2.jpg" fill className="object-cover object-center" alt="" />
+        </div>
+
+        {/* Overlay layer */}
+        <div
+          className="absolute inset-0"
+          style={{
+            zIndex: 1,
+            background: 'linear-gradient(135deg, rgba(10,10,15,0.92) 0%, rgba(10,10,15,0.80) 50%, rgba(54,38,167,0.20) 100%)',
+          }}
+        />
+
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8" style={{ zIndex: 2 }}>
           <div
             className="mx-auto"
             style={{
@@ -333,10 +347,6 @@ export function ServiceDetailSection({
                 </motion.div>
               ))}
             </motion.div>
-
-            <p className="text-center font-sans mt-8" style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12 }}>
-              {t('process_footer')}
-            </p>
           </div>
         </div>
       </section>
