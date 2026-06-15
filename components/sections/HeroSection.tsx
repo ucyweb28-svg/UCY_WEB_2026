@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
+import { EASE_REVEAL } from '@/lib/utils/animations';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -81,9 +82,9 @@ export function HeroSection() {
 
         {/* ── Centered headline + subtitle + CTAs ── */}
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.6, ease: EASE_REVEAL }}
           className="flex flex-col items-center text-center gap-6 md:gap-8 max-w-4xl mx-auto"
         >
           <h1
@@ -169,9 +170,9 @@ export function HeroSection() {
 
         {/* ── Two-column scroll-hook containers ── */}
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          transition={{ duration: 0.65, ease: EASE_REVEAL, delay: 0.12 }}
           className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 mt-6 pt-6 md:pt-8"
         >
           <div className="relative w-full h-[240px] sm:h-[320px] md:h-[400px] lg:h-[520px] rounded-3xl overflow-hidden lg:col-span-7">
