@@ -156,7 +156,7 @@ export function DevisSection() {
           variants={stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-80px' }}
           className="flex flex-col items-center text-center"
           style={{ marginBottom: 32 }}
         >
