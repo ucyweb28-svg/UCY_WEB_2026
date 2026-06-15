@@ -66,10 +66,10 @@ export function AISection() {
 
         {/* Left: text */}
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
+          initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.0, 1] }}
           className="relative flex flex-col items-start"
         >
           <img src="/logo.svg" alt="UCY Studio" width={80} className="mb-12 brightness-0 invert opacity-80" />
@@ -121,10 +121,10 @@ export function AISection() {
 
         {/* Right: product UI mockup */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
+          initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6, delay: 0.25, ease: [0.25, 0.1, 0.0, 1] }}
           className="hidden md:flex relative items-center justify-center"
           style={{ marginLeft: 'auto', marginRight: -40 }}
         >
