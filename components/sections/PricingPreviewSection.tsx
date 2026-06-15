@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import { ArrowDiag } from '@/components/ui/ArrowDiag';
 import { Badge } from '@/components/ui/Badge';
 import { GlowButton } from '@/components/ui/GlowButton';
-import { stagger, fadeUp } from '@/lib/utils/animations';
+import { stagger, fadeUp, EASE_REVEAL } from '@/lib/utils/animations';
 
 type Currency = 'ILS' | 'EUR';
 
@@ -103,7 +103,7 @@ export function PricingPreviewSection() {
           variants={stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-80px' }}
           className="flex flex-col items-center text-center"
           style={{ marginBottom: 48 }}
         >
@@ -160,7 +160,7 @@ export function PricingPreviewSection() {
           variants={stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-80px' }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           {CARDS.map((card) => {
@@ -252,8 +252,8 @@ export function PricingPreviewSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6, ease: EASE_REVEAL }}
           className="text-center"
           style={{ marginTop: 40 }}
         >

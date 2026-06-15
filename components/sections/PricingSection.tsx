@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowDiag } from '@/components/ui/ArrowDiag';
 import { Badge } from '@/components/ui/Badge';
-import { stagger, fadeUp } from '@/lib/utils/animations';
+import { stagger, fadeUp, EASE_REVEAL } from '@/lib/utils/animations';
 import {
   PRICING_PACKS,
   PRICING_OPTIONS,
@@ -64,8 +64,8 @@ export function PricingSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6, ease: EASE_REVEAL }}
           className="flex flex-col items-center text-center"
           style={{ marginBottom: 40 }}
         >
@@ -122,7 +122,7 @@ export function PricingSection() {
           variants={stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-80px' }}
           className="grid grid-cols-1 md:grid-cols-3 gap-4"
         >
           {PRICING_PACKS.map((pack) => {
@@ -132,7 +132,7 @@ export function PricingSection() {
               <motion.div
                 key={pack.id}
                 variants={fadeUp}
-                whileHover={{ scale: 1.01 }}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
                 onClick={() => setSelectedPack(pack.id)}
                 className="relative rounded-2xl cursor-pointer flex flex-col bg-white"
                 style={{

@@ -5,6 +5,7 @@ import type { ChangeEvent } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { EASE_REVEAL } from '@/lib/utils/animations';
 import { ArrowDiag } from '@/components/ui/ArrowDiag';
 
 export function FooterCTA() {
@@ -54,10 +55,10 @@ export function FooterCTA() {
   return (
     <section id="contact" className="section" style={{ backgroundColor: '#FBF9FF' }}>
       <motion.div
-        initial={{ opacity: 0, scale: 0.98 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.6, ease: EASE_REVEAL }}
         className="relative flex items-stretch overflow-hidden mx-4 md:mx-8 lg:mx-12"
         style={{
           borderRadius: 28,
@@ -89,8 +90,8 @@ export function FooterCTA() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6, delay: 0.1, ease: EASE_REVEAL }}
             className="flex-1 min-w-0 w-full md:w-auto"
             style={{ maxWidth: '100%', overflow: 'hidden', paddingRight: 16 }}
           >
@@ -129,8 +130,8 @@ export function FooterCTA() {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6, delay: 0.2, ease: EASE_REVEAL }}
             className="flex flex-col w-full md:w-[380px] flex-shrink-0"
             style={{ gap: 10 }}
           >
