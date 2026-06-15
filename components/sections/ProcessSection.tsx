@@ -4,7 +4,7 @@ import type { ComponentType, CSSProperties } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { stagger, fadeUp } from '@/lib/utils/animations';
+import { stagger, fadeUp, EASE_REVEAL } from '@/lib/utils/animations';
 
 interface IconProps {
   size?: number;
@@ -145,8 +145,8 @@ export function ProcessSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6, ease: EASE_REVEAL }}
             className="flex flex-col items-center text-center mb-10"
           >
             <div
@@ -182,7 +182,7 @@ export function ProcessSection() {
             variants={stagger}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"
           >
             {STEPS.map((step, index) => (
@@ -190,9 +190,10 @@ export function ProcessSection() {
                 key={step.titleKey}
                 variants={fadeUp}
                 whileHover={{
+                  y: -4,
                   borderColor: 'rgba(223,87,188,0.3)',
                   backgroundColor: 'rgba(255,255,255,0.05)',
-                  transition: { duration: 0.3, ease: 'easeOut' },
+                  transition: { duration: 0.2 },
                 }}
                 className="relative flex flex-col justify-between"
                 style={{

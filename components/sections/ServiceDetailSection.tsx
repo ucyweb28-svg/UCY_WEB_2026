@@ -8,7 +8,7 @@ import { ArrowDiag } from '@/components/ui/ArrowDiag';
 import { Badge } from '@/components/ui/Badge';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { stagger, fadeUp } from '@/lib/utils/animations';
+import { staggerHero, stagger, fadeUp } from '@/lib/utils/animations';
 import { formatWhatsAppLink } from '@/lib/utils/formatWhatsAppLink';
 import type { RelatedProjectRef } from '@/lib/utils/services';
 
@@ -99,7 +99,7 @@ export function ServiceDetailSection({
         </div>
 
         <motion.div
-          variants={stagger}
+          variants={staggerHero}
           initial="hidden"
           animate="visible"
           className="relative z-10 max-w-3xl mx-auto text-center px-4 md:px-8 pt-20 md:pt-28 flex flex-col items-center"
@@ -168,14 +168,14 @@ export function ServiceDetailSection({
             variants={stagger}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
                 variants={fadeUp}
-                whileHover={{ borderColor: color, transition: { duration: 0.3, ease: 'easeOut' } }}
+                whileHover={{ y: -4, borderColor: color, transition: { duration: 0.2 } }}
                 className="relative overflow-hidden rounded-[20px]"
                 style={{ backgroundColor: '#ffffff', border: '1px solid #e4e1d8', padding: 32 }}
               >
@@ -297,7 +297,7 @@ export function ServiceDetailSection({
               variants={stagger}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
             >
               {process.map((step, index) => (
@@ -305,9 +305,10 @@ export function ServiceDetailSection({
                   key={step.title}
                   variants={fadeUp}
                   whileHover={{
+                    y: -4,
                     borderColor: 'rgba(223,87,188,0.3)',
                     backgroundColor: 'rgba(255,255,255,0.05)',
-                    transition: { duration: 0.3, ease: 'easeOut' },
+                    transition: { duration: 0.2 },
                   }}
                   className="relative flex flex-col justify-between"
                   style={{
