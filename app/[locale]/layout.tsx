@@ -38,7 +38,12 @@ export async function generateMetadata({
   return {
     metadataBase: new URL(SITE_URL),
     icons: {
-      icon: '/favicon.svg',
+      icon: [
+        { url: '/favicon.svg', type: 'image/svg+xml' },
+        { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+        { url: '/favicon-128x128.png', sizes: '128x128', type: 'image/png' },
+      ],
+      apple: '/apple-touch-icon.png',
     },
     ...buildPageMetadata({
       locale,
