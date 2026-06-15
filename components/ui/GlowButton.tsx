@@ -12,6 +12,7 @@ interface GlowButtonProps {
   className?: string;
   variant?: GlowButtonVariant;
   external?: boolean;
+  onClick?: () => void;
 }
 
 const ANIMATED_GRADIENT = 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7, #DF57BC, #DE541E)';
@@ -28,7 +29,7 @@ const COLOR_MAP: Record<GlowButtonVariant, string> = {
   white: '#0a0a0a',
 };
 
-export function GlowButton({ href, children, className, variant = 'dark', external }: GlowButtonProps) {
+export function GlowButton({ href, children, className, variant = 'dark', external, onClick }: GlowButtonProps) {
   const isGradient = variant === 'gradient';
 
   const glowStyle: CSSProperties = {
@@ -89,6 +90,7 @@ export function GlowButton({ href, children, className, variant = 'dark', extern
           rel={external ? 'noopener noreferrer' : undefined}
           style={linkStyle}
           className={className}
+          onClick={onClick}
         >
           {children}
         </Link>
