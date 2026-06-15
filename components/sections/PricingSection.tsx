@@ -354,7 +354,7 @@ export function PricingSection() {
 
               <Link
                 href={quoteHref}
-                onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
+                scroll={true}
                 className="flex items-center justify-center font-heading font-semibold w-full"
                 style={{
                   background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7)',
@@ -373,7 +373,7 @@ export function PricingSection() {
 
               <p className="text-center font-sans" style={{ fontSize: 12, color: 'rgba(10,10,15,.5)', marginTop: 16 }}>
                 {t('quote_micro_prefix')}
-                <Link href={quoteHref} onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })} className="underline" style={{ color: '#3626A7' }}>
+                <Link href={quoteHref} scroll={true} className="underline" style={{ color: '#3626A7' }}>
                   {t('quote_micro_link')}
                   <ArrowDiag size={11} className="inline ml-1" />
                 </Link>

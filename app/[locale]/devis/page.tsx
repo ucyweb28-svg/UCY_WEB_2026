@@ -4,6 +4,8 @@ import { getTranslations } from 'next-intl/server';
 import { DevisSection } from '@/components/sections/DevisSection';
 import { buildPageMetadata, type Locale } from '@/components/SEO';
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({
   params,
 }: {
