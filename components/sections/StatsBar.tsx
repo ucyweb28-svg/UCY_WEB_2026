@@ -29,7 +29,7 @@ export function StatsBar() {
           variants={stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-80px' }}
           className="grid grid-cols-2 md:grid-cols-4"
         >
           {STATS.map(({ value, label }, index) => (

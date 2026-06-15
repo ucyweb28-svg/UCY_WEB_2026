@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/Badge';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { stagger, fadeUp } from '@/lib/utils/animations';
+import { stagger, fadeUp, EASE_REVEAL } from '@/lib/utils/animations';
 
 const TEAM = [
   { image: '/images/team-yonathan.png', nameKey: 'member1_name', roleKey: 'member1_role', objectPosition: 'center 20%', linkedin: 'https://www.linkedin.com/in/yonathan-chetrit/' },
@@ -28,7 +28,7 @@ export function AboutSection() {
           variants={stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-80px' }}
           className="flex flex-col items-start gap-6 mb-20"
         >
           <motion.div variants={fadeUp}>
@@ -63,8 +63,8 @@ export function AboutSection() {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.5, ease: EASE_REVEAL }}
           className="font-heading font-bold uppercase mb-10"
           style={{ fontSize: 13, letterSpacing: '0.15em', color: 'rgba(255,255,255,0.4)' }}
         >
@@ -76,14 +76,14 @@ export function AboutSection() {
           variants={stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-80px' }}
           className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8"
         >
           {TEAM.map(({ image, nameKey, roleKey, objectPosition, linkedin }, index) => (
             <ScrollReveal key={nameKey} delay={index * 0.1}>
               <motion.div
                 variants={fadeUp}
-                whileHover={{ scale: 1.02, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
                 className="group flex flex-col gap-4"
               >
                 <div
