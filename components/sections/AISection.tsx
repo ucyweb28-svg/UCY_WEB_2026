@@ -4,10 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { Sparkle, ChatCircleDots, ImageSquare, ArrowUpRight } from '@phosphor-icons/react';
 
 const MODULES = [
   {
-    icon: '✦',
+    icon: Sparkle,
     iconBg: 'rgba(54,38,167,.2)',
     iconColor: '#7F77DD',
     nameKey: 'module1_name',
@@ -18,7 +19,7 @@ const MODULES = [
     statusColor: '#1D9E75',
   },
   {
-    icon: '◈',
+    icon: ChatCircleDots,
     iconBg: 'rgba(223,87,188,.1)',
     iconColor: '#DF57BC',
     nameKey: 'module2_name',
@@ -29,7 +30,7 @@ const MODULES = [
     statusColor: '#1D9E75',
   },
   {
-    icon: '⬡',
+    icon: ImageSquare,
     iconBg: 'rgba(222,84,30,.1)',
     iconColor: '#DE541E',
     nameKey: 'module3_name',
@@ -84,7 +85,7 @@ export function AISection() {
 
           <h2
             className="font-heading font-extrabold"
-            style={{ fontSize: 'clamp(28px, 3vw, 44px)', color: '#ffffff', lineHeight: 1.2 }}
+            style={{ fontSize: 'clamp(24px, 2.8vw, 40px)', color: '#ffffff', lineHeight: 1.2 }}
           >
             <span className="block">{t('headline_start')}</span>
             <span className="block">{t('headline_middle')}</span>
@@ -113,7 +114,8 @@ export function AISection() {
             onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
             className="mt-10 inline-flex items-center gap-1 font-sans font-bold text-[13px] rounded-full px-7 py-3 bg-white text-[#0a0a0f] hover:bg-[#FBF9FF] transition-colors duration-200"
           >
-            {t('btn_primary')} ↗
+            {t('btn_primary')}
+            <ArrowUpRight size={14} weight="bold" />
           </Link>
         </motion.div>
 
@@ -202,9 +204,9 @@ export function AISection() {
                     >
                       <span
                         className="shrink-0 flex items-center justify-center rounded-[6px]"
-                        style={{ width: 28, height: 28, backgroundColor: mod.iconBg, color: mod.iconColor, fontSize: 13 }}
+                        style={{ width: 28, height: 28, backgroundColor: mod.iconBg, color: mod.iconColor }}
                       >
-                        {mod.icon}
+                        <mod.icon size={14} weight="bold" />
                       </span>
                       <div className="flex-1 min-w-0">
                         <p className="font-sans font-medium truncate" style={{ fontSize: 12, color: 'white' }}>
@@ -251,7 +253,7 @@ export function AISection() {
                       {t('cta_subtitle')}
                     </p>
                   </div>
-                  <span className="shrink-0" style={{ color: '#DF57BC' }}>↗</span>
+                  <ArrowUpRight size={14} weight="bold" className="shrink-0" style={{ color: '#DF57BC' }} />
                 </motion.a>
               </div>
             </div>

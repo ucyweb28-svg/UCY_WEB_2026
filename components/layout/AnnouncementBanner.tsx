@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { X } from '@phosphor-icons/react';
 
 export function AnnouncementBanner() {
   const t = useTranslations('banner');
@@ -25,18 +26,7 @@ export function AnnouncementBanner() {
         aria-label={t('close')}
         className="absolute right-6 top-1/2 -translate-y-1/2 flex-shrink-0 text-white opacity-50 hover:opacity-100 transition-opacity duration-200 cursor-pointer p-1 border-none bg-transparent"
       >
-        <svg
-          width="10"
-          height="10"
-          viewBox="0 0 10 10"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        >
-          <line x1="1" y1="1" x2="9" y2="9" />
-          <line x1="9" y1="1" x2="1" y2="9" />
-        </svg>
+        <X size={12} weight="bold" />
       </button>
     </div>
   );

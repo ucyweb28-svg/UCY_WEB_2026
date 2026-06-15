@@ -130,9 +130,38 @@ export function TestimonialsSection() {
           style={{ border: '1px solid #e8e8e4', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}
         >
           {/* Left column */}
-          <div className="w-full md:w-[55%] p-6 md:p-12" style={{ backgroundColor: '#ffffff' }}>
+          <div className="relative w-full md:w-[55%] p-6 md:p-12 overflow-hidden" style={{ backgroundColor: '#ffffff' }}>
+            {/* Decorative gradient quote mark */}
+            <span
+              aria-hidden="true"
+              className="absolute font-heading pointer-events-none select-none"
+              style={{
+                top: -28,
+                left: 12,
+                fontSize: 'clamp(140px, 16vw, 220px)',
+                lineHeight: 1,
+                fontWeight: 800,
+                background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                opacity: 0.08,
+                zIndex: 0,
+              }}
+            >
+              "
+            </span>
+
             <AnimatePresence mode="wait">
-              <motion.div key={activeIndex} variants={slideVariants} initial="initial" animate="animate" exit="exit">
+              <motion.div
+                key={activeIndex}
+                variants={slideVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="relative"
+                style={{ zIndex: 1 }}
+              >
                 <div
                   className="font-heading"
                   style={{ fontSize: 28, fontWeight: 800, color: '#0a0a0a', marginBottom: 32 }}
@@ -159,18 +188,6 @@ export function TestimonialsSection() {
                   ))}
                 </div>
 
-                <span
-                  style={{
-                    display: 'block',
-                    color: '#DF57BC',
-                    fontSize: 60,
-                    lineHeight: 0,
-                    verticalAlign: '-20px',
-                    marginBottom: 12,
-                  }}
-                >
-                  "
-                </span>
                 <p
                   className="font-sans"
                   style={{

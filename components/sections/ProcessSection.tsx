@@ -203,20 +203,22 @@ export function ProcessSection() {
                   overflow: 'hidden',
                 }}
               >
-                <span
-                  className="absolute font-heading font-extrabold pointer-events-none select-none"
-                  style={{ top: 8, right: 12, fontSize: 48, lineHeight: 1, color: '#ffffff', opacity: 0.06 }}
-                  aria-hidden="true"
-                >
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-
                 <div>
-                  <div
-                    className="flex items-center justify-center rounded-full"
-                    style={{ width: 40, height: 40, background: ICON_CIRCLE_BG, marginTop: 16 }}
-                  >
-                    <step.Icon size={20} color="url(#process-icon-gradient)" />
+                  <div className="flex items-center justify-between" style={{ marginTop: 16 }}>
+                    <div
+                      className="flex items-center justify-center rounded-full"
+                      style={{ width: 40, height: 40, background: ICON_CIRCLE_BG }}
+                    >
+                      <step.Icon size={20} color="url(#process-icon-gradient)" />
+                    </div>
+
+                    <span
+                      className="font-heading font-extrabold select-none"
+                      style={{ fontSize: 32, lineHeight: 1, color: '#ffffff', opacity: 0.15 }}
+                      aria-hidden="true"
+                    >
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
                   </div>
 
                   <h3 className="font-heading font-bold" style={{ fontSize: 15, color: '#ffffff', marginTop: 12 }}>

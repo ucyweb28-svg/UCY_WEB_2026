@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowUpRight, X } from '@phosphor-icons/react';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { Logo } from '@/components/ui/Logo';
 import { stagger, fadeUp } from '@/lib/utils/animations';
@@ -285,9 +286,9 @@ export function Nav() {
                 <button
                   onClick={() => setMenuOpen(false)}
                   aria-label={t('menu_close')}
-                  className="text-3xl leading-none p-2 -mr-2 text-black/40 hover:text-black transition-colors duration-200 cursor-pointer"
+                  className="leading-none p-2 -mr-2 text-black/40 hover:text-black transition-colors duration-200 cursor-pointer"
                 >
-                  ×
+                  <X size={28} weight="bold" />
                 </button>
               </div>
 
@@ -312,7 +313,7 @@ export function Nav() {
                     style={{ fontSize: 42, fontWeight: 800, borderBottom: '1px solid #f0f0f0', padding: '16px 0' }}
                   >
                     <span>{t(key)}</span>
-                    <span style={{ color: '#3626A7', fontSize: 24 }}>↗</span>
+                    <ArrowUpRight size={24} weight="bold" style={{ color: '#3626A7' }} />
                   </motion.a>
                 ))}
               </motion.nav>

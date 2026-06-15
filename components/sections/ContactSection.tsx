@@ -4,6 +4,7 @@ import { useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { Check } from '@phosphor-icons/react';
 import { ArrowDiag } from '@/components/ui/ArrowDiag';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 import { formatWhatsAppLink } from '@/lib/utils/formatWhatsAppLink';
@@ -166,7 +167,7 @@ export function ContactSection() {
                     color: '#3626A7',
                   }}
                 >
-                  ✓
+                  <Check size={12} weight="bold" />
                 </span>
                 <div>
                   <p className="font-sans font-bold text-sm" style={{ color: '#0a0a0a' }}>
@@ -308,7 +309,7 @@ export function ContactSection() {
                   className="flex items-center justify-center gap-2 font-sans text-sm font-semibold"
                   style={{ color: '#1D9E75' }}
                 >
-                  <span aria-hidden>✓</span> {t('success')}
+                  <Check size={16} weight="bold" aria-hidden /> {t('success')}
                 </p>
               )}
               {status === 'error' && (
