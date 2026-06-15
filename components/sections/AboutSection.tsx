@@ -87,8 +87,8 @@ export function AboutSection() {
                 className="group flex flex-col gap-4"
               >
                 <div
-                  className="w-full relative overflow-hidden h-[420px]"
-                  style={{ borderRadius: 16, backgroundColor: '#111' }}
+                  className="w-full relative overflow-hidden"
+                  style={{ height: 380, borderRadius: 16, backgroundColor: '#111' }}
                 >
                   <Image
                     src={image}
