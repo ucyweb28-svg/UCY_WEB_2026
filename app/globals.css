@@ -57,6 +57,9 @@ body {
   to { transform: rotate(360deg); }
 }
 
+::view-transition-old(root) { animation: none; }
+::view-transition-new(root) { animation: none; }
+
 .gradient-text {
   background: linear-gradient(135deg, #3626A7, #DF57BC, #DE541E, #3626A7);
   background-size: 300% 300%;

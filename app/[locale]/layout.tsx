@@ -82,7 +82,9 @@ export default async function LocaleLayout({
             <AnnouncementBanner />
             <Nav />
           </div>
-          {children}
+          <div style={{ opacity: 1, transition: 'opacity 0.15s ease' }}>
+            {children}
+          </div>
           <Footer />
         </NextIntlClientProvider>
       </body>
