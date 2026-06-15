@@ -3,6 +3,7 @@
 import type { ReactNode } from 'react';
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { EASE_REVEAL } from '@/lib/utils/animations';
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -17,9 +18,9 @@ export function ScrollReveal({ children, delay = 0, className = '' }: ScrollReve
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 16 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay }}
+      transition={{ duration: 0.55, ease: EASE_REVEAL, delay }}
       className={className}
     >
       {children}
