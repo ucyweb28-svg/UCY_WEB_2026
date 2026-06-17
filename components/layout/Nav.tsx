@@ -23,6 +23,7 @@ const NAV_LINKS = [
   { key: 'pricing' as const, href: '/pricing' },
   { key: 'about' as const, href: '/#about' },
   { key: 'contact' as const, href: '/contact' },
+  { key: 'stays' as const, href: '/stays' },
 ];
 
 const SOCIAL_LINKS = [
@@ -150,6 +151,7 @@ export function Nav() {
   const router = useRouter();
   const pathname = usePathname();
   const isContactPage = pathname?.endsWith('/contact') ?? false;
+  const isStaysPage = pathname?.endsWith('/stays') ?? false;
   const isHomePage = pathname === '/' || pathname === '/en';
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -226,7 +228,7 @@ export function Nav() {
         <div className="hidden md:flex items-center gap-8">
           <nav className="flex items-center gap-8" aria-label="Navigation principale">
             {NAV_LINKS.map(({ key, href }) => {
-              const isActive = key === 'contact' && isContactPage;
+              const isActive = (key === 'contact' && isContactPage) || (key === 'stays' && isStaysPage);
               return (
                 <a
                   key={key}

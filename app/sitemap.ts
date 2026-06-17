@@ -37,6 +37,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: url(locale, '/stays'),
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: url(locale, '/mentions-legales'),
       lastModified: new Date(),
       changeFrequency: 'yearly',

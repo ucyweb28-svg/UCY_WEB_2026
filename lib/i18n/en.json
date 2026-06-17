@@ -15,6 +15,7 @@
     "pricing": "Pricing",
     "about": "About",
     "contact": "Contact",
+    "stays": "Stays",
     "cta": "Start a project",
     "menu_open": "Open menu",
     "menu_close": "Close menu"
@@ -420,6 +421,59 @@
     "analytics_body": "This site uses Plausible Analytics, a privacy-friendly analytics tool that does not use cookies and does not collect any personally identifiable data.",
     "credits_title": "Credits",
     "credits_body": "Design and development: UCY Studio — ucyweb.fr"
+  },
+  "stays": {
+    "meta_title": "UCY Stays | Short-term Rentals in Jerusalem & Netanya",
+    "meta_description": "UCY Stays manages your property for short-term rental in Jerusalem and Netanya. Audit, Airbnb & Booking listing, full management by people you can trust.",
+
+    "hero_eyebrow": "UCY Stays",
+    "hero_title_start": "Your property, managed like ",
+    "hero_title_highlight": "our own.",
+    "hero_subtitle": "A trusted network for short-term rentals in Jerusalem, Netanya, and coming soon to Tel Aviv and Raanana.",
+    "hero_cta_primary": "Entrust your property",
+    "hero_cta_secondary": "Book a stay",
+
+    "cities_badge": "The network",
+    "cities_title_start": "A network, ",
+    "cities_title_highlight": "city by city.",
+    "cities_jerusalem": "Jerusalem",
+    "cities_netanya": "Netanya",
+    "cities_telaviv": "Tel Aviv",
+    "cities_raanana": "Raanana",
+    "cities_active": "Active",
+    "cities_soon": "Coming soon",
+
+    "collection_badge": "The collection",
+    "collection_title_start": "The ",
+    "collection_title_highlight": "collection",
+    "collection_intro": "Every residence is handpicked, photographed and managed with the same care.",
+    "collection_view": "View property",
+    "collection_prop1_name": "Villa Jerusalem — Givat Ram",
+    "collection_prop1_type": "Apartment · 3 rooms",
+    "collection_prop2_name": "Marina Suite Netanya",
+    "collection_prop2_type": "Suite · Sea view",
+    "collection_prop3_name": "Penthouse Tel Aviv",
+    "collection_prop3_type": "Coming soon",
+    "collection_prop4_name": "Apartment Raanana",
+    "collection_prop4_type": "Coming soon",
+
+    "trust_badge": "The team",
+    "trust_title_start": "Based in Jerusalem, run by ",
+    "trust_title_highlight": "people you trust.",
+    "trust_body": "UCY Stays is personally led by Yonathan Chetrit, supported by a local team on the ground in every city. Every property is closely monitored — never blindly delegated.",
+
+    "newbuild_badge": "New build?",
+    "newbuild_title_start": "Did you just purchase ",
+    "newbuild_title_highlight": "a new property?",
+    "newbuild_body": "UCY connects you with Israel's top interior designers to design your investment, then takes care of listing it for short-term rental — from the first sketch to the first guest.",
+    "newbuild_cta": "Discuss my project",
+
+    "partner_badge": "Partner",
+    "partner_title_start": "Entrust us ",
+    "partner_title_highlight": "your property.",
+    "partner_body": "A simple, surprise-free process: property audit, listing on Airbnb and Booking, full guest management, transparent reporting. You stay in control, we handle the rest.",
+    "partner_cta_primary": "Become a partner",
+    "partner_cta_secondary": "Message us on WhatsApp"
   },
   "service_detail": {
     "badge": "Services",
