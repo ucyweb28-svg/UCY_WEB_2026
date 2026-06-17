@@ -78,9 +78,16 @@ export default async function LocaleLayout({
         <OrganizationSchema locale={locale as Locale} />
         <Script
           defer
-          data-domain="ucyweb.fr"
-          src="https://plausible.io/js/script.js"
+          src="https://plausible.io/js/pa-tFDAOfMye2Yqt_RFpKqo_.js"
           strategy="afterInteractive"
+        />
+        <Script
+          id="plausible-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html:
+              'window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()',
+          }}
         />
         <NextIntlClientProvider messages={messages}>
           <div className="fixed top-0 left-0 right-0 z-50">
