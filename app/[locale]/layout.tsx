@@ -4,7 +4,8 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import Script from 'next/script';
-import { Syne, DM_Sans } from 'next/font/google';
+import localFont from 'next/font/local';
+import { Syne, DM_Sans, Montserrat } from 'next/font/google';
 import { Nav } from '@/components/layout/Nav';
 import { Footer } from '@/components/layout/Footer';
 import { AnnouncementBanner } from '@/components/layout/AnnouncementBanner';
@@ -24,6 +25,27 @@ const dmSans = DM_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
   variable: '--font-dm-sans',
+  display: 'swap',
+});
+
+const trap = localFont({
+  src: [
+    { path: '../fonts/Trap-Light.otf', weight: '300', style: 'normal' },
+    { path: '../fonts/Trap-Regular.otf', weight: '400', style: 'normal' },
+    { path: '../fonts/Trap-Medium.otf', weight: '500', style: 'normal' },
+    { path: '../fonts/Trap-SemiBold.otf', weight: '600', style: 'normal' },
+    { path: '../fonts/Trap-Bold.otf', weight: '700', style: 'normal' },
+    { path: '../fonts/Trap-ExtraBold.otf', weight: '800', style: 'normal' },
+    { path: '../fonts/Trap-Black.otf', weight: '900', style: 'normal' },
+  ],
+  variable: '--font-trap',
+  display: 'swap',
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-montserrat',
   display: 'swap',
 });
 
@@ -72,7 +94,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${syne.variable} ${dmSans.variable}`}
+      className={`${syne.variable} ${dmSans.variable} ${trap.variable} ${montserrat.variable}`}
     >
       <body>
         <OrganizationSchema locale={locale as Locale} />

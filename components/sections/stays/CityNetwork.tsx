@@ -38,7 +38,7 @@ export function CityNetwork() {
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="font-heading font-extrabold leading-tight"
+            className="font-trap font-extrabold leading-tight"
             style={{ color: '#FBF9FF', fontSize: 'clamp(1.5rem, 5vw, 2.75rem)' }}
           >
             {t('cities_title_start')}
@@ -71,7 +71,7 @@ export function CityNetwork() {
                   style={{ color: active ? '#DF57BC' : 'rgba(255,255,255,0.2)' }}
                 />
                 <span
-                  className="font-heading font-bold text-center"
+                  className="font-trap font-bold text-center"
                   style={{
                     fontSize: 20,
                     color: active ? '#FBF9FF' : 'rgba(255,255,255,0.3)',
@@ -80,7 +80,7 @@ export function CityNetwork() {
                   {t(nameKey)}
                 </span>
                 <span
-                  className="font-sans font-bold uppercase"
+                  className="font-montserrat font-bold uppercase"
                   style={{
                     fontSize: 11,
                     letterSpacing: '0.12em',

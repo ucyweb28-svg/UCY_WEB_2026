@@ -89,11 +89,13 @@ function LocaleSwitch({
   onSwitch,
   size = 'lg',
   onDark = false,
+  fontClass = 'font-sans',
 }: {
   locale: string;
   onSwitch: () => void;
   size?: 'lg' | 'minimal';
   onDark?: boolean;
+  fontClass?: string;
 }) {
   if (size === 'minimal') {
     return (
@@ -112,7 +114,7 @@ function LocaleSwitch({
               )}
               <button
                 onClick={() => { if (!isActive) onSwitch(); }}
-                className="font-sans transition-colors duration-300"
+                className={`${fontClass} transition-colors duration-300`}
                 style={
                   isActive
                     ? { color: onDark ? '#FBF9FF' : '#0a0a0a', fontWeight: 700, cursor: 'default' }
@@ -140,7 +142,7 @@ function LocaleSwitch({
           <button
             key={loc}
             onClick={() => { if (!isActive) onSwitch(); }}
-            className="font-sans font-semibold transition-colors duration-200 cursor-pointer"
+            className={`${fontClass} font-semibold transition-colors duration-200 cursor-pointer`}
             style={{
               borderRadius: 20,
               padding: '8px 20px',
@@ -279,7 +281,7 @@ export function Nav() {
                   href={href}
                   onClick={(e) => handleAnchorClick(e, href)}
                   className={[
-                    'font-sans text-sm transition-colors duration-300',
+                    `${isStaysPage ? 'font-montserrat' : 'font-sans'} text-sm transition-colors duration-300`,
                     isActive ? 'font-semibold' : 'font-medium',
                     isTransparent
                       ? 'opacity-90 hover:opacity-100'
@@ -300,13 +302,14 @@ export function Nav() {
             onSwitch={switchLocale}
             size="minimal"
             onDark={isTransparent}
+            fontClass={isStaysPage ? 'font-montserrat' : 'font-sans'}
           />
         </div>
 
         {/* Desktop CTA + Mobile hamburger */}
         <div className="flex items-center gap-3">
           <div className="hidden lg:flex shrink-0">
-            <GlowButton href={ctaHref} variant={ctaVariant} onClick={ctaOnClick}>
+            <GlowButton href={ctaHref} variant={ctaVariant} onClick={ctaOnClick} className={isStaysPage ? 'font-trap' : undefined}>
               {ctaLabel}
             </GlowButton>
           </div>
@@ -377,7 +380,7 @@ export function Nav() {
                       handleAnchorClick(e, href);
                       setMenuOpen(false);
                     }}
-                    className="flex items-center justify-between font-heading transition-colors duration-200 text-[#0a0a0a] hover:text-[#3626A7]"
+                    className={`flex items-center justify-between ${isStaysPage ? 'font-trap' : 'font-heading'} transition-colors duration-200 text-[#0a0a0a] hover:text-[#3626A7]`}
                     style={{ fontSize: 42, fontWeight: 800, borderBottom: '1px solid #f0f0f0', padding: '16px 0' }}
                   >
                     <span>{t(key)}</span>
@@ -391,6 +394,7 @@ export function Nav() {
                 <GlowButton
                   href={ctaHref}
                   variant="gradient"
+                  className={isStaysPage ? 'font-trap' : undefined}
                   onClick={() => {
                     setMenuOpen(false);
                     if (!isStaysPage) window.scrollTo({ top: 0, behavior: 'instant' });
@@ -409,6 +413,7 @@ export function Nav() {
                     setMenuOpen(false);
                   }}
                   size="lg"
+                  fontClass={isStaysPage ? 'font-montserrat' : 'font-sans'}
                 />
               </div>
 
@@ -430,7 +435,7 @@ export function Nav() {
 
               {/* Bottom tag */}
               <p
-                className="shrink-0 text-center font-sans"
+                className={`shrink-0 text-center ${isStaysPage ? 'font-montserrat' : 'font-sans'}`}
                 style={{ fontSize: 12, color: '#aaa', marginTop: 16, paddingBottom: 32 }}
               >
                 {tHero('badge')}

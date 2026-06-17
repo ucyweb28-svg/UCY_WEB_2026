@@ -65,7 +65,7 @@ export function Collection() {
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="font-heading font-extrabold leading-tight"
+            className="font-trap font-extrabold leading-tight"
             style={{ color: '#000807', fontSize: 'clamp(1.5rem, 5vw, 2.75rem)' }}
           >
             {t('collection_title_start')}
@@ -82,7 +82,7 @@ export function Collection() {
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="font-sans"
+            className="font-montserrat"
             style={{ fontSize: 16, color: 'rgba(0,8,7,0.55)', maxWidth: 520 }}
           >
             {t('collection_intro')}
@@ -125,7 +125,7 @@ export function Collection() {
                       style={{ backgroundColor: 'rgba(0,8,7,0.35)' }}
                     >
                       <span
-                        className="font-sans font-bold uppercase"
+                        className="font-montserrat font-bold uppercase"
                         style={{
                           fontSize: 11,
                           letterSpacing: '0.14em',
@@ -143,17 +143,17 @@ export function Collection() {
 
                 <div className="px-5 py-4 flex items-center justify-between">
                   <div className="flex flex-col gap-0.5">
-                    <span className="font-sans text-xs" style={{ color: 'rgba(0,8,7,0.4)' }}>
+                    <span className="font-montserrat text-xs" style={{ color: 'rgba(0,8,7,0.4)' }}>
                       {t(typeKey)}
                     </span>
-                    <h3 className="font-heading font-bold text-lg" style={{ color: '#000807' }}>
+                    <h3 className="font-trap font-bold text-lg" style={{ color: '#000807' }}>
                       {t(nameKey)}
                     </h3>
                   </div>
                   {active && (
                     <a
                       href="#partner"
-                      className="font-sans text-sm font-semibold flex-shrink-0 ml-4 inline-flex items-center gap-1 transition-colors duration-200"
+                      className="font-montserrat text-sm font-semibold flex-shrink-0 ml-4 inline-flex items-center gap-1 transition-colors duration-200"
                       style={{ color: '#3626A7' }}
                     >
                       {t('collection_view')}

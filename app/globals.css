@@ -14,6 +14,14 @@
   --font-sans: var(--font-dm-sans), system-ui, sans-serif;
 }
 
+/* Stays typography system — Trap (local) + Montserrat (Google) */
+@utility font-trap {
+  font-family: var(--font-trap), system-ui, sans-serif;
+}
+@utility font-montserrat {
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+}
+
 /* shadcn/ui — base radius token (components/shadcn only) */
 :root {
   --radius: 0.625rem;

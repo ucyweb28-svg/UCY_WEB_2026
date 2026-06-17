@@ -27,7 +27,7 @@ export function BecomePartner() {
 
           <motion.h2
             variants={fadeUp}
-            className="font-heading font-extrabold leading-tight"
+            className="font-trap font-extrabold leading-tight"
             style={{ color: '#FBF9FF', fontSize: 'clamp(1.75rem, 5vw, 3rem)' }}
           >
             {t('partner_title_start')}
@@ -38,7 +38,7 @@ export function BecomePartner() {
 
           <motion.p
             variants={fadeUp}
-            className="font-sans leading-relaxed"
+            className="font-montserrat leading-relaxed"
             style={{ fontSize: 17, color: 'rgba(251,249,255,0.6)', maxWidth: 540 }}
           >
             {t('partner_body')}

@@ -29,7 +29,7 @@ export function NewBuildDesign() {
 
             <motion.h2
               variants={fadeUp}
-              className="font-heading font-extrabold leading-tight"
+              className="font-trap font-extrabold leading-tight"
               style={{ color: '#000807', fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)' }}
             >
               {t('newbuild_title_start')}
@@ -47,7 +47,7 @@ export function NewBuildDesign() {
 
             <motion.p
               variants={fadeUp}
-              className="font-sans leading-relaxed"
+              className="font-montserrat leading-relaxed"
               style={{ fontSize: 17, color: 'rgba(0,8,7,0.6)', maxWidth: 480 }}
             >
               {t('newbuild_body')}

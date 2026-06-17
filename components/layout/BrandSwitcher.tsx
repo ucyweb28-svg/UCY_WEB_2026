@@ -44,7 +44,7 @@ export function BrandSwitcher({ onDark = false }: BrandSwitcherProps) {
           key={label}
           type="button"
           onClick={() => { if (!active) router.push(href); }}
-          className="font-sans transition-all duration-300"
+          className={`${isStays ? 'font-trap' : 'font-sans'} transition-all duration-300`}
           style={{
             borderRadius: 20,
             padding: '4px 12px',

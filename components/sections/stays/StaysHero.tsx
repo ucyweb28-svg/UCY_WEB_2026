@@ -60,21 +60,21 @@ export function StaysHero() {
           <div className="flex flex-col items-start text-left gap-5 md:gap-6 max-w-xl">
 
             <span
-              className="font-sans font-bold uppercase"
+              className="font-montserrat font-bold uppercase"
               style={{ fontSize: 13, letterSpacing: '0.15em', color: '#DF57BC' }}
             >
               {t('hero_eyebrow')}
             </span>
 
             <h1
-              className="font-heading font-extrabold tracking-tight leading-[1.05] text-pretty"
+              className="font-trap font-extrabold tracking-tight leading-[1.05] text-pretty"
               style={{ color: '#FBF9FF', fontSize: 'clamp(36px, 5.5vw, 68px)' }}
             >
               {t('hero_title_start')}{t('hero_title_highlight')}
             </h1>
 
             <p
-              className="font-sans text-base md:text-lg leading-relaxed text-pretty"
+              className="font-montserrat text-base md:text-lg leading-relaxed text-pretty"
               style={{ color: 'rgba(251,249,255,0.85)' }}
             >
               {t('hero_subtitle')}

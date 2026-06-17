@@ -44,7 +44,7 @@ export function TrustTeam() {
 
             <motion.h2
               variants={fadeUp}
-              className="font-heading font-extrabold leading-tight"
+              className="font-trap font-extrabold leading-tight"
               style={{ color: '#FBF9FF', fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)' }}
             >
               {t('trust_title_start')}
@@ -55,7 +55,7 @@ export function TrustTeam() {
 
             <motion.p
               variants={fadeUp}
-              className="font-sans leading-relaxed"
+              className="font-montserrat leading-relaxed"
               style={{ fontSize: 17, color: 'rgba(251,249,255,0.65)', maxWidth: 480 }}
             >
               {t('trust_body')}
