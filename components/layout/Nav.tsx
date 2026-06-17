@@ -88,10 +88,12 @@ function LocaleSwitch({
   locale,
   onSwitch,
   size = 'lg',
+  onDark = false,
 }: {
   locale: string;
   onSwitch: () => void;
   size?: 'lg' | 'minimal';
+  onDark?: boolean;
 }) {
   if (size === 'minimal') {
     return (
@@ -101,17 +103,21 @@ function LocaleSwitch({
           return (
             <span key={loc} className="inline-flex items-center" style={{ gap: 6 }}>
               {index > 0 && (
-                <span aria-hidden style={{ color: 'rgba(0,0,0,0.2)' }}>·</span>
+                <span
+                  aria-hidden
+                  style={{ color: onDark ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.2)' }}
+                >
+                  ·
+                </span>
               )}
               <button
-                onClick={() => {
-                  if (!isActive) onSwitch();
-                }}
-                className={[
-                  'font-sans transition-colors duration-200',
-                  isActive ? 'cursor-default' : 'cursor-pointer text-black/35 hover:text-black/60',
-                ].join(' ')}
-                style={isActive ? { color: '#0a0a0a', fontWeight: 700 } : { fontWeight: 400 }}
+                onClick={() => { if (!isActive) onSwitch(); }}
+                className="font-sans transition-colors duration-300"
+                style={
+                  isActive
+                    ? { color: onDark ? '#FBF9FF' : '#0a0a0a', fontWeight: 700, cursor: 'default' }
+                    : { color: onDark ? 'rgba(251,249,255,0.45)' : 'rgba(0,0,0,0.35)', fontWeight: 400, cursor: 'pointer' }
+                }
                 aria-label={`Switch language to ${loc.toUpperCase()}`}
               >
                 {loc.toUpperCase()}
@@ -133,9 +139,7 @@ function LocaleSwitch({
         return (
           <button
             key={loc}
-            onClick={() => {
-              if (!isActive) onSwitch();
-            }}
+            onClick={() => { if (!isActive) onSwitch(); }}
             className="font-sans font-semibold transition-colors duration-200 cursor-pointer"
             style={{
               borderRadius: 20,
@@ -168,9 +172,13 @@ export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const prevScrollY = useRef(0);
 
+  // Transparent overlay mode: stays page before any scroll
+  const isTransparent = isStaysPage && !scrolled;
+
   const activeNavLinks = isStaysPage ? STAYS_NAV_LINKS : STUDIO_NAV_LINKS;
   const ctaHref = isStaysPage ? '/stays#partner' : '/contact';
   const ctaLabel = isStaysPage ? t('cta_stays') : t('cta');
+  const ctaVariant = isTransparent ? 'white' : 'gradient';
   const ctaOnClick = isStaysPage
     ? undefined
     : () => window.scrollTo({ top: 0, behavior: 'instant' });
@@ -223,10 +231,17 @@ export function Nav() {
     }, 100);
   };
 
+  // Header background class
+  const headerBgClass = isTransparent
+    ? 'bg-transparent'
+    : isHomePage && scrolled
+      ? 'bg-[#FBF9FF]/95 backdrop-blur-md'
+      : 'bg-[#FBF9FF]';
+
   return (
     <header
       className={[
-        isHomePage && scrolled ? 'bg-[#FBF9FF]/95 backdrop-blur-md' : 'bg-[#FBF9FF]',
+        headerBgClass,
         scrolled ? 'shadow-[0_2px_24px_rgba(0,0,0,0.07)]' : 'shadow-none',
       ].join(' ')}
       style={{
@@ -239,10 +254,18 @@ export function Nav() {
 
         {/* Logo + Brand switcher */}
         <div className="flex items-center" style={{ gap: 14 }}>
-          <Link href="/" className="select-none" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
+          <Link
+            href="/"
+            className="select-none"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
+            style={{
+              filter: isTransparent ? 'brightness(0) invert(1)' : 'none',
+              transition: 'filter 0.3s ease',
+            }}
+          >
             <Logo />
           </Link>
-          <BrandSwitcher />
+          <BrandSwitcher onDark={isTransparent} />
         </div>
 
         {/* Desktop links + language switcher */}
@@ -256,11 +279,15 @@ export function Nav() {
                   href={href}
                   onClick={(e) => handleAnchorClick(e, href)}
                   className={[
-                    'font-sans text-sm transition-colors duration-200',
-                    isActive
-                      ? 'font-semibold text-accent'
-                      : 'font-medium text-black hover:text-accent',
+                    'font-sans text-sm transition-colors duration-300',
+                    isActive ? 'font-semibold' : 'font-medium',
+                    isTransparent
+                      ? 'opacity-90 hover:opacity-100'
+                      : isActive
+                        ? 'text-accent'
+                        : 'text-black hover:text-accent',
                   ].join(' ')}
+                  style={isTransparent ? { color: '#FBF9FF' } : {}}
                 >
                   {t(key)}
                 </a>
@@ -268,20 +295,26 @@ export function Nav() {
             })}
           </nav>
 
-          <LocaleSwitch locale={locale} onSwitch={switchLocale} size="minimal" />
+          <LocaleSwitch
+            locale={locale}
+            onSwitch={switchLocale}
+            size="minimal"
+            onDark={isTransparent}
+          />
         </div>
 
         {/* Desktop CTA + Mobile hamburger */}
         <div className="flex items-center gap-3">
           <div className="hidden lg:flex shrink-0">
-            <GlowButton href={ctaHref} variant="gradient" onClick={ctaOnClick}>
+            <GlowButton href={ctaHref} variant={ctaVariant} onClick={ctaOnClick}>
               {ctaLabel}
             </GlowButton>
           </div>
 
           <button
             onClick={() => setMenuOpen((v) => !v)}
-            className="lg:hidden p-2 -mr-2 text-black cursor-pointer"
+            className="lg:hidden p-2 -mr-2 cursor-pointer transition-colors duration-300"
+            style={{ color: isTransparent ? '#FBF9FF' : '#000807' }}
             aria-label={menuOpen ? t('menu_close') : t('menu_open')}
             aria-expanded={menuOpen}
           >

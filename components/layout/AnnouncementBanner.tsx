@@ -12,6 +12,7 @@ export function AnnouncementBanner() {
 
   const isStays = (pathname ?? '').split('/').includes('stays');
 
+  if (isStays) return null;
   if (!visible) return null;
 
   return (
