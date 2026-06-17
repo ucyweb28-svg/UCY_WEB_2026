@@ -1,12 +1,16 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { X } from '@phosphor-icons/react';
 
 export function AnnouncementBanner() {
   const t = useTranslations('banner');
+  const pathname = usePathname();
   const [visible, setVisible] = useState(true);
+
+  const isStays = (pathname ?? '').split('/').includes('stays');
 
   if (!visible) return null;
 
@@ -16,7 +20,7 @@ export function AnnouncementBanner() {
       style={{ backgroundColor: '#000807' }}
     >
       <p className="font-sans text-[11px] md:text-[13px] text-white text-center truncate pr-8">
-        {t('text')}
+        {isStays ? t('stays') : t('studio')}
       </p>
       <button
         onClick={() => {

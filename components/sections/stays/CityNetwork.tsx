@@ -24,7 +24,7 @@ export function CityNetwork() {
   const t = useTranslations('stays');
 
   return (
-    <section className="section" style={{ backgroundColor: '#000807' }}>
+    <section id="cities" className="section" style={{ backgroundColor: '#000807' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           variants={stagger}

@@ -4,7 +4,8 @@
     "home_description": "Studio de design et développement web haut de gamme. Sites Next.js sur-mesure, branding et stratégie digitale pour marques exigeantes. Jérusalem × Paris."
   },
   "banner": {
-    "text": "Sites Next.js sur-mesure · Livrés en 2 à 6 semaines · Jérusalem × Paris",
+    "studio": "Sites Next.js sur-mesure · Livrés en 2 à 6 semaines · Jérusalem × Paris",
+    "stays": "UCY Stays · Jérusalem & Netanya · Réponse rapide sur WhatsApp",
     "close": "Fermer la bannière"
   },
   "nav": {
@@ -15,8 +16,11 @@
     "pricing": "Tarifs",
     "about": "À propos",
     "contact": "Contact",
-    "stays": "Stays",
+    "stays_network": "Réseau",
+    "stays_collection": "Collection",
+    "stays_partner": "Devenir partenaire",
     "cta": "Démarrer un projet",
+    "cta_stays": "Confier un bien",
     "menu_open": "Ouvrir le menu",
     "menu_close": "Fermer le menu"
   },

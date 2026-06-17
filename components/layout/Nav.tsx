@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, X } from '@phosphor-icons/react';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { Logo } from '@/components/ui/Logo';
+import { BrandSwitcher } from '@/components/layout/BrandSwitcher';
 import { staggerNav, EASE_REVEAL } from '@/lib/utils/animations';
 import type { Variants } from 'framer-motion';
 
@@ -17,13 +18,22 @@ const menuLinkVariant: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: EASE_REVEAL } },
 };
 
-const NAV_LINKS = [
-  { key: 'services' as const, href: '/#services' },
-  { key: 'portfolio' as const, href: '/#portfolio' },
-  { key: 'pricing' as const, href: '/pricing' },
-  { key: 'about' as const, href: '/#about' },
-  { key: 'contact' as const, href: '/contact' },
-  { key: 'stays' as const, href: '/stays' },
+type StudioNavKey = 'services' | 'portfolio' | 'pricing' | 'about' | 'contact';
+type StaysNavKey = 'stays_network' | 'stays_collection' | 'stays_partner' | 'contact';
+
+const STUDIO_NAV_LINKS: { key: StudioNavKey; href: string }[] = [
+  { key: 'services', href: '/#services' },
+  { key: 'portfolio', href: '/#portfolio' },
+  { key: 'pricing', href: '/pricing' },
+  { key: 'about', href: '/#about' },
+  { key: 'contact', href: '/contact' },
+];
+
+const STAYS_NAV_LINKS: { key: StaysNavKey; href: string }[] = [
+  { key: 'stays_network', href: '/stays#cities' },
+  { key: 'stays_collection', href: '/stays#collection' },
+  { key: 'stays_partner', href: '/stays#partner' },
+  { key: 'contact', href: '/contact' },
 ];
 
 const SOCIAL_LINKS = [
@@ -151,12 +161,19 @@ export function Nav() {
   const router = useRouter();
   const pathname = usePathname();
   const isContactPage = pathname?.endsWith('/contact') ?? false;
-  const isStaysPage = pathname?.endsWith('/stays') ?? false;
+  const isStaysPage = (pathname ?? '').split('/').includes('stays');
   const isHomePage = pathname === '/' || pathname === '/en';
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const prevScrollY = useRef(0);
+
+  const activeNavLinks = isStaysPage ? STAYS_NAV_LINKS : STUDIO_NAV_LINKS;
+  const ctaHref = isStaysPage ? '/stays#partner' : '/contact';
+  const ctaLabel = isStaysPage ? t('cta_stays') : t('cta');
+  const ctaOnClick = isStaysPage
+    ? undefined
+    : () => window.scrollTo({ top: 0, behavior: 'instant' });
 
   useEffect(() => {
     const onScroll = () => {
@@ -179,15 +196,18 @@ export function Nav() {
       const id = href.slice(2);
       document.querySelector(`#${id}`)?.scrollIntoView({ behavior: 'smooth' });
     }
+    if (isStaysPage && href.startsWith('/stays#')) {
+      e.preventDefault();
+      const id = href.split('#')[1];
+      document.querySelector(`#${id}`)?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const switchLocale = () => {
     const nextLocale = locale === 'fr' ? 'en' : 'fr';
 
-    // Save current scroll position
     const scrollY = window.scrollY;
 
-    // Build new path
     const segments = (pathname ?? '/').split('/');
     if (segments[1] === 'fr' || segments[1] === 'en') {
       segments[1] = nextLocale;
@@ -196,10 +216,8 @@ export function Nav() {
     }
     const newPath = segments.join('/') || '/';
 
-    // Navigate then restore scroll
     router.push(newPath);
 
-    // Restore scroll after navigation
     setTimeout(() => {
       window.scrollTo({ top: scrollY, behavior: 'instant' });
     }, 100);
@@ -219,16 +237,19 @@ export function Nav() {
       {/* Main bar */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-12 md:h-[72px] flex items-center justify-between">
 
-        {/* Logo */}
-        <Link href="/" className="select-none" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
-          <Logo />
-        </Link>
+        {/* Logo + Brand switcher */}
+        <div className="flex items-center" style={{ gap: 14 }}>
+          <Link href="/" className="select-none" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
+            <Logo />
+          </Link>
+          <BrandSwitcher />
+        </div>
 
         {/* Desktop links + language switcher */}
         <div className="hidden md:flex items-center gap-8">
           <nav className="flex items-center gap-8" aria-label="Navigation principale">
-            {NAV_LINKS.map(({ key, href }) => {
-              const isActive = (key === 'contact' && isContactPage) || (key === 'stays' && isStaysPage);
+            {activeNavLinks.map(({ key, href }) => {
+              const isActive = key === 'contact' && isContactPage;
               return (
                 <a
                   key={key}
@@ -253,8 +274,8 @@ export function Nav() {
         {/* Desktop CTA + Mobile hamburger */}
         <div className="flex items-center gap-3">
           <div className="hidden lg:flex shrink-0">
-            <GlowButton href="/contact" variant="gradient" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
-              {t('cta')}
+            <GlowButton href={ctaHref} variant="gradient" onClick={ctaOnClick}>
+              {ctaLabel}
             </GlowButton>
           </div>
 
@@ -282,18 +303,21 @@ export function Nav() {
               className="lg:hidden fixed inset-0 z-[100] flex flex-col overflow-y-auto"
               style={{ backgroundColor: '#FBF9FF' }}
             >
-              {/* Top bar: logo + close */}
+              {/* Top bar: logo + brand switcher + close */}
               <div className="shrink-0 flex items-center justify-between px-6 md:px-8 h-[72px]">
-                <Link
-                  href="/"
-                  onClick={() => {
-                    setMenuOpen(false);
-                    window.scrollTo({ top: 0, behavior: 'instant' });
-                  }}
-                  className="select-none"
-                >
-                  <Logo />
-                </Link>
+                <div className="flex items-center" style={{ gap: 12 }}>
+                  <Link
+                    href="/"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      window.scrollTo({ top: 0, behavior: 'instant' });
+                    }}
+                    className="select-none"
+                  >
+                    <Logo />
+                  </Link>
+                  <BrandSwitcher />
+                </div>
                 <button
                   onClick={() => setMenuOpen(false)}
                   aria-label={t('menu_close')}
@@ -311,7 +335,7 @@ export function Nav() {
                 className="flex-1 flex flex-col justify-center px-6 md:px-8"
                 aria-label="Navigation principale"
               >
-                {NAV_LINKS.map(({ key, href }) => (
+                {activeNavLinks.map(({ key, href }) => (
                   <motion.a
                     key={key}
                     variants={menuLinkVariant}
@@ -329,8 +353,22 @@ export function Nav() {
                 ))}
               </motion.nav>
 
+              {/* Mobile CTA */}
+              <div className="shrink-0 flex justify-center px-6 md:px-8" style={{ marginTop: 24 }}>
+                <GlowButton
+                  href={ctaHref}
+                  variant="gradient"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    if (!isStaysPage) window.scrollTo({ top: 0, behavior: 'instant' });
+                  }}
+                >
+                  {ctaLabel}
+                </GlowButton>
+              </div>
+
               {/* Language toggle switch */}
-              <div className="shrink-0 flex justify-center px-6 md:px-8" style={{ marginTop: 32 }}>
+              <div className="shrink-0 flex justify-center px-6 md:px-8" style={{ marginTop: 20 }}>
                 <LocaleSwitch
                   locale={locale}
                   onSwitch={() => {
