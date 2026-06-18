@@ -6,7 +6,6 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowDown } from '@phosphor-icons/react';
 import { EASE_REVEAL } from '@/lib/utils/animations';
-import { ArrowDiag } from '@/components/ui/ArrowDiag';
 
 export function StaysHero() {
   const t = useTranslations('stays');
@@ -76,23 +75,24 @@ export function StaysHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE_REVEAL }}
           className="max-w-7xl mx-auto w-full"
-          style={{ paddingTop: 'clamp(120px, 26vh, 240px)', paddingLeft: '5.5%', paddingRight: '5.5%' }}
+          style={{ paddingTop: 'clamp(96px, 20vh, 200px)', paddingLeft: '5.5%', paddingRight: '5.5%' }}
         >
           <div
-            className="flex flex-col items-start gap-5 w-full lg:max-w-[47%]"
+            className="flex flex-col items-start w-full lg:max-w-[50%]"
             style={{ textShadow: '0 2px 18px rgba(10,8,7,.6)' }}
           >
 
             {/* Kicker pill */}
             <span
-              className="font-montserrat font-bold uppercase tracking-widest inline-flex items-center gap-2 backdrop-blur-sm"
+              className="font-montserrat font-bold uppercase inline-flex items-center gap-2 backdrop-blur-sm"
               style={{
-                fontSize: 12,
+                fontSize: 14,
                 color: '#FBF9FF',
                 background: 'rgba(0,8,7,0.30)',
                 borderRadius: 9999,
-                padding: '4px 12px',
-                letterSpacing: '0.14em',
+                padding: '4px 14px',
+                letterSpacing: '0.18em',
+                marginBottom: 26,
               }}
             >
               <span
@@ -114,9 +114,10 @@ export function StaysHero() {
               className="font-trap font-extrabold"
               style={{
                 color: '#FBF9FF',
-                fontSize: 'clamp(28px, 3.1vw, 46px)',
-                lineHeight: 1.16,
-                letterSpacing: '-0.005em',
+                fontSize: 'clamp(34px, 4.6vw, 68px)',
+                lineHeight: 1.08,
+                letterSpacing: '-0.01em',
+                marginBottom: 44,
               }}
             >
               {t('hero_title_line1')}<br />
@@ -124,7 +125,7 @@ export function StaysHero() {
             </h1>
 
             {/* CTAs */}
-            <div className="flex items-center gap-4 pt-1 flex-wrap">
+            <div className="flex items-center flex-wrap" style={{ gap: 30 }}>
 
               {/* Primary — white pill → "Devenir partenaire" */}
               <motion.div
