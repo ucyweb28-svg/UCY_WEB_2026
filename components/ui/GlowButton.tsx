@@ -10,6 +10,7 @@ interface GlowButtonProps {
   href: string;
   children: ReactNode;
   className?: string;
+  style?: CSSProperties;
   variant?: GlowButtonVariant;
   external?: boolean;
   onClick?: () => void;
@@ -29,7 +30,7 @@ const COLOR_MAP: Record<GlowButtonVariant, string> = {
   white: '#0a0a0a',
 };
 
-export function GlowButton({ href, children, className, variant = 'dark', external, onClick }: GlowButtonProps) {
+export function GlowButton({ href, children, className, style, variant = 'dark', external, onClick }: GlowButtonProps) {
   const isGradient = variant === 'gradient';
 
   const glowStyle: CSSProperties = {
@@ -68,6 +69,7 @@ export function GlowButton({ href, children, className, variant = 'dark', extern
       animation: 'gradientShift 4s ease infinite',
       border: 'none',
     }),
+    ...style,
   };
 
   return (

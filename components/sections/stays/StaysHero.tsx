@@ -76,7 +76,7 @@ export function StaysHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE_REVEAL }}
           className="max-w-7xl mx-auto w-full"
-          style={{ paddingTop: 'clamp(112px, 25vh, 220px)', paddingLeft: '5.5%', paddingRight: '5.5%' }}
+          style={{ paddingTop: 'clamp(120px, 26vh, 240px)', paddingLeft: '5.5%', paddingRight: '5.5%' }}
         >
           <div
             className="flex flex-col items-start gap-5 w-full lg:max-w-[47%]"
@@ -123,18 +123,10 @@ export function StaysHero() {
               {t('hero_title_line2')}
             </h1>
 
-            {/* Subtitle */}
-            <p
-              className="font-montserrat text-base leading-relaxed"
-              style={{ color: '#FBF9FF' }}
-            >
-              {t('hero_subtitle')}
-            </p>
-
             {/* CTAs */}
             <div className="flex items-center gap-4 pt-1 flex-wrap">
 
-              {/* Primary — white pill with pink glow on hover */}
+              {/* Primary — white pill → "Devenir partenaire" */}
               <motion.div
                 whileHover={{
                   y: -2,
@@ -145,7 +137,7 @@ export function StaysHero() {
                 style={{ display: 'inline-block', borderRadius: 9999 }}
               >
                 <Link
-                  href="/stays#collection"
+                  href="/stays#partner"
                   className="font-montserrat font-semibold"
                   style={{
                     display: 'inline-block',
@@ -158,18 +150,17 @@ export function StaysHero() {
                     whiteSpace: 'nowrap',
                   }}
                 >
-                  {t('hero_cta_primary')}
+                  {t('hero_cta_secondary')}
                 </Link>
               </motion.div>
 
-              {/* Ghost — Devenir partenaire with ArrowDiag */}
+              {/* Ghost — "Découvrir les résidences →" */}
               <Link
-                href="/stays#partner"
-                className="font-montserrat font-semibold inline-flex items-center gap-2 transition-opacity duration-200 hover:opacity-75"
+                href="/stays#collection"
+                className="font-montserrat font-semibold inline-flex items-center gap-1.5 hover:underline transition-all duration-200"
                 style={{ color: '#FBF9FF', fontSize: 15, textDecoration: 'none' }}
               >
-                {t('hero_cta_secondary')}
-                <ArrowDiag size={12} />
+                {t('hero_cta_primary')} →
               </Link>
 
             </div>

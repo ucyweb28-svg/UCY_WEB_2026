@@ -309,7 +309,7 @@ export function Nav() {
         {/* Desktop CTA + Mobile hamburger */}
         <div className="flex items-center gap-3">
           <div className="hidden lg:flex shrink-0">
-            <GlowButton href={ctaHref} variant={ctaVariant} onClick={ctaOnClick} className={isStaysPage ? 'font-montserrat' : undefined}>
+            <GlowButton href={ctaHref} variant={ctaVariant} onClick={ctaOnClick} className={isStaysPage ? 'font-montserrat' : undefined} style={isStaysPage ? { fontSize: 13, padding: '10px 22px' } : undefined}>
               {ctaLabel}
             </GlowButton>
           </div>
