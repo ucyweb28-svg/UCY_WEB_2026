@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowDown } from '@phosphor-icons/react';
 import { EASE_REVEAL } from '@/lib/utils/animations';
+import { trapAccents } from '@/lib/utils/trapAccents';
 
 export function StaysHero() {
   const t = useTranslations('stays');
@@ -83,30 +84,18 @@ export function StaysHero() {
             style={{ textShadow: '0 2px 18px rgba(10,8,7,.6)' }}
           >
 
-            {/* Kicker pill */}
+            {/* Kicker — bare text */}
             <span
-              className="font-montserrat font-bold uppercase inline-flex items-center gap-2 backdrop-blur-sm"
+              className="font-montserrat uppercase"
               style={{
-                fontSize: 12,
-                color: '#FBF9FF',
-                background: 'rgba(0,8,7,0.30)',
-                borderRadius: 9999,
-                padding: '6px 14px 6px 10px',
-                letterSpacing: '0.18em',
+                display: 'block',
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: '0.14em',
+                color: 'rgba(255,255,255,0.8)',
                 marginBottom: 26,
               }}
             >
-              <span
-                aria-hidden
-                style={{
-                  display: 'inline-block',
-                  width: 6,
-                  height: 6,
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #DE541E, #DF57BC)',
-                  flexShrink: 0,
-                }}
-              />
               {t('hero_kicker')}
             </span>
 
@@ -122,69 +111,39 @@ export function StaysHero() {
                 maxWidth: 600,
               }}
             >
-              {t('hero_title_line1')}<br />
-              {t('hero_title_line2')}
+              {trapAccents(t('hero_title_line1'))}<br />
+              {trapAccents(t('hero_title_line2'))}
             </h1>
 
-            {/* CTAs */}
-            <div className="flex items-center flex-wrap" style={{ gap: 30 }}>
-
-              {/* Primary — dark pill "Devenir partenaire" + chevron */}
-              <motion.div
-                whileHover={{
-                  y: -2,
-                  boxShadow: '0 14px 30px -6px rgba(223,87,188,.4), 0 8px 20px -6px rgba(0,0,0,.45)',
+            {/* CTA — single dark pill */}
+            <motion.div
+              whileHover={{
+                y: -2,
+                boxShadow: '0 14px 30px -6px rgba(223,87,188,.4), 0 8px 20px -6px rgba(0,0,0,.45)',
+              }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ duration: 0.2 }}
+              style={{ display: 'inline-block', borderRadius: 9999 }}
+            >
+              <Link
+                href="/stays#partner"
+                className="font-montserrat inline-flex items-center"
+                style={{
+                  background: '#0a0a0f',
+                  color: '#FBF9FF',
+                  borderRadius: 9999,
+                  padding: '15px 26px 15px 30px',
+                  fontSize: 15,
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
+                  gap: 8,
                 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ duration: 0.2 }}
-                style={{ display: 'inline-block', borderRadius: 9999 }}
               >
-                <Link
-                  href="/stays#partner"
-                  className="font-montserrat inline-flex items-center"
-                  style={{
-                    background: '#0a0a0f',
-                    color: '#FBF9FF',
-                    borderRadius: 9999,
-                    padding: '15px 26px 15px 30px',
-                    fontSize: 15,
-                    fontWeight: 600,
-                    textDecoration: 'none',
-                    whiteSpace: 'nowrap',
-                    gap: 8,
-                  }}
-                >
-                  {t('hero_cta_secondary')}
-                  <span style={{ opacity: 0.8 }}>›</span>
-                </Link>
-              </motion.div>
-
-              {/* Secondary — outline pill "Découvrir les résidences" + chevron */}
-              <motion.div
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ duration: 0.2 }}
-                className="inline-block rounded-full border border-white/40 bg-transparent hover:border-white/85 hover:bg-white/[.07] transition-colors duration-200"
-              >
-                <Link
-                  href="/stays#collection"
-                  className="font-montserrat inline-flex items-center"
-                  style={{
-                    color: '#FBF9FF',
-                    padding: '14px 25px 14px 29px',
-                    fontSize: 15,
-                    fontWeight: 600,
-                    textDecoration: 'none',
-                    whiteSpace: 'nowrap',
-                    gap: 8,
-                  }}
-                >
-                  {t('hero_cta_primary')}
-                  <span style={{ opacity: 0.8 }}>›</span>
-                </Link>
-              </motion.div>
-
-            </div>
+                {t('hero_cta_secondary')}
+                <span style={{ opacity: 0.8 }}>›</span>
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
 

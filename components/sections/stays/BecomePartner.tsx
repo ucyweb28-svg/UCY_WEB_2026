@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/Badge';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { stagger, fadeUp } from '@/lib/utils/animations';
 import { formatWhatsAppLink } from '@/lib/utils/formatWhatsAppLink';
+import { trapAccents } from '@/lib/utils/trapAccents';
 
 export function BecomePartner() {
   const t = useTranslations('stays');
@@ -30,9 +31,9 @@ export function BecomePartner() {
             className="font-trap font-extrabold leading-tight"
             style={{ color: '#FBF9FF', fontSize: 'clamp(1.75rem, 5vw, 3rem)' }}
           >
-            {t('partner_title_start')}
+            {trapAccents(t('partner_title_start'))}
             <span className="bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent animate-gradient">
-              {t('partner_title_highlight')}
+              {trapAccents(t('partner_title_highlight'))}
             </span>
           </motion.h2>
 

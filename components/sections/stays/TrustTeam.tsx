@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/Badge';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { stagger, fadeUp } from '@/lib/utils/animations';
+import { trapAccents } from '@/lib/utils/trapAccents';
 
 export function TrustTeam() {
   const t = useTranslations('stays');
@@ -47,9 +48,9 @@ export function TrustTeam() {
               className="font-trap font-extrabold leading-tight"
               style={{ color: '#FBF9FF', fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)' }}
             >
-              {t('trust_title_start')}
+              {trapAccents(t('trust_title_start'))}
               <span className="bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent animate-gradient">
-                {t('trust_title_highlight')}
+                {trapAccents(t('trust_title_highlight'))}
               </span>
             </motion.h2>
 
