@@ -4,6 +4,7 @@ import { buildPageMetadata, type Locale } from '@/components/SEO';
 import { StaysHero } from '@/components/sections/stays/StaysHero';
 import { CityNetwork } from '@/components/sections/stays/CityNetwork';
 import { Collection } from '@/components/sections/stays/Collection';
+import { BrandPillars } from '@/components/sections/stays/BrandPillars';
 import { TrustTeam } from '@/components/sections/stays/TrustTeam';
 import { NewBuildDesign } from '@/components/sections/stays/NewBuildDesign';
 import { BecomePartner } from '@/components/sections/stays/BecomePartner';
@@ -30,6 +31,7 @@ export default function StaysPage() {
       <StaysHero />
       <CityNetwork />
       <Collection />
+      <BrandPillars />
       <TrustTeam />
       <NewBuildDesign />
       <BecomePartner />

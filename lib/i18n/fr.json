@@ -477,7 +477,14 @@
     "partner_title_highlight": "votre bien.",
     "partner_body": "Un processus simple, sans surprise : audit de votre bien, mise en ligne sur Airbnb et Booking, gestion complète des voyageurs, reporting transparent. Vous gardez le contrôle, on s'occupe du reste.",
     "partner_cta_primary": "Devenir partenaire",
-    "partner_cta_secondary": "Écrire sur WhatsApp"
+    "partner_cta_secondary": "Écrire sur WhatsApp",
+
+    "pillars_u_word": "Unique",
+    "pillars_u_caption": "Chaque bien est choisi et géré comme s'il était le seul.",
+    "pillars_c_word": "Confiance",
+    "pillars_c_caption": "Un réseau de personnes que nous connaissons personnellement.",
+    "pillars_y_word": "Yonathan",
+    "pillars_y_caption": "L'homme derrière chaque décision, à chaque étape."
   },
   "service_detail": {
     "badge": "Services",

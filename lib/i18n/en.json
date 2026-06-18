@@ -477,7 +477,14 @@
     "partner_title_highlight": "your property.",
     "partner_body": "A simple, surprise-free process: property audit, listing on Airbnb and Booking, full guest management, transparent reporting. You stay in control, we handle the rest.",
     "partner_cta_primary": "Become a partner",
-    "partner_cta_secondary": "Message us on WhatsApp"
+    "partner_cta_secondary": "Message us on WhatsApp",
+
+    "pillars_u_word": "Unique",
+    "pillars_u_caption": "Every residence, chosen and managed like it's the only one.",
+    "pillars_c_word": "Confidence",
+    "pillars_c_caption": "A network of people we know personally.",
+    "pillars_y_word": "Yonathan",
+    "pillars_y_caption": "The man behind every decision, every step of the way."
   },
   "service_detail": {
     "badge": "Services",
