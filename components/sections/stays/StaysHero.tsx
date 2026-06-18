@@ -47,13 +47,13 @@ export function StaysHero() {
         }}
       />
 
-      {/* Top scrim — 52% height, fades downward */}
+      {/* Top scrim — 54% height, fades downward */}
       <div
         className="absolute top-0 left-0 right-0"
         style={{
           zIndex: 2,
-          height: '52%',
-          background: 'linear-gradient(to bottom, rgba(10,8,7,0.70) 0%, rgba(10,8,7,0.44) 60%, transparent 100%)',
+          height: '54%',
+          background: 'linear-gradient(to bottom, rgba(10,8,7,0.76) 0%, rgba(10,8,7,0.50) 60%, transparent 100%)',
         }}
       />
 
@@ -63,7 +63,7 @@ export function StaysHero() {
         style={{
           zIndex: 2,
           height: '42%',
-          background: 'linear-gradient(to top, rgba(10,8,7,0.68) 0%, rgba(10,8,7,0.32) 55%, transparent 100%)',
+          background: 'linear-gradient(to top, rgba(10,8,7,0.74) 0%, rgba(10,8,7,0.42) 55%, transparent 100%)',
         }}
       />
 
@@ -75,12 +75,12 @@ export function StaysHero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE_REVEAL }}
-          className="max-w-7xl mx-auto w-full px-6 lg:px-8"
-          style={{ paddingTop: 'clamp(84px, 16vh, 180px)' }}
+          className="max-w-7xl mx-auto w-full"
+          style={{ paddingTop: 48, paddingLeft: '5.5%', paddingRight: '5.5%' }}
         >
           <div
-            className="flex flex-col items-start gap-5 w-full lg:max-w-[38%]"
-            style={{ textShadow: '0 2px 16px rgba(10,8,7,.55)' }}
+            className="flex flex-col items-start gap-5 w-full lg:max-w-[47%]"
+            style={{ textShadow: '0 2px 18px rgba(10,8,7,.6)' }}
           >
 
             {/* Kicker pill */}
@@ -100,8 +100,13 @@ export function StaysHero() {
 
             {/* Title — two separate lines */}
             <h1
-              className="font-trap font-extrabold tracking-tight leading-[1.05]"
-              style={{ color: '#FBF9FF', fontSize: 'clamp(36px, 5.5vw, 68px)' }}
+              className="font-trap font-extrabold"
+              style={{
+                color: '#FBF9FF',
+                fontSize: 'clamp(28px, 3.1vw, 46px)',
+                lineHeight: 1.16,
+                letterSpacing: '-0.005em',
+              }}
             >
               {t('hero_title_line1')}<br />
               {t('hero_title_line2')}
@@ -110,7 +115,7 @@ export function StaysHero() {
             {/* Subtitle */}
             <p
               className="font-montserrat text-base leading-relaxed"
-              style={{ color: 'rgba(251,249,255,0.82)' }}
+              style={{ color: '#FBF9FF' }}
             >
               {t('hero_subtitle')}
             </p>
@@ -165,12 +170,12 @@ export function StaysHero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, ease: EASE_REVEAL, delay: 0.45 }}
-          className="mt-auto max-w-7xl mx-auto w-full px-6 lg:px-8"
-          style={{ paddingBottom: 40 }}
+          className="mt-auto max-w-7xl mx-auto w-full"
+          style={{ paddingBottom: 40, paddingLeft: '5.5%', paddingRight: '5.5%' }}
         >
           <div
             className="flex items-end justify-between"
-            style={{ textShadow: '0 2px 16px rgba(10,8,7,.55)' }}
+            style={{ textShadow: '0 2px 18px rgba(10,8,7,.6)' }}
           >
             {/* Three stat blocks — gap 36px */}
             <div className="flex items-start flex-wrap" style={{ gap: 36 }}>
@@ -184,7 +189,7 @@ export function StaysHero() {
                   </span>
                   <span
                     className="font-montserrat"
-                    style={{ fontSize: 12, color: 'rgba(251,249,255,0.62)', lineHeight: 1.35 }}
+                    style={{ fontSize: 12, color: 'rgba(251,249,255,0.80)', lineHeight: 1.35 }}
                   >
                     {label}
                   </span>
@@ -196,15 +201,17 @@ export function StaysHero() {
             <button
               type="button"
               onClick={() => document.getElementById('cities')?.scrollIntoView({ behavior: 'smooth' })}
-              className="font-montserrat inline-flex flex-col items-center gap-1 transition-opacity duration-200 hover:opacity-60 shrink-0"
+              className="font-montserrat inline-flex flex-col items-center gap-1 transition-opacity duration-200 hover:opacity-70 shrink-0 backdrop-blur-sm"
               style={{
                 fontSize: 11,
-                color: 'rgba(251,249,255,0.62)',
+                color: '#FBF9FF',
                 border: 'none',
-                background: 'none',
+                background: 'rgba(10,8,7,0.40)',
+                backdropFilter: 'blur(6px)',
                 cursor: 'pointer',
                 letterSpacing: '0.06em',
-                paddingBottom: 2,
+                padding: '8px 16px',
+                borderRadius: 9999,
               }}
             >
               {t('hero_stats_cta')}
