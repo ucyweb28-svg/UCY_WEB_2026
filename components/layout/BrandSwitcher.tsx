@@ -27,10 +27,10 @@ export function BrandSwitcher({ onDark = false }: BrandSwitcherProps) {
       className="inline-flex items-center shrink-0 transition-all duration-300"
       style={{
         border: onDark
-          ? '1px solid rgba(251,249,255,0.35)'
-          : '1px solid rgba(0,8,7,0.1)',
+          ? '0.5px solid rgba(251,249,255,0.28)'
+          : '0.5px solid rgba(0,8,7,0.09)',
         borderRadius: 20,
-        padding: 3,
+        padding: 2,
         gap: 1,
         backgroundColor: onDark
           ? 'rgba(251,249,255,0.08)'
@@ -47,12 +47,12 @@ export function BrandSwitcher({ onDark = false }: BrandSwitcherProps) {
           className={`${isStays ? 'font-trap' : 'font-sans'} transition-all duration-300`}
           style={{
             borderRadius: 20,
-            padding: '4px 12px',
-            fontSize: 13,
+            padding: '3px 9px',
+            fontSize: 11,
             fontWeight: active ? 600 : 400,
             color: active
               ? (onDark ? '#FBF9FF' : '#000807')
-              : (onDark ? 'rgba(251,249,255,0.55)' : '#9a9a95'),
+              : (onDark ? 'rgba(251,249,255,0.40)' : 'rgba(0,8,7,0.35)'),
             backgroundColor: active
               ? (onDark ? 'rgba(251,249,255,0.18)' : 'rgba(223,87,188,0.14)')
               : 'transparent',

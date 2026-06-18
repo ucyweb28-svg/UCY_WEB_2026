@@ -10,7 +10,7 @@ export function StaysHero() {
   const t = useTranslations('stays');
 
   return (
-    <section className="relative min-h-screen flex flex-col" style={{ backgroundColor: '#000807' }}>
+    <section className="relative min-h-screen flex flex-col justify-center" style={{ backgroundColor: '#000807' }}>
 
       {/* Background image */}
       <motion.div
@@ -48,20 +48,28 @@ export function StaysHero() {
         }}
       />
 
-      {/* Content — bottom third, left-aligned */}
+      {/* Content — vertically centred, left-aligned */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: EASE_REVEAL }}
-        className="relative mt-auto w-full"
-        style={{ zIndex: 3, paddingBottom: 80 }}
+        className="relative w-full"
+        style={{ zIndex: 3 }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col items-start text-left gap-5 md:gap-6 max-w-xl">
 
+            {/* Eyebrow pill */}
             <span
-              className="font-montserrat font-bold uppercase"
-              style={{ fontSize: 13, letterSpacing: '0.15em', color: '#DF57BC' }}
+              className="font-montserrat font-bold uppercase tracking-widest inline-flex items-center backdrop-blur-sm"
+              style={{
+                fontSize: 12,
+                color: '#FBF9FF',
+                background: 'rgba(0,8,7,0.30)',
+                borderRadius: 9999,
+                padding: '4px 12px',
+                letterSpacing: '0.14em',
+              }}
             >
               {t('hero_eyebrow')}
             </span>
@@ -75,13 +83,19 @@ export function StaysHero() {
 
             <p
               className="font-montserrat text-base md:text-lg leading-relaxed text-pretty"
-              style={{ color: 'rgba(251,249,255,0.85)' }}
+              style={{ color: 'rgba(251,249,255,0.82)' }}
             >
-              {t('hero_subtitle')}
+              {t.rich('hero_subtitle', {
+                b: (chunks) => (
+                  <strong style={{ color: '#FBF9FF', fontWeight: 600 }}>
+                    {chunks}
+                  </strong>
+                ),
+              })}
             </p>
 
             <div className="pt-2">
-              <GlowButton href="#partner" variant="white">
+              <GlowButton href="#partner" variant="white" className="font-montserrat">
                 {t('hero_cta_primary')}
               </GlowButton>
             </div>

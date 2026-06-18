@@ -60,7 +60,7 @@ export function GlowButton({ href, children, className, variant = 'dark', extern
     padding: '12px 28px',
     borderRadius: '100px',
     fontSize: 15,
-    fontWeight: 700,
+    fontWeight: 600,
     textDecoration: 'none',
     whiteSpace: 'nowrap',
     ...(isGradient && {

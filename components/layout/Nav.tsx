@@ -309,7 +309,7 @@ export function Nav() {
         {/* Desktop CTA + Mobile hamburger */}
         <div className="flex items-center gap-3">
           <div className="hidden lg:flex shrink-0">
-            <GlowButton href={ctaHref} variant={ctaVariant} onClick={ctaOnClick} className={isStaysPage ? 'font-trap' : undefined}>
+            <GlowButton href={ctaHref} variant={ctaVariant} onClick={ctaOnClick} className={isStaysPage ? 'font-montserrat' : undefined}>
               {ctaLabel}
             </GlowButton>
           </div>
@@ -394,7 +394,7 @@ export function Nav() {
                 <GlowButton
                   href={ctaHref}
                   variant="gradient"
-                  className={isStaysPage ? 'font-trap' : undefined}
+                  className={isStaysPage ? 'font-montserrat' : undefined}
                   onClick={() => {
                     setMenuOpen(false);
                     if (!isStaysPage) window.scrollTo({ top: 0, behavior: 'instant' });
