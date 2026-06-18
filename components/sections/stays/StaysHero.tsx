@@ -28,7 +28,7 @@ export function StaysHero() {
         className="absolute inset-0"
       >
         <Image
-          src="/images/stays/hero-bg.jpg"
+          src="/images/stays/hero-bg.png"
           alt="Façade rénovée en pierre de Jérusalem, Jaffa Road, golden hour"
           fill
           priority
