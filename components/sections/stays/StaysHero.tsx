@@ -76,7 +76,7 @@ export function StaysHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE_REVEAL }}
           className="max-w-7xl mx-auto w-full"
-          style={{ paddingTop: 48, paddingLeft: '5.5%', paddingRight: '5.5%' }}
+          style={{ paddingTop: 'clamp(112px, 25vh, 220px)', paddingLeft: '5.5%', paddingRight: '5.5%' }}
         >
           <div
             className="flex flex-col items-start gap-5 w-full lg:max-w-[47%]"
@@ -85,7 +85,7 @@ export function StaysHero() {
 
             {/* Kicker pill */}
             <span
-              className="font-montserrat font-bold uppercase tracking-widest inline-flex items-center backdrop-blur-sm"
+              className="font-montserrat font-bold uppercase tracking-widest inline-flex items-center gap-2 backdrop-blur-sm"
               style={{
                 fontSize: 12,
                 color: '#FBF9FF',
@@ -95,6 +95,17 @@ export function StaysHero() {
                 letterSpacing: '0.14em',
               }}
             >
+              <span
+                aria-hidden
+                style={{
+                  display: 'inline-block',
+                  width: 7,
+                  height: 7,
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #DE541E, #DF57BC)',
+                  flexShrink: 0,
+                }}
+              />
               {t('hero_kicker')}
             </span>
 
