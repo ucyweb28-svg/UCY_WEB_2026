@@ -1,5 +1,6 @@
 'use client';
 
+import { Fragment } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
@@ -86,11 +87,11 @@ export function StaysHero() {
             <span
               className="font-montserrat font-bold uppercase inline-flex items-center gap-2 backdrop-blur-sm"
               style={{
-                fontSize: 14,
+                fontSize: 12,
                 color: '#FBF9FF',
                 background: 'rgba(0,8,7,0.30)',
                 borderRadius: 9999,
-                padding: '4px 14px',
+                padding: '6px 14px 6px 10px',
                 letterSpacing: '0.18em',
                 marginBottom: 26,
               }}
@@ -99,8 +100,8 @@ export function StaysHero() {
                 aria-hidden
                 style={{
                   display: 'inline-block',
-                  width: 7,
-                  height: 7,
+                  width: 6,
+                  height: 6,
                   borderRadius: '50%',
                   background: 'linear-gradient(135deg, #DE541E, #DF57BC)',
                   flexShrink: 0,
@@ -114,10 +115,11 @@ export function StaysHero() {
               className="font-trap font-extrabold"
               style={{
                 color: '#FBF9FF',
-                fontSize: 'clamp(34px, 4.6vw, 68px)',
-                lineHeight: 1.08,
-                letterSpacing: '-0.01em',
+                fontSize: 'clamp(30px, 3.4vw, 54px)',
+                lineHeight: 1.12,
+                letterSpacing: '-0.008em',
                 marginBottom: 44,
+                maxWidth: 600,
               }}
             >
               {t('hero_title_line1')}<br />
@@ -180,23 +182,36 @@ export function StaysHero() {
             className="flex items-end justify-between"
             style={{ textShadow: '0 2px 18px rgba(10,8,7,.6)' }}
           >
-            {/* Three stat blocks — gap 36px */}
-            <div className="flex items-start flex-wrap" style={{ gap: 36 }}>
-              {stats.map(({ value, label }) => (
-                <div key={label} className="flex flex-col" style={{ gap: 3 }}>
-                  <span
-                    className="font-trap font-bold"
-                    style={{ fontSize: 'clamp(20px, 2.2vw, 28px)', color: '#FBF9FF', lineHeight: 1 }}
-                  >
-                    {value}
-                  </span>
-                  <span
-                    className="font-montserrat"
-                    style={{ fontSize: 12, color: 'rgba(251,249,255,0.80)', lineHeight: 1.35 }}
-                  >
-                    {label}
-                  </span>
-                </div>
+            {/* Three stat blocks with vertical separators */}
+            <div className="flex items-center" style={{ gap: 20 }}>
+              {stats.map(({ value, label }, index) => (
+                <Fragment key={label}>
+                  <div className="flex flex-col" style={{ gap: 3 }}>
+                    <span
+                      className="font-trap font-bold"
+                      style={{ fontSize: 22, color: '#FBF9FF', lineHeight: 1 }}
+                    >
+                      {value}
+                    </span>
+                    <span
+                      className="font-montserrat"
+                      style={{ fontSize: 11, color: 'rgba(251,249,255,0.80)', lineHeight: 1.35 }}
+                    >
+                      {label}
+                    </span>
+                  </div>
+                  {index < stats.length - 1 && (
+                    <div
+                      aria-hidden
+                      style={{
+                        width: 1,
+                        height: 28,
+                        background: 'rgba(255,255,255,0.30)',
+                        flexShrink: 0,
+                      }}
+                    />
+                  )}
+                </Fragment>
               ))}
             </div>
 
