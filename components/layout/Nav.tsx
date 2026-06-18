@@ -309,9 +309,38 @@ export function Nav() {
         {/* Desktop CTA + Mobile hamburger */}
         <div className="flex items-center gap-3">
           <div className="hidden lg:flex shrink-0">
-            <GlowButton href={ctaHref} variant={ctaVariant} onClick={ctaOnClick} className={isStaysPage ? 'font-montserrat' : undefined} style={isStaysPage ? { fontSize: 13, padding: '10px 22px' } : undefined}>
-              {ctaLabel}
-            </GlowButton>
+            {isStaysPage ? (
+              <motion.div
+                whileHover={{ y: -2, boxShadow: '0 14px 30px -6px rgba(223,87,188,.4), 0 8px 20px -6px rgba(0,0,0,.45)' }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ duration: 0.2 }}
+                style={{ display: 'inline-block', borderRadius: 999 }}
+              >
+                <Link
+                  href={ctaHref}
+                  className="font-montserrat inline-flex items-center"
+                  style={{
+                    background: '#0a0a0f',
+                    color: '#FBF9FF',
+                    borderRadius: 999,
+                    padding: '11px 20px 11px 22px',
+                    fontSize: 13,
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    whiteSpace: 'nowrap',
+                    gap: 8,
+                  }}
+                  onClick={ctaOnClick}
+                >
+                  {ctaLabel}
+                  <span style={{ opacity: 0.8 }}>›</span>
+                </Link>
+              </motion.div>
+            ) : (
+              <GlowButton href={ctaHref} variant={ctaVariant} onClick={ctaOnClick}>
+                {ctaLabel}
+              </GlowButton>
+            )}
           </div>
 
           <button
@@ -391,17 +420,45 @@ export function Nav() {
 
               {/* Mobile CTA */}
               <div className="shrink-0 flex justify-center px-6 md:px-8" style={{ marginTop: 24 }}>
-                <GlowButton
-                  href={ctaHref}
-                  variant="gradient"
-                  className={isStaysPage ? 'font-montserrat' : undefined}
-                  onClick={() => {
-                    setMenuOpen(false);
-                    if (!isStaysPage) window.scrollTo({ top: 0, behavior: 'instant' });
-                  }}
-                >
-                  {ctaLabel}
-                </GlowButton>
+                {isStaysPage ? (
+                  <motion.div
+                    whileHover={{ y: -2, boxShadow: '0 14px 30px -6px rgba(223,87,188,.4), 0 8px 20px -6px rgba(0,0,0,.45)' }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ duration: 0.2 }}
+                    style={{ display: 'inline-block', borderRadius: 999 }}
+                  >
+                    <Link
+                      href={ctaHref}
+                      className="font-montserrat inline-flex items-center"
+                      style={{
+                        background: '#0a0a0f',
+                        color: '#FBF9FF',
+                        borderRadius: 999,
+                        padding: '13px 22px 13px 26px',
+                        fontSize: 15,
+                        fontWeight: 600,
+                        textDecoration: 'none',
+                        whiteSpace: 'nowrap',
+                        gap: 8,
+                      }}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {ctaLabel}
+                      <span style={{ opacity: 0.8 }}>›</span>
+                    </Link>
+                  </motion.div>
+                ) : (
+                  <GlowButton
+                    href={ctaHref}
+                    variant="gradient"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      window.scrollTo({ top: 0, behavior: 'instant' });
+                    }}
+                  >
+                    {ctaLabel}
+                  </GlowButton>
+                )}
               </div>
 
               {/* Language toggle switch */}

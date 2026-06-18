@@ -129,11 +129,11 @@ export function StaysHero() {
             {/* CTAs */}
             <div className="flex items-center flex-wrap" style={{ gap: 30 }}>
 
-              {/* Primary — white pill → "Devenir partenaire" */}
+              {/* Primary — dark pill "Devenir partenaire" + chevron */}
               <motion.div
                 whileHover={{
                   y: -2,
-                  boxShadow: '0 8px 32px rgba(223,87,188,.40), 0 2px 10px rgba(0,0,0,.22)',
+                  boxShadow: '0 14px 30px -6px rgba(223,87,188,.4), 0 8px 20px -6px rgba(0,0,0,.45)',
                 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ duration: 0.2 }}
@@ -141,30 +141,48 @@ export function StaysHero() {
               >
                 <Link
                   href="/stays#partner"
-                  className="font-montserrat font-semibold"
+                  className="font-montserrat inline-flex items-center"
                   style={{
-                    display: 'inline-block',
-                    background: '#ffffff',
-                    color: '#000807',
-                    padding: '12px 28px',
+                    background: '#0a0a0f',
+                    color: '#FBF9FF',
                     borderRadius: 9999,
+                    padding: '15px 26px 15px 30px',
                     fontSize: 15,
+                    fontWeight: 600,
                     textDecoration: 'none',
                     whiteSpace: 'nowrap',
+                    gap: 8,
                   }}
                 >
                   {t('hero_cta_secondary')}
+                  <span style={{ opacity: 0.8 }}>›</span>
                 </Link>
               </motion.div>
 
-              {/* Ghost — "Découvrir les résidences →" */}
-              <Link
-                href="/stays#collection"
-                className="font-montserrat font-semibold inline-flex items-center gap-1.5 hover:underline transition-all duration-200"
-                style={{ color: '#FBF9FF', fontSize: 15, textDecoration: 'none' }}
+              {/* Secondary — outline pill "Découvrir les résidences" + chevron */}
+              <motion.div
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ duration: 0.2 }}
+                className="inline-block rounded-full border border-white/40 bg-transparent hover:border-white/85 hover:bg-white/[.07] transition-colors duration-200"
               >
-                {t('hero_cta_primary')} →
-              </Link>
+                <Link
+                  href="/stays#collection"
+                  className="font-montserrat inline-flex items-center"
+                  style={{
+                    color: '#FBF9FF',
+                    padding: '14px 25px 14px 29px',
+                    fontSize: 15,
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    whiteSpace: 'nowrap',
+                    gap: 8,
+                  }}
+                >
+                  {t('hero_cta_primary')}
+                  <span style={{ opacity: 0.8 }}>›</span>
+                </Link>
+              </motion.div>
 
             </div>
           </div>
