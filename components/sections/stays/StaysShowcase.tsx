@@ -2,23 +2,26 @@ import Image from 'next/image';
 
 export function StaysShowcase() {
   return (
-    <div className="flex flex-col md:flex-row gap-6 max-w-[1472px] mx-auto px-6 lg:px-[5.5%] pb-16">
-      <div className="flex-1">
+    <div className="grid grid-cols-12 gap-6 max-w-[1472px] mx-auto px-6 lg:px-[5.5%] pb-16 lg:h-[520px]">
+      <div className="col-span-12 lg:col-span-7 h-[300px] lg:h-full">
         <Image
           src="/images/stays/hero-bg.png"
           alt=""
-          width={736}
-          height={460}
-          className="w-full h-[300px] md:h-[460px] object-cover rounded-2xl"
+          width={960}
+          height={520}
+          className="w-full h-full object-cover object-center rounded-2xl"
+          priority
         />
       </div>
-      <div className="flex-1">
+      <div className="col-span-12 lg:col-span-5 h-[300px] lg:h-full">
+        {/* TODO: remplacer par un vrai <video> en crossfade une fois tes vidéos prêtes,
+            même logique que VideoCarousel sur Studio (AnimatePresence, overlay gradient, dot indicators) */}
         <Image
           src="/images/stays/hero-bg.png"
           alt=""
-          width={736}
-          height={460}
-          className="w-full h-[300px] md:h-[460px] object-cover rounded-2xl"
+          width={680}
+          height={520}
+          className="w-full h-full object-cover object-center rounded-2xl"
         />
       </div>
     </div>

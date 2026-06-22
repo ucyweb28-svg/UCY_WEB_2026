@@ -20,7 +20,7 @@ export function StaysHero() {
         className="font-trap font-extrabold text-[clamp(36px,5.4vw,64px)] leading-[1.1] tracking-[-0.01em]"
         style={{ color: '#000807' }}
       >
-        {trapAccents(t('titleLine1'))}{' '}
+        {trapAccents(t('titleLine1'))}<br />
         <span className="bg-gradient-to-r from-[#DE541E] via-[#DF57BC] to-[#3626A7] bg-clip-text text-transparent">
           {trapAccents(t('titleLine2'))}
         </span>

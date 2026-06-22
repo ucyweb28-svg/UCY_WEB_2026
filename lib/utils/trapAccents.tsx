@@ -41,7 +41,7 @@ export function trapAccents(text: string): ReactNode[] {
     if (base !== undefined) {
       if (plain) { result.push(plain); plain = ''; }
       result.push(
-        <span key={i} style={{ position: 'relative', display: 'inline-block' }}>
+        <span key={i} style={{ position: 'relative', display: 'inline' }}>
           {base}
           <i aria-hidden={true} style={barStyle} />
         </span>
