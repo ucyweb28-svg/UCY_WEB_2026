@@ -15,8 +15,31 @@
 }
 
 /* Stays typography system — Trap (local) + Montserrat (Google) */
+
+/*
+ * Montserrat fills in accented French glyphs for Trap headings.
+ * Browser picks TrapAccents for chars in unicode-range, falls through
+ * to var(--font-trap) for everything else. Must stay before @utility.
+ */
+@font-face {
+  font-family: 'TrapAccents';
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Montserrat-Latin.woff2') format('woff2');
+  unicode-range: U+00C0,U+00C2,U+00C7-U+00CB,U+00CE-U+00CF,U+00D4,U+00D9,U+00DB-U+00DC,U+00E0,U+00E2,U+00E7-U+00EB,U+00EE-U+00EF,U+00F4,U+00F9,U+00FB-U+00FC,U+0152-U+0153;
+}
+@font-face {
+  font-family: 'TrapAccents';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Montserrat-Latin.woff2') format('woff2');
+  unicode-range: U+00C0,U+00C2,U+00C7-U+00CB,U+00CE-U+00CF,U+00D4,U+00D9,U+00DB-U+00DC,U+00E0,U+00E2,U+00E7-U+00EB,U+00EE-U+00EF,U+00F4,U+00F9,U+00FB-U+00FC,U+0152-U+0153;
+}
+
 @utility font-trap {
-  font-family: var(--font-trap), system-ui, sans-serif;
+  font-family: 'TrapAccents', var(--font-trap), system-ui, sans-serif;
 }
 @utility font-montserrat {
   font-family: var(--font-montserrat), system-ui, sans-serif;

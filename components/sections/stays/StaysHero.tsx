@@ -26,7 +26,7 @@ export function StaysHero() {
           <span
             className="bg-gradient-to-r from-[#DE541E] via-[#DF57BC] to-[#3626A7] bg-clip-text text-transparent"
             style={{
-              fontFamily: 'var(--font-trap), system-ui, sans-serif',
+              fontFamily: "'TrapAccents', var(--font-trap), system-ui, sans-serif",
               fontWeight: 800,
             }}
           >
