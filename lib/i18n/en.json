@@ -430,6 +430,13 @@
     "meta_title": "UCY Stays | Short-term Rentals in Jerusalem & Netanya",
     "meta_description": "UCY Stays manages your property for short-term rental in Jerusalem and Netanya. Audit, Airbnb & Booking listing, full management by people you can trust.",
 
+    "hero": {
+      "titleLine1": "Stays that feel",
+      "titleLine2": "like home.",
+      "subtitle": "A collection of premium residences managed directly, in the heart of Jerusalem.",
+      "ctaPrimary": "Become a partner",
+      "ctaSecondary": "Explore the residences"
+    },
     "hero_eyebrow": "UCY Stays",
     "hero_kicker": "UCY Stays — Jerusalem",
     "hero_title_start": "Your property, managed like ",

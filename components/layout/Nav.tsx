@@ -174,13 +174,9 @@ export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const prevScrollY = useRef(0);
 
-  // Transparent overlay mode: stays page before any scroll
-  const isTransparent = isStaysPage && !scrolled;
-
   const activeNavLinks = isStaysPage ? STAYS_NAV_LINKS : STUDIO_NAV_LINKS;
   const ctaHref = isStaysPage ? '/stays#partner' : '/contact';
   const ctaLabel = isStaysPage ? t('cta_stays') : t('cta');
-  const ctaVariant = isTransparent ? 'white' : 'gradient';
   const ctaOnClick = isStaysPage
     ? undefined
     : () => window.scrollTo({ top: 0, behavior: 'instant' });
@@ -233,12 +229,9 @@ export function Nav() {
     }, 100);
   };
 
-  // Header background class
-  const headerBgClass = isTransparent
-    ? 'bg-transparent'
-    : isHomePage && scrolled
-      ? 'bg-[#FBF9FF]/95 backdrop-blur-md'
-      : 'bg-[#FBF9FF]';
+  const headerBgClass = isHomePage && scrolled
+    ? 'bg-[#FBF9FF]/95 backdrop-blur-md'
+    : 'bg-[#FBF9FF]';
 
   return (
     <header
@@ -260,14 +253,10 @@ export function Nav() {
             href="/"
             className="select-none"
             onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
-            style={{
-              filter: isTransparent ? 'brightness(0) invert(1)' : 'none',
-              transition: 'filter 0.3s ease',
-            }}
           >
             <Logo />
           </Link>
-          <BrandSwitcher onDark={isTransparent} />
+          <BrandSwitcher />
         </div>
 
         {/* Desktop links + language switcher */}
@@ -283,13 +272,8 @@ export function Nav() {
                   className={[
                     `${isStaysPage ? 'font-montserrat' : 'font-sans'} text-sm transition-colors duration-300`,
                     isActive ? 'font-semibold' : 'font-medium',
-                    isTransparent
-                      ? 'opacity-90 hover:opacity-100'
-                      : isActive
-                        ? 'text-accent'
-                        : 'text-black hover:text-accent',
+                    isActive ? 'text-accent' : 'text-black hover:text-accent',
                   ].join(' ')}
-                  style={isTransparent ? { color: '#FBF9FF' } : {}}
                 >
                   {t(key)}
                 </a>
@@ -301,7 +285,6 @@ export function Nav() {
             locale={locale}
             onSwitch={switchLocale}
             size="minimal"
-            onDark={isTransparent}
             fontClass={isStaysPage ? 'font-montserrat' : 'font-sans'}
           />
         </div>
@@ -309,44 +292,15 @@ export function Nav() {
         {/* Desktop CTA + Mobile hamburger */}
         <div className="flex items-center gap-3">
           <div className="hidden lg:flex shrink-0">
-            {isStaysPage ? (
-              <motion.div
-                whileHover={{ y: -2, boxShadow: '0 14px 30px -6px rgba(223,87,188,.4), 0 8px 20px -6px rgba(0,0,0,.45)' }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ duration: 0.2 }}
-                style={{ display: 'inline-block', borderRadius: 999 }}
-              >
-                <Link
-                  href={ctaHref}
-                  className="font-montserrat inline-flex items-center"
-                  style={{
-                    background: '#0a0a0f',
-                    color: '#FBF9FF',
-                    borderRadius: 999,
-                    padding: '11px 20px 11px 22px',
-                    fontSize: 13,
-                    fontWeight: 600,
-                    textDecoration: 'none',
-                    whiteSpace: 'nowrap',
-                    gap: 8,
-                  }}
-                  onClick={ctaOnClick}
-                >
-                  {ctaLabel}
-                  <span style={{ opacity: 0.8 }}>›</span>
-                </Link>
-              </motion.div>
-            ) : (
-              <GlowButton href={ctaHref} variant={ctaVariant} onClick={ctaOnClick}>
-                {ctaLabel}
-              </GlowButton>
-            )}
+            <GlowButton href={ctaHref} variant="gradient" onClick={ctaOnClick}>
+              {ctaLabel}
+            </GlowButton>
           </div>
 
           <button
             onClick={() => setMenuOpen((v) => !v)}
             className="lg:hidden p-2 -mr-2 cursor-pointer transition-colors duration-300"
-            style={{ color: isTransparent ? '#FBF9FF' : '#000807' }}
+            style={{ color: '#000807' }}
             aria-label={menuOpen ? t('menu_close') : t('menu_open')}
             aria-expanded={menuOpen}
           >
@@ -420,45 +374,16 @@ export function Nav() {
 
               {/* Mobile CTA */}
               <div className="shrink-0 flex justify-center px-6 md:px-8" style={{ marginTop: 24 }}>
-                {isStaysPage ? (
-                  <motion.div
-                    whileHover={{ y: -2, boxShadow: '0 14px 30px -6px rgba(223,87,188,.4), 0 8px 20px -6px rgba(0,0,0,.45)' }}
-                    whileTap={{ scale: 0.97 }}
-                    transition={{ duration: 0.2 }}
-                    style={{ display: 'inline-block', borderRadius: 999 }}
-                  >
-                    <Link
-                      href={ctaHref}
-                      className="font-montserrat inline-flex items-center"
-                      style={{
-                        background: '#0a0a0f',
-                        color: '#FBF9FF',
-                        borderRadius: 999,
-                        padding: '13px 22px 13px 26px',
-                        fontSize: 15,
-                        fontWeight: 600,
-                        textDecoration: 'none',
-                        whiteSpace: 'nowrap',
-                        gap: 8,
-                      }}
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      {ctaLabel}
-                      <span style={{ opacity: 0.8 }}>›</span>
-                    </Link>
-                  </motion.div>
-                ) : (
-                  <GlowButton
-                    href={ctaHref}
-                    variant="gradient"
-                    onClick={() => {
-                      setMenuOpen(false);
-                      window.scrollTo({ top: 0, behavior: 'instant' });
-                    }}
-                  >
-                    {ctaLabel}
-                  </GlowButton>
-                )}
+                <GlowButton
+                  href={ctaHref}
+                  variant="gradient"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    if (!isStaysPage) window.scrollTo({ top: 0, behavior: 'instant' });
+                  }}
+                >
+                  {ctaLabel}
+                </GlowButton>
               </div>
 
               {/* Language toggle switch */}
