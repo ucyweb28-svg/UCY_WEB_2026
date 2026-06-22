@@ -17,7 +17,7 @@ const ACCENT_MAP: Record<string, string> = {
 
 const barStyle: CSSProperties = {
   position: 'absolute',
-  top: '-0.32em',
+  top: '-0.18em',
   left: '50%',
   transform: 'translateX(-50%)',
   width: '0.42em',
@@ -41,7 +41,7 @@ export function trapAccents(text: string): ReactNode[] {
     if (base !== undefined) {
       if (plain) { result.push(plain); plain = ''; }
       result.push(
-        <span key={i} style={{ position: 'relative', display: 'inline' }}>
+        <span key={i} style={{ position: 'relative', display: 'inline-block' }}>
           {base}
           <i aria-hidden={true} style={barStyle} />
         </span>

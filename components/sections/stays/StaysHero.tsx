@@ -22,7 +22,7 @@ export function StaysHero() {
       >
         {trapAccents(t('titleLine1'))}<br />
         <span className="bg-gradient-to-r from-[#DE541E] via-[#DF57BC] to-[#3626A7] bg-clip-text text-transparent">
-          {trapAccents(t('titleLine2'))}
+          {t('titleLine2')}
         </span>
       </motion.h1>
 
