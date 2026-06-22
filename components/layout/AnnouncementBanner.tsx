@@ -7,12 +7,12 @@ import { X } from '@phosphor-icons/react';
 
 export function AnnouncementBanner() {
   const t = useTranslations('banner');
+  const tStays = useTranslations('stays');
   const pathname = usePathname();
   const [visible, setVisible] = useState(true);
 
   const isStays = (pathname ?? '').split('/').includes('stays');
 
-  if (isStays) return null;
   if (!visible) return null;
 
   return (
@@ -21,7 +21,7 @@ export function AnnouncementBanner() {
       style={{ backgroundColor: '#000807' }}
     >
       <p className="font-sans text-[11px] md:text-[13px] text-white text-center truncate pr-8">
-        {isStays ? t('stays') : t('studio')}
+        {isStays ? tStays('announcement') : t('studio')}
       </p>
       <button
         onClick={() => {
