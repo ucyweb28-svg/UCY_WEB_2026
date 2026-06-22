@@ -7,7 +7,6 @@ import { ArrowUpRight } from '@phosphor-icons/react';
 import { Badge } from '@/components/ui/Badge';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { stagger, fadeUp } from '@/lib/utils/animations';
-import { trapAccents } from '@/lib/utils/trapAccents';
 
 type Property = {
   id: string;
@@ -69,7 +68,7 @@ export function Collection() {
             className="font-trap font-extrabold leading-tight"
             style={{ color: '#000807', fontSize: 'clamp(1.5rem, 5vw, 2.75rem)' }}
           >
-            {trapAccents(t('collection_title_start'))}
+            {t('collection_title_start')}
             <span
               style={{
                 background: 'linear-gradient(90deg, #3626A7, #DF57BC, #DE541E)',
@@ -78,7 +77,7 @@ export function Collection() {
                 backgroundClip: 'text',
               }}
             >
-              {trapAccents(t('collection_title_highlight'))}
+              {t('collection_title_highlight')}
             </span>
           </motion.h2>
           <motion.p
@@ -148,7 +147,7 @@ export function Collection() {
                       {t(typeKey)}
                     </span>
                     <h3 className="font-trap font-bold text-lg" style={{ color: '#000807' }}>
-                      {trapAccents(t(nameKey))}
+                      {t(nameKey)}
                     </h3>
                   </div>
                   {active && (

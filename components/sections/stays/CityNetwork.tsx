@@ -6,7 +6,6 @@ import { MapPin } from '@phosphor-icons/react';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { Badge } from '@/components/ui/Badge';
 import { stagger, fadeUp } from '@/lib/utils/animations';
-import { trapAccents } from '@/lib/utils/trapAccents';
 
 type CityDef = {
   id: string;
@@ -42,9 +41,9 @@ export function CityNetwork() {
             className="font-trap font-extrabold leading-tight"
             style={{ color: '#FBF9FF', fontSize: 'clamp(1.5rem, 5vw, 2.75rem)' }}
           >
-            {trapAccents(t('cities_title_start'))}
+            {t('cities_title_start')}
             <span className="bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent animate-gradient">
-              {trapAccents(t('cities_title_highlight'))}
+              {t('cities_title_highlight')}
             </span>
           </motion.h2>
         </motion.div>
@@ -78,7 +77,7 @@ export function CityNetwork() {
                     color: active ? '#FBF9FF' : 'rgba(255,255,255,0.3)',
                   }}
                 >
-                  {trapAccents(t(nameKey))}
+                  {t(nameKey)}
                 </span>
                 <span
                   className="font-montserrat font-bold uppercase"

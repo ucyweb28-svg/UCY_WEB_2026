@@ -7,7 +7,6 @@ import { Badge } from '@/components/ui/Badge';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { stagger, fadeUp } from '@/lib/utils/animations';
-import { trapAccents } from '@/lib/utils/trapAccents';
 
 export function NewBuildDesign() {
   const t = useTranslations('stays');
@@ -33,7 +32,7 @@ export function NewBuildDesign() {
               className="font-trap font-extrabold leading-tight"
               style={{ color: '#000807', fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)' }}
             >
-              {trapAccents(t('newbuild_title_start'))}
+              {t('newbuild_title_start')}
               <span
                 style={{
                   background: 'linear-gradient(90deg, #3626A7, #DF57BC, #DE541E)',
@@ -42,7 +41,7 @@ export function NewBuildDesign() {
                   backgroundClip: 'text',
                 }}
               >
-                {trapAccents(t('newbuild_title_highlight'))}
+                {t('newbuild_title_highlight')}
               </span>
             </motion.h2>
 

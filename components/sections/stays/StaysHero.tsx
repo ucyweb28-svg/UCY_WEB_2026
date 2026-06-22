@@ -3,14 +3,12 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { trapAccents } from '@/lib/utils/trapAccents';
-
 export function StaysHero() {
   const t = useTranslations('stays.hero');
 
   return (
     <section
-      className="text-center px-6 pt-8 pb-14 max-w-[1000px] mx-auto"
+      className="text-center px-6 pt-4 pb-8 max-w-[1000px] mx-auto"
       style={{ backgroundColor: '#FBF9FF' }}
     >
       <motion.h1
@@ -20,14 +18,14 @@ export function StaysHero() {
         className="font-trap font-extrabold text-[clamp(36px,5.4vw,64px)] leading-[1.1] tracking-[-0.01em]"
         style={{ color: '#000807' }}
       >
-        {trapAccents(t('titleLine1'))}{' '}
+        {t('titleLine1')}{' '}
         <span className="font-trap font-extrabold bg-gradient-to-r from-[#DE541E] via-[#DF57BC] to-[#3626A7] bg-clip-text text-transparent">
           {t('titleLine2')}
         </span>
       </motion.h1>
 
       <p
-        className="mt-6 mb-8 text-[17px] leading-relaxed"
+        className="mt-3 mb-5 text-[17px] leading-relaxed"
         style={{ color: 'rgba(0,8,7,0.55)' }}
       >
         {t('subtitle')}
