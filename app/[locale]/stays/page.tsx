@@ -3,7 +3,6 @@ import { getTranslations } from 'next-intl/server';
 import { buildPageMetadata, type Locale } from '@/components/SEO';
 import { StaysHero } from '@/components/sections/stays/StaysHero';
 import { StaysShowcase } from '@/components/sections/stays/StaysShowcase';
-import { CityNetwork } from '@/components/sections/stays/CityNetwork';
 import { Collection } from '@/components/sections/stays/Collection';
 import { BrandPillars } from '@/components/sections/stays/BrandPillars';
 import { TrustTeam } from '@/components/sections/stays/TrustTeam';
@@ -31,7 +30,6 @@ export default function StaysPage() {
     <main className="pt-[104px]" style={{ backgroundColor: '#FBF9FF' }}>
       <StaysHero />
       <StaysShowcase />
-      <CityNetwork />
       <Collection />
       <BrandPillars />
       <TrustTeam />

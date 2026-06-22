@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { STAYS_CONTAINER } from '@/lib/constants/staysLayout';
 
 // Replace srcs with /images/stays/showcase/apartment-{n}.jpg once files are deposited
 const CAROUSEL_IMAGES = [
@@ -66,8 +67,8 @@ function ImageCarousel() {
 
 export function StaysShowcase() {
   return (
-    <div className="grid grid-cols-12 gap-6 max-w-[1472px] mx-auto px-6 lg:px-[5.5%] lg:h-[580px]">
-      <div className="col-span-12 lg:col-span-7 h-[300px] lg:h-full">
+    <div className={`grid grid-cols-12 gap-6 lg:h-[440px] ${STAYS_CONTAINER}`}>
+      <div className="col-span-12 lg:col-span-7 h-[280px] lg:h-full">
         <Image
           src="/images/stays/hero-bg.png"
           alt=""
@@ -77,7 +78,7 @@ export function StaysShowcase() {
           priority
         />
       </div>
-      <div className="col-span-12 lg:col-span-5 h-[300px] lg:h-full">
+      <div className="col-span-12 lg:col-span-5 h-[280px] lg:h-full">
         <ImageCarousel />
       </div>
     </div>
