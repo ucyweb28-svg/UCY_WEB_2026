@@ -10,6 +10,14 @@ const nextConfig = {
   experimental: {
     scrollRestoration: false,
   },
+  async redirects() {
+    return [
+      { source: '/estimer-mon-projet', destination: '/devis', permanent: true },
+      { source: '/agence-web-tel-aviv', destination: '/', permanent: true },
+      { source: '/solutions', destination: '/', permanent: true },
+      { source: '/lagence', destination: '/', permanent: true },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);
