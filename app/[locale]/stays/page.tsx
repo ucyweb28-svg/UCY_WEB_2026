@@ -28,7 +28,7 @@ export async function generateMetadata({
 
 export default function StaysPage() {
   return (
-    <main style={{ backgroundColor: '#FBF9FF' }}>
+    <main className="pt-[104px]" style={{ backgroundColor: '#FBF9FF' }}>
       <StaysHero />
       <StaysShowcase />
       <CityNetwork />

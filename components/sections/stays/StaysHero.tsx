@@ -10,7 +10,7 @@ export function StaysHero() {
 
   return (
     <section
-      className="text-center px-6 pt-16 pb-14 max-w-[1000px] mx-auto"
+      className="text-center px-6 pt-8 pb-14 max-w-[1000px] mx-auto"
       style={{ backgroundColor: '#FBF9FF' }}
     >
       <motion.h1
@@ -20,8 +20,8 @@ export function StaysHero() {
         className="font-trap font-extrabold text-[clamp(36px,5.4vw,64px)] leading-[1.1] tracking-[-0.01em]"
         style={{ color: '#000807' }}
       >
-        {trapAccents(t('titleLine1'))}<br />
-        <span className="bg-gradient-to-r from-[#DE541E] via-[#DF57BC] to-[#3626A7] bg-clip-text text-transparent">
+        {trapAccents(t('titleLine1'))}{' '}
+        <span className="font-trap font-extrabold bg-gradient-to-r from-[#DE541E] via-[#DF57BC] to-[#3626A7] bg-clip-text text-transparent">
           {t('titleLine2')}
         </span>
       </motion.h1>
