@@ -68,16 +68,37 @@ export async function OrganizationSchema({ locale }: { locale: Locale }) {
     '@type': 'ProfessionalService',
     name: SITE_NAME,
     url: SITE_URL,
-    logo: `${SITE_URL}/favicon.svg`,
+    logo: `${SITE_URL}/logo.svg`,
     description: t('home_description'),
-    telephone: '+972587467029',
-    priceRange: '€€',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Jerusalem',
-      addressCountry: 'IL',
-    },
-    areaServed: ['IL', 'FR'],
+    address: [
+      {
+        '@type': 'PostalAddress',
+        addressLocality: 'Paris',
+        addressCountry: 'FR',
+      },
+      {
+        '@type': 'PostalAddress',
+        addressLocality: 'Jerusalem',
+        addressCountry: 'IL',
+      },
+    ],
+    areaServed: ['FR', 'IL'],
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: '+33656684640',
+        contactType: 'customer service',
+        availableLanguage: 'French',
+        areaServed: 'FR',
+      },
+      {
+        '@type': 'ContactPoint',
+        telephone: '+972587467029',
+        contactType: 'customer service',
+        availableLanguage: 'English',
+        areaServed: 'IL',
+      },
+    ],
     founder: {
       '@type': 'Person',
       name: 'Yonathan Chetrit',
