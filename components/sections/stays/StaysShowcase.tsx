@@ -5,13 +5,14 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { STAYS_CONTAINER } from '@/lib/constants/staysLayout';
 
-// Replace srcs with /images/stays/showcase/apartment-{n}.jpg once files are deposited
 const CAROUSEL_IMAGES = [
-  '/images/stays/hero-bg.png',
-  '/images/stays/hero-bg.png',
-  '/images/stays/hero-bg.png',
-  '/images/stays/hero-bg.png',
-  '/images/stays/hero-bg.png',
+  '/images/stays/Studios_001.jpg',
+  '/images/stays/Studios_005.jpg',
+  '/images/stays/Studios_008.jpg',
+  '/images/stays/Studios_015.jpg',
+  '/images/stays/Studios_018.jpg',
+  '/images/stays/Studios_023.jpg',
+  '/images/stays/airbnb-3.jpg',
 ];
 
 function ImageCarousel() {
