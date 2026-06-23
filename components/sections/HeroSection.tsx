@@ -64,11 +64,11 @@ function VideoCarousel() {
 
 export function HeroSection() {
   const t = useTranslations('hero');
-  const [marginTop, setMarginTop] = useState(104);
+  const [marginTop, setMarginTop] = useState(124);
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    const onBannerClosed = () => setMarginTop(64);
+    const onBannerClosed = () => setMarginTop(84);
     window.addEventListener('banner-closed', onBannerClosed);
     return () => window.removeEventListener('banner-closed', onBannerClosed);
   }, []);

@@ -245,7 +245,7 @@ export function Nav() {
       }}
     >
       {/* Main bar */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 h-12 md:h-[72px] flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 h-14 lg:h-[84px] flex items-center justify-between">
 
         {/* Logo + Brand switcher */}
         <div className="flex items-center" style={{ gap: 14 }}>
@@ -323,7 +323,7 @@ export function Nav() {
               style={{ backgroundColor: '#FBF9FF' }}
             >
               {/* Top bar: logo + brand switcher + close */}
-              <div className="shrink-0 flex items-center justify-between px-6 md:px-8 h-[72px]">
+              <div className="shrink-0 flex items-center justify-between px-6 lg:px-8 h-14 lg:h-[84px]">
                 <div className="flex items-center" style={{ gap: 12 }}>
                   <Link
                     href="/"
