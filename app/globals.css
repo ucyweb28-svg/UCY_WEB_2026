@@ -45,6 +45,39 @@
   font-family: var(--font-montserrat), system-ui, sans-serif;
 }
 
+/* ─── Design System — Échelle typographique ────────────────────────────────
+ * H1 : 88px desktop / 64px tablette (~930px) / 40px mobile
+ * H2 : 52px desktop / 40px tablette (~976px) / 28px mobile
+ * H3 section : 40px desktop / 30px tablette (~968px) / 20px mobile
+ * card-title : 18px (constant) — mêmes balises <h3> mais échelle UI distincte
+ * Exception documentée : AISection.tsx garde clamp(24px,2.8vw,40px) pour son H2
+ *   (contrainte de layout 2 colonnes, commit 7de5f3f — ne pas migrer vers ds-h2)
+ * ────────────────────────────────────────────────────────────────────────── */
+@utility ds-h1 {
+  font-size: clamp(40px, 6.9vw, 88px);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+@utility ds-h2 {
+  font-size: clamp(28px, 4.1vw, 52px);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+@utility ds-h3 {
+  font-size: clamp(20px, 3.1vw, 40px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Titres de cards — sémantiquement <h3> mais visuellement à l'échelle UI */
+@utility card-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
 /* shadcn/ui — base radius token (components/shadcn only) */
 :root {
   --radius: 0.625rem;
@@ -142,22 +175,26 @@ body {
   animation: gradientShift 3s infinite;
 }
 
+/* Design system — sections verticales (py-16 lg:py-24 / py-24 lg:py-32) */
 .section {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 64px;
+  padding-bottom: 64px;
 }
 
-.section-b {
-  padding-bottom: 120px;
-}
-
-@media (max-width: 768px) {
+@media (min-width: 1024px) {
   .section {
-    padding-top: 56px;
-    padding-bottom: 56px;
+    padding-top: 96px;
+    padding-bottom: 96px;
   }
+}
 
+/* .section-b = bottom padding renforcé pour les ouvertures de page (py-24 lg:py-32) */
+.section-b {
+  padding-bottom: 96px;
+}
+
+@media (min-width: 1024px) {
   .section-b {
-    padding-bottom: 72px;
+    padding-bottom: 128px;
   }
 }
