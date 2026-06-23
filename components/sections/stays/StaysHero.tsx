@@ -43,14 +43,14 @@ export function StaysHero() {
         <div className="flex items-center justify-center gap-7 flex-wrap">
           <Link
             href="#devenir-partenaire"
-            className="font-montserrat rounded-full px-8 py-4 text-[15px] font-semibold transition-[box-shadow,transform] duration-300 hover:shadow-[0_14px_28px_-6px_rgba(10,8,7,0.35)] hover:-translate-y-0.5"
+            className="font-montserrat rounded-full px-8 py-4 text-base font-semibold transition-[box-shadow,transform] duration-300 hover:shadow-[0_14px_28px_-6px_rgba(10,8,7,0.35)] hover:-translate-y-0.5"
             style={{ backgroundColor: '#000807', color: '#FBF9FF' }}
           >
             {t('ctaPrimary')}
           </Link>
           <Link
             href="#residences"
-            className="font-montserrat text-[15px] font-semibold border-b border-transparent pb-0.5 transition-colors duration-200 hover:border-[rgba(0,8,7,0.4)]"
+            className="font-montserrat text-base font-semibold border-b border-transparent pb-0.5 transition-colors duration-200 hover:border-[rgba(0,8,7,0.4)]"
             style={{ color: '#000807' }}
           >
             {t('ctaSecondary')}

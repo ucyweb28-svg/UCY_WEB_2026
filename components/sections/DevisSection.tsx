@@ -37,7 +37,7 @@ const gradientButton: CSSProperties = {
   animation: 'gradientShift 4s ease infinite',
   borderRadius: 100,
   color: 'white',
-  fontSize: 14,
+  fontSize: 16,
   padding: '14px 0',
   border: 'none',
 };
@@ -463,7 +463,7 @@ export function DevisSection() {
                 type="button"
                 onClick={() => goToStep(1)}
                 className="flex-1 flex items-center justify-center font-heading font-semibold"
-                style={{ background: 'transparent', border: '1px solid #e4e1d8', borderRadius: 100, color: '#0a0a0f', fontSize: 14, padding: '14px 0', cursor: 'pointer' }}
+                style={{ background: 'transparent', border: '1px solid #e4e1d8', borderRadius: 100, color: '#0a0a0f', fontSize: 16, padding: '14px 0', cursor: 'pointer' }}
               >
                 {t('step2_back')}
               </button>
@@ -572,7 +572,7 @@ export function DevisSection() {
               type="button"
               onClick={() => goToStep(2)}
               className="flex items-center justify-center font-heading font-semibold w-full"
-              style={{ background: 'transparent', border: '1px solid #e4e1d8', borderRadius: 100, color: '#0a0a0f', fontSize: 14, padding: '14px 0', cursor: 'pointer' }}
+              style={{ background: 'transparent', border: '1px solid #e4e1d8', borderRadius: 100, color: '#0a0a0f', fontSize: 16, padding: '14px 0', cursor: 'pointer' }}
             >
               {t('step3_back')}
             </button>

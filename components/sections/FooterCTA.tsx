@@ -168,7 +168,7 @@ export function FooterCTA() {
 
             <div
               className="flex overflow-hidden"
-              style={{ backgroundColor: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 10 }}
+              style={{ backgroundColor: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 100 }}
             >
               <input
                 type="email"

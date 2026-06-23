@@ -211,14 +211,14 @@ export function PricingSection() {
                           background: 'linear-gradient(135deg, #3626A7 0%, #DF57BC 100%)',
                           color: 'white',
                           padding: '10px 0',
-                          fontSize: 13,
+                          fontSize: 16,
                           border: '1px solid transparent',
                         }
                       : {
                           background: 'transparent',
                           color: '#0a0a0f',
                           padding: '10px 0',
-                          fontSize: 13,
+                          fontSize: 16,
                           border: '1px solid #e4e1d8',
                         }
                   }

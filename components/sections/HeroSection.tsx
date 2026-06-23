@@ -144,7 +144,7 @@ export function HeroSection() {
                   color: '#fff',
                   padding: '14px 32px',
                   borderRadius: '100px',
-                  fontSize: 15,
+                  fontSize: 16,
                   fontWeight: 700,
                   textDecoration: 'none',
                   whiteSpace: 'nowrap',

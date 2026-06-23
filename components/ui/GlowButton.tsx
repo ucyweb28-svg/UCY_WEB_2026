@@ -14,6 +14,7 @@ interface GlowButtonProps {
   variant?: GlowButtonVariant;
   external?: boolean;
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 const ANIMATED_GRADIENT = 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7, #DF57BC, #DE541E)';
@@ -30,7 +31,7 @@ const COLOR_MAP: Record<GlowButtonVariant, string> = {
   white: '#0a0a0a',
 };
 
-export function GlowButton({ href, children, className, style, variant = 'dark', external, onClick }: GlowButtonProps) {
+export function GlowButton({ href, children, className, style, variant = 'dark', external, onClick, disabled }: GlowButtonProps) {
   const isGradient = variant === 'gradient';
 
   const glowStyle: CSSProperties = {
@@ -56,15 +57,17 @@ export function GlowButton({ href, children, className, style, variant = 'dark',
 
   const linkStyle: CSSProperties = {
     display: 'inline-block',
-    background: BG_MAP[variant],
-    color: COLOR_MAP[variant],
+    background: disabled ? '#c8c8c8' : BG_MAP[variant],
+    color: disabled ? '#888888' : COLOR_MAP[variant],
     padding: '12px 28px',
     borderRadius: '100px',
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: 600,
     textDecoration: 'none',
     whiteSpace: 'nowrap',
-    ...(isGradient && {
+    cursor: disabled ? 'not-allowed' : 'pointer',
+    opacity: disabled ? 0.6 : 1,
+    ...(!disabled && isGradient && {
       backgroundSize: '300% 300%',
       animation: 'gradientShift 4s ease infinite',
       border: 'none',
@@ -74,25 +77,28 @@ export function GlowButton({ href, children, className, style, variant = 'dark',
 
   return (
     <div style={{ position: 'relative', display: 'inline-block' }}>
+      {!disabled && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          style={glowStyle}
+        />
+      )}
       <motion.div
-        initial={{ opacity: 0 }}
-        whileHover={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-        style={glowStyle}
-      />
-      <motion.div
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
+        whileHover={disabled ? undefined : { scale: 1.02 }}
+        whileTap={disabled ? undefined : { scale: 0.98 }}
         transition={{ duration: 0.2 }}
         style={{ position: 'relative', zIndex: 1 }}
       >
         <Link
-          href={href}
-          target={external ? '_blank' : undefined}
-          rel={external ? 'noopener noreferrer' : undefined}
+          href={disabled ? '#' : href}
+          target={external && !disabled ? '_blank' : undefined}
+          rel={external && !disabled ? 'noopener noreferrer' : undefined}
           style={linkStyle}
           className={className}
-          onClick={onClick}
+          onClick={disabled ? (e) => e.preventDefault() : onClick}
+          aria-disabled={disabled}
         >
           {children}
         </Link>

@@ -284,11 +284,12 @@ export function ContactSection() {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full font-sans text-white text-sm font-bold cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                className="w-full font-sans text-white font-bold cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
                 style={{
                   background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7, #DF57BC, #DE541E)',
                   backgroundSize: '300% 300%',
                   animation: 'gradientShift 4s ease infinite',
+                  fontSize: 16,
                   padding: '14px 28px',
                   borderRadius: '100px',
                   border: 'none',
