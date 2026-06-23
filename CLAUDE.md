@@ -1,3 +1,9 @@
+> Lis aussi architecture.md au début de chaque session — il contient
+> l'architecture produit (maison de marques UCY/Studio/Stays/Réseau, mégamenu,
+> design system typographique et boutons) et les décisions produit en cours.
+> CLAUDE.md reste pour les conventions de code ; docs/architecture.md est la
+> référence produit/design (fichier à la racine du repo).
+
 # UCY Studio — CLAUDE.md
 Last updated: June 2026
 
@@ -64,6 +70,15 @@ Last updated: June 2026
 - `DevisSection.tsx` — 3-step quote request form
 - `ServiceDetailSection.tsx` — full service detail page (hero, features, process, related projects)
 
+#### components/sections/stays
+- `StaysHero.tsx` — hero section UCY Stays (header clair fond #FBF9FF, sans photo de fond)
+- `StaysShowcase.tsx` — carousel photos des logements
+- `Collection.tsx` — grille de collections de séjours
+- `BrandPillars.tsx` — piliers de marque Stays
+- `TrustTeam.tsx` — section équipe/confiance
+- `NewBuildDesign.tsx` — section design neuf
+- `BecomePartner.tsx` — CTA partenariat propriétaires
+
 ### components/ui
 - `Logo.tsx` — animated SVG logo
 - `ArrowDiag.tsx` — diagonal arrow used site-wide
@@ -94,6 +109,8 @@ Last updated: June 2026
 - /mentions-legales
 - /services/[slug] (8 services: web-design, ui-ux, branding,
   strategie-digitale, seo, application-mobile, maintenance, e-commerce)
+- /stays — brand UCY Stays (StaysHero, StaysShowcase carousel photos,
+  Collection, BrandPillars, TrustTeam, NewBuildDesign, BecomePartner)
 
 ## Key files
 - lib/utils/pricing.ts — pricing data source of truth
@@ -121,6 +138,14 @@ Last updated: June 2026
 - Vercel Pro deployment config
 
 ## Current state
+
+**Stays — décisions récentes (juin 2026):**
+- Hero Stays pivoté vers header clair façon Studio (fond #FBF9FF, pas de photo en fond)
+- Système de boutons pill noir unifié sur /stays (remplace les variants précédents)
+- Design system typographique chiffré adopté (H1 88/64/40px desktop/tablette/mobile,
+  H2 64/48/32px, H3 40/32/24px, Body 18/16/16px) — détail dans docs/architecture.md
+- Architecture maison de marques formalisée : UCY (holding) > Studio / Stays / Réseau
+- architecture.md ajouté à la racine du repo comme référence produit/design centrale
 
 Last 20 commits:
 - `3bcdf6f` revert: AboutSection fully restored to original pre-photo-changes
