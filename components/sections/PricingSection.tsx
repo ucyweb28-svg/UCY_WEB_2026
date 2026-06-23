@@ -57,7 +57,7 @@ export function PricingSection() {
     : '/devis';
 
   return (
-    <section className="pt-14 section-b" style={{ backgroundColor: '#FBF9FF' }}>
+    <section className="pt-24 lg:pt-32 section-b" style={{ backgroundColor: '#FBF9FF' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}

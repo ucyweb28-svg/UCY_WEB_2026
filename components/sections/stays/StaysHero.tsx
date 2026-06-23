@@ -9,7 +9,7 @@ export function StaysHero() {
 
   return (
     <section
-      className="pt-16 lg:pt-24 pb-8"
+      className="pt-24 lg:pt-32 pb-24 lg:pb-32"
       style={{ backgroundColor: '#FBF9FF' }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">

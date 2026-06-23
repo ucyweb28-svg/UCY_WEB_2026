@@ -113,7 +113,7 @@ export function ContactSection() {
   );
 
   return (
-    <section className="bg-[#FBF9FF] min-h-screen pt-12 section-b">
+    <section className="bg-[#FBF9FF] min-h-screen pt-24 lg:pt-32 section-b">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[42%_58%] gap-10 lg:gap-16 items-start">
 
         {/* Left column */}
