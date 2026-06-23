@@ -3,8 +3,6 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
-import { STAYS_CONTAINER } from '@/lib/constants/staysLayout';
 
 export function StaysHero() {
   const t = useTranslations('stays.hero');
@@ -14,7 +12,7 @@ export function StaysHero() {
       className="pt-16 lg:pt-24 pb-8"
       style={{ backgroundColor: '#FBF9FF' }}
     >
-      <div className={cn(STAYS_CONTAINER, 'max-w-[1000px] text-center')}>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
         <motion.h1
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}

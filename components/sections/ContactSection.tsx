@@ -113,8 +113,8 @@ export function ContactSection() {
   );
 
   return (
-    <section className="bg-[#FBF9FF] min-h-screen pt-12 section-b px-4 md:px-6">
-      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-[42%_58%] gap-10 lg:gap-16 items-start">
+    <section className="bg-[#FBF9FF] min-h-screen pt-12 section-b">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[42%_58%] gap-10 lg:gap-16 items-start">
 
         {/* Left column */}
         <motion.div variants={stagger} initial="hidden" animate="visible" className="lg:sticky lg:top-8 flex flex-col h-full">

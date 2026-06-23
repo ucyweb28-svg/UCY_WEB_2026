@@ -125,7 +125,7 @@ export function ProcessSection() {
       />
 
       {/* Content layer */}
-      <div className="relative max-w-6xl mx-auto px-10 py-16" style={{ zIndex: 2 }}>
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8" style={{ zIndex: 2 }}>
 
         {/* Shared gradient defs for icons & connectors */}
         <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">

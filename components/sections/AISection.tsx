@@ -62,7 +62,7 @@ export function AISection() {
       />
 
       {/* Layer 3: content */}
-      <div className="relative z-10 h-full max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center min-h-[85vh]">
+      <div className="relative z-10 h-full max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-16 items-center min-h-[85vh]">
 
         {/* Left: text */}
         <motion.div

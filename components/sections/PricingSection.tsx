@@ -58,7 +58,7 @@ export function PricingSection() {
 
   return (
     <section className="pt-14 section-b" style={{ backgroundColor: '#FBF9FF' }}>
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
         <motion.div
