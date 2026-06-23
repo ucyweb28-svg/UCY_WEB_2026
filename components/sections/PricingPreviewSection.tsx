@@ -113,7 +113,7 @@ export function PricingPreviewSection() {
 
           <motion.h2
             variants={fadeUp}
-            className="font-heading font-extrabold text-4xl md:text-5xl leading-tight"
+            className="font-heading ds-h2 leading-tight"
             style={{ color: '#000807', marginTop: 16 }}
           >
             {t('headline_start')}

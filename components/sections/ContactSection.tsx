@@ -128,8 +128,8 @@ export function ContactSection() {
 
           <motion.h1
             variants={fadeUp}
-            className="font-heading font-extrabold mb-3"
-            style={{ fontSize: 'clamp(28px, 3.5vw, 40px)', lineHeight: 1.15, color: '#0a0a0a' }}
+            className="font-heading ds-h1 mb-3"
+            style={{ lineHeight: 1.15, color: '#0a0a0a' }}
           >
             {t('title_start')}
             <br />

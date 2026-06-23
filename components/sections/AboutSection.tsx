@@ -36,7 +36,7 @@ export function AboutSection() {
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="font-heading font-extrabold text-4xl md:text-5xl leading-tight"
+            className="font-heading ds-h2 leading-tight"
           >
             <span style={{ color: 'white' }}>{t('headline_start')}</span>
             <span

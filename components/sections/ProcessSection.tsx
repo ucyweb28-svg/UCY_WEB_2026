@@ -160,8 +160,8 @@ export function ProcessSection() {
             </div>
 
             <h2
-              className="font-heading font-extrabold leading-tight"
-              style={{ color: 'white', fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', marginTop: 16 }}
+              className="font-heading ds-h2 leading-tight"
+              style={{ color: 'white', marginTop: 16 }}
             >
               {t('headline_start')}
               <span
@@ -222,7 +222,7 @@ export function ProcessSection() {
                     </span>
                   </div>
 
-                  <h3 className="font-heading font-bold" style={{ fontSize: 15, color: '#ffffff', marginTop: 12 }}>
+                  <h3 className="font-heading card-title" style={{ color: '#ffffff', marginTop: 12 }}>
                     {t(step.titleKey)}
                   </h3>
 

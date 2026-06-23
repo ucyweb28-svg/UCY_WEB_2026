@@ -39,8 +39,8 @@ export function PortfolioSection() {
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="font-heading font-extrabold leading-tight break-words hyphens-auto"
-            style={{ color: '#000807', fontSize: 'clamp(1.5rem, 8vw, 3rem)' }}
+            className="font-heading ds-h2 leading-tight break-words hyphens-auto"
+            style={{ color: '#000807' }}
           >
             {t('headline_start')}
             <span
@@ -91,7 +91,7 @@ export function PortfolioSection() {
                     <span className="font-sans text-xs" style={{ color: 'rgba(0,8,7,0.4)' }}>
                       {t(catKey)}
                     </span>
-                    <h3 className="font-heading font-bold text-lg" style={{ color: '#000807' }}>
+                    <h3 className="font-heading card-title" style={{ color: '#000807' }}>
                       {t(titleKey)}
                     </h3>
                   </div>

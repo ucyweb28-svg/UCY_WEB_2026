@@ -89,8 +89,8 @@ export function TestimonialsSection() {
         {/* Top row */}
         <div className="flex items-end justify-between gap-6 flex-wrap" style={{ marginBottom: 32 }}>
           <h2
-            className="font-heading font-extrabold leading-tight"
-            style={{ color: '#0a0a0a', fontSize: 'clamp(1.5rem, 8vw, 3rem)' }}
+            className="font-heading ds-h2 leading-tight"
+            style={{ color: '#0a0a0a' }}
           >
             {t('heading_start')}
             <span

@@ -17,7 +17,7 @@ export function StaysHero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="font-trap font-extrabold text-[clamp(36px,5.4vw,64px)] leading-[1.1] tracking-[-0.01em]"
+          className="font-trap ds-h1 leading-[1.1] tracking-[-0.01em]"
           style={{ color: '#000807' }}
         >
           {t('titleLine1')}

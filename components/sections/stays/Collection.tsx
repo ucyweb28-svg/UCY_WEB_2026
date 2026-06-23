@@ -65,8 +65,8 @@ export function Collection() {
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="font-trap font-extrabold leading-tight"
-            style={{ color: '#000807', fontSize: 'clamp(1.5rem, 5vw, 2.75rem)' }}
+            className="font-trap ds-h2 leading-tight"
+            style={{ color: '#000807' }}
           >
             {t('collection_title_start')}
             <span
@@ -146,7 +146,7 @@ export function Collection() {
                     <span className="font-montserrat text-xs" style={{ color: 'rgba(0,8,7,0.4)' }}>
                       {t(typeKey)}
                     </span>
-                    <h3 className="font-trap font-bold text-lg" style={{ color: '#000807' }}>
+                    <h3 className="font-trap card-title" style={{ color: '#000807' }}>
                       {t(nameKey)}
                     </h3>
                   </div>

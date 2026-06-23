@@ -29,8 +29,8 @@ export function NewBuildDesign() {
 
             <motion.h2
               variants={fadeUp}
-              className="font-trap font-extrabold leading-tight"
-              style={{ color: '#000807', fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)' }}
+              className="font-trap ds-h2 leading-tight"
+              style={{ color: '#000807' }}
             >
               {t('newbuild_title_start')}
               <span

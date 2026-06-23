@@ -27,8 +27,8 @@ export function BecomePartner() {
 
           <motion.h2
             variants={fadeUp}
-            className="font-trap font-extrabold leading-tight"
-            style={{ color: '#FBF9FF', fontSize: 'clamp(1.75rem, 5vw, 3rem)' }}
+            className="font-trap ds-h2 leading-tight"
+            style={{ color: '#FBF9FF' }}
           >
             {t('partner_title_start')}
             <span className="bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent animate-gradient">

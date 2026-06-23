@@ -85,7 +85,7 @@ export function ServicesSection() {
         >
           <motion.div variants={fadeUp} className="flex flex-col items-start gap-4">
             <Badge>{t('label')}</Badge>
-            <h2 className="font-heading font-extrabold text-4xl md:text-5xl leading-tight" style={{ color: '#000807' }}>
+            <h2 className="font-heading ds-h2 leading-tight" style={{ color: '#000807' }}>
               {t('headline_start')}
               <span className="bg-gradient-to-r from-[#3626A7] via-[#DF57BC] to-[#DE541E] bg-clip-text text-transparent animate-gradient">
                 {t('headline_highlight')}
@@ -144,7 +144,7 @@ export function ServicesSection() {
                     )}
                   </div>
                   <div className="p-5 flex flex-col gap-2 flex-1">
-                    <h3 className="font-sans font-semibold text-lg text-[#000807]">
+                    <h3 className="font-sans card-title text-[#000807]">
                       {t(titleKey)}
                     </h3>
                     <p className="font-sans text-sm leading-relaxed line-clamp-2 text-[#000807]/60">

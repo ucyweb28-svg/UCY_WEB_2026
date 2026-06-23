@@ -72,8 +72,8 @@ export function PricingSection() {
           <Badge>{t('badge')}</Badge>
 
           <h1
-            className="font-heading"
-            style={{ fontSize: 'clamp(28px, 4vw, 36px)', fontWeight: 900, color: '#0a0a0f', marginTop: 16, lineHeight: 1.2 }}
+            className="font-heading ds-h2"
+            style={{ color: '#0a0a0f', marginTop: 16 }}
           >
             {t('headline_start')}
             <span
@@ -165,7 +165,7 @@ export function PricingSection() {
                   {t(pack.tagKey)}
                 </p>
 
-                <h3 className="font-heading font-bold" style={{ fontSize: 20, color: '#0a0a0f', marginTop: 8 }}>
+                <h3 className="font-heading card-title" style={{ color: '#0a0a0f', marginTop: 8 }}>
                   {t(pack.titleKey)}
                 </h3>
 
@@ -243,7 +243,7 @@ export function PricingSection() {
             transition: 'opacity 0.2s ease',
           }}
         >
-          <h3 className="font-heading font-bold" style={{ fontSize: 18, color: '#0a0a0f' }}>
+          <h3 className="font-heading card-title" style={{ color: '#0a0a0f' }}>
             {t('options_title')}
           </h3>
           <p className="font-sans" style={{ fontSize: 13, color: 'rgba(10,10,15,.5)', marginTop: 4, marginBottom: 20 }}>

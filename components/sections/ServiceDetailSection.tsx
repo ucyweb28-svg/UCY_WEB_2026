@@ -109,7 +109,7 @@ export function ServiceDetailSection({
           </motion.div>
           <motion.h1
             variants={fadeUp}
-            className="font-heading font-extrabold leading-tight text-white text-[clamp(28px,4.5vw,56px)]"
+            className="font-heading ds-h1 leading-tight text-white"
             style={{ wordBreak: 'keep-all', overflowWrap: 'normal', hyphens: 'none' }}
           >
             {titleStart}
@@ -144,8 +144,8 @@ export function ServiceDetailSection({
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <h2
-              className="font-heading font-extrabold leading-tight mb-3"
-              style={{ color: '#0a0a0f', fontSize: 'clamp(1.75rem, 4vw, 2.75rem)' }}
+              className="font-heading ds-h2 leading-tight mb-3"
+              style={{ color: '#0a0a0f' }}
             >
               {t('features_heading_prefix')}
               <span
@@ -188,7 +188,7 @@ export function ServiceDetailSection({
                 </span>
                 <div style={{ position: 'relative', zIndex: 1 }}>
                   <span className="block w-2 h-2 rounded-full" style={{ backgroundColor: color, marginBottom: 20 }} />
-                  <h3 className="font-heading font-bold" style={{ fontSize: 16, color: '#0a0a0f', marginBottom: 10 }}>
+                  <h3 className="font-heading card-title" style={{ color: '#0a0a0f', marginBottom: 10 }}>
                     {feature.title}
                   </h3>
                   <p className="font-sans" style={{ fontSize: 14, color: '#666', lineHeight: 1.7 }}>
@@ -274,7 +274,7 @@ export function ServiceDetailSection({
                     {t('process_badge')}
                   </span>
                 </div>
-                <h2 className="font-heading font-extrabold text-4xl leading-tight mt-4" style={{ color: '#ffffff' }}>
+                <h2 className="font-heading ds-h2 leading-tight mt-4" style={{ color: '#ffffff' }}>
                   {t('process_heading_start')}
                   <span
                     style={{
@@ -324,7 +324,7 @@ export function ServiceDetailSection({
                     <span className="font-sans uppercase tracking-widest block" style={{ fontSize: 10, color: '#aaa', marginBottom: 12 }}>
                       {t('step_label')} {String(index + 1).padStart(2, '0')}
                     </span>
-                    <h3 className="font-heading font-bold" style={{ fontSize: 14, color: '#ffffff', marginBottom: 8 }}>
+                    <h3 className="font-heading card-title" style={{ color: '#ffffff', marginBottom: 8 }}>
                       {step.title}
                     </h3>
                     <p className="font-sans" style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>

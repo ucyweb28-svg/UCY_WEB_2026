@@ -102,9 +102,8 @@ export function FooterCTA() {
               {t('kicker')}
             </p>
             <h2
-              className="font-heading font-black"
+              className="font-heading ds-h2 font-black"
               style={{
-                fontSize: 'clamp(20px, 2.2vw, 32px)',
                 color: 'white',
                 lineHeight: 1.1,
                 marginBottom: 8,
