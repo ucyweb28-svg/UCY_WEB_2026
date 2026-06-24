@@ -54,7 +54,7 @@
  *   (contrainte de layout 2 colonnes, commit 7de5f3f — ne pas migrer vers ds-h2)
  * ────────────────────────────────────────────────────────────────────────── */
 @utility ds-h1 {
-  font-size: clamp(40px, 6.9vw, 88px);
+  font-size: clamp(40px, 5.75vw, 88px);
   font-weight: 800;
   line-height: 1.1;
 }
