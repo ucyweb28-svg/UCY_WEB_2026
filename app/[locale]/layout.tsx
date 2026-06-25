@@ -111,6 +111,21 @@ export default async function LocaleLayout({
               'window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()',
           }}
         />
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script
+              id="ga-init"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${process.env.NEXT_PUBLIC_GA_ID}');`,
+              }}
+            />
+          </>
+        )}
         <NextIntlClientProvider messages={messages}>
           <div className="fixed top-0 left-0 right-0 z-50">
             <AnnouncementBanner />
