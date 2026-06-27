@@ -6,6 +6,16 @@
 
 ## 1. Vision
 
+**[Mise à jour — pivot majeur]** UCY Studio et UCY Stays seront deux sites indépendants, sur deux domaines séparés — plus un site unique avec une maison mère commune. Tout ce qui suit dans ce document (architecture "Option C", mégamenu unifié Studio/Stays/Réseau, switcher dans la nav) décrivait l'ancienne hypothèse à un seul domaine. **Conservé ici à titre de référence historique**, mais ne reflète plus l'architecture cible.
+
+**Focus actuel : UCY Studio uniquement.** Stays passe en pause — le code et les pages déjà construites (StaysHero, StaysShowcase, etc.) sont conservés dans le repo, simplement retirés de la navigation et du site actif, en attendant la décision de migration vers un domaine dédié.
+
+**Question ouverte, non tranchée** : le pilier Réseau (carnet d'adresses) devient-il sa propre troisième entité/domaine, une section à l'intérieur de Studio, ou est-il mis en pause également ? À trancher plus tard — non bloquant pour le travail Studio en cours.
+
+---
+
+### Ancienne vision (one-site, archivée)
+
 UCY devient le hub de confiance pour les francophones (et anglophones) qui s'installent ou vivent en Israël — pas un média d'humour façon JewBuzz, mais la référence **pratique** : business, logement, et tout ce dont on a besoin pendant une alya.
 
 Trois piliers, statut différent :
@@ -120,17 +130,14 @@ Chaque colonne du mégamenu : 1-2 profils en vedette + lien "voir tout" vers la 
 - NAV + Header (hero) combinés : max **850px** desktop, et toujours laisser au moins ~550px visibles avant le pli pour suggérer le scroll.
 
 ### Échelle typographique (desktop / tablette / mobile)
-| Niveau | Desktop | Tablette | Mobile | Poids | Token CSS |
-|---|---|---|---|---|---|
-| H1 | 88px | 64px | 40px | Extrabold | `ds-h1` |
-| H2 | 52px | 40px | 28px | Bold/Extrabold | `ds-h2` |
-| H3 section | 40px | 30px | 20px | Bold | `ds-h3` |
-| Card title | 18px | 18px | 18px | Semibold | `card-title` |
-| Texte long (corps) | 16-18px | — | 16-18px | Regular/Medium | — |
-| Texte court (intro) | 18-20px | — | 18-20px | Regular/Medium | — |
-| Boutons | **16-18px** (compromis UCY — le référentiel cite 22-28px, jugé trop "retail" pour notre positionnement) | — | 16-18px | Semibold | — |
-
-> **Exception documentée — `AISection.tsx`** : le H2 de cette section conserve intentionnellement `clamp(24px, 2.8vw, 40px)` au lieu du token `ds-h2`. Raison : contrainte de layout bi-colonne (55/45) — le titre doit rester sur 2-3 lignes maximum. **Ne pas migrer vers `ds-h2`** dans les futures sessions. (Décision tranchée commit `7de5f3f`, juin 2026.)
+| Niveau | Desktop | Tablette | Mobile | Poids |
+|---|---|---|---|---|
+| H1 | 88px | 64px | 40px | Extrabold |
+| H2 | 52px | 40px | 28px | Bold/Extrabold |
+| H3 | 40px | 30px | 20px | Bold |
+| Texte long (corps) | 16-18px | — | 16-18px | Regular/Medium |
+| Texte court (intro) | 18-20px | — | 18-20px | Regular/Medium |
+| Boutons | **16-18px** (compromis UCY — le référentiel cite 22-28px, jugé trop "retail" pour notre positionnement) | — | 16-18px | Semibold |
 
 ### Rythme vertical
 - Entre sections : `py-16 lg:py-24` (sections standards), `py-24 lg:py-32` (hero/ouvertures de page) — cohérent avec la fourchette 100-120px du référentiel.
