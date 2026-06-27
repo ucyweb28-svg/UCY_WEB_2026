@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowDiag } from '@/components/ui/ArrowDiag';
 import { Badge } from '@/components/ui/Badge';
@@ -26,7 +26,8 @@ function CheckIcon({ size = 14, color }: { size?: number; color: string }) {
 
 export function PricingSection() {
   const t = useTranslations('pricing');
-  const [currency, setCurrency] = useState<Currency>('EUR');
+  const locale = useLocale();
+  const [currency, setCurrency] = useState<Currency>(locale === 'en' ? 'ILS' : 'EUR');
   const [selectedPack, setSelectedPack] = useState<string | null>(null);
   const [selectedOptions, setSelectedOptions] = useState<Set<string>>(new Set());
 

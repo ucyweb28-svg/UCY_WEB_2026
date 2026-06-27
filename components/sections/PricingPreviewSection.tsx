@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import type { ReactNode } from 'react';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowDiag } from '@/components/ui/ArrowDiag';
 import { Badge } from '@/components/ui/Badge';
@@ -89,7 +89,8 @@ function GlowCTA({ children, className = '' }: { children: ReactNode; className?
 
 export function PricingPreviewSection() {
   const t = useTranslations('pricing_preview');
-  const [currency, setCurrency] = useState<Currency>('ILS');
+  const locale = useLocale();
+  const [currency, setCurrency] = useState<Currency>(locale === 'en' ? 'ILS' : 'EUR');
 
   return (
     <section
