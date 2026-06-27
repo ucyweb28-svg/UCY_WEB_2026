@@ -87,10 +87,10 @@ export function AISection() {
             className="font-heading font-extrabold"
             style={{ fontSize: 'clamp(24px, 2.8vw, 40px)', color: '#ffffff', lineHeight: 1.2 }}
           >
-            <span className="block">{t('headline_start')}</span>
-            <span className="block">{t('headline_middle')}</span>
+            <span className="block whitespace-nowrap">{t('headline_start')}</span>
+            <span className="block whitespace-nowrap">{t('headline_middle')}</span>
             <span
-              className="block"
+              className="block whitespace-nowrap"
               style={{
                 background: 'linear-gradient(90deg, #DE541E, #DF57BC, #3626A7)',
                 WebkitBackgroundClip: 'text',
