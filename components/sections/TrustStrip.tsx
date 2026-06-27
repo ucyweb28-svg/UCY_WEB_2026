@@ -12,7 +12,7 @@ export function TrustStrip() {
 
   return (
     <section
-      className="py-[24px] overflow-hidden"
+      className="py-10 overflow-hidden flex flex-col gap-6"
       style={{
         backgroundColor: '#FBF9FF',
         borderTop: '1px solid rgba(0,8,7,0.07)',
@@ -21,7 +21,7 @@ export function TrustStrip() {
     >
       {/* Label */}
       <p
-        className="text-center font-sans text-[10px] font-medium uppercase tracking-[0.2em] mb-8"
+        className="text-center font-sans text-[10px] font-medium uppercase tracking-[0.2em]"
         style={{ color: 'rgba(0,8,7,0.35)' }}
       >
         {t('label')}
