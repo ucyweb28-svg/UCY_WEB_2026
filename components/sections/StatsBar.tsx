@@ -23,7 +23,7 @@ export function StatsBar() {
   ];
 
   return (
-    <section className="py-[24px]" style={{ backgroundColor: '#000807' }}>
+    <section style={{ backgroundColor: '#000807' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           variants={stagger}
@@ -54,13 +54,6 @@ export function StatsBar() {
             </ScrollReveal>
           ))}
         </motion.div>
-
-        <p
-          className="text-center text-white/60 text-sm mt-8 pt-6 mx-6 tracking-widest uppercase"
-          style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}
-        >
-          {t('tagline')}
-        </p>
       </div>
     </section>
   );
