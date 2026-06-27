@@ -17,12 +17,15 @@ export async function generateMetadata({
   const locale = params.locale as Locale;
   const t = await getTranslations({ locale, namespace: 'stays' });
 
-  return buildPageMetadata({
-    locale,
-    path: '/stays',
-    title: t('meta_title'),
-    description: t('meta_description'),
-  });
+  return {
+    ...buildPageMetadata({
+      locale,
+      path: '/stays',
+      title: t('meta_title'),
+      description: t('meta_description'),
+    }),
+    robots: { index: false, follow: false },
+  };
 }
 
 export default function StaysPage() {

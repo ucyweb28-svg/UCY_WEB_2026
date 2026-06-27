@@ -9,7 +9,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, X } from '@phosphor-icons/react';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { Logo } from '@/components/ui/Logo';
-import { BrandSwitcher } from '@/components/layout/BrandSwitcher';
 import { staggerNav, EASE_REVEAL } from '@/lib/utils/animations';
 import type { Variants } from 'framer-motion';
 
@@ -19,20 +18,12 @@ const menuLinkVariant: Variants = {
 };
 
 type StudioNavKey = 'services' | 'portfolio' | 'pricing' | 'about' | 'contact';
-type StaysNavKey = 'stays_network' | 'stays_collection' | 'stays_partner' | 'contact';
 
 const STUDIO_NAV_LINKS: { key: StudioNavKey; href: string }[] = [
   { key: 'services', href: '/#services' },
   { key: 'portfolio', href: '/#portfolio' },
   { key: 'pricing', href: '/pricing' },
   { key: 'about', href: '/#about' },
-  { key: 'contact', href: '/contact' },
-];
-
-const STAYS_NAV_LINKS: { key: StaysNavKey; href: string }[] = [
-  { key: 'stays_network', href: '/stays#cities' },
-  { key: 'stays_collection', href: '/stays#collection' },
-  { key: 'stays_partner', href: '/stays#partner' },
   { key: 'contact', href: '/contact' },
 ];
 
@@ -167,19 +158,16 @@ export function Nav() {
   const router = useRouter();
   const pathname = usePathname();
   const isContactPage = pathname?.endsWith('/contact') ?? false;
-  const isStaysPage = (pathname ?? '').split('/').includes('stays');
   const isHomePage = pathname === '/' || pathname === '/en';
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const prevScrollY = useRef(0);
 
-  const activeNavLinks = isStaysPage ? STAYS_NAV_LINKS : STUDIO_NAV_LINKS;
-  const ctaHref = isStaysPage ? '/stays#partner' : '/contact';
-  const ctaLabel = isStaysPage ? t('cta_stays') : t('cta');
-  const ctaOnClick = isStaysPage
-    ? undefined
-    : () => window.scrollTo({ top: 0, behavior: 'instant' });
+  const activeNavLinks = STUDIO_NAV_LINKS;
+  const ctaHref = '/contact';
+  const ctaLabel = t('cta');
+  const ctaOnClick = () => window.scrollTo({ top: 0, behavior: 'instant' });
 
   useEffect(() => {
     const onScroll = () => {
@@ -200,11 +188,6 @@ export function Nav() {
     if (isHomePage && href.startsWith('/#')) {
       e.preventDefault();
       const id = href.slice(2);
-      document.querySelector(`#${id}`)?.scrollIntoView({ behavior: 'smooth' });
-    }
-    if (isStaysPage && href.startsWith('/stays#')) {
-      e.preventDefault();
-      const id = href.split('#')[1];
       document.querySelector(`#${id}`)?.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -247,8 +230,8 @@ export function Nav() {
       {/* Main bar */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-14 lg:h-[84px] flex items-center justify-between">
 
-        {/* Logo + Brand switcher */}
-        <div className="flex items-center" style={{ gap: 14 }}>
+        {/* Logo */}
+        <div className="flex items-center">
           <Link
             href="/"
             className="select-none"
@@ -256,7 +239,6 @@ export function Nav() {
           >
             <Logo />
           </Link>
-          <BrandSwitcher />
         </div>
 
         {/* Desktop links + language switcher */}
@@ -270,7 +252,7 @@ export function Nav() {
                   href={href}
                   onClick={(e) => handleAnchorClick(e, href)}
                   className={[
-                    `${isStaysPage ? 'font-montserrat' : 'font-sans'} text-sm transition-colors duration-300`,
+                    `font-sans text-sm transition-colors duration-300`,
                     isActive ? 'font-semibold' : 'font-medium',
                     isActive ? 'text-accent' : 'text-black hover:text-accent',
                   ].join(' ')}
@@ -285,7 +267,7 @@ export function Nav() {
             locale={locale}
             onSwitch={switchLocale}
             size="minimal"
-            fontClass={isStaysPage ? 'font-montserrat' : 'font-sans'}
+            fontClass="font-sans"
           />
         </div>
 
@@ -322,21 +304,18 @@ export function Nav() {
               className="lg:hidden fixed inset-0 z-[100] flex flex-col overflow-y-auto"
               style={{ backgroundColor: '#FBF9FF' }}
             >
-              {/* Top bar: logo + brand switcher + close */}
+              {/* Top bar: logo + close */}
               <div className="shrink-0 flex items-center justify-between px-6 lg:px-8 h-14 lg:h-[84px]">
-                <div className="flex items-center" style={{ gap: 12 }}>
-                  <Link
-                    href="/"
-                    onClick={() => {
-                      setMenuOpen(false);
-                      window.scrollTo({ top: 0, behavior: 'instant' });
-                    }}
-                    className="select-none"
-                  >
-                    <Logo />
-                  </Link>
-                  <BrandSwitcher />
-                </div>
+                <Link
+                  href="/"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                  }}
+                  className="select-none"
+                >
+                  <Logo />
+                </Link>
                 <button
                   onClick={() => setMenuOpen(false)}
                   aria-label={t('menu_close')}
@@ -363,7 +342,7 @@ export function Nav() {
                       handleAnchorClick(e, href);
                       setMenuOpen(false);
                     }}
-                    className={`flex items-center justify-between ${isStaysPage ? 'font-trap' : 'font-heading'} transition-colors duration-200 text-[#0a0a0a] hover:text-[#3626A7]`}
+                    className="flex items-center justify-between font-heading transition-colors duration-200 text-[#0a0a0a] hover:text-[#3626A7]"
                     style={{ fontSize: 42, fontWeight: 800, borderBottom: '1px solid #f0f0f0', padding: '16px 0' }}
                   >
                     <span>{t(key)}</span>
@@ -379,7 +358,7 @@ export function Nav() {
                   variant="gradient"
                   onClick={() => {
                     setMenuOpen(false);
-                    if (!isStaysPage) window.scrollTo({ top: 0, behavior: 'instant' });
+                    window.scrollTo({ top: 0, behavior: 'instant' });
                   }}
                 >
                   {ctaLabel}
@@ -395,7 +374,7 @@ export function Nav() {
                     setMenuOpen(false);
                   }}
                   size="lg"
-                  fontClass={isStaysPage ? 'font-montserrat' : 'font-sans'}
+                  fontClass="font-sans"
                 />
               </div>
 
@@ -417,7 +396,7 @@ export function Nav() {
 
               {/* Bottom tag */}
               <p
-                className={`shrink-0 text-center ${isStaysPage ? 'font-montserrat' : 'font-sans'}`}
+                className="shrink-0 text-center font-sans"
                 style={{ fontSize: 12, color: '#aaa', marginTop: 16, paddingBottom: 32 }}
               >
                 {tHero('badge')}

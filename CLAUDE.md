@@ -139,6 +139,12 @@ Last updated: June 2026
 
 ## Current state
 
+> **PIVOT JUIN 2026 — Stays mis en pause sur ce domaine.**
+> Le code Stays est conservé dans le repo (composants, route /stays) mais n'est plus
+> lié ni indexé depuis Studio. Focus exclusif sur Studio jusqu'à nouvel ordre.
+> /stays a un noindex/nofollow robot meta — la page migrera sur un domaine séparé plus tard.
+> Voir docs/architecture.md section 1 pour le détail du pivot maison de marques.
+
 **Stays — décisions récentes (juin 2026):**
 - Hero Stays pivoté vers header clair façon Studio (fond #FBF9FF, pas de photo en fond)
 - Système de boutons pill noir unifié sur /stays (remplace les variants précédents)
