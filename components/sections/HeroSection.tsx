@@ -85,10 +85,11 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE_REVEAL }}
-          className="flex flex-col items-center text-center gap-6 md:gap-8 max-w-4xl mx-auto"
+          className="flex flex-col gap-6 md:gap-8 text-center"
         >
+          {/* H1 hors du conteneur max-w-4xl — borné par le px-6 lg:px-8 du grand-parent */}
           <h1
-            className="font-heading ds-h1 lg:whitespace-nowrap tracking-tight text-balance"
+            className="font-heading ds-h1 tracking-tight text-balance"
             style={{ color: '#000807' }}
           >
             {t('headline_start')}
@@ -97,14 +98,16 @@ export function HeroSection() {
             </span>
           </h1>
 
-          <p
-            className="font-sans text-base md:text-lg leading-relaxed max-w-4xl text-pretty"
-            style={{ color: 'rgba(0,8,7,0.65)' }}
-          >
-            {t('subheadline')}
-          </p>
+          {/* Sous-titre + CTAs dans leur propre conteneur max-w-4xl */}
+          <div className="flex flex-col items-center gap-6 md:gap-8 max-w-4xl mx-auto">
+            <p
+              className="font-sans text-base md:text-lg leading-relaxed max-w-4xl text-pretty"
+              style={{ color: 'rgba(0,8,7,0.65)' }}
+            >
+              {t('subheadline')}
+            </p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 pt-2" style={{ overflow: 'visible' }}>
+            <div className="flex flex-col sm:flex-row items-center gap-4 pt-2" style={{ overflow: 'visible' }}>
             {/* Primary CTA — dark, animated gradient glow on hover */}
             <div
               style={{ position: 'relative', display: 'inline-block' }}
@@ -165,6 +168,7 @@ export function HeroSection() {
               {t('cta_secondary')}
               <span className="absolute left-2 right-2 -bottom-0.5 h-[1.5px] bg-current scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
             </a>
+          </div>
           </div>
         </motion.div>
 
