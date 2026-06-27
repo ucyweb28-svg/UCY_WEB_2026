@@ -29,7 +29,7 @@ export function AboutSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="flex flex-col items-start gap-6 mb-20"
+          className="flex flex-col items-start gap-6 mb-10"
         >
           <motion.div variants={fadeUp}>
             <Badge variant="dark">{t('label')}</Badge>
